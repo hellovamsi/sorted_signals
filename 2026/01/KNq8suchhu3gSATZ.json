@@ -1,0 +1,386 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-08-08T15:34:23.000Z",
+    "createdAt": "2026-08-08T15:34:03.797Z",
+    "versionId": "a220f41d-cd69-4404-9103-b8be2f0bdf1b",
+    "workflowId": "KNq8suchhu3gSATZ",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "write",
+          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "options": {
+            "append": true
+          }
+        },
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1,
+        "position": [
+          -32,
+          -64
+        ],
+        "id": "e7882590-aa45-4ee2-9216-4f030255fb85",
+        "name": "Append error JSON to log"
+      },
+      {
+        "parameters": {
+          "operation": "toJson",
+          "options": {
+            "format": false
+          }
+        },
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1,
+        "position": [
+          -256,
+          -64
+        ],
+        "id": "9f1e5f14-19d2-407b-9e75-ea6ef00d9ed9",
+        "name": "Convert error to JSON"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          -480,
+          -64
+        ],
+        "id": "d6da2f11-3444-45bf-b9be-a9941a4c8f29",
+        "name": "On error"
+      },
+      {
+        "id": "6ebbe8e1-dc08-4e0d-bb1e-ff25da6cb4b8",
+        "name": "Prepare blank line",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          192,
+          -64
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "newline-1",
+                "name": "newline",
+                "type": "string",
+                "value": "={{ '\\n' }}"
+              }
+            ]
+          },
+          "mode": "manual",
+          "options": {}
+        }
+      },
+      {
+        "id": "77f15fe3-87d4-4e07-842b-3f2aced4869c",
+        "name": "Convert blank line to text",
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1,
+        "position": [
+          416,
+          -64
+        ],
+        "parameters": {
+          "operation": "toText",
+          "options": {
+            "encoding": "utf8",
+            "fileName": "newline.txt"
+          },
+          "sourceProperty": "newline"
+        }
+      },
+      {
+        "id": "9b8263b9-7192-45dd-aa04-f07450bdbb41",
+        "name": "Append blank line to log",
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1,
+        "position": [
+          640,
+          -64
+        ],
+        "parameters": {
+          "dataPropertyName": "data",
+          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "operation": "write",
+          "options": {
+            "append": true
+          }
+        }
+      }
+    ],
+    "connections": {
+      "On error": {
+        "main": [
+          [
+            {
+              "node": "Convert error to JSON",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Convert error to JSON": {
+        "main": [
+          [
+            {
+              "node": "Append error JSON to log",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Append error JSON to log": {
+        "main": [
+          [
+            {
+              "node": "Prepare blank line",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prepare blank line": {
+        "main": [
+          [
+            {
+              "node": "Convert blank line to text",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Convert blank line to text": {
+        "main": [
+          [
+            {
+              "node": "Append blank line to log",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Vamsi Varanasi",
+    "name": "Version a220f41d",
+    "description": "",
+    "autosaved": false
+  },
+  "activeVersionId": "a220f41d-cd69-4404-9103-b8be2f0bdf1b",
+  "connections": {
+    "On error": {
+      "main": [
+        [
+          {
+            "node": "Convert error to JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert error to JSON": {
+      "main": [
+        [
+          {
+            "node": "Append error JSON to log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append error JSON to log": {
+      "main": [
+        [
+          {
+            "node": "Prepare blank line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare blank line": {
+      "main": [
+        [
+          {
+            "node": "Convert blank line to text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert blank line to text": {
+      "main": [
+        [
+          {
+            "node": "Append blank line to log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-06T21:43:21.412Z",
+  "id": "KNq8suchhu3gSATZ",
+  "isArchived": false,
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp"
+  },
+  "name": "error : telegram notification failed",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "options": {
+          "append": true
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -32,
+        -64
+      ],
+      "id": "e7882590-aa45-4ee2-9216-4f030255fb85",
+      "name": "Append error JSON to log"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {
+          "format": false
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -256,
+        -64
+      ],
+      "id": "9f1e5f14-19d2-407b-9e75-ea6ef00d9ed9",
+      "name": "Convert error to JSON"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -64
+      ],
+      "id": "d6da2f11-3444-45bf-b9be-a9941a4c8f29",
+      "name": "On error"
+    },
+    {
+      "id": "6ebbe8e1-dc08-4e0d-bb1e-ff25da6cb4b8",
+      "name": "Prepare blank line",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        -64
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "newline-1",
+              "name": "newline",
+              "type": "string",
+              "value": "={{ '\\n' }}"
+            }
+          ]
+        },
+        "mode": "manual",
+        "options": {}
+      }
+    },
+    {
+      "id": "77f15fe3-87d4-4e07-842b-3f2aced4869c",
+      "name": "Convert blank line to text",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        416,
+        -64
+      ],
+      "parameters": {
+        "operation": "toText",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "newline.txt"
+        },
+        "sourceProperty": "newline"
+      }
+    },
+    {
+      "id": "9b8263b9-7192-45dd-aa04-f07450bdbb41",
+      "name": "Append blank line to log",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        -64
+      ],
+      "parameters": {
+        "dataPropertyName": "data",
+        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "operation": "write",
+        "options": {
+          "append": true
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-07-19T15:53:23.598Z",
+      "createdAt": "2026-07-19T15:53:23.598Z",
+      "role": "workflow:owner",
+      "workflowId": "KNq8suchhu3gSATZ",
+      "projectId": "KgPGbMAWBC3Dm64D"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-07-19T15:54:57.140Z",
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals"
+    },
+    {
+      "updatedAt": "2026-07-19T15:58:00.895Z",
+      "createdAt": "2026-07-19T15:58:00.895Z",
+      "id": "stPvA6IXEWYUHzi9",
+      "name": "devops"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-08-08T20:15:28.000Z",
+  "versionId": "a220f41d-cd69-4404-9103-b8be2f0bdf1b"
+}
