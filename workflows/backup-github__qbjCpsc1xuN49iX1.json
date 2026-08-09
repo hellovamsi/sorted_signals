@@ -378,7 +378,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-09T10:07:43.884Z",
+    "createdAt": "2026-08-09T10:10:09.688Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -994,7 +994,7 @@
         "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
         "name": "Find orphans",
         "parameters": {
-          "jsCode": "const files=$input.all();\nconst ids=new Set($(\"Filter\").all().map(i=>i.json.id));\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!==\"file\")continue;\n  const name=f.name||\"\";\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  orphans.push({json:{origin:\"github\",name,filePath:f.path,id,hasOrphans:true}});\n}\nif(orphans.length===0){\n  return[{json:{hasOrphans:false}}];\n}\nreturn orphans;"
+          "jsCode": "const files=$input.all();\nconst ids=new Set($(\"Filter\").all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!==\"file\")continue;\n  const name=f.name||\"\";\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path||name;\n  if(seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:\"github\",name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0){\n  return[{json:{hasOrphans:false}}];\n}\nreturn orphans;"
         },
         "position": [
           2544,
@@ -1025,6 +1025,7 @@
         },
         "id": "a47b0827-03e3-4563-9925-18ec3824fa58",
         "name": "Delete orphan file",
+        "onError": "continueRegularOutput",
         "parameters": {
           "commitMessage": "={{ $json.name }} (deleted)",
           "filePath": "={{ $json.filePath }}",
@@ -1126,8 +1127,8 @@
         "typeVersion": 2.3
       }
     ],
-    "updatedAt": "2026-08-09T10:07:43.884Z",
-    "versionId": "7a9be1c3-5033-4107-8991-fe91d9e7a1e4",
+    "updatedAt": "2026-08-09T10:10:09.688Z",
+    "versionId": "d9500f86-7626-4448-b685-bf7837eb288b",
     "workflowId": "qbjCpsc1xuN49iX1"
   },
   "connections": {
@@ -2121,7 +2122,7 @@
       "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
       "name": "Find orphans",
       "parameters": {
-        "jsCode": "const files=$input.all();\nconst ids=new Set($(\"Filter\").all().map(i=>i.json.id));\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!==\"file\")continue;\n  const name=f.name||\"\";\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  orphans.push({json:{origin:\"github\",name,filePath:f.path,id,hasOrphans:true}});\n}\nif(orphans.length===0){\n  return[{json:{hasOrphans:false}}];\n}\nreturn orphans;"
+        "jsCode": "const files=$input.all();\nconst ids=new Set($(\"Filter\").all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!==\"file\")continue;\n  const name=f.name||\"\";\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path||name;\n  if(seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:\"github\",name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0){\n  return[{json:{hasOrphans:false}}];\n}\nreturn orphans;"
       },
       "position": [
         2544,
@@ -2152,6 +2153,7 @@
       },
       "id": "a47b0827-03e3-4563-9925-18ec3824fa58",
       "name": "Delete orphan file",
+      "onError": "continueRegularOutput",
       "parameters": {
         "commitMessage": "={{ $json.name }} (deleted)",
         "filePath": "={{ $json.filePath }}",
