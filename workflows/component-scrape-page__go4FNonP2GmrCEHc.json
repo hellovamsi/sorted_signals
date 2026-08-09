@@ -1,0 +1,971 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "import",
+    "autosaved": false,
+    "connections": {
+      "Categories and Summary": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Update a row",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Create a row": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read URL content1",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Filter": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Remove Duplicates1",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "LLM Scraper": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Split Out",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "OpenRouter Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "LLM Scraper",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "OpenRouter Chat Model2": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Categories and Summary",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Read URL content": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "LLM Scraper",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read URL content1": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Categories and Summary",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Remove Duplicates1": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Create a row",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Filter",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          []
+        ]
+      },
+      "Structured Output Parser1": {
+        "ai_outputParser": [
+          [
+            {
+              "index": 0,
+              "node": "Categories and Summary",
+              "type": "ai_outputParser"
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read URL content",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-07-19T15:53:24.013Z",
+    "description": "",
+    "name": "Version 6ed68c82",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "credentials": {
+          "jinaAiApi": {
+            "id": "4W5ZoT7PWlbCQYny",
+            "name": "Jina AI account"
+          }
+        },
+        "id": "9474b16c-5f33-4458-92a4-c540c1c353e6",
+        "name": "Read URL content",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "options": {},
+          "requestOptions": {},
+          "url": "={{ $json.url }}"
+        },
+        "position": [
+          -464,
+          -64
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.jinaAi",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "openRouterApi": {
+            "id": "WBlXYobJqwEGYFhl",
+            "name": "OpenRouter account"
+          }
+        },
+        "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
+        "name": "OpenRouter Chat Model",
+        "parameters": {
+          "model": "google/gemini-2.5-flash-lite",
+          "options": {}
+        },
+        "position": [
+          -240,
+          160
+        ],
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "supabaseApi": {
+            "id": "dTJY0l3sZc3jSBwR",
+            "name": "Supabase account"
+          }
+        },
+        "id": "7b23eb05-62a9-4c20-8dc1-d4e4a1919d7e",
+        "name": "Create a row",
+        "parameters": {
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "title",
+                "fieldValue": "={{ $json.title }}"
+              },
+              {
+                "fieldId": "url",
+                "fieldValue": "={{ $json.url }}"
+              },
+              {
+                "fieldId": "publication",
+                "fieldValue": "={{ $json.publication }}"
+              },
+              {
+                "fieldId": "published_date",
+                "fieldValue": "={{ $json.date }}"
+              },
+              {
+                "fieldId": "ai_or_no",
+                "fieldValue": "={{ $json.ai_or_no }}"
+              },
+              {
+                "fieldId": "category",
+                "fieldValue": "={{ $json.category }}"
+              }
+            ]
+          },
+          "tableId": "batchupdate"
+        },
+        "position": [
+          928,
+          -64
+        ],
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1
+      },
+      {
+        "id": "a6187e7d-7de1-40de-a36c-435ee6a4f999",
+        "name": "Filter",
+        "notes": "{{ $today.startOf('week').minus(1,'days') }} is the cutoff if the reference doesn't work",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "b78ded8e-7d4c-4591-9473-41d5bcaa43d4",
+                "leftValue": "={{ $json.date }}",
+                "operator": {
+                  "operation": "after",
+                  "type": "dateTime"
+                },
+                "rightValue": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}"
+              },
+              {
+                "id": "24a51962-6324-41d3-bb7e-e9b8d635d2b9",
+                "leftValue": "={{ $json.ai_or_no }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "number"
+                },
+                "rightValue": 1
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            }
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "position": [
+          480,
+          -64
+        ],
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.3
+      },
+      {
+        "id": "222b078e-b424-46f9-95e4-1168cb93790b",
+        "name": "Split Out",
+        "parameters": {
+          "fieldToSplitOut": "output",
+          "options": {}
+        },
+        "position": [
+          256,
+          -64
+        ],
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "openRouterApi": {
+            "id": "WBlXYobJqwEGYFhl",
+            "name": "OpenRouter account"
+          }
+        },
+        "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
+        "name": "OpenRouter Chat Model2",
+        "parameters": {
+          "model": "x-ai/grok-4.1-fast",
+          "options": {}
+        },
+        "position": [
+          1392,
+          160
+        ],
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "jinaAiApi": {
+            "id": "4W5ZoT7PWlbCQYny",
+            "name": "Jina AI account"
+          }
+        },
+        "id": "0172651f-6bd5-4bbb-b49d-ffa5604c0c37",
+        "name": "Read URL content1",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "options": {},
+          "requestOptions": {},
+          "simplify": false,
+          "url": "={{ $json.url }}"
+        },
+        "position": [
+          1152,
+          -64
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.jinaAi",
+        "typeVersion": 1
+      },
+      {
+        "id": "be75a915-79a2-44b8-ab3b-c8884a6d1b38",
+        "name": "Structured Output Parser1",
+        "parameters": {
+          "jsonSchemaExample": "{\n  \"summary\": \"Anthropic details safeguards in Claude AI to protect user well-being, focusing on handling suicide/self-harm discussions and reducing sycophancy. Using system prompts, reinforcement learning, and expert input, Claude responds empathetically, directs to helplines via ThroughLine partnerships, and partners with IASP for guidance. Evaluations show high performance: 98-99% appropriate single-turn responses on risky prompts, 78-86% in multi-turn scenarios (up from 56%), and 70-73% course-correction in real prefilled conversations. Sycophancy reduced 70-85% via behavioral audits; open-sourced Petri benchmark shows Claude 4.5 outperforming peers. Age restriction to 18+ enforced with classifiers. Ongoing transparency and improvements committed.\",\n  \"category\": \"Safety & Ethics\",\n  \"subcategories\": [\"AI safety research\", \"Ethical concerns\", \"Responsible AI\"]\n}"
+        },
+        "position": [
+          1520,
+          160
+        ],
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "a3b46d78-d13c-4e48-a4bd-fe532dc2cb70",
+        "name": "Remove Duplicates1",
+        "parameters": {
+          "compare": "selectedFields",
+          "fieldsToCompare": "url",
+          "options": {}
+        },
+        "position": [
+          704,
+          -64
+        ],
+        "type": "n8n-nodes-base.removeDuplicates",
+        "typeVersion": 2
+      },
+      {
+        "id": "74b8839f-e8c7-4f0e-b0d8-5f57553321ca",
+        "name": "When Executed by Another Workflow",
+        "parameters": {
+          "inputSource": "jsonExample",
+          "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
+        },
+        "position": [
+          -688,
+          -64
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "55814d7c-a251-43d2-96ad-d05c850e8d61",
+        "name": "LLM Scraper",
+        "parameters": {
+          "batching": {},
+          "hasOutputParser": true,
+          "promptType": "define",
+          "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When Executed by Another Workflow').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When Executed by Another Workflow').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When Executed by Another Workflow').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When Executed by Another Workflow').item.json.url }}\n\nPublication name\n{{ $('When Executed by Another Workflow').item.json.publication }}\n\nDate format and pattern\n{{ $('When Executed by Another Workflow').item.json.dateFormat }}\n\nStructure\n{{ $('When Executed by Another Workflow').item.json.structure }}\n\nCategories array\n{{ $('When Executed by Another Workflow').item.json.categories }}\n\nSeparators\n{{ $('When Executed by Another Workflow').item.json.separators }}\n\nExtraction hints\n{{ $('When Executed by Another Workflow').item.json.extractionHints }}\n\nExamples array\n{{ $('When Executed by Another Workflow').item.json.examples }}"
+        },
+        "position": [
+          -208,
+          -64
+        ],
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.8
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "bc2875c6-7001-4468-983c-5b85c84e6fed",
+        "name": "Categories and Summary",
+        "parameters": {
+          "batching": {},
+          "hasOutputParser": true,
+          "promptType": "define",
+          "text": "=# Summarize and Classify Article\n\n## Task\nYou are a content analyst. Your task is to:\n1. Generate a concise summary (HARD LIMIT: maximum 300 words) of the article\n2. Classify the article into the appropriate category and subcategory from the provided taxonomy\n\n## Input Format\nYou will receive article information in XML format with the following structure, under the Input Data heading:\n```xml\n<article>\n<url>article URL</url>\n<title>article title</title>\n<content>article content</content>\n</article>\n```\n\nNote: The article content is scraped from the web and may contain alt text, social media sharing elements, advertisements, navigation menus, and other boilerplate. Ignore these elements and focus only on the actual news content related to the title.\n\n## Output Format\nProvide your response as a JSON object with the following structure. Return ONLY valid JSON, no markdown code blocks, no additional text:\n\n```json\n{\n  \"summary\": \"Your summary here (maximum 300 words). Be concise, accurate, and capture the key points, implications, and significance of the article.\",\n  \"category\": \"Exact category name as listed below\",\n  \"subcategories\": [\"Exact subcategory name 1\", \"Exact subcategory name 2\", \"...\"]\n}\n```\n\n**Critical Requirements**:\n- Your response must be parseable JSON. Do NOT wrap it in markdown code blocks. Do NOT include any text before or after the JSON object. Start your response with `{` and end with `}`.\n- **Category**: Select EXACTLY ONE category (single string value)\n- **Subcategories**: Select ONE OR MORE relevant subcategories from the chosen category's list (array of strings). Include all subcategories that are relevant to the article, not just the primary one.\n\n## Classification Categories\nYou must classify the article into EXACTLY ONE category. You may select MULTIPLE subcategories from that category if the article covers multiple relevant topics. Use the EXACT category and subcategory names as listed below (case-sensitive, including ampersands and punctuation):\n\n**Category 1: Model Development & Research**\nAvailable subcategories: New model releases | Architecture improvements | Performance benchmarks | Research breakthroughs | Open source models | Multimodal capabilities | Context windows | Training methods\n\n**Category 2: Enterprise Adoption**\nAvailable subcategories: Implementation case studies | ROI metrics | Adoption strategies | Enterprise tools | Integration challenges | Business transformation | Industry deployments | Cost analysis\n\n**Category 3: Tools & Products**\nAvailable subcategories: Generative AI tools | RAG systems | AI agents | Chatbots | APIs | Developer tools | Productivity tools | Workflow automation\n\n**Category 4: Investment & Business**\nAvailable subcategories: Funding rounds | VC investments | IPO announcements | M&A deals | Acquisitions | Company valuations | Revenue metrics | Market analysis | Business models\n\n**Category 5: Regulation & Policy**\nAvailable subcategories: Government regulations | Policy announcements | Legal cases | Compliance requirements | International policy | Data privacy laws | AI governance frameworks\n\n**Category 6: Safety & Ethics**\nAvailable subcategories: AI safety research | Ethical concerns | Bias and fairness | Deepfakes | Misinformation | Data leaks | Privacy issues | Responsible AI\n\n**Category 7: Consumer & Daily Use**\nAvailable subcategories: Consumer products | Personal productivity | Daily workflows | Consumer apps | Accessibility | Education tools | Entertainment\n\n**Category 8: Pop Culture & Media**\nAvailable subcategories: AI in entertainment | Media coverage | Public discourse | Celebrity AI use | Social media trends | Cultural impact\n\n**Category 9: Industry Applications**\nAvailable subcategories: Healthcare | Finance | Education | Manufacturing | Energy | Transportation | Agriculture | Arts | Sports | Gaming | Retail | Real estate\n\n**Category 10: Product Management**\nAvailable subcategories: AI for PM workflows | PM for AI products | Product strategy | Feature development | User research | Product metrics | Team management\n\n## Instructions\n\n### Step 1: Read and Understand\n- Read the article content carefully, focusing on the title and main body text\n- Ignore navigation menus, boilerplate text, and website structure elements\n- Identify the PRIMARY focus and main themes of the article\n\n### Step 2: Generate Summary\n- Create a summary that is informative, accurate, and captures key points\n- Include implications and significance when relevant\n- HARD LIMIT: Maximum 300 words (count carefully - summaries over 300 words will be rejected)\n- Write in clear, concise prose suitable for a professional audience\n\n### Step 3: Classify\n- **Category Selection**: Select the SINGLE most appropriate category based on the article's PRIMARY focus\n  - Only ONE category is allowed (this is a hard requirement)\n  - If an article could fit multiple categories, choose based on:\n    1. The PRIMARY focus (what the article is mainly about)\n    2. The most significant content (what takes up the most space/detail)\n    3. The primary audience or purpose\n- **Subcategory Selection**: Select ALL relevant subcategories from the chosen category's available list\n  - You may select ONE OR MORE subcategories (as a JSON array)\n  - Include all subcategories that are relevant to the article's content\n  - Use EXACT names as listed above (copy them character-for-character, including capitalization, ampersands, and punctuation)\n  - If only one subcategory is relevant, the array will contain a single string\n\n### Step 4: Format Output\n- Return ONLY valid JSON (no markdown code blocks, no ```json wrapper)\n- No additional text, explanations, or commentary before or after the JSON\n- Ensure the JSON is properly formatted and parseable\n- Use double quotes for all strings\n- Escape any special characters in the summary text\n\n## Classification Guidelines\n- **CRITICAL: Only ONE category allowed**: You must select exactly ONE category. Even if an article touches on multiple category topics, choose the PRIMARY category based on the article's main focus.\n- **Multiple subcategories allowed**: Within your chosen category, you may select multiple subcategories if the article covers multiple relevant topics. This allows for more granular classification while maintaining a single primary category.\n- **Primary focus rule**: If an article covers multiple topics, classify based on what the article is PRIMARILY about, not secondary mentions\n- **Research vs Tools**: If an article describes a research paper or study, use \"Model Development & Research\". If it describes a tool/product you can use, use \"Tools & Products\"\n- **Business news**: Funding, valuations, and M&A go to \"Investment & Business\". Company strategy and operations go to \"Enterprise Adoption\"\n- **Regulation vs Safety**: Government actions and laws go to \"Regulation & Policy\". Ethical concerns and safety issues go to \"Safety & Ethics\"\n- **If uncertain**: Choose the category that best represents the article's main purpose and target audience\n\n## Example\nInput:\n```xml\n<article>\n<url>https://example.com/article</url>\n<title>New AI Model Breaks Performance Records</title>\n<content>A new language model has achieved state-of-the-art results on multiple benchmarks including GLUE and SuperGLUE. The model uses a novel transformer architecture that improves efficiency by 40% while maintaining accuracy. Researchers from Stanford published their findings in Nature. This breakthrough could enable more cost-effective AI deployments in enterprise settings.</content>\n</article>\n```\n\nOutput:\n```json\n{\n  \"summary\": \"Researchers from Stanford have developed a new language model that achieves state-of-the-art performance across multiple benchmarks including GLUE and SuperGLUE. The model uses a novel transformer architecture that improves efficiency by 40% while maintaining accuracy. Published in Nature, this breakthrough could enable more cost-effective AI deployments in enterprise settings.\",\n  \"category\": \"Model Development & Research\",\n  \"subcategories\": [\"Performance benchmarks\", \"Research breakthroughs\"]\n\n}\n```\n\n**Note**: In this example, the article covers both performance benchmarks (the main focus) and represents a research breakthrough, so both subcategories are included in the array.\n\n## Input Data\n<article>\n<title>{{ $json.data.title }}\n</title>\n<description>{{ $json.data.description }}\n</description>\n<content>{{ $json.data.content }}\n</content>\n</article>"
+        },
+        "position": [
+          1456,
+          -128
+        ],
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.8
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "dTJY0l3sZc3jSBwR",
+            "name": "Supabase account"
+          }
+        },
+        "id": "cfa4dfbb-2476-4b5e-8b0b-c46d05c2d94d",
+        "name": "Update a row",
+        "parameters": {
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "ai_summary",
+                "fieldValue": "={{ $json.output.summary }}"
+              },
+              {
+                "fieldId": "category",
+                "fieldValue": "={{ $json.output.category }}"
+              },
+              {
+                "fieldId": "subcategories",
+                "fieldValue": "={{ $json.output.subcategories }}"
+              }
+            ]
+          },
+          "filters": {
+            "conditions": [
+              {
+                "condition": "eq",
+                "keyName": "url",
+                "keyValue": "={{ $('Read URL content1').item.json.data.url }}"
+              }
+            ]
+          },
+          "matchType": "allFilters",
+          "operation": "update",
+          "tableId": "batchupdate"
+        },
+        "position": [
+          1840,
+          -112
+        ],
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1
+      },
+      {
+        "id": "7fe78d9d-9497-41f9-8c12-6398e431fa80",
+        "name": "Structured Output Parser",
+        "parameters": {
+          "jsonSchemaExample": "\"output\":[\n    {\n      \"publication\": \"Anthropic Newsroom\",\n      \"category\": \"Announcements\",\n      \"title\": \"Introducing Claude Opus 4.5\",\n      \"description\": \"The best model in the world for coding, agents, and computer use, with meaningful improvements to everyday tasks like slides and spreadsheets. Claude Opus 4.5 delivers frontier performance and dramatically improved token efficiency.\",\n      \"url\": \"https://www.anthropic.com/news/claude-opus-4-5\",\n      \"date\": \"2025-11-24\",\n      \"ai_or_no\": 1\n    }\n  ]"
+        },
+        "position": [
+          -80,
+          144
+        ],
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3
+      }
+    ],
+    "updatedAt": "2026-07-19T16:29:31.000Z",
+    "versionId": "6ed68c82-7b9a-4d84-9672-342c0ad81daa",
+    "workflowId": "go4FNonP2GmrCEHc"
+  },
+  "connections": {
+    "Categories and Summary": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Update a row",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Create a row": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read URL content1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Remove Duplicates1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LLM Scraper": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Split Out",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "LLM Scraper",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Categories and Summary",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Read URL content": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LLM Scraper",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read URL content1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Categories and Summary",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create a row",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Filter",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        []
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "index": 0,
+            "node": "Categories and Summary",
+            "type": "ai_outputParser"
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read URL content",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "go4FNonP2GmrCEHc",
+  "isArchived": false,
+  "name": "component : scrape page",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "credentials": {
+        "jinaAiApi": {
+          "id": "4W5ZoT7PWlbCQYny",
+          "name": "Jina AI account"
+        }
+      },
+      "id": "9474b16c-5f33-4458-92a4-c540c1c353e6",
+      "name": "Read URL content",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "options": {},
+        "requestOptions": {},
+        "url": "={{ $json.url }}"
+      },
+      "position": [
+        -464,
+        -64
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "openRouterApi": {
+          "id": "WBlXYobJqwEGYFhl",
+          "name": "OpenRouter account"
+        }
+      },
+      "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
+      "name": "OpenRouter Chat Model",
+      "parameters": {
+        "model": "google/gemini-2.5-flash-lite",
+        "options": {}
+      },
+      "position": [
+        -240,
+        160
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "supabaseApi": {
+          "id": "dTJY0l3sZc3jSBwR",
+          "name": "Supabase account"
+        }
+      },
+      "id": "7b23eb05-62a9-4c20-8dc1-d4e4a1919d7e",
+      "name": "Create a row",
+      "parameters": {
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "title",
+              "fieldValue": "={{ $json.title }}"
+            },
+            {
+              "fieldId": "url",
+              "fieldValue": "={{ $json.url }}"
+            },
+            {
+              "fieldId": "publication",
+              "fieldValue": "={{ $json.publication }}"
+            },
+            {
+              "fieldId": "published_date",
+              "fieldValue": "={{ $json.date }}"
+            },
+            {
+              "fieldId": "ai_or_no",
+              "fieldValue": "={{ $json.ai_or_no }}"
+            },
+            {
+              "fieldId": "category",
+              "fieldValue": "={{ $json.category }}"
+            }
+          ]
+        },
+        "tableId": "batchupdate"
+      },
+      "position": [
+        928,
+        -64
+      ],
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1
+    },
+    {
+      "id": "a6187e7d-7de1-40de-a36c-435ee6a4f999",
+      "name": "Filter",
+      "notes": "{{ $today.startOf('week').minus(1,'days') }} is the cutoff if the reference doesn't work",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "b78ded8e-7d4c-4591-9473-41d5bcaa43d4",
+              "leftValue": "={{ $json.date }}",
+              "operator": {
+                "operation": "after",
+                "type": "dateTime"
+              },
+              "rightValue": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}"
+            },
+            {
+              "id": "24a51962-6324-41d3-bb7e-e9b8d635d2b9",
+              "leftValue": "={{ $json.ai_or_no }}",
+              "operator": {
+                "operation": "equals",
+                "type": "number"
+              },
+              "rightValue": 1
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          }
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "position": [
+        480,
+        -64
+      ],
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3
+    },
+    {
+      "id": "222b078e-b424-46f9-95e4-1168cb93790b",
+      "name": "Split Out",
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "position": [
+        256,
+        -64
+      ],
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "openRouterApi": {
+          "id": "WBlXYobJqwEGYFhl",
+          "name": "OpenRouter account"
+        }
+      },
+      "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
+      "name": "OpenRouter Chat Model2",
+      "parameters": {
+        "model": "x-ai/grok-4.1-fast",
+        "options": {}
+      },
+      "position": [
+        1392,
+        160
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "jinaAiApi": {
+          "id": "4W5ZoT7PWlbCQYny",
+          "name": "Jina AI account"
+        }
+      },
+      "id": "0172651f-6bd5-4bbb-b49d-ffa5604c0c37",
+      "name": "Read URL content1",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "options": {},
+        "requestOptions": {},
+        "simplify": false,
+        "url": "={{ $json.url }}"
+      },
+      "position": [
+        1152,
+        -64
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1
+    },
+    {
+      "id": "be75a915-79a2-44b8-ab3b-c8884a6d1b38",
+      "name": "Structured Output Parser1",
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"summary\": \"Anthropic details safeguards in Claude AI to protect user well-being, focusing on handling suicide/self-harm discussions and reducing sycophancy. Using system prompts, reinforcement learning, and expert input, Claude responds empathetically, directs to helplines via ThroughLine partnerships, and partners with IASP for guidance. Evaluations show high performance: 98-99% appropriate single-turn responses on risky prompts, 78-86% in multi-turn scenarios (up from 56%), and 70-73% course-correction in real prefilled conversations. Sycophancy reduced 70-85% via behavioral audits; open-sourced Petri benchmark shows Claude 4.5 outperforming peers. Age restriction to 18+ enforced with classifiers. Ongoing transparency and improvements committed.\",\n  \"category\": \"Safety & Ethics\",\n  \"subcategories\": [\"AI safety research\", \"Ethical concerns\", \"Responsible AI\"]\n}"
+      },
+      "position": [
+        1520,
+        160
+      ],
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "a3b46d78-d13c-4e48-a4bd-fe532dc2cb70",
+      "name": "Remove Duplicates1",
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "url",
+        "options": {}
+      },
+      "position": [
+        704,
+        -64
+      ],
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2
+    },
+    {
+      "id": "74b8839f-e8c7-4f0e-b0d8-5f57553321ca",
+      "name": "When Executed by Another Workflow",
+      "parameters": {
+        "inputSource": "jsonExample",
+        "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
+      },
+      "position": [
+        -688,
+        -64
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "55814d7c-a251-43d2-96ad-d05c850e8d61",
+      "name": "LLM Scraper",
+      "parameters": {
+        "batching": {},
+        "hasOutputParser": true,
+        "promptType": "define",
+        "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When Executed by Another Workflow').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When Executed by Another Workflow').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When Executed by Another Workflow').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When Executed by Another Workflow').item.json.url }}\n\nPublication name\n{{ $('When Executed by Another Workflow').item.json.publication }}\n\nDate format and pattern\n{{ $('When Executed by Another Workflow').item.json.dateFormat }}\n\nStructure\n{{ $('When Executed by Another Workflow').item.json.structure }}\n\nCategories array\n{{ $('When Executed by Another Workflow').item.json.categories }}\n\nSeparators\n{{ $('When Executed by Another Workflow').item.json.separators }}\n\nExtraction hints\n{{ $('When Executed by Another Workflow').item.json.extractionHints }}\n\nExamples array\n{{ $('When Executed by Another Workflow').item.json.examples }}"
+      },
+      "position": [
+        -208,
+        -64
+      ],
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "bc2875c6-7001-4468-983c-5b85c84e6fed",
+      "name": "Categories and Summary",
+      "parameters": {
+        "batching": {},
+        "hasOutputParser": true,
+        "promptType": "define",
+        "text": "=# Summarize and Classify Article\n\n## Task\nYou are a content analyst. Your task is to:\n1. Generate a concise summary (HARD LIMIT: maximum 300 words) of the article\n2. Classify the article into the appropriate category and subcategory from the provided taxonomy\n\n## Input Format\nYou will receive article information in XML format with the following structure, under the Input Data heading:\n```xml\n<article>\n<url>article URL</url>\n<title>article title</title>\n<content>article content</content>\n</article>\n```\n\nNote: The article content is scraped from the web and may contain alt text, social media sharing elements, advertisements, navigation menus, and other boilerplate. Ignore these elements and focus only on the actual news content related to the title.\n\n## Output Format\nProvide your response as a JSON object with the following structure. Return ONLY valid JSON, no markdown code blocks, no additional text:\n\n```json\n{\n  \"summary\": \"Your summary here (maximum 300 words). Be concise, accurate, and capture the key points, implications, and significance of the article.\",\n  \"category\": \"Exact category name as listed below\",\n  \"subcategories\": [\"Exact subcategory name 1\", \"Exact subcategory name 2\", \"...\"]\n}\n```\n\n**Critical Requirements**:\n- Your response must be parseable JSON. Do NOT wrap it in markdown code blocks. Do NOT include any text before or after the JSON object. Start your response with `{` and end with `}`.\n- **Category**: Select EXACTLY ONE category (single string value)\n- **Subcategories**: Select ONE OR MORE relevant subcategories from the chosen category's list (array of strings). Include all subcategories that are relevant to the article, not just the primary one.\n\n## Classification Categories\nYou must classify the article into EXACTLY ONE category. You may select MULTIPLE subcategories from that category if the article covers multiple relevant topics. Use the EXACT category and subcategory names as listed below (case-sensitive, including ampersands and punctuation):\n\n**Category 1: Model Development & Research**\nAvailable subcategories: New model releases | Architecture improvements | Performance benchmarks | Research breakthroughs | Open source models | Multimodal capabilities | Context windows | Training methods\n\n**Category 2: Enterprise Adoption**\nAvailable subcategories: Implementation case studies | ROI metrics | Adoption strategies | Enterprise tools | Integration challenges | Business transformation | Industry deployments | Cost analysis\n\n**Category 3: Tools & Products**\nAvailable subcategories: Generative AI tools | RAG systems | AI agents | Chatbots | APIs | Developer tools | Productivity tools | Workflow automation\n\n**Category 4: Investment & Business**\nAvailable subcategories: Funding rounds | VC investments | IPO announcements | M&A deals | Acquisitions | Company valuations | Revenue metrics | Market analysis | Business models\n\n**Category 5: Regulation & Policy**\nAvailable subcategories: Government regulations | Policy announcements | Legal cases | Compliance requirements | International policy | Data privacy laws | AI governance frameworks\n\n**Category 6: Safety & Ethics**\nAvailable subcategories: AI safety research | Ethical concerns | Bias and fairness | Deepfakes | Misinformation | Data leaks | Privacy issues | Responsible AI\n\n**Category 7: Consumer & Daily Use**\nAvailable subcategories: Consumer products | Personal productivity | Daily workflows | Consumer apps | Accessibility | Education tools | Entertainment\n\n**Category 8: Pop Culture & Media**\nAvailable subcategories: AI in entertainment | Media coverage | Public discourse | Celebrity AI use | Social media trends | Cultural impact\n\n**Category 9: Industry Applications**\nAvailable subcategories: Healthcare | Finance | Education | Manufacturing | Energy | Transportation | Agriculture | Arts | Sports | Gaming | Retail | Real estate\n\n**Category 10: Product Management**\nAvailable subcategories: AI for PM workflows | PM for AI products | Product strategy | Feature development | User research | Product metrics | Team management\n\n## Instructions\n\n### Step 1: Read and Understand\n- Read the article content carefully, focusing on the title and main body text\n- Ignore navigation menus, boilerplate text, and website structure elements\n- Identify the PRIMARY focus and main themes of the article\n\n### Step 2: Generate Summary\n- Create a summary that is informative, accurate, and captures key points\n- Include implications and significance when relevant\n- HARD LIMIT: Maximum 300 words (count carefully - summaries over 300 words will be rejected)\n- Write in clear, concise prose suitable for a professional audience\n\n### Step 3: Classify\n- **Category Selection**: Select the SINGLE most appropriate category based on the article's PRIMARY focus\n  - Only ONE category is allowed (this is a hard requirement)\n  - If an article could fit multiple categories, choose based on:\n    1. The PRIMARY focus (what the article is mainly about)\n    2. The most significant content (what takes up the most space/detail)\n    3. The primary audience or purpose\n- **Subcategory Selection**: Select ALL relevant subcategories from the chosen category's available list\n  - You may select ONE OR MORE subcategories (as a JSON array)\n  - Include all subcategories that are relevant to the article's content\n  - Use EXACT names as listed above (copy them character-for-character, including capitalization, ampersands, and punctuation)\n  - If only one subcategory is relevant, the array will contain a single string\n\n### Step 4: Format Output\n- Return ONLY valid JSON (no markdown code blocks, no ```json wrapper)\n- No additional text, explanations, or commentary before or after the JSON\n- Ensure the JSON is properly formatted and parseable\n- Use double quotes for all strings\n- Escape any special characters in the summary text\n\n## Classification Guidelines\n- **CRITICAL: Only ONE category allowed**: You must select exactly ONE category. Even if an article touches on multiple category topics, choose the PRIMARY category based on the article's main focus.\n- **Multiple subcategories allowed**: Within your chosen category, you may select multiple subcategories if the article covers multiple relevant topics. This allows for more granular classification while maintaining a single primary category.\n- **Primary focus rule**: If an article covers multiple topics, classify based on what the article is PRIMARILY about, not secondary mentions\n- **Research vs Tools**: If an article describes a research paper or study, use \"Model Development & Research\". If it describes a tool/product you can use, use \"Tools & Products\"\n- **Business news**: Funding, valuations, and M&A go to \"Investment & Business\". Company strategy and operations go to \"Enterprise Adoption\"\n- **Regulation vs Safety**: Government actions and laws go to \"Regulation & Policy\". Ethical concerns and safety issues go to \"Safety & Ethics\"\n- **If uncertain**: Choose the category that best represents the article's main purpose and target audience\n\n## Example\nInput:\n```xml\n<article>\n<url>https://example.com/article</url>\n<title>New AI Model Breaks Performance Records</title>\n<content>A new language model has achieved state-of-the-art results on multiple benchmarks including GLUE and SuperGLUE. The model uses a novel transformer architecture that improves efficiency by 40% while maintaining accuracy. Researchers from Stanford published their findings in Nature. This breakthrough could enable more cost-effective AI deployments in enterprise settings.</content>\n</article>\n```\n\nOutput:\n```json\n{\n  \"summary\": \"Researchers from Stanford have developed a new language model that achieves state-of-the-art performance across multiple benchmarks including GLUE and SuperGLUE. The model uses a novel transformer architecture that improves efficiency by 40% while maintaining accuracy. Published in Nature, this breakthrough could enable more cost-effective AI deployments in enterprise settings.\",\n  \"category\": \"Model Development & Research\",\n  \"subcategories\": [\"Performance benchmarks\", \"Research breakthroughs\"]\n\n}\n```\n\n**Note**: In this example, the article covers both performance benchmarks (the main focus) and represents a research breakthrough, so both subcategories are included in the array.\n\n## Input Data\n<article>\n<title>{{ $json.data.title }}\n</title>\n<description>{{ $json.data.description }}\n</description>\n<content>{{ $json.data.content }}\n</content>\n</article>"
+      },
+      "position": [
+        1456,
+        -128
+      ],
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "dTJY0l3sZc3jSBwR",
+          "name": "Supabase account"
+        }
+      },
+      "id": "cfa4dfbb-2476-4b5e-8b0b-c46d05c2d94d",
+      "name": "Update a row",
+      "parameters": {
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ai_summary",
+              "fieldValue": "={{ $json.output.summary }}"
+            },
+            {
+              "fieldId": "category",
+              "fieldValue": "={{ $json.output.category }}"
+            },
+            {
+              "fieldId": "subcategories",
+              "fieldValue": "={{ $json.output.subcategories }}"
+            }
+          ]
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "eq",
+              "keyName": "url",
+              "keyValue": "={{ $('Read URL content1').item.json.data.url }}"
+            }
+          ]
+        },
+        "matchType": "allFilters",
+        "operation": "update",
+        "tableId": "batchupdate"
+      },
+      "position": [
+        1840,
+        -112
+      ],
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1
+    },
+    {
+      "id": "7fe78d9d-9497-41f9-8c12-6398e431fa80",
+      "name": "Structured Output Parser",
+      "parameters": {
+        "jsonSchemaExample": "\"output\":[\n    {\n      \"publication\": \"Anthropic Newsroom\",\n      \"category\": \"Announcements\",\n      \"title\": \"Introducing Claude Opus 4.5\",\n      \"description\": \"The best model in the world for coding, agents, and computer use, with meaningful improvements to everyday tasks like slides and spreadsheets. Claude Opus 4.5 delivers frontier performance and dramatically improved token efficiency.\",\n      \"url\": \"https://www.anthropic.com/news/claude-opus-4-5\",\n      \"date\": \"2025-11-24\",\n      \"ai_or_no\": 1\n    }\n  ]"
+      },
+      "position": [
+        -80,
+        144
+      ],
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3
+    }
+  ],
+  "settings": {
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
