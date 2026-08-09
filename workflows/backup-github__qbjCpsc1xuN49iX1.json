@@ -1494,6 +1494,7 @@
       "name": "n8n",
       "parameters": {
         "filters": {
+          "activeWorkflows": true,
           "tags": "Sorted_Signals"
         },
         "requestOptions": {}
