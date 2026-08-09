@@ -1,0 +1,216 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi",
+    "autosaved": true,
+    "connections": {
+      "Lookup Telegram chat ID": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send Telegram error alert",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "On error": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup Telegram chat ID",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Send Telegram error alert": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "createdAt": "2026-08-08T19:57:43.908Z",
+    "description": "",
+    "name": "Version 0fe3e6e2",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "6201f9a4-44e6-4d90-a189-f61715dc7a96",
+        "name": "On error",
+        "parameters": {},
+        "position": [
+          -960,
+          -448
+        ],
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "6300ee38-9ad3-4d88-9998-b74537a21cb8",
+        "name": "Send Telegram error alert",
+        "parameters": {
+          "additionalFields": {},
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "text": "=__*Error Notification*__\n\n{{ $('On error').item.json.execution.error.level.toSentenceCase() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow: {{ $('On error').item.json.workflow.name }}\nNode name: {{ $('On error').item.json.execution.error.node.name }}\nNode type: {{ $('On error').item.json.execution.error.node.type.split('.').pop() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nError messages:\n{{ $('On error').item.json.execution.error.messages }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd\\.MM\\.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+        },
+        "position": [
+          -512,
+          -448
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "aa5ecf72-d655-45fa-bb82-45a4e6b8b0f9"
+      },
+      {
+        "id": "7e96be90-743a-4bbf-8130-227f39fb5454",
+        "name": "Lookup Telegram chat ID",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "filters": {
+            "conditions": []
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -736,
+          -448
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      }
+    ],
+    "updatedAt": "2026-08-08T19:58:02.000Z",
+    "versionId": "0fe3e6e2-b800-49d8-a5e8-a59b1e4a0854",
+    "workflowId": "zTMJFr8EYWX9glAC"
+  },
+  "connections": {
+    "Lookup Telegram chat ID": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send Telegram error alert",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "On error": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup Telegram chat ID",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Send Telegram error alert": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "id": "zTMJFr8EYWX9glAC",
+  "isArchived": false,
+  "name": "error : notify over telegram",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "6201f9a4-44e6-4d90-a189-f61715dc7a96",
+      "name": "On error",
+      "parameters": {},
+      "position": [
+        -960,
+        -448
+      ],
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "6300ee38-9ad3-4d88-9998-b74537a21cb8",
+      "name": "Send Telegram error alert",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=__*Error Notification*__\n\n{{ $('On error').item.json.execution.error.level.toSentenceCase() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow: {{ $('On error').item.json.workflow.name }}\nNode name: {{ $('On error').item.json.execution.error.node.name }}\nNode type: {{ $('On error').item.json.execution.error.node.type.split('.').pop() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nError messages:\n{{ $('On error').item.json.execution.error.messages }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd\\.MM\\.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+      },
+      "position": [
+        -512,
+        -448
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "aa5ecf72-d655-45fa-bb82-45a4e6b8b0f9"
+    },
+    {
+      "id": "7e96be90-743a-4bbf-8130-227f39fb5454",
+      "name": "Lookup Telegram chat ID",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "filters": {
+          "conditions": []
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -736,
+        -448
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "KNq8suchhu3gSATZ",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    },
+    {
+      "createdAt": "2026-07-19T15:58:00.895Z",
+      "id": "stPvA6IXEWYUHzi9",
+      "name": "devops",
+      "updatedAt": "2026-07-19T15:58:00.895Z"
+    }
+  ]
+}
