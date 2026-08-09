@@ -134,7 +134,7 @@
           [
             {
               "index": 0,
-              "node": "Loop orphans",
+              "node": "Has orphans?",
               "type": "main"
             }
           ]
@@ -157,6 +157,24 @@
             {
               "index": 0,
               "node": "If file too large",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Has orphans?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop orphans",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Send backup completed",
               "type": "main"
             }
           ]
@@ -349,7 +367,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-09T09:06:46.396Z",
+    "createdAt": "2026-08-09T09:25:16.492Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -359,8 +377,8 @@
         "name": "On clicking 'execute'",
         "parameters": {},
         "position": [
-          1728,
-          432
+          1248,
+          448
         ],
         "type": "n8n-nodes-base.manualTrigger",
         "typeVersion": 1
@@ -408,8 +426,8 @@
           "requestOptions": {}
         },
         "position": [
-          2400,
-          528
+          1920,
+          544
         ],
         "type": "n8n-nodes-base.n8n",
         "typeVersion": 1
@@ -594,7 +612,6 @@
           "commitMessage": "={{ $('Execute Workflow Trigger').first().json.name }} ({{ $json.github_status }})",
           "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
           "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
-          "operation": "create",
           "owner": {
             "__rl": true,
             "mode": "name",
@@ -656,8 +673,8 @@
           "options": {}
         },
         "position": [
-          2624,
-          528
+          2144,
+          544
         ],
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3
@@ -676,8 +693,8 @@
           }
         },
         "position": [
-          1728,
-          624
+          1248,
+          640
         ],
         "type": "n8n-nodes-base.scheduleTrigger",
         "typeVersion": 1.2
@@ -688,12 +705,12 @@
         "parameters": {
           "color": 4,
           "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub on a schedule.\n\nFiles land as {sanitizedName}__{workflowId}.json under gh_repo_path (flat). Old YYYY/MM/{id}.json files are left alone for manual cleanup.\n\nRepo owner/name/path and Telegram chat ID come from the global_variables data table.\n\nCompare scrub strips volatile fields (versionId, updatedAt, pins, etc.) so metadata-only changes do not commit.\n\nOrphan sync (next) hard-deletes GitHub-only files matching the new naming pattern only.\n\nSelf-call per item for memory. Telegram for start/complete/fail.",
-          "height": 560,
-          "width": 1361
+          "height": 816,
+          "width": 913
         },
         "position": [
           224,
-          304
+          64
         ],
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1
@@ -704,12 +721,12 @@
         "parameters": {
           "color": 7,
           "content": "## Main workflow loop",
-          "height": 560,
-          "width": 1641
+          "height": 816,
+          "width": 2137
         },
         "position": [
-          1632,
-          304
+          1152,
+          64
         ],
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1
@@ -724,8 +741,8 @@
           "workflowId": "={{ $workflow.id }}"
         },
         "position": [
-          2848,
-          528
+          2368,
+          544
         ],
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1
@@ -817,8 +834,8 @@
           "returnAll": true
         },
         "position": [
-          1952,
-          528
+          1472,
+          544
         ],
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1
@@ -861,8 +878,8 @@
           "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nStarting Sorted Signals workflow backup.\nExecution: {{ $execution.id }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          2176,
-          528
+          1696,
+          544
         ],
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -886,8 +903,8 @@
           "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow backup completed.\nWorkflows processed: {{ $('n8n').all().length }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          2848,
-          336
+          2368,
+          352
         ],
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -910,8 +927,8 @@
           "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop Over Items').item.json.id }} ({{ $('Loop Over Items').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          3072,
-          608
+          2592,
+          624
         ],
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -921,8 +938,7 @@
         "id": "f7a6354d-8049-46b2-8182-72ef6c49fc2f",
         "name": "Resolve backup path",
         "parameters": {
-          "jsCode": "const cfg=$input.first().json;const trig=$(\"Execute Workflow Trigger\").first().json;const name=String(trig.name||\"workflow\");const id=trig.id;const sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,\"-\").replace(/^-+|-+$/g,\"\").slice(0,80)||\"workflow\";return[{json:{...cfg,fileName:sanitized+\"__\"+id+\".json\"}}];",
-          "mode": "runOnceForAllItems"
+          "jsCode": "const cfg=$input.first().json;const trig=$(\"Execute Workflow Trigger\").first().json;const name=String(trig.name||\"workflow\");const id=trig.id;const sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,\"-\").replace(/^-+|-+$/g,\"\").slice(0,80)||\"workflow\";return[{json:{...cfg,fileName:sanitized+\"__\"+id+\".json\"}}];"
         },
         "position": [
           880,
@@ -956,8 +972,8 @@
           "resource": "file"
         },
         "position": [
-          2848,
-          720
+          2336,
+          144
         ],
         "type": "n8n-nodes-base.github",
         "typeVersion": 1,
@@ -967,12 +983,11 @@
         "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
         "name": "Find orphans",
         "parameters": {
-          "jsCode": "const files=$input.all();const ids=new Set($(\"n8n\").all().map(i=>i.json.id));const orphans=[];for(const item of files){const f=item.json;if(f.type&&f.type!==\"file\")continue;const name=f.name||\"\";const m=name.match(/__([A-Za-z0-9]+)\\.json$/);if(!m)continue;const id=m[1];if(ids.has(id))continue;orphans.push({json:{origin:\"github\",name,filePath:f.path,id}});}return orphans;",
-          "mode": "runOnceForAllItems"
+          "jsCode": "const files=$input.all();const ids=new Set($(\"n8n\").all().map(i=>i.json.id));const orphans=[];for(const item of files){const f=item.json;if(f.type&&f.type!==\"file\")continue;const name=f.name||\"\";const m=name.match(/__([A-Za-z0-9]+)\\.json$/);if(!m)continue;const id=m[1];if(ids.has(id))continue;orphans.push({json:{origin:\"github\",name,filePath:f.path,id,hasOrphans:true}});}if(orphans.length===0){return[{json:{hasOrphans:false}}];}return orphans;"
         },
         "position": [
-          3072,
-          720
+          2544,
+          144
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
@@ -984,8 +999,8 @@
           "options": {}
         },
         "position": [
-          3296,
-          720
+          2816,
+          144
         ],
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3
@@ -1016,16 +1031,49 @@
           "resource": "file"
         },
         "position": [
-          3520,
-          800
+          3120,
+          160
         ],
         "type": "n8n-nodes-base.github",
         "typeVersion": 1,
         "webhookId": "b069d330-ecff-4634-abe7-98791a56ffa7"
+      },
+      {
+        "id": "09dfaf61-aefc-409f-8959-994982dd5851",
+        "name": "Has orphans?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "leftValue": "={{ $json.hasOrphans }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          2680,
+          144
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
       }
     ],
-    "updatedAt": "2026-08-09T09:06:46.396Z",
-    "versionId": "1d89ab2c-3bd1-4614-a733-747f3cfb3e63",
+    "updatedAt": "2026-08-09T09:25:16.492Z",
+    "versionId": "025c6a21-13fc-4fef-9dcf-1552184e7456",
     "workflowId": "qbjCpsc1xuN49iX1"
   },
   "connections": {
@@ -1159,7 +1207,7 @@
         [
           {
             "index": 0,
-            "node": "Loop orphans",
+            "node": "Has orphans?",
             "type": "main"
           }
         ]
@@ -1182,6 +1230,24 @@
           {
             "index": 0,
             "node": "If file too large",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Has orphans?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop orphans",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Send backup completed",
             "type": "main"
           }
         ]
@@ -1680,7 +1746,7 @@
         "options": {}
       },
       "position": [
-        2144,
+        2112,
         544
       ],
       "type": "n8n-nodes-base.splitInBatches",
@@ -1749,7 +1815,7 @@
       },
       "position": [
         2368,
-        544
+        560
       ],
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1
@@ -1934,8 +2000,8 @@
         "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop Over Items').item.json.id }} ({{ $('Loop Over Items').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        2592,
-        624
+        2608,
+        576
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1990,7 +2056,7 @@
       "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
       "name": "Find orphans",
       "parameters": {
-        "jsCode": "const files=$input.all();const ids=new Set($(\"n8n\").all().map(i=>i.json.id));const orphans=[];for(const item of files){const f=item.json;if(f.type&&f.type!==\"file\")continue;const name=f.name||\"\";const m=name.match(/__([A-Za-z0-9]+)\\.json$/);if(!m)continue;const id=m[1];if(ids.has(id))continue;orphans.push({json:{origin:\"github\",name,filePath:f.path,id}});}return orphans;"
+        "jsCode": "const files=$input.all();const ids=new Set($(\"n8n\").all().map(i=>i.json.id));const orphans=[];for(const item of files){const f=item.json;if(f.type&&f.type!==\"file\")continue;const name=f.name||\"\";const m=name.match(/__([A-Za-z0-9]+)\\.json$/);if(!m)continue;const id=m[1];if(ids.has(id))continue;orphans.push({json:{origin:\"github\",name,filePath:f.path,id,hasOrphans:true}});}if(orphans.length===0){return[{json:{hasOrphans:false}}];}return orphans;"
       },
       "position": [
         2544,
@@ -2006,8 +2072,8 @@
         "options": {}
       },
       "position": [
-        2816,
-        144
+        2912,
+        128
       ],
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3
@@ -2039,11 +2105,45 @@
       },
       "position": [
         3120,
-        160
+        144
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
       "webhookId": "b069d330-ecff-4634-abe7-98791a56ffa7"
+    },
+    {
+      "id": "09dfaf61-aefc-409f-8959-994982dd5851",
+      "name": "Has orphans?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "leftValue": "={{ $json.hasOrphans }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        2688,
+        144
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
     }
   ],
   "settings": {
