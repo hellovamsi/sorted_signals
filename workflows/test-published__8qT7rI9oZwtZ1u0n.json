@@ -1,0 +1,109 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "connections": {
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send test Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "8qT7rI9oZwtZ1u0n",
+  "isArchived": true,
+  "name": "TEST: PUBLISHED",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "82d883dc-5c8b-49e6-82d4-4141b593d7fc",
+      "name": "When clicking 'Execute workflow'",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "2ea61d82-bfb1-4c39-a398-7494050d80d5",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "b3ccde44-1870-41b3-a717-d4e934c998b2",
+      "name": "Send test Telegram",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "operation": "sendMessage",
+        "resource": "message",
+        "text": "=Sorted Signals test workflow ran.\nWorkflow: {{ $workflow.name }}\nExecution: {{ $execution.id }}"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "5380f4a4-d87d-4ab6-be6f-e12e39c7b2a8"
+    }
+  ],
+  "settings": {
+    "availableInMCP": true,
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    },
+    {
+      "createdAt": "2026-08-09T09:38:13.673Z",
+      "id": "tCqftATraqIEGJbv",
+      "name": "test",
+      "updatedAt": "2026-08-09T09:38:13.673Z"
+    }
+  ]
+}
