@@ -1,0 +1,1010 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi",
+    "autosaved": true,
+    "connections": {
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Article Writer",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Article Writer": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert to File1",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Markdown",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert to File": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read/Write Files from Disk",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert to File1": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read/Write Files from Disk1",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract from File": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Merge",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract from File1": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Merge",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get many rows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert to File",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Markdown": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send a message",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Aggregate",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "OpenRouter Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Article Writer",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract from File",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk1": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send a text message",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk2": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract from File1",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Send a message": {
+        "main": [
+          []
+        ]
+      },
+      "Send a text message": {
+        "main": [
+          []
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get many rows",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Read/Write Files from Disk2",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-08T20:13:43.082Z",
+    "description": "",
+    "name": "Version 323e41a9",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "credentials": {
+          "supabaseApi": {
+            "id": "dTJY0l3sZc3jSBwR",
+            "name": "Supabase account"
+          }
+        },
+        "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
+        "name": "Get many rows",
+        "parameters": {
+          "filters": {
+            "conditions": [
+              {
+                "condition": "gt",
+                "keyName": "created_at",
+                "keyValue": "={{ $json.cutOffDate}}"
+              },
+              {
+                "condition": "eq",
+                "keyName": "ai_or_no",
+                "keyValue": "1"
+              }
+            ]
+          },
+          "matchType": "allFilters",
+          "operation": "getAll",
+          "returnAll": true,
+          "tableId": "batchupdate"
+        },
+        "position": [
+          240,
+          -1008
+        ],
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "openRouterApi": {
+            "id": "WBlXYobJqwEGYFhl",
+            "name": "OpenRouter account"
+          }
+        },
+        "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
+        "name": "OpenRouter Chat Model",
+        "parameters": {
+          "model": "deepseek/deepseek-v4-flash",
+          "options": {
+            "responseFormat": "text",
+            "temperature": 0.8
+          }
+        },
+        "position": [
+          1664,
+          -880
+        ],
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1
+      },
+      {
+        "id": "f687de65-5d3c-4824-868a-163a0e1141df",
+        "name": "When Executed by Another Workflow",
+        "parameters": {
+          "inputSource": "jsonExample",
+          "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
+        },
+        "position": [
+          16,
+          -1104
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
+        "name": "Read/Write Files from Disk",
+        "parameters": {
+          "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+          "operation": "write",
+          "options": {}
+        },
+        "position": [
+          688,
+          -1008
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
+        "name": "Convert to File",
+        "parameters": {
+          "operation": "toJson",
+          "options": {}
+        },
+        "position": [
+          464,
+          -1008
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
+        "name": "Extract from File",
+        "parameters": {
+          "operation": "text",
+          "options": {}
+        },
+        "position": [
+          912,
+          -1008
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
+        "name": "Send a text message",
+        "parameters": {
+          "additionalFields": {},
+          "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nDaily Digest is ready.\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $now.format('dd.MM.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+        },
+        "position": [
+          2384,
+          -1104
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "e0b088eb-e406-4149-b73f-5cea6050ee35"
+      },
+      {
+        "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
+        "name": "Read/Write Files from Disk1",
+        "parameters": {
+          "dataPropertyName": "text",
+          "fileName": "=/files/batchupdate/articles/gen-digest-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+          "operation": "write",
+          "options": {}
+        },
+        "position": [
+          2160,
+          -1104
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
+        "name": "Convert to File1",
+        "parameters": {
+          "binaryPropertyName": "text",
+          "operation": "toText",
+          "options": {},
+          "sourceProperty": "text"
+        },
+        "position": [
+          1936,
+          -1104
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
+        "name": "Read/Write Files from Disk2",
+        "parameters": {
+          "fileSelector": "/files/batchupdate/prompts/digest_gen.md",
+          "options": {}
+        },
+        "position": [
+          688,
+          -1200
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
+        "name": "Extract from File1",
+        "parameters": {
+          "operation": "text",
+          "options": {}
+        },
+        "position": [
+          912,
+          -1200
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
+        "name": "Article Writer",
+        "parameters": {
+          "batching": {},
+          "promptType": "define",
+          "text": "={{ $json.data[0] }}\n\n## JSON Data\n{{ $json.data[1] }}"
+        },
+        "position": [
+          1584,
+          -1104
+        ],
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.8
+      },
+      {
+        "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
+        "name": "Merge",
+        "parameters": {},
+        "position": [
+          1136,
+          -1104
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "a2af3a28-b192-407b-8655-2ffcacf7191e",
+        "name": "Aggregate",
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "data"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "position": [
+          1360,
+          -1104
+        ],
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "7y2G4h8UjS5wUIhm",
+            "name": "Gmail account"
+          }
+        },
+        "id": "c5a17457-fb46-4026-8a1e-06cee922c3b0",
+        "name": "Send a message",
+        "parameters": {
+          "message": "={{ $json.data }}",
+          "options": {
+            "senderName": "Sorted Signals"
+          },
+          "sendTo": "={{ $('Lookup global variables').first().json.g_email_id }}",
+          "subject": "=Daily Digest {{ $now.format('dd.MM.yy') }}"
+        },
+        "position": [
+          2288,
+          -848
+        ],
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "webhookId": "5eec04b8-2c38-4611-a0e9-6c117b4686fd"
+      },
+      {
+        "id": "0b55fc2e-7de8-4df5-9b32-6a6655262bcf",
+        "name": "Markdown",
+        "parameters": {
+          "markdown": "={{ $json.text }}",
+          "mode": "markdownToHtml",
+          "options": {}
+        },
+        "position": [
+          2048,
+          -832
+        ],
+        "type": "n8n-nodes-base.markdown",
+        "typeVersion": 1
+      },
+      {
+        "id": "5ca9948f-efc4-475d-8e8f-2aa03477908a",
+        "name": "Lookup global variables",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          240,
+          -1312
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      }
+    ],
+    "updatedAt": "2026-08-08T20:13:48.000Z",
+    "versionId": "323e41a9-39c2-49e4-8954-57ddede26fb1",
+    "workflowId": "S6jCKcFVnVwE0bNX"
+  },
+  "connections": {
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Article Writer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Article Writer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert to File1",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Markdown",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read/Write Files from Disk",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read/Write Files from Disk1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Merge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Merge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get many rows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert to File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send a message",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Aggregate",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Article Writer",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract from File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send a text message",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract from File1",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get many rows",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Read/Write Files from Disk2",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "S6jCKcFVnVwE0bNX",
+  "isArchived": false,
+  "name": "component : generate digest",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "credentials": {
+        "supabaseApi": {
+          "id": "dTJY0l3sZc3jSBwR",
+          "name": "Supabase account"
+        }
+      },
+      "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
+      "name": "Get many rows",
+      "parameters": {
+        "filters": {
+          "conditions": [
+            {
+              "condition": "gt",
+              "keyName": "created_at",
+              "keyValue": "={{ $json.cutOffDate}}"
+            },
+            {
+              "condition": "eq",
+              "keyName": "ai_or_no",
+              "keyValue": "1"
+            }
+          ]
+        },
+        "matchType": "allFilters",
+        "operation": "getAll",
+        "returnAll": true,
+        "tableId": "batchupdate"
+      },
+      "position": [
+        240,
+        -1008
+      ],
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "openRouterApi": {
+          "id": "WBlXYobJqwEGYFhl",
+          "name": "OpenRouter account"
+        }
+      },
+      "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
+      "name": "OpenRouter Chat Model",
+      "parameters": {
+        "model": "deepseek/deepseek-v4-flash",
+        "options": {
+          "responseFormat": "text",
+          "temperature": 0.8
+        }
+      },
+      "position": [
+        1664,
+        -880
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1
+    },
+    {
+      "id": "f687de65-5d3c-4824-868a-163a0e1141df",
+      "name": "When Executed by Another Workflow",
+      "parameters": {
+        "inputSource": "jsonExample",
+        "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
+      },
+      "position": [
+        16,
+        -1104
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
+      "name": "Read/Write Files from Disk",
+      "parameters": {
+        "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+        "operation": "write",
+        "options": {}
+      },
+      "position": [
+        688,
+        -1008
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
+      "name": "Convert to File",
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "position": [
+        464,
+        -1008
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
+      "name": "Extract from File",
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "position": [
+        912,
+        -1008
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
+      "name": "Send a text message",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nDaily Digest is ready.\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $now.format('dd.MM.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+      },
+      "position": [
+        2384,
+        -1104
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "e0b088eb-e406-4149-b73f-5cea6050ee35"
+    },
+    {
+      "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
+      "name": "Read/Write Files from Disk1",
+      "parameters": {
+        "dataPropertyName": "text",
+        "fileName": "=/files/batchupdate/articles/gen-digest-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+        "operation": "write",
+        "options": {}
+      },
+      "position": [
+        2160,
+        -1104
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
+      "name": "Convert to File1",
+      "parameters": {
+        "binaryPropertyName": "text",
+        "operation": "toText",
+        "options": {},
+        "sourceProperty": "text"
+      },
+      "position": [
+        1936,
+        -1104
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
+      "name": "Read/Write Files from Disk2",
+      "parameters": {
+        "fileSelector": "/files/batchupdate/prompts/digest_gen.md",
+        "options": {}
+      },
+      "position": [
+        688,
+        -1200
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
+      "name": "Extract from File1",
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "position": [
+        912,
+        -1200
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
+      "name": "Article Writer",
+      "parameters": {
+        "batching": {},
+        "promptType": "define",
+        "text": "={{ $json.data[0] }}\n\n## JSON Data\n{{ $json.data[1] }}"
+      },
+      "position": [
+        1584,
+        -1104
+      ],
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8
+    },
+    {
+      "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
+      "name": "Merge",
+      "parameters": {},
+      "position": [
+        1136,
+        -1104
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "a2af3a28-b192-407b-8655-2ffcacf7191e",
+      "name": "Aggregate",
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "position": [
+        1360,
+        -1104
+      ],
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7y2G4h8UjS5wUIhm",
+          "name": "Gmail account"
+        }
+      },
+      "id": "c5a17457-fb46-4026-8a1e-06cee922c3b0",
+      "name": "Send a message",
+      "parameters": {
+        "message": "={{ $json.data }}",
+        "options": {
+          "senderName": "Sorted Signals"
+        },
+        "sendTo": "={{ $('Lookup global variables').first().json.g_email_id }}",
+        "subject": "=Daily Digest {{ $now.format('dd.MM.yy') }}"
+      },
+      "position": [
+        2288,
+        -848
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "webhookId": "5eec04b8-2c38-4611-a0e9-6c117b4686fd"
+    },
+    {
+      "id": "0b55fc2e-7de8-4df5-9b32-6a6655262bcf",
+      "name": "Markdown",
+      "parameters": {
+        "markdown": "={{ $json.text }}",
+        "mode": "markdownToHtml",
+        "options": {}
+      },
+      "position": [
+        2048,
+        -832
+      ],
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1
+    },
+    {
+      "id": "5ca9948f-efc4-475d-8e8f-2aa03477908a",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        240,
+        -1312
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
