@@ -1,0 +1,2382 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi",
+    "autosaved": true,
+    "connections": {
+      "Extract from File": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Merge",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "fetchStandardRSS",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract from File",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Washington Post",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Fast Company",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "France24",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "LiveMint",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "The Guardian",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Economist",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "BBC",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-08T20:06:54.094Z",
+    "description": "",
+    "name": "Version 5c5d90c8",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "aeade370-7369-4d14-ba11-d771a07cb8ac",
+        "name": "When Executed by Another Workflow",
+        "parameters": {
+          "inputSource": "jsonExample",
+          "jsonExample": "{\n  \"cutOffDate\":\"01-01-2026\"\n}"
+        },
+        "position": [
+          -4800,
+          112
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "9a3ca7ec-16d1-49d8-9f16-5aea4468dd78",
+        "name": "Economist",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "descriptionFieldName": "contentSnippet",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "The Economist",
+              "rssURL": "https://www.economist.com/science-and-technology/rss.xml",
+              "titleFieldName": "=title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          -560
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "b7ac6aad-0429-45b3-ad97-ee4f8feb7104",
+        "name": "BBC",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "guid._",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "BBC News",
+              "rssURL": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          -368
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "4d11d1c5-59e2-4aed-8c01-0f1f5ca0fa0b",
+        "name": "Washington Post",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "Washington Post",
+              "rssURL": "https://feeds.washingtonpost.com/rss/business/technology",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          16
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "21bbdcaa-1102-4444-a74b-5b4bdf4c9693",
+        "name": "Fast Company",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "Fast Company",
+              "rssURL": "https://www.fastcompany.com/section/artificial-intelligence/rss",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          208
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "457055c7-27cd-43f7-a24c-48b12ba5e321",
+        "name": "France24",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "France24",
+              "rssURL": "https://www.france24.com/en/tag/artificial-intelligence/rss",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          400
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "15c1eebc-f5a5-48b8-9a37-74a409c60de7",
+        "name": "LiveMint",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "LiveMint",
+              "rssURL": "https://www.livemint.com/rss/AI",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          592
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "f355dffe-537d-44f2-b8b6-be70cbcfdbbe",
+        "name": "The Guardian",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "The Guardian",
+              "rssURL": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+              "snippetFieldName": "contentSnippet",
+              "titleFieldName": "title"
+            }
+          }
+        },
+        "position": [
+          -4352,
+          784
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "261d4619-28d3-4fd8-8f00-28cd00dc2cfb",
+        "name": "Read/Write Files from Disk",
+        "parameters": {
+          "fileSelector": "/files/batchupdate/rss-sources.csv",
+          "options": {}
+        },
+        "position": [
+          -5712,
+          -352
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "943c24ba-db6d-4daf-b2e8-4d78ebe12aeb",
+        "name": "Extract from File",
+        "parameters": {
+          "options": {}
+        },
+        "position": [
+          -5488,
+          -352
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "58e7fa4b-af6e-4061-b13a-c0eea41993dd",
+        "name": "Merge",
+        "parameters": {
+          "combineBy": "combineAll",
+          "mode": "combine",
+          "options": {}
+        },
+        "position": [
+          -5264,
+          -288
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "2ea3ca0d-cdcc-4ff0-88d8-f7154f7795a2",
+        "name": "fetchStandardRSS",
+        "parameters": {
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "publicationName",
+                "id": "publicationName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "rssURL",
+                "id": "rssURL",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "cutOffDate",
+                "id": "cutOffDate",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentURLFieldName",
+                "id": "contentURLFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "contentIdFieldName",
+                "id": "contentIdFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "titleFieldName",
+                "id": "titleFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "descriptionFieldName",
+                "id": "descriptionFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "snippetFieldName",
+                "id": "snippetFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "pubDateFieldName",
+                "id": "pubDateFieldName",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "imageURLFieldName",
+                "id": "imageURLFieldName",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "contentIdFieldName": "content",
+              "contentURLFieldName": "link",
+              "cutOffDate": "={{ $json.cutOffDate }}",
+              "descriptionFieldName": "contentSnippet",
+              "pubDateFieldName": "pubDate",
+              "publicationName": "={{ $json['Publication Name'] }}",
+              "rssURL": "={{ $json['RSS Address'] }}",
+              "titleFieldName": "=title"
+            }
+          }
+        },
+        "position": [
+          -5056,
+          -288
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      }
+    ],
+    "updatedAt": "2026-08-08T20:06:57.000Z",
+    "versionId": "5c5d90c8-9f60-4f44-b37d-e78152734612",
+    "workflowId": "sQiTqSrocLJF707e"
+  },
+  "connections": {
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Merge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "fetchStandardRSS",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract from File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Washington Post",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Fast Company",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "France24",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "LiveMint",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "The Guardian",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Economist",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "BBC",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "sQiTqSrocLJF707e",
+  "isArchived": false,
+  "name": "sub : Run Mainstream Media RSS",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "aeade370-7369-4d14-ba11-d771a07cb8ac",
+      "name": "When Executed by Another Workflow",
+      "parameters": {
+        "inputSource": "jsonExample",
+        "jsonExample": "{\n  \"cutOffDate\":\"01-01-2026\"\n}"
+      },
+      "position": [
+        -4800,
+        112
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "9a3ca7ec-16d1-49d8-9f16-5aea4468dd78",
+      "name": "Economist",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "descriptionFieldName": "contentSnippet",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "The Economist",
+            "rssURL": "https://www.economist.com/science-and-technology/rss.xml",
+            "titleFieldName": "=title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        -560
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "b7ac6aad-0429-45b3-ad97-ee4f8feb7104",
+      "name": "BBC",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "guid._",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "BBC News",
+            "rssURL": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        -368
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "4d11d1c5-59e2-4aed-8c01-0f1f5ca0fa0b",
+      "name": "Washington Post",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "Washington Post",
+            "rssURL": "https://feeds.washingtonpost.com/rss/business/technology",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        16
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "21bbdcaa-1102-4444-a74b-5b4bdf4c9693",
+      "name": "Fast Company",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "Fast Company",
+            "rssURL": "https://www.fastcompany.com/section/artificial-intelligence/rss",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        208
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "457055c7-27cd-43f7-a24c-48b12ba5e321",
+      "name": "France24",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "France24",
+            "rssURL": "https://www.france24.com/en/tag/artificial-intelligence/rss",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        400
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "15c1eebc-f5a5-48b8-9a37-74a409c60de7",
+      "name": "LiveMint",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "LiveMint",
+            "rssURL": "https://www.livemint.com/rss/AI",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        592
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "f355dffe-537d-44f2-b8b6-be70cbcfdbbe",
+      "name": "The Guardian",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "The Guardian",
+            "rssURL": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+            "snippetFieldName": "contentSnippet",
+            "titleFieldName": "title"
+          }
+        }
+      },
+      "position": [
+        -4352,
+        784
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "261d4619-28d3-4fd8-8f00-28cd00dc2cfb",
+      "name": "Read/Write Files from Disk",
+      "parameters": {
+        "fileSelector": "/files/batchupdate/rss-sources.csv",
+        "options": {}
+      },
+      "position": [
+        -5712,
+        -352
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "943c24ba-db6d-4daf-b2e8-4d78ebe12aeb",
+      "name": "Extract from File",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        -5488,
+        -352
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "58e7fa4b-af6e-4061-b13a-c0eea41993dd",
+      "name": "Merge",
+      "parameters": {
+        "combineBy": "combineAll",
+        "mode": "combine",
+        "options": {}
+      },
+      "position": [
+        -5264,
+        -288
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "2ea3ca0d-cdcc-4ff0-88d8-f7154f7795a2",
+      "name": "fetchStandardRSS",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "publicationName",
+              "id": "publicationName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "rssURL",
+              "id": "rssURL",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentURLFieldName",
+              "id": "contentURLFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "contentIdFieldName",
+              "id": "contentIdFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "titleFieldName",
+              "id": "titleFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "descriptionFieldName",
+              "id": "descriptionFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "snippetFieldName",
+              "id": "snippetFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "pubDateFieldName",
+              "id": "pubDateFieldName",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "imageURLFieldName",
+              "id": "imageURLFieldName",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "contentIdFieldName": "content",
+            "contentURLFieldName": "link",
+            "cutOffDate": "={{ $json.cutOffDate }}",
+            "descriptionFieldName": "contentSnippet",
+            "pubDateFieldName": "pubDate",
+            "publicationName": "={{ $json['Publication Name'] }}",
+            "rssURL": "={{ $json['RSS Address'] }}",
+            "titleFieldName": "=title"
+          }
+        }
+      },
+      "position": [
+        -5056,
+        -288
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    }
+  ],
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
