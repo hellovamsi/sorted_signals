@@ -2,7 +2,7 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": true,
+    "autosaved": false,
     "connections": {
       "Aggregate": {
         "main": [
@@ -184,9 +184,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-08T20:13:43.082Z",
-    "description": "",
-    "name": "Version 323e41a9",
+    "createdAt": "2026-08-11T20:43:59.312Z",
+    "description": null,
+    "name": null,
     "nodeGroups": [],
     "nodes": [
       {
@@ -266,7 +266,7 @@
         "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
         "name": "Read/Write Files from Disk",
         "parameters": {
-          "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+          "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
           "operation": "write",
           "options": {}
         },
@@ -332,7 +332,7 @@
         "name": "Read/Write Files from Disk1",
         "parameters": {
           "dataPropertyName": "text",
-          "fileName": "=/files/batchupdate/articles/gen-digest-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+          "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_digest }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
           "operation": "write",
           "options": {}
         },
@@ -363,7 +363,7 @@
         "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
         "name": "Read/Write Files from Disk2",
         "parameters": {
-          "fileSelector": "/files/batchupdate/prompts/digest_gen.md",
+          "fileSelector": "={{ $('Lookup global variables').first().json.prompt_digest_path }}",
           "options": {}
         },
         "position": [
@@ -495,8 +495,8 @@
         "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-08T20:13:48.000Z",
-    "versionId": "323e41a9-39c2-49e4-8954-57ddede26fb1",
+    "updatedAt": "2026-08-11T20:43:59.312Z",
+    "versionId": "6e56c761-3506-4a02-b0b9-9c3e356727ea",
     "workflowId": "S6jCKcFVnVwE0bNX"
   },
   "connections": {
@@ -762,7 +762,7 @@
       "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
       "name": "Read/Write Files from Disk",
       "parameters": {
-        "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+        "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
         "operation": "write",
         "options": {}
       },
@@ -828,7 +828,7 @@
       "name": "Read/Write Files from Disk1",
       "parameters": {
         "dataPropertyName": "text",
-        "fileName": "=/files/batchupdate/articles/gen-digest-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+        "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_digest }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
         "operation": "write",
         "options": {}
       },
@@ -859,7 +859,7 @@
       "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
       "name": "Read/Write Files from Disk2",
       "parameters": {
-        "fileSelector": "/files/batchupdate/prompts/digest_gen.md",
+        "fileSelector": "={{ $('Lookup global variables').first().json.prompt_digest_path }}",
         "options": {}
       },
       "position": [
