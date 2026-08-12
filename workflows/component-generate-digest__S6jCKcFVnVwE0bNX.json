@@ -86,6 +86,28 @@
           ]
         ]
       },
+      "Lookup global variables": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Wait for config lookups",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup llm_config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait for config lookups",
+              "type": "main"
+            }
+          ]
+        ]
+      },
       "Markdown": {
         "main": [
           [
@@ -162,7 +184,7 @@
           []
         ]
       },
-      "When Executed by Another Workflow": {
+      "Wait for config lookups": {
         "main": [
           [
             {
@@ -174,17 +196,33 @@
               "index": 0,
               "node": "Read/Write Files from Disk2",
               "type": "main"
+            }
+          ]
+        ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup llm_config",
+              "type": "main"
             },
             {
               "index": 0,
               "node": "Lookup global variables",
+              "type": "main"
+            },
+            {
+              "index": 2,
+              "node": "Wait for config lookups",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-11T20:43:59.312Z",
+    "createdAt": "2026-08-12T08:02:35.591Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -235,10 +273,10 @@
         "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
         "name": "OpenRouter Chat Model",
         "parameters": {
-          "model": "deepseek/deepseek-v4-flash",
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.model }}",
           "options": {
-            "responseFormat": "text",
-            "temperature": 0.8
+            "responseFormat": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.response_format || 'text' }}",
+            "temperature": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.temperature }}"
           }
         },
         "position": [
@@ -493,10 +531,48 @@
         ],
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1
+      },
+      {
+        "id": "e159846a-8994-4f5f-a2c6-84a725fe6e24",
+        "name": "Lookup llm_config",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "llm_config",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+            "mode": "list",
+            "value": "i6zVgQsWLNIMxbSa"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          240,
+          -1440
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "eae07e3d-f9fd-476d-9272-61d4ee89c37a",
+        "name": "Wait for config lookups",
+        "parameters": {
+          "chooseBranchMode": "waitForAll",
+          "mode": "chooseBranch",
+          "numberInputs": 3,
+          "output": "specifiedInput",
+          "useDataOfInput": "3"
+        },
+        "position": [
+          120,
+          -1104
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-08-11T20:43:59.312Z",
-    "versionId": "6e56c761-3506-4a02-b0b9-9c3e356727ea",
+    "updatedAt": "2026-08-12T08:02:35.591Z",
+    "versionId": "dcefff03-cad5-41ce-81bb-3ddb843a31d3",
     "workflowId": "S6jCKcFVnVwE0bNX"
   },
   "connections": {
@@ -582,6 +658,28 @@
         ]
       ]
     },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup llm_config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "Markdown": {
       "main": [
         [
@@ -658,7 +756,7 @@
         []
       ]
     },
-    "When Executed by Another Workflow": {
+    "Wait for config lookups": {
       "main": [
         [
           {
@@ -670,10 +768,26 @@
             "index": 0,
             "node": "Read/Write Files from Disk2",
             "type": "main"
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup llm_config",
+            "type": "main"
           },
           {
             "index": 0,
             "node": "Lookup global variables",
+            "type": "main"
+          },
+          {
+            "index": 2,
+            "node": "Wait for config lookups",
             "type": "main"
           }
         ]
@@ -731,10 +845,10 @@
       "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
       "name": "OpenRouter Chat Model",
       "parameters": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.model }}",
         "options": {
-          "responseFormat": "text",
-          "temperature": 0.8
+          "responseFormat": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.response_format || 'text' }}",
+          "temperature": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.temperature }}"
         }
       },
       "position": [
@@ -989,6 +1103,44 @@
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
+    },
+    {
+      "id": "e159846a-8994-4f5f-a2c6-84a725fe6e24",
+      "name": "Lookup llm_config",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "llm_config",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+          "mode": "list",
+          "value": "i6zVgQsWLNIMxbSa"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        240,
+        -1440
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "eae07e3d-f9fd-476d-9272-61d4ee89c37a",
+      "name": "Wait for config lookups",
+      "parameters": {
+        "chooseBranchMode": "waitForAll",
+        "mode": "chooseBranch",
+        "numberInputs": 3,
+        "output": "specifiedInput",
+        "useDataOfInput": "3"
+      },
+      "position": [
+        120,
+        -1104
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
     }
   ],
   "settings": {
