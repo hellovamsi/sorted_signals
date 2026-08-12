@@ -1,37 +1,15 @@
 {
   "active": true,
   "activeVersion": {
-    "authors": "import",
+    "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Extract from File": {
+      "Lookup scrape_sources": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Merge",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Merge": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "fetchStandardRSS",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Extract from File",
+              "node": "scrape page",
               "type": "main"
             }
           ]
@@ -42,41 +20,16 @@
           [
             {
               "index": 0,
-              "node": "Anthropic Newsroom",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Anthropic Research Index",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Open AI Research Index",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "DeepSeek Blog",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Qwen Research Index",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Mistral Index",
+              "node": "Lookup scrape_sources",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-07-19T15:53:24.104Z",
-    "description": "",
-    "name": "Version 5a10a9c1",
+    "createdAt": "2026-08-11T20:35:34.691Z",
+    "description": null,
+    "name": null,
     "nodeGroups": [],
     "nodes": [
       {
@@ -87,944 +40,64 @@
           "jsonExample": "{\n  \"cutOffDate\":\"01-01-2026\"\n}"
         },
         "position": [
-          -480,
-          -16
+          -5712,
+          240
         ],
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1
       },
       {
-        "id": "b148f851-7eec-4193-b877-7edb58477614",
-        "name": "Anthropic Newsroom",
+        "id": "7c65245c-a8d5-40b6-a9c9-5a4b740b6a2f",
+        "name": "Lookup scrape_sources",
         "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
+          "dataTableId": {
             "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
+            "cachedResultName": "scrape_sources",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/9VHlPKcRcFryOiiF",
             "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
+            "value": "9VHlPKcRcFryOiiF"
           },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
+          "filters": {
+            "conditions": [
               {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
+                "condition": "isTrue",
+                "keyName": "enabled"
               }
-            ],
-            "value": {
-              "categories": "={{[\"Policy\",\"Announcements\",\"Product\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "Month DD, YYYY",
-              "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-              "examples": "={{[\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]}}",
-              "extractionHints": "Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.",
-              "publication": "Anthropic Newsroom",
-              "separators": "Space-separated, typically: 'Date Category Title'",
-              "structure": "Date-Category-Title",
-              "url": "https://www.anthropic.com/news"
-            }
-          }
+            ]
+          },
+          "matchType": "allConditions",
+          "operation": "get",
+          "orderBy": true,
+          "orderByColumn": "sort_order",
+          "orderByDirection": "ASC",
+          "returnAll": true
         },
         "position": [
-          -256,
-          -496
+          -5488,
+          240
         ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "0c197603-6b03-4f62-9d47-dcd9551d4ce9",
-        "name": "Anthropic Research Index",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-            "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              }
-            ],
-            "value": {
-              "categories": "={{[\"Alignment\",\"Policy\",\"Societal Impacts\",\"Economic Research\",\"Product\",\"Interpretability\",\"Frontier Red Team\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "Month DD, YYYY",
-              "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-              "examples": "={{[\n    \"Jan 9, 2026 Alignment Next-generation Constitutional Classifiers: More efficient protection against universal jailbreaks\",\n    \"Dec 19, 2025 Alignment Introducing Bloom: an open source tool for automated behavioral evaluations\",\n    \"Dec 18, 2025 Policy Project Vend: Phase two\",\n    \"Dec 4, 2025 Societal Impacts Introducing Anthropic Interviewer: What 1,250 professionals told us about working with AI\"\n  ]}}",
-              "extractionHints": "Articles appear in a bullet list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Jan 9, 2026'). Categories can be single words or multi-word phrases: Alignment, Policy, Societal Impacts, Economic Research, Product, Interpretability, Frontier Red Team. Titles follow immediately after the category. Look for entries in the research sections or the main list.",
-              "publication": "Anthropic Research Index",
-              "separators": "Space-separated, typically: 'Date Category Title'",
-              "structure": "Date-Category-Title",
-              "url": "https://www.anthropic.com/research"
-            }
-          }
-        },
-        "position": [
-          -256,
-          -304
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "243d6a39-23c1-45d4-b4c8-b8cfe726f5d8",
-        "name": "Open AI Research Index",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": true
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-            "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              }
-            ],
-            "value": {
-              "categories": "={{[\"Research\",\"Product\",\"Publication\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "Month DD, YYYY",
-              "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-              "examples": "={{[\n    \"Research\\n\\nDec 18, 2025\\n\\nEvaluating chain-of-thought monitorability We introduce evaluations for chain-of-thought monitorability and study how it scales with test-time compute, reinforcement learning, and pretraining.\",\n    \"Product\\n\\nDec 18, 2025\\n\\nIntroducing GPT-5.2-Codex The most advanced agentic coding model for professional software engineering and defensive cybersecurity.\",\n    \"Publication\\n\\nDec 18, 2025\\n\\nAddendum to GPT-5.2 System Card: GPT-5.2-Codex This system card outlines the comprehensive safety measures implemented for GPT‑5.2-Codex.\"\n  ]}}",
-              "extractionHints": "Articles appear in blocks with category first, followed by date on a new line, then title and description. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 18, 2025'). Categories are single words: Research, Product, or Publication. Titles follow the date and may have descriptions. Look for the pattern: Category label, blank line, date, blank line, title with optional description.",
-              "publication": "Open AI Research Index",
-              "separators": "Newline-separated blocks, typically: 'Category\\n\\nDate\\n\\nTitle [Description]'",
-              "structure": "Category-Date-Title",
-              "url": "https://openai.com/research/index/"
-            }
-          }
-        },
-        "position": [
-          -256,
-          -112
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "7053e98d-e1e5-4437-8db4-d59c48c93c1b",
-        "name": "DeepSeek Blog",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-            "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              }
-            ],
-            "value": {
-              "categories": "={{[\"AI Technology\",\"Guide\",\"Finance\",\"AI Trends\",\"Technical\",\"Technology\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "Month DD, YYYY",
-              "datePattern": "(January|February|March|April|May|June|July|August|September|October|November|December)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-              "examples": "={{[\n    \"January 2, 2026 AI Technology\\n\\n### DeepSeek's mHC Breakthrough: Manifold-Constrained Hyper-Connections Explained\",\n    \"December 29, 2025 Guide\\n\\n### The Ultimate DeepSeek Guide: Mastering the AI Landscape in 2026\",\n    \"December 7, 2025 AI Technology\\n\\n### The Reasoning Era Begins: Google Gemini 3 vs DeepSeek Deep Thinking AI\"\n  ]}}",
-              "extractionHints": "Articles appear with full month name dates first (e.g., 'January 2, 2026'), followed by category, then a title in markdown heading format (###). Dates use full month names, not abbreviations. Categories include: AI Technology, Guide, Finance, AI Trends, Technical, Technology. Titles are in markdown heading format (###) and may be followed by descriptions. Look for the pattern: Date, Category, blank line, ### Title, description.",
-              "publication": "DeepSeek Blog",
-              "separators": "Newline-separated, typically: 'Date Category\\n\\n### Title'",
-              "structure": "Date-Category-Title",
-              "url": "https://deepseek.ai/blog"
-            }
-          }
-        },
-        "position": [
-          -256,
-          80
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "2136bf05-6e2b-4c95-9459-04cb6834e623",
-        "name": "Qwen Research Index",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-            "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              }
-            ],
-            "value": {
-              "categories": "={{[\"Research\",\"Open-Source\",\"Release\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "YYYY/MM/DD",
-              "datePattern": "\\\\d{4}/\\\\d{2}/\\\\d{2}",
-              "examples": "={{[\n    \"2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\",\n    \"2025/12/31 Open-Source Qwen-Image-2512: Finer Details, Greater Realism\",\n    \"2025/12/23 Open-Source Qwen-Image-Edit-2511: Improve Consistency\",\n    \"2025/12/22 Release Qwen3-TTS Steps Up: Voice Cloning and Voice Design!\"\n  ]}}",
-              "extractionHints": "Articles appear with dates in 'YYYY/MM/DD' format (e.g., '2026/01/07'), which is different from most other sources. Dates are followed by category, then title. Categories are: Research, Open-Source, or Release. Titles follow immediately after the category and may have descriptions. Look for entries in the 'Research Index' section with the date format YYYY/MM/DD.",
-              "publication": "Qwen Research Index",
-              "separators": "Space-separated, typically: 'YYYY/MM/DD Category Title'",
-              "structure": "Date-Category-Title",
-              "url": "https://qwen.ai/research"
-            }
-          }
-        },
-        "position": [
-          -256,
-          272
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "5d2e97f7-e61f-44c3-b6f0-60e075789e27",
-        "name": "Mistral Index",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": true
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "component : scrape page",
-            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-            "mode": "list",
-            "value": "go4FNonP2GmrCEHc"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "url",
-                "id": "url",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publication",
-                "id": "publication",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "dateFormat",
-                "id": "dateFormat",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "datePattern",
-                "id": "datePattern",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "structure",
-                "id": "structure",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "categories",
-                "id": "categories",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "separators",
-                "id": "separators",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "extractionHints",
-                "id": "extractionHints",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "examples",
-                "id": "examples",
-                "removed": false,
-                "required": false,
-                "type": "array"
-              }
-            ],
-            "value": {
-              "categories": "={{[\"Research\",\"Company\",\"Product\",\"Solutions\"]}}",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "dateFormat": "Month DD, YYYY",
-              "datePattern": "(January|February|March|April|May|June|July|August|September|October|November|December)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-              "examples": "={{[\n    \"Research Introducing Mistral OCR 3 --------------------------- Achieving a new frontier for both accuracy and efficiency in document processing. December 17, 2025 Mistral AI\",\n    \"Research Introducing: Devstral 2 and Mistral Vibe CLI. --------------------------------------------- State-of-the-art, open-source agentic coding models and CLI agent. December 9, 2025 Mistral AI\",\n    \"Company Mistral AI - KI für Deutschland ------------------------------- November 19, 2025 Mistral AI\"\n  ]}}",
-              "extractionHints": "Articles appear with category first, followed by title (which may have dashes as separators), then date at the end. Dates use full month names in 'Month DD, YYYY' format (e.g., 'December 17, 2025'). Categories are single words: Research, Company, Product, or Solutions. Titles may be separated by long dashes (-----------------------). The date appears at the end of each entry, followed by 'Mistral AI'. Look for entries in the news feed format.",
-              "publication": "Mistral Index",
-              "separators": "Dash-separated sections, typically: 'Category Title --------------------------- Date Publication'",
-              "structure": "Category-Title-Date",
-              "url": "https://mistral.ai/news"
-            }
-          }
-        },
-        "position": [
-          -256,
-          464
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "id": "19dba87a-1f0b-4c00-9002-67a705dba14c",
-        "name": "Read/Write Files from Disk",
-        "parameters": {
-          "fileSelector": "/files/batchupdate/rss-sources.csv",
-          "options": {}
-        },
-        "position": [
-          -480,
-          688
-        ],
-        "type": "n8n-nodes-base.readWriteFile",
+        "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1
       },
       {
-        "id": "ed98c22b-4bd4-4651-991a-a8edc13c3142",
-        "name": "Extract from File",
+        "id": "7c091447-5873-48f4-891b-20537e6b4cfd",
+        "name": "scrape page",
         "parameters": {
-          "options": {}
-        },
-        "position": [
-          -256,
-          688
-        ],
-        "type": "n8n-nodes-base.extractFromFile",
-        "typeVersion": 1.1
-      },
-      {
-        "id": "7b3773f4-0c43-45e4-a385-754dcd8711cd",
-        "name": "Merge",
-        "parameters": {
-          "combineBy": "combineAll",
-          "mode": "combine",
-          "options": {}
-        },
-        "position": [
-          -32,
-          688
-        ],
-        "type": "n8n-nodes-base.merge",
-        "typeVersion": 3.2
-      },
-      {
-        "id": "f24e34a2-201b-4f80-9fe9-e5ea382ffaa7",
-        "name": "fetchStandardRSS",
-        "parameters": {
+          "mode": "each",
           "options": {
             "waitForSubWorkflow": false
           },
           "workflowId": {
             "__rl": true,
-            "cachedResultName": "component : fetch standard rss",
-            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "cachedResultName": "component : scrape page",
+            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
             "mode": "list",
-            "value": "X5drlaLIiyY5VOYf"
+            "value": "go4FNonP2GmrCEHc"
           },
           "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
             "mappingMode": "defineBelow",
             "matchingColumns": [],
             "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "publicationName",
-                "id": "publicationName",
-                "required": false,
-                "type": "string"
-              },
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "rssURL",
-                "id": "rssURL",
-                "required": false,
-                "type": "string"
-              },
               {
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
@@ -1038,8 +111,8 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "contentURLFieldName",
-                "id": "contentURLFieldName",
+                "displayName": "url",
+                "id": "url",
                 "required": false,
                 "type": "string"
               },
@@ -1047,8 +120,8 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "contentIdFieldName",
-                "id": "contentIdFieldName",
+                "displayName": "publication",
+                "id": "publication",
                 "required": false,
                 "type": "string"
               },
@@ -1056,8 +129,8 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "titleFieldName",
-                "id": "titleFieldName",
+                "displayName": "dateFormat",
+                "id": "dateFormat",
                 "required": false,
                 "type": "string"
               },
@@ -1065,8 +138,8 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "descriptionFieldName",
-                "id": "descriptionFieldName",
+                "displayName": "datePattern",
+                "id": "datePattern",
                 "required": false,
                 "type": "string"
               },
@@ -1074,8 +147,8 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "snippetFieldName",
-                "id": "snippetFieldName",
+                "displayName": "structure",
+                "id": "structure",
                 "required": false,
                 "type": "string"
               },
@@ -1083,8 +156,17 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "pubDateFieldName",
-                "id": "pubDateFieldName",
+                "displayName": "categories",
+                "id": "categories",
+                "required": false,
+                "type": "array"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "separators",
+                "id": "separators",
                 "required": false,
                 "type": "string"
               },
@@ -1092,65 +174,54 @@
                 "canBeUsedToMatch": true,
                 "defaultMatch": false,
                 "display": true,
-                "displayName": "imageURLFieldName",
-                "id": "imageURLFieldName",
+                "displayName": "extractionHints",
+                "id": "extractionHints",
                 "required": false,
                 "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "examples",
+                "id": "examples",
+                "required": false,
+                "type": "array"
               }
             ],
             "value": {
-              "contentIdFieldName": "content",
-              "contentURLFieldName": "link",
-              "cutOffDate": "={{ $json.cutOffDate }}",
-              "descriptionFieldName": "contentSnippet",
-              "pubDateFieldName": "pubDate",
-              "publicationName": "={{ $json['Publication Name'] }}",
-              "rssURL": "={{ $json['RSS Address'] }}",
-              "titleFieldName": "=title"
+              "categories": "={{ JSON.parse($json.categories) }}",
+              "cutOffDate": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}",
+              "dateFormat": "={{ $json.date_format }}",
+              "datePattern": "={{ $json.date_pattern }}",
+              "examples": "={{ JSON.parse($json.examples) }}",
+              "extractionHints": "={{ $json.extraction_hints }}",
+              "publication": "={{ $json.publication }}",
+              "separators": "={{ $json.separators }}",
+              "structure": "={{ $json.structure }}",
+              "url": "={{ $json.url }}"
             }
           }
         },
         "position": [
-          192,
-          688
+          -5264,
+          240
         ],
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3
       }
     ],
-    "updatedAt": "2026-07-19T16:29:44.000Z",
-    "versionId": "5a10a9c1-b42a-4996-8ca0-24476833939f",
+    "updatedAt": "2026-08-11T20:35:34.691Z",
+    "versionId": "d49dd4c2-e2fa-4f3c-88c7-55b3bbe73a8c",
     "workflowId": "gB5XtjMZqPaVxJx9"
   },
   "connections": {
-    "Extract from File": {
+    "Lookup scrape_sources": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Merge",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "fetchStandardRSS",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Extract from File",
+            "node": "scrape page",
             "type": "main"
           }
         ]
@@ -1161,32 +232,7 @@
         [
           {
             "index": 0,
-            "node": "Anthropic Newsroom",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Anthropic Research Index",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Open AI Research Index",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "DeepSeek Blog",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Qwen Research Index",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Mistral Index",
+            "node": "Lookup scrape_sources",
             "type": "main"
           }
         ]
@@ -1206,944 +252,64 @@
         "jsonExample": "{\n  \"cutOffDate\":\"01-01-2026\"\n}"
       },
       "position": [
-        -480,
-        -16
+        -5712,
+        240
       ],
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1
     },
     {
-      "id": "b148f851-7eec-4193-b877-7edb58477614",
-      "name": "Anthropic Newsroom",
+      "id": "7c65245c-a8d5-40b6-a9c9-5a4b740b6a2f",
+      "name": "Lookup scrape_sources",
       "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
+        "dataTableId": {
           "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
+          "cachedResultName": "scrape_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/9VHlPKcRcFryOiiF",
           "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
+          "value": "9VHlPKcRcFryOiiF"
         },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
+        "filters": {
+          "conditions": [
             {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
+              "condition": "isTrue",
+              "keyName": "enabled"
             }
-          ],
-          "value": {
-            "categories": "={{[\"Policy\",\"Announcements\",\"Product\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "Month DD, YYYY",
-            "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-            "examples": "={{[\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]}}",
-            "extractionHints": "Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.",
-            "publication": "Anthropic Newsroom",
-            "separators": "Space-separated, typically: 'Date Category Title'",
-            "structure": "Date-Category-Title",
-            "url": "https://www.anthropic.com/news"
-          }
-        }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
       },
       "position": [
-        -256,
-        -496
+        -5488,
+        240
       ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "0c197603-6b03-4f62-9d47-dcd9551d4ce9",
-      "name": "Anthropic Research Index",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-          "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            }
-          ],
-          "value": {
-            "categories": "={{[\"Alignment\",\"Policy\",\"Societal Impacts\",\"Economic Research\",\"Product\",\"Interpretability\",\"Frontier Red Team\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "Month DD, YYYY",
-            "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-            "examples": "={{[\n    \"Jan 9, 2026 Alignment Next-generation Constitutional Classifiers: More efficient protection against universal jailbreaks\",\n    \"Dec 19, 2025 Alignment Introducing Bloom: an open source tool for automated behavioral evaluations\",\n    \"Dec 18, 2025 Policy Project Vend: Phase two\",\n    \"Dec 4, 2025 Societal Impacts Introducing Anthropic Interviewer: What 1,250 professionals told us about working with AI\"\n  ]}}",
-            "extractionHints": "Articles appear in a bullet list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Jan 9, 2026'). Categories can be single words or multi-word phrases: Alignment, Policy, Societal Impacts, Economic Research, Product, Interpretability, Frontier Red Team. Titles follow immediately after the category. Look for entries in the research sections or the main list.",
-            "publication": "Anthropic Research Index",
-            "separators": "Space-separated, typically: 'Date Category Title'",
-            "structure": "Date-Category-Title",
-            "url": "https://www.anthropic.com/research"
-          }
-        }
-      },
-      "position": [
-        -256,
-        -304
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "243d6a39-23c1-45d4-b4c8-b8cfe726f5d8",
-      "name": "Open AI Research Index",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": true
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-          "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            }
-          ],
-          "value": {
-            "categories": "={{[\"Research\",\"Product\",\"Publication\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "Month DD, YYYY",
-            "datePattern": "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-            "examples": "={{[\n    \"Research\\n\\nDec 18, 2025\\n\\nEvaluating chain-of-thought monitorability We introduce evaluations for chain-of-thought monitorability and study how it scales with test-time compute, reinforcement learning, and pretraining.\",\n    \"Product\\n\\nDec 18, 2025\\n\\nIntroducing GPT-5.2-Codex The most advanced agentic coding model for professional software engineering and defensive cybersecurity.\",\n    \"Publication\\n\\nDec 18, 2025\\n\\nAddendum to GPT-5.2 System Card: GPT-5.2-Codex This system card outlines the comprehensive safety measures implemented for GPT‑5.2-Codex.\"\n  ]}}",
-            "extractionHints": "Articles appear in blocks with category first, followed by date on a new line, then title and description. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 18, 2025'). Categories are single words: Research, Product, or Publication. Titles follow the date and may have descriptions. Look for the pattern: Category label, blank line, date, blank line, title with optional description.",
-            "publication": "Open AI Research Index",
-            "separators": "Newline-separated blocks, typically: 'Category\\n\\nDate\\n\\nTitle [Description]'",
-            "structure": "Category-Date-Title",
-            "url": "https://openai.com/research/index/"
-          }
-        }
-      },
-      "position": [
-        -256,
-        -112
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "7053e98d-e1e5-4437-8db4-d59c48c93c1b",
-      "name": "DeepSeek Blog",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-          "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            }
-          ],
-          "value": {
-            "categories": "={{[\"AI Technology\",\"Guide\",\"Finance\",\"AI Trends\",\"Technical\",\"Technology\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "Month DD, YYYY",
-            "datePattern": "(January|February|March|April|May|June|July|August|September|October|November|December)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-            "examples": "={{[\n    \"January 2, 2026 AI Technology\\n\\n### DeepSeek's mHC Breakthrough: Manifold-Constrained Hyper-Connections Explained\",\n    \"December 29, 2025 Guide\\n\\n### The Ultimate DeepSeek Guide: Mastering the AI Landscape in 2026\",\n    \"December 7, 2025 AI Technology\\n\\n### The Reasoning Era Begins: Google Gemini 3 vs DeepSeek Deep Thinking AI\"\n  ]}}",
-            "extractionHints": "Articles appear with full month name dates first (e.g., 'January 2, 2026'), followed by category, then a title in markdown heading format (###). Dates use full month names, not abbreviations. Categories include: AI Technology, Guide, Finance, AI Trends, Technical, Technology. Titles are in markdown heading format (###) and may be followed by descriptions. Look for the pattern: Date, Category, blank line, ### Title, description.",
-            "publication": "DeepSeek Blog",
-            "separators": "Newline-separated, typically: 'Date Category\\n\\n### Title'",
-            "structure": "Date-Category-Title",
-            "url": "https://deepseek.ai/blog"
-          }
-        }
-      },
-      "position": [
-        -256,
-        80
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "2136bf05-6e2b-4c95-9459-04cb6834e623",
-      "name": "Qwen Research Index",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-          "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            }
-          ],
-          "value": {
-            "categories": "={{[\"Research\",\"Open-Source\",\"Release\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "YYYY/MM/DD",
-            "datePattern": "\\\\d{4}/\\\\d{2}/\\\\d{2}",
-            "examples": "={{[\n    \"2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\",\n    \"2025/12/31 Open-Source Qwen-Image-2512: Finer Details, Greater Realism\",\n    \"2025/12/23 Open-Source Qwen-Image-Edit-2511: Improve Consistency\",\n    \"2025/12/22 Release Qwen3-TTS Steps Up: Voice Cloning and Voice Design!\"\n  ]}}",
-            "extractionHints": "Articles appear with dates in 'YYYY/MM/DD' format (e.g., '2026/01/07'), which is different from most other sources. Dates are followed by category, then title. Categories are: Research, Open-Source, or Release. Titles follow immediately after the category and may have descriptions. Look for entries in the 'Research Index' section with the date format YYYY/MM/DD.",
-            "publication": "Qwen Research Index",
-            "separators": "Space-separated, typically: 'YYYY/MM/DD Category Title'",
-            "structure": "Date-Category-Title",
-            "url": "https://qwen.ai/research"
-          }
-        }
-      },
-      "position": [
-        -256,
-        272
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "5d2e97f7-e61f-44c3-b6f0-60e075789e27",
-      "name": "Mistral Index",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": true
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "component : scrape page",
-          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
-          "mode": "list",
-          "value": "go4FNonP2GmrCEHc"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "url",
-              "id": "url",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publication",
-              "id": "publication",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "dateFormat",
-              "id": "dateFormat",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "datePattern",
-              "id": "datePattern",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "structure",
-              "id": "structure",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "categories",
-              "id": "categories",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "separators",
-              "id": "separators",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "extractionHints",
-              "id": "extractionHints",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "examples",
-              "id": "examples",
-              "removed": false,
-              "required": false,
-              "type": "array"
-            }
-          ],
-          "value": {
-            "categories": "={{[\"Research\",\"Company\",\"Product\",\"Solutions\"]}}",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "dateFormat": "Month DD, YYYY",
-            "datePattern": "(January|February|March|April|May|June|July|August|September|October|November|December)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}",
-            "examples": "={{[\n    \"Research Introducing Mistral OCR 3 --------------------------- Achieving a new frontier for both accuracy and efficiency in document processing. December 17, 2025 Mistral AI\",\n    \"Research Introducing: Devstral 2 and Mistral Vibe CLI. --------------------------------------------- State-of-the-art, open-source agentic coding models and CLI agent. December 9, 2025 Mistral AI\",\n    \"Company Mistral AI - KI für Deutschland ------------------------------- November 19, 2025 Mistral AI\"\n  ]}}",
-            "extractionHints": "Articles appear with category first, followed by title (which may have dashes as separators), then date at the end. Dates use full month names in 'Month DD, YYYY' format (e.g., 'December 17, 2025'). Categories are single words: Research, Company, Product, or Solutions. Titles may be separated by long dashes (-----------------------). The date appears at the end of each entry, followed by 'Mistral AI'. Look for entries in the news feed format.",
-            "publication": "Mistral Index",
-            "separators": "Dash-separated sections, typically: 'Category Title --------------------------- Date Publication'",
-            "structure": "Category-Title-Date",
-            "url": "https://mistral.ai/news"
-          }
-        }
-      },
-      "position": [
-        -256,
-        464
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "id": "19dba87a-1f0b-4c00-9002-67a705dba14c",
-      "name": "Read/Write Files from Disk",
-      "parameters": {
-        "fileSelector": "/files/batchupdate/rss-sources.csv",
-        "options": {}
-      },
-      "position": [
-        -480,
-        688
-      ],
-      "type": "n8n-nodes-base.readWriteFile",
+      "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
     },
     {
-      "id": "ed98c22b-4bd4-4651-991a-a8edc13c3142",
-      "name": "Extract from File",
+      "id": "7c091447-5873-48f4-891b-20537e6b4cfd",
+      "name": "scrape page",
       "parameters": {
-        "options": {}
-      },
-      "position": [
-        -256,
-        688
-      ],
-      "type": "n8n-nodes-base.extractFromFile",
-      "typeVersion": 1.1
-    },
-    {
-      "id": "7b3773f4-0c43-45e4-a385-754dcd8711cd",
-      "name": "Merge",
-      "parameters": {
-        "combineBy": "combineAll",
-        "mode": "combine",
-        "options": {}
-      },
-      "position": [
-        -32,
-        688
-      ],
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2
-    },
-    {
-      "id": "f24e34a2-201b-4f80-9fe9-e5ea382ffaa7",
-      "name": "fetchStandardRSS",
-      "parameters": {
+        "mode": "each",
         "options": {
           "waitForSubWorkflow": false
         },
         "workflowId": {
           "__rl": true,
-          "cachedResultName": "component : fetch standard rss",
-          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "cachedResultName": "component : scrape page",
+          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
           "mode": "list",
-          "value": "X5drlaLIiyY5VOYf"
+          "value": "go4FNonP2GmrCEHc"
         },
         "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
           "mappingMode": "defineBelow",
           "matchingColumns": [],
           "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "publicationName",
-              "id": "publicationName",
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "rssURL",
-              "id": "rssURL",
-              "required": false,
-              "type": "string"
-            },
             {
               "canBeUsedToMatch": true,
               "defaultMatch": false,
@@ -2157,8 +323,8 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "contentURLFieldName",
-              "id": "contentURLFieldName",
+              "displayName": "url",
+              "id": "url",
               "required": false,
               "type": "string"
             },
@@ -2166,8 +332,8 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "contentIdFieldName",
-              "id": "contentIdFieldName",
+              "displayName": "publication",
+              "id": "publication",
               "required": false,
               "type": "string"
             },
@@ -2175,8 +341,8 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "titleFieldName",
-              "id": "titleFieldName",
+              "displayName": "dateFormat",
+              "id": "dateFormat",
               "required": false,
               "type": "string"
             },
@@ -2184,8 +350,8 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "descriptionFieldName",
-              "id": "descriptionFieldName",
+              "displayName": "datePattern",
+              "id": "datePattern",
               "required": false,
               "type": "string"
             },
@@ -2193,8 +359,8 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "snippetFieldName",
-              "id": "snippetFieldName",
+              "displayName": "structure",
+              "id": "structure",
               "required": false,
               "type": "string"
             },
@@ -2202,8 +368,17 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "pubDateFieldName",
-              "id": "pubDateFieldName",
+              "displayName": "categories",
+              "id": "categories",
+              "required": false,
+              "type": "array"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "separators",
+              "id": "separators",
               "required": false,
               "type": "string"
             },
@@ -2211,27 +386,38 @@
               "canBeUsedToMatch": true,
               "defaultMatch": false,
               "display": true,
-              "displayName": "imageURLFieldName",
-              "id": "imageURLFieldName",
+              "displayName": "extractionHints",
+              "id": "extractionHints",
               "required": false,
               "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "examples",
+              "id": "examples",
+              "required": false,
+              "type": "array"
             }
           ],
           "value": {
-            "contentIdFieldName": "content",
-            "contentURLFieldName": "link",
-            "cutOffDate": "={{ $json.cutOffDate }}",
-            "descriptionFieldName": "contentSnippet",
-            "pubDateFieldName": "pubDate",
-            "publicationName": "={{ $json['Publication Name'] }}",
-            "rssURL": "={{ $json['RSS Address'] }}",
-            "titleFieldName": "=title"
+            "categories": "={{ JSON.parse($json.categories) }}",
+            "cutOffDate": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}",
+            "dateFormat": "={{ $json.date_format }}",
+            "datePattern": "={{ $json.date_pattern }}",
+            "examples": "={{ JSON.parse($json.examples) }}",
+            "extractionHints": "={{ $json.extraction_hints }}",
+            "publication": "={{ $json.publication }}",
+            "separators": "={{ $json.separators }}",
+            "structure": "={{ $json.structure }}",
+            "url": "={{ $json.url }}"
           }
         }
       },
       "position": [
-        192,
-        688
+        -5264,
+        240
       ],
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3
