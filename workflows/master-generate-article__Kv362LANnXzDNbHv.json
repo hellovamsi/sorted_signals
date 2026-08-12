@@ -216,7 +216,12 @@
         ]
       ]
     },
-    "Schedule Trigger": {
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
@@ -226,11 +231,6 @@
           }
         ]
       ]
-    },
-    "Send a text message": {
-      "main": [
-        []
-      ]
     }
   },
   "id": "Kv362LANnXzDNbHv",
@@ -238,26 +238,6 @@
   "name": "master : Generate Article",
   "nodeGroups": [],
   "nodes": [
-    {
-      "id": "fc07cf50-cbf3-4214-b40b-68a6be2a3a96",
-      "name": "Schedule Trigger",
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "expression": "0 0 * * SUN",
-              "field": "cronExpression"
-            }
-          ]
-        }
-      },
-      "position": [
-        -112,
-        -176
-      ],
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3
-    },
     {
       "credentials": {
         "telegramApi": {
@@ -269,13 +249,13 @@
       "name": "Send a text message",
       "parameters": {
         "additionalFields": {
-          "parse_mode": "MarkdownV2"
+          "parse_mode": "Markdown"
         },
         "chatId": "={{ $json.tg_notifs_chat_id }}",
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_article }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
       },
       "position": [
-        112,
+        224,
         -272
       ],
       "type": "n8n-nodes-base.telegram",
@@ -319,7 +299,7 @@
         }
       },
       "position": [
-        112,
+        224,
         -80
       ],
       "type": "n8n-nodes-base.executeWorkflow",
@@ -340,7 +320,7 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGenerate Article Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
       },
       "position": [
-        336,
+        448,
         -80
       ],
       "type": "n8n-nodes-base.telegram",
@@ -362,11 +342,22 @@
         "returnAll": true
       },
       "position": [
-        -16,
+        0,
         -176
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
+    },
+    {
+      "id": "1d9e3d7d-6078-4c8a-a841-0dbcc6b57d86",
+      "name": "When clicking ‘Execute workflow’",
+      "parameters": {},
+      "position": [
+        -224,
+        -176
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
     }
   ],
   "settings": {
