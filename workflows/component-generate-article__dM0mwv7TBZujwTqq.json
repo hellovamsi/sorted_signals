@@ -1021,6 +1021,10 @@
       "typeVersion": 3.2
     }
   ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
   "settings": {
     "availableInMCP": true,
     "binaryMode": "separate",
