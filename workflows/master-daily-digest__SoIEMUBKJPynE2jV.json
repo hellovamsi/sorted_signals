@@ -4,12 +4,7 @@
     "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Call 'component : generate digest'": {
-        "main": [
-          []
-        ]
-      },
-      "Call 'sub : Run Mainstream Media RSS'": {
+      "Call 'component : fetch mainstream rss'": {
         "main": [
           [
             {
@@ -20,7 +15,7 @@
           ]
         ]
       },
-      "Call 'sub : Run Non-Mainstream Media RSS'": {
+      "Call 'component : fetch non-mainstream rss'": {
         "main": [
           [
             {
@@ -31,7 +26,7 @@
           ]
         ]
       },
-      "Call 'sub : Scrape Pages'": {
+      "Call 'component : scrape page'": {
         "main": [
           [
             {
@@ -58,22 +53,22 @@
           [
             {
               "index": 0,
-              "node": "Call 'sub : Scrape Pages'",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Call 'sub : Run Non-Mainstream Media RSS'",
-              "type": "main"
-            },
-            {
-              "index": 0,
-              "node": "Call 'sub : Run Mainstream Media RSS'",
-              "type": "main"
-            },
-            {
-              "index": 0,
               "node": "Send a text message2",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup scrape_sources",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup non_mainstream rss_sources",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup mainstream rss_sources",
               "type": "main"
             }
           ]
@@ -85,6 +80,39 @@
             {
               "index": 0,
               "node": "Global",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup mainstream rss_sources": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Call 'component : fetch mainstream rss'",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup non_mainstream rss_sources": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Call 'component : fetch non-mainstream rss'",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup scrape_sources": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Call 'component : scrape page'",
               "type": "main"
             }
           ]
@@ -102,7 +130,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-11T20:44:14.721Z",
+    "createdAt": "2026-08-12T12:39:53.115Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -125,144 +153,6 @@
         "typeVersion": 1.3
       },
       {
-        "alwaysOutputData": true,
-        "id": "fc2e7e4a-c967-4c92-a97e-d21112e07251",
-        "name": "Call 'sub : Run Non-Mainstream Media RSS'",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "sub : Run Non-Mainstream Media RSS",
-            "cachedResultUrl": "/workflow/LsJDmSKuCgUktxGu",
-            "mode": "list",
-            "value": "LsJDmSKuCgUktxGu"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [
-              "testfield"
-            ],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              }
-            ],
-            "value": {
-              "cutOffDate": "={{ $json.cutOffDate }}"
-            }
-          }
-        },
-        "position": [
-          -416,
-          288
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "alwaysOutputData": true,
-        "id": "4bca4142-1412-4eb7-8a03-13ea9849383f",
-        "name": "Call 'sub : Run Mainstream Media RSS'",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": true
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "sub : Run Mainstream Media RSS",
-            "cachedResultUrl": "/workflow/sQiTqSrocLJF707e",
-            "mode": "list",
-            "value": "sQiTqSrocLJF707e"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [
-              "testfield"
-            ],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              }
-            ],
-            "value": {
-              "cutOffDate": "={{ $json.cutOffDate }}"
-            }
-          }
-        },
-        "position": [
-          -416,
-          480
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
-        "alwaysOutputData": true,
-        "id": "5724538b-ec4d-4c71-a053-1dee3ca506de",
-        "name": "Call 'sub : Scrape Pages'",
-        "parameters": {
-          "options": {
-            "waitForSubWorkflow": false
-          },
-          "workflowId": {
-            "__rl": true,
-            "cachedResultName": "sub : Scrape Pages",
-            "cachedResultUrl": "/workflow/gB5XtjMZqPaVxJx9",
-            "mode": "list",
-            "value": "gB5XtjMZqPaVxJx9"
-          },
-          "workflowInputs": {
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true,
-            "mappingMode": "defineBelow",
-            "matchingColumns": [
-              "cutOffDate"
-            ],
-            "schema": [
-              {
-                "canBeUsedToMatch": true,
-                "defaultMatch": false,
-                "display": true,
-                "displayName": "cutOffDate",
-                "id": "cutOffDate",
-                "removed": false,
-                "required": false,
-                "type": "string"
-              }
-            ],
-            "value": {
-              "cutOffDate": "={{ $json.cutOffDate }}"
-            }
-          }
-        },
-        "position": [
-          -416,
-          96
-        ],
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.3
-      },
-      {
         "credentials": {
           "telegramApi": {
             "id": "JmRinGOvLHYfWsMM",
@@ -277,7 +167,7 @@
           "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Lookup global variables').first().json.launch_message_daily }}\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          -192,
+          32,
           -96
         ],
         "type": "n8n-nodes-base.telegram",
@@ -290,10 +180,10 @@
         "parameters": {
           "mode": "chooseBranch",
           "numberInputs": 3,
-          "useDataOfInput": 2
+          "useDataOfInput": "2"
         },
         "position": [
-          -192,
+          32,
           272
         ],
         "type": "n8n-nodes-base.merge",
@@ -354,12 +244,12 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $json.cutOffDate }}"
+              "cutOffDate": "={{ $('Global').first().json.cutOffDate }}"
             }
           }
         },
         "position": [
-          32,
+          256,
           288
         ],
         "type": "n8n-nodes-base.executeWorkflow",
@@ -385,19 +275,243 @@
         ],
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1
+      },
+      {
+        "id": "910905aa-093d-4c2a-b464-e988dac076f5",
+        "name": "Lookup scrape_sources",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "scrape_sources",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/9VHlPKcRcFryOiiF",
+            "mode": "list",
+            "value": "9VHlPKcRcFryOiiF"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "condition": "isTrue",
+                "keyName": "enabled"
+              }
+            ]
+          },
+          "matchType": "allConditions",
+          "operation": "get",
+          "orderBy": true,
+          "orderByColumn": "sort_order",
+          "orderByDirection": "ASC",
+          "returnAll": true
+        },
+        "position": [
+          -416,
+          96
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "fbb570b5-93f6-4e49-8d19-62d5792300b9",
+        "name": "Lookup non_mainstream rss_sources",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "rss_sources",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+            "mode": "list",
+            "value": "PNzdSBPjg673eGI5"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "condition": "isTrue",
+                "keyName": "enabled"
+              },
+              {
+                "condition": "eq",
+                "keyName": "category",
+                "keyValue": "non_mainstream"
+              }
+            ]
+          },
+          "matchType": "allConditions",
+          "operation": "get",
+          "orderBy": true,
+          "orderByColumn": "sort_order",
+          "orderByDirection": "ASC",
+          "returnAll": true
+        },
+        "position": [
+          -416,
+          288
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "9549579a-2d78-4041-a8e6-f626be45842b",
+        "name": "Lookup mainstream rss_sources",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "rss_sources",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+            "mode": "list",
+            "value": "PNzdSBPjg673eGI5"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "condition": "isTrue",
+                "keyName": "enabled"
+              },
+              {
+                "condition": "eq",
+                "keyName": "category",
+                "keyValue": "mainstream"
+              }
+            ]
+          },
+          "matchType": "allConditions",
+          "operation": "get",
+          "orderBy": true,
+          "orderByColumn": "sort_order",
+          "orderByDirection": "ASC",
+          "returnAll": true
+        },
+        "position": [
+          -416,
+          480
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "5ac27a89-f8e8-4cc9-a9c6-6ef3aaa2d3fd",
+        "name": "Call 'component : scrape page'",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : scrape page",
+            "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
+            "mode": "list",
+            "value": "go4FNonP2GmrCEHc"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "value": {
+              "categories": "={{ JSON.parse($json.categories) }}",
+              "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+              "dateFormat": "={{ $json.date_format }}",
+              "datePattern": "={{ $json.date_pattern }}",
+              "examples": "={{ JSON.parse($json.examples) }}",
+              "extractionHints": "={{ $json.extraction_hints }}",
+              "publication": "={{ $json.publication }}",
+              "separators": "={{ $json.separators }}",
+              "structure": "={{ $json.structure }}",
+              "url": "={{ $json.url }}"
+            }
+          }
+        },
+        "position": [
+          -192,
+          96
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "aed58236-4091-4c81-8d29-ea8b85060e88",
+        "name": "Call 'component : fetch non-mainstream rss'",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "value": {
+              "contentIdFieldName": "={{ $json.content_id_field }}",
+              "contentURLFieldName": "={{ $json.content_url_field }}",
+              "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+              "descriptionFieldName": "={{ $json.description_field }}",
+              "imageURLFieldName": "={{ $json.image_url_field }}",
+              "pubDateFieldName": "={{ $json.pub_date_field }}",
+              "publicationName": "={{ $json.publication_name }}",
+              "rssURL": "={{ $json.rss_url }}",
+              "snippetFieldName": "={{ $json.snippet_field }}",
+              "titleFieldName": "={{ $json.title_field }}"
+            }
+          }
+        },
+        "position": [
+          -192,
+          288
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "d80f9f6b-c44e-425e-bf46-0fb74d1fb833",
+        "name": "Call 'component : fetch mainstream rss'",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": false
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : fetch standard rss",
+            "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+            "mode": "list",
+            "value": "X5drlaLIiyY5VOYf"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "value": {
+              "contentIdFieldName": "={{ $json.content_id_field }}",
+              "contentURLFieldName": "={{ $json.content_url_field }}",
+              "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+              "descriptionFieldName": "={{ $json.description_field }}",
+              "imageURLFieldName": "={{ $json.image_url_field }}",
+              "pubDateFieldName": "={{ $json.pub_date_field }}",
+              "publicationName": "={{ $json.publication_name }}",
+              "rssURL": "={{ $json.rss_url }}",
+              "snippetFieldName": "={{ $json.snippet_field }}",
+              "titleFieldName": "={{ $json.title_field }}"
+            }
+          }
+        },
+        "position": [
+          -192,
+          480
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
       }
     ],
-    "updatedAt": "2026-08-11T20:44:14.721Z",
-    "versionId": "9592abe4-cd57-4c27-9628-2d9799ab476c",
+    "updatedAt": "2026-08-12T12:39:53.115Z",
+    "versionId": "153b6cd7-2f05-42cb-a669-7e4ab06761b2",
     "workflowId": "SoIEMUBKJPynE2jV"
   },
   "connections": {
-    "Call 'component : generate digest'": {
-      "main": [
-        []
-      ]
-    },
-    "Call 'sub : Run Mainstream Media RSS'": {
+    "Call 'component : fetch mainstream rss'": {
       "main": [
         [
           {
@@ -408,7 +522,7 @@
         ]
       ]
     },
-    "Call 'sub : Run Non-Mainstream Media RSS'": {
+    "Call 'component : fetch non-mainstream rss'": {
       "main": [
         [
           {
@@ -419,7 +533,7 @@
         ]
       ]
     },
-    "Call 'sub : Scrape Pages'": {
+    "Call 'component : scrape page'": {
       "main": [
         [
           {
@@ -446,22 +560,22 @@
         [
           {
             "index": 0,
-            "node": "Call 'sub : Scrape Pages'",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Call 'sub : Run Non-Mainstream Media RSS'",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Call 'sub : Run Mainstream Media RSS'",
-            "type": "main"
-          },
-          {
-            "index": 0,
             "node": "Send a text message2",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup scrape_sources",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup non_mainstream rss_sources",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup mainstream rss_sources",
             "type": "main"
           }
         ]
@@ -473,6 +587,39 @@
           {
             "index": 0,
             "node": "Global",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup mainstream rss_sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : fetch mainstream rss'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup non_mainstream rss_sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : fetch non-mainstream rss'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup scrape_sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : scrape page'",
             "type": "main"
           }
         ]
@@ -513,144 +660,6 @@
       "typeVersion": 1.3
     },
     {
-      "alwaysOutputData": true,
-      "id": "fc2e7e4a-c967-4c92-a97e-d21112e07251",
-      "name": "Call 'sub : Run Non-Mainstream Media RSS'",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "sub : Run Non-Mainstream Media RSS",
-          "cachedResultUrl": "/workflow/LsJDmSKuCgUktxGu",
-          "mode": "list",
-          "value": "LsJDmSKuCgUktxGu"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [
-            "testfield"
-          ],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            }
-          ],
-          "value": {
-            "cutOffDate": "={{ $json.cutOffDate }}"
-          }
-        }
-      },
-      "position": [
-        -416,
-        288
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "alwaysOutputData": true,
-      "id": "4bca4142-1412-4eb7-8a03-13ea9849383f",
-      "name": "Call 'sub : Run Mainstream Media RSS'",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": true
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "sub : Run Mainstream Media RSS",
-          "cachedResultUrl": "/workflow/sQiTqSrocLJF707e",
-          "mode": "list",
-          "value": "sQiTqSrocLJF707e"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [
-            "testfield"
-          ],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            }
-          ],
-          "value": {
-            "cutOffDate": "={{ $json.cutOffDate }}"
-          }
-        }
-      },
-      "position": [
-        -416,
-        480
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
-      "alwaysOutputData": true,
-      "id": "5724538b-ec4d-4c71-a053-1dee3ca506de",
-      "name": "Call 'sub : Scrape Pages'",
-      "parameters": {
-        "options": {
-          "waitForSubWorkflow": false
-        },
-        "workflowId": {
-          "__rl": true,
-          "cachedResultName": "sub : Scrape Pages",
-          "cachedResultUrl": "/workflow/gB5XtjMZqPaVxJx9",
-          "mode": "list",
-          "value": "gB5XtjMZqPaVxJx9"
-        },
-        "workflowInputs": {
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true,
-          "mappingMode": "defineBelow",
-          "matchingColumns": [
-            "cutOffDate"
-          ],
-          "schema": [
-            {
-              "canBeUsedToMatch": true,
-              "defaultMatch": false,
-              "display": true,
-              "displayName": "cutOffDate",
-              "id": "cutOffDate",
-              "removed": false,
-              "required": false,
-              "type": "string"
-            }
-          ],
-          "value": {
-            "cutOffDate": "={{ $json.cutOffDate }}"
-          }
-        }
-      },
-      "position": [
-        -416,
-        96
-      ],
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3
-    },
-    {
       "credentials": {
         "telegramApi": {
           "id": "JmRinGOvLHYfWsMM",
@@ -665,7 +674,7 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Lookup global variables').first().json.launch_message_daily }}\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        -192,
+        32,
         -96
       ],
       "type": "n8n-nodes-base.telegram",
@@ -678,10 +687,10 @@
       "parameters": {
         "mode": "chooseBranch",
         "numberInputs": 3,
-        "useDataOfInput": 2
+        "useDataOfInput": "2"
       },
       "position": [
-        -192,
+        32,
         272
       ],
       "type": "n8n-nodes-base.merge",
@@ -742,12 +751,12 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $json.cutOffDate }}"
+            "cutOffDate": "={{ $('Global').first().json.cutOffDate }}"
           }
         }
       },
       "position": [
-        32,
+        256,
         288
       ],
       "type": "n8n-nodes-base.executeWorkflow",
@@ -773,6 +782,235 @@
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
+    },
+    {
+      "id": "910905aa-093d-4c2a-b464-e988dac076f5",
+      "name": "Lookup scrape_sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "scrape_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/9VHlPKcRcFryOiiF",
+          "mode": "list",
+          "value": "9VHlPKcRcFryOiiF"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        -416,
+        96
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "fbb570b5-93f6-4e49-8d19-62d5792300b9",
+      "name": "Lookup non_mainstream rss_sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "rss_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+          "mode": "list",
+          "value": "PNzdSBPjg673eGI5"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            },
+            {
+              "condition": "eq",
+              "keyName": "category",
+              "keyValue": "non_mainstream"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        -416,
+        288
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "9549579a-2d78-4041-a8e6-f626be45842b",
+      "name": "Lookup mainstream rss_sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "rss_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+          "mode": "list",
+          "value": "PNzdSBPjg673eGI5"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            },
+            {
+              "condition": "eq",
+              "keyName": "category",
+              "keyValue": "mainstream"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        -416,
+        480
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "5ac27a89-f8e8-4cc9-a9c6-6ef3aaa2d3fd",
+      "name": "Call 'component : scrape page'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : scrape page",
+          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
+          "mode": "list",
+          "value": "go4FNonP2GmrCEHc"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "categories": "={{ JSON.parse($json.categories) }}",
+            "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+            "dateFormat": "={{ $json.date_format }}",
+            "datePattern": "={{ $json.date_pattern }}",
+            "examples": "={{ JSON.parse($json.examples) }}",
+            "extractionHints": "={{ $json.extraction_hints }}",
+            "publication": "={{ $json.publication }}",
+            "separators": "={{ $json.separators }}",
+            "structure": "={{ $json.structure }}",
+            "url": "={{ $json.url }}"
+          }
+        }
+      },
+      "position": [
+        -192,
+        96
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "aed58236-4091-4c81-8d29-ea8b85060e88",
+      "name": "Call 'component : fetch non-mainstream rss'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "contentIdFieldName": "={{ $json.content_id_field }}",
+            "contentURLFieldName": "={{ $json.content_url_field }}",
+            "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+            "descriptionFieldName": "={{ $json.description_field }}",
+            "imageURLFieldName": "={{ $json.image_url_field }}",
+            "pubDateFieldName": "={{ $json.pub_date_field }}",
+            "publicationName": "={{ $json.publication_name }}",
+            "rssURL": "={{ $json.rss_url }}",
+            "snippetFieldName": "={{ $json.snippet_field }}",
+            "titleFieldName": "={{ $json.title_field }}"
+          }
+        }
+      },
+      "position": [
+        -192,
+        288
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "d80f9f6b-c44e-425e-bf46-0fb74d1fb833",
+      "name": "Call 'component : fetch mainstream rss'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": false
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "X5drlaLIiyY5VOYf"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "contentIdFieldName": "={{ $json.content_id_field }}",
+            "contentURLFieldName": "={{ $json.content_url_field }}",
+            "cutOffDate": "={{ $('Global').first().json.cutOffDate }}",
+            "descriptionFieldName": "={{ $json.description_field }}",
+            "imageURLFieldName": "={{ $json.image_url_field }}",
+            "pubDateFieldName": "={{ $json.pub_date_field }}",
+            "publicationName": "={{ $json.publication_name }}",
+            "rssURL": "={{ $json.rss_url }}",
+            "snippetFieldName": "={{ $json.snippet_field }}",
+            "titleFieldName": "={{ $json.title_field }}"
+          }
+        }
+      },
+      "position": [
+        -192,
+        480
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
     }
   ],
   "repo_branch": "main",
