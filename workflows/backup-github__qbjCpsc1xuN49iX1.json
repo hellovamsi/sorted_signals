@@ -296,7 +296,7 @@
         [
           {
             "index": 0,
-            "node": "Wait rate limit",
+            "node": "Execute Workflow",
             "type": "main"
           }
         ]
@@ -483,17 +483,6 @@
           {
             "index": 0,
             "node": "Loop orphans",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Wait rate limit": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Execute Workflow",
             "type": "main"
           }
         ]
@@ -885,7 +874,7 @@
       "name": "Sticky Note1",
       "parameters": {
         "color": 4,
-        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP. 1s Wait before each subworkflow call.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** hard-delete GitHub-only files matching the new naming pattern. README / old month paths ignored.\n\n**Index:** updates `gh_repo_path/README.md` only when the listing changes.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
+        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** hard-delete GitHub-only files matching the new naming pattern. README / old month paths ignored.\n\n**Index:** updates `gh_repo_path/README.md` only when the listing changes.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
         "height": 900,
         "width": 640
       },
@@ -1275,22 +1264,6 @@
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
-    },
-    {
-      "id": "ad37a2db-3d24-4df8-94f6-940cdf332c27",
-      "name": "Wait rate limit",
-      "parameters": {
-        "amount": 1,
-        "resume": "timeInterval",
-        "unit": "seconds"
-      },
-      "position": [
-        2240,
-        560
-      ],
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "webhookId": "653176c9-546a-43fc-ae2f-fe7c5f02bf50"
     },
     {
       "id": "5d6c3846-9e79-4371-b9f6-815fcc9c1ded",
