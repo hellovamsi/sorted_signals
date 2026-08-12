@@ -95,13 +95,13 @@
         "main": [
           [
             {
-              "index": 1,
-              "node": "Merge Items",
+              "index": 0,
+              "node": "Resolve backup path",
               "type": "main"
             },
             {
-              "index": 0,
-              "node": "Resolve backup path",
+              "index": 1,
+              "node": "Merge Items",
               "type": "main"
             }
           ]
@@ -422,9 +422,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-12T10:48:31.191Z",
+    "createdAt": "2026-08-12T11:01:30.117Z",
     "description": "",
-    "name": "Version 51ec9c00",
+    "name": "Version 752ed746",
     "nodeGroups": [],
     "nodes": [
       {
@@ -443,7 +443,7 @@
         "name": "Sticky Note",
         "parameters": {
           "color": 6,
-          "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
+          "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nTrigger is **Execute Workflow Trigger v1.2** with Input data mode = **Accept all data** (passthrough).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
           "height": 732,
           "width": 2775
         },
@@ -452,17 +452,6 @@
           1344
         ],
         "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1
-      },
-      {
-        "id": "07691901-a8d2-4891-860b-1d672361021b",
-        "name": "Execute Workflow Trigger",
-        "parameters": {},
-        "position": [
-          1168,
-          1728
-        ],
-        "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1
       },
       {
@@ -510,7 +499,7 @@
           "options": {}
         },
         "position": [
-          3408,
+          3520,
           1728
         ],
         "type": "n8n-nodes-base.set",
@@ -525,8 +514,8 @@
           "url": "={{ $json.download_url }}"
         },
         "position": [
-          2064,
-          1584
+          2000,
+          1632
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.httpRequest",
@@ -571,7 +560,7 @@
           "options": {}
         },
         "position": [
-          1840,
+          1696,
           1648
         ],
         "type": "n8n-nodes-base.if",
@@ -582,8 +571,8 @@
         "name": "Merge Items",
         "parameters": {},
         "position": [
-          2288,
-          1728
+          2016,
+          1872
         ],
         "type": "n8n-nodes-base.merge",
         "typeVersion": 2
@@ -595,8 +584,8 @@
           "jsCode": "const deepStable=v=>{if(Array.isArray(v))return v.map(deepStable);if(v&&typeof v===\"object\"){const o={};for(const k of Object.keys(v).sort())o[k]=deepStable(v[k]);return o;}return v;};const VOLATILE=new Set([\"versionId\",\"updatedAt\",\"createdAt\",\"activeVersionId\",\"meta\",\"pinData\",\"staticData\",\"triggerCount\",\"shared\",\"versionCounter\",\"credentials\"]);const scrub=w=>{if(!w||typeof w!==\"object\")return w;const o={};for(const k of Object.keys(w).sort()){if(VOLATILE.has(k))continue;o[k]=deepStable(w[k]);}return o;};const items=$input.all();const g=items[0];const actual=scrub(items[1].json);let orig=null;if(Object.keys(g.json).includes(\"content\")&&g.json.content)orig=JSON.parse(Buffer.from(g.json.content,\"base64\").toString());else if(Object.keys(g.json).includes(\"data\")&&g.json.data)orig=JSON.parse(g.json.data);if(orig){const ordered=scrub(orig);if(JSON.stringify(ordered)===JSON.stringify(actual))g.json.github_status=\"same\";else{g.json.github_status=\"different\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}g.json.content_decoded=ordered;}else{g.json.github_status=\"new\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}return items;"
         },
         "position": [
-          2512,
-          1728
+          2304,
+          1872
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 1
@@ -624,8 +613,8 @@
           "value1": "={{$json.github_status}}"
         },
         "position": [
-          2736,
-          1696
+          2560,
+          1840
         ],
         "type": "n8n-nodes-base.switch",
         "typeVersion": 1
@@ -635,8 +624,8 @@
         "name": "Same file - Do nothing",
         "parameters": {},
         "position": [
-          3184,
-          1536
+          2944,
+          1488
         ],
         "type": "n8n-nodes-base.noOp",
         "typeVersion": 1
@@ -646,8 +635,8 @@
         "name": "File is different",
         "parameters": {},
         "position": [
-          2960,
-          1728
+          2944,
+          1696
         ],
         "type": "n8n-nodes-base.noOp",
         "typeVersion": 1
@@ -657,8 +646,8 @@
         "name": "File is new",
         "parameters": {},
         "position": [
-          2960,
-          1920
+          2944,
+          1888
         ],
         "type": "n8n-nodes-base.noOp",
         "typeVersion": 1
@@ -695,8 +684,8 @@
           "resource": "file"
         },
         "position": [
-          3184,
-          1920
+          3168,
+          1888
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.github",
@@ -737,8 +726,8 @@
           "resource": "file"
         },
         "position": [
-          3184,
-          1728
+          3168,
+          1696
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.github",
@@ -860,7 +849,7 @@
           "resource": "file"
         },
         "position": [
-          1616,
+          1504,
           1648
         ],
         "retryOnFail": true,
@@ -970,7 +959,7 @@
           "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
         },
         "position": [
-          1392,
+          1312,
           1648
         ],
         "type": "n8n-nodes-base.code",
@@ -1223,10 +1212,23 @@
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
+      },
+      {
+        "id": "78b92fb1-4498-410a-92c8-cdac305b563c",
+        "name": "Execute Workflow Trigger",
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "position": [
+          1088,
+          1888
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.2
       }
     ],
-    "updatedAt": "2026-08-12T10:48:52.000Z",
-    "versionId": "51ec9c00-56b5-4847-aa40-34937bbe8df2",
+    "updatedAt": "2026-08-12T11:01:38.000Z",
+    "versionId": "752ed746-9b53-4047-a05b-63d2a66f8675",
     "workflowId": "qbjCpsc1xuN49iX1"
   },
   "connections": {
@@ -1321,13 +1323,13 @@
       "main": [
         [
           {
-            "index": 1,
-            "node": "Merge Items",
+            "index": 0,
+            "node": "Resolve backup path",
             "type": "main"
           },
           {
-            "index": 0,
-            "node": "Resolve backup path",
+            "index": 1,
+            "node": "Merge Items",
             "type": "main"
           }
         ]
@@ -1669,7 +1671,7 @@
       "name": "Sticky Note",
       "parameters": {
         "color": 6,
-        "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
+        "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nTrigger is **Execute Workflow Trigger v1.2** with Input data mode = **Accept all data** (passthrough).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
         "height": 732,
         "width": 2775
       },
@@ -1678,17 +1680,6 @@
         1344
       ],
       "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1
-    },
-    {
-      "id": "07691901-a8d2-4891-860b-1d672361021b",
-      "name": "Execute Workflow Trigger",
-      "parameters": {},
-      "position": [
-        1168,
-        1728
-      ],
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1
     },
     {
@@ -1736,7 +1727,7 @@
         "options": {}
       },
       "position": [
-        3408,
+        3520,
         1728
       ],
       "type": "n8n-nodes-base.set",
@@ -1751,8 +1742,8 @@
         "url": "={{ $json.download_url }}"
       },
       "position": [
-        2064,
-        1584
+        2000,
+        1632
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.httpRequest",
@@ -1797,7 +1788,7 @@
         "options": {}
       },
       "position": [
-        1840,
+        1696,
         1648
       ],
       "type": "n8n-nodes-base.if",
@@ -1808,8 +1799,8 @@
       "name": "Merge Items",
       "parameters": {},
       "position": [
-        2288,
-        1728
+        2016,
+        1872
       ],
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2
@@ -1821,8 +1812,8 @@
         "jsCode": "const deepStable=v=>{if(Array.isArray(v))return v.map(deepStable);if(v&&typeof v===\"object\"){const o={};for(const k of Object.keys(v).sort())o[k]=deepStable(v[k]);return o;}return v;};const VOLATILE=new Set([\"versionId\",\"updatedAt\",\"createdAt\",\"activeVersionId\",\"meta\",\"pinData\",\"staticData\",\"triggerCount\",\"shared\",\"versionCounter\",\"credentials\"]);const scrub=w=>{if(!w||typeof w!==\"object\")return w;const o={};for(const k of Object.keys(w).sort()){if(VOLATILE.has(k))continue;o[k]=deepStable(w[k]);}return o;};const items=$input.all();const g=items[0];const actual=scrub(items[1].json);let orig=null;if(Object.keys(g.json).includes(\"content\")&&g.json.content)orig=JSON.parse(Buffer.from(g.json.content,\"base64\").toString());else if(Object.keys(g.json).includes(\"data\")&&g.json.data)orig=JSON.parse(g.json.data);if(orig){const ordered=scrub(orig);if(JSON.stringify(ordered)===JSON.stringify(actual))g.json.github_status=\"same\";else{g.json.github_status=\"different\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}g.json.content_decoded=ordered;}else{g.json.github_status=\"new\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}return items;"
       },
       "position": [
-        2512,
-        1728
+        2304,
+        1872
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 1
@@ -1850,8 +1841,8 @@
         "value1": "={{$json.github_status}}"
       },
       "position": [
-        2736,
-        1696
+        2560,
+        1840
       ],
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1
@@ -1861,8 +1852,8 @@
       "name": "Same file - Do nothing",
       "parameters": {},
       "position": [
-        3184,
-        1536
+        2944,
+        1488
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -1872,8 +1863,8 @@
       "name": "File is different",
       "parameters": {},
       "position": [
-        2960,
-        1728
+        2944,
+        1696
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -1883,8 +1874,8 @@
       "name": "File is new",
       "parameters": {},
       "position": [
-        2960,
-        1920
+        2944,
+        1888
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -1921,8 +1912,8 @@
         "resource": "file"
       },
       "position": [
-        3184,
-        1920
+        3168,
+        1888
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -1963,8 +1954,8 @@
         "resource": "file"
       },
       "position": [
-        3184,
-        1728
+        3168,
+        1696
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -2086,7 +2077,7 @@
         "resource": "file"
       },
       "position": [
-        1616,
+        1504,
         1648
       ],
       "retryOnFail": true,
@@ -2196,7 +2187,7 @@
         "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
       },
       "position": [
-        1392,
+        1312,
         1648
       ],
       "type": "n8n-nodes-base.code",
@@ -2449,6 +2440,19 @@
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
+    },
+    {
+      "id": "78b92fb1-4498-410a-92c8-cdac305b563c",
+      "name": "Execute Workflow Trigger",
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "position": [
+        1088,
+        1888
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2
     }
   ],
   "repo_branch": "main",
