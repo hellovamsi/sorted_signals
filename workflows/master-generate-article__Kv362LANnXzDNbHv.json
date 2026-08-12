@@ -48,7 +48,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-08T19:56:27.123Z",
+    "createdAt": "2026-08-11T20:44:20.197Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -87,7 +87,7 @@
             "parse_mode": "MarkdownV2"
           },
           "chatId": "={{ $json.tg_notifs_chat_id }}",
-          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_article }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
         },
         "position": [
           112,
@@ -129,7 +129,7 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $now.minus(1,'hours') }}"
+              "cutOffDate": "={{ $now.minus($json.article_cutoff_hours,'hours') }}"
             }
           }
         },
@@ -152,7 +152,7 @@
         "parameters": {
           "additionalFields": {},
           "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGenerate Article Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
         },
         "position": [
           336,
@@ -184,8 +184,8 @@
         "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-08T19:56:27.123Z",
-    "versionId": "3ca58a0f-ae1a-4d1d-be68-59e64ed8c1a7",
+    "updatedAt": "2026-08-11T20:44:20.197Z",
+    "versionId": "28f471d6-0185-4148-a45c-e06c1af8502b",
     "workflowId": "Kv362LANnXzDNbHv"
   },
   "connections": {
@@ -272,7 +272,7 @@
           "parse_mode": "MarkdownV2"
         },
         "chatId": "={{ $json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_article }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
       },
       "position": [
         112,
@@ -314,7 +314,7 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $now.minus(1,'hours') }}"
+            "cutOffDate": "={{ $now.minus($json.article_cutoff_hours,'hours') }}"
           }
         }
       },
@@ -337,7 +337,7 @@
       "parameters": {
         "additionalFields": {},
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGenerate Article Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
       },
       "position": [
         336,
