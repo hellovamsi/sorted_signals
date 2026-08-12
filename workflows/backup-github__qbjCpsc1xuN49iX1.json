@@ -13,17 +13,6 @@
         ]
       ]
     },
-    "Build README": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Get README",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Check Status": {
       "main": [
         [
@@ -49,17 +38,6 @@
         ]
       ]
     },
-    "Create README": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Prepare completion",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Create new file": {
       "main": [
         [
@@ -77,28 +55,6 @@
           {
             "index": 0,
             "node": "Tally orphan deleted",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Diff README": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "README status",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Edit README": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Prepare completion",
             "type": "main"
           }
         ]
@@ -204,17 +160,6 @@
         ]
       ]
     },
-    "Get README": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Diff README",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Get file data": {
       "main": [
         [
@@ -238,7 +183,7 @@
         [
           {
             "index": 0,
-            "node": "Build README",
+            "node": "Prepare completion",
             "type": "main"
           }
         ]
@@ -307,7 +252,7 @@
         [
           {
             "index": 0,
-            "node": "Build README",
+            "node": "Prepare completion",
             "type": "main"
           }
         ],
@@ -348,42 +293,6 @@
           {
             "index": 0,
             "node": "Send backup completed",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "README status": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "README unchanged",
-            "type": "main"
-          }
-        ],
-        [
-          {
-            "index": 0,
-            "node": "Edit README",
-            "type": "main"
-          }
-        ],
-        [
-          {
-            "index": 0,
-            "node": "Create README",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "README unchanged": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Prepare completion",
             "type": "main"
           }
         ]
@@ -521,8 +430,8 @@
       "name": "On clicking 'execute'",
       "parameters": {},
       "position": [
-        1248,
-        448
+        560,
+        608
       ],
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1
@@ -537,8 +446,8 @@
         "width": 2775
       },
       "position": [
-        512,
-        896
+        336,
+        1008
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
@@ -549,7 +458,7 @@
       "parameters": {},
       "position": [
         560,
-        1232
+        1392
       ],
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1
@@ -570,8 +479,8 @@
         "requestOptions": {}
       },
       "position": [
-        1856,
-        544
+        1456,
+        704
       ],
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1
@@ -599,8 +508,8 @@
         "options": {}
       },
       "position": [
-        3088,
-        1216
+        2800,
+        1392
       ],
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3
@@ -614,8 +523,8 @@
         "url": "={{ $json.download_url }}"
       },
       "position": [
-        1664,
-        976
+        1456,
+        1248
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.httpRequest",
@@ -660,8 +569,8 @@
         "options": {}
       },
       "position": [
-        1488,
-        1104
+        1232,
+        1312
       ],
       "type": "n8n-nodes-base.if",
       "typeVersion": 2
@@ -671,8 +580,8 @@
       "name": "Merge Items",
       "parameters": {},
       "position": [
-        1872,
-        1216
+        1680,
+        1392
       ],
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2
@@ -684,8 +593,8 @@
         "jsCode": "const deepStable=v=>{if(Array.isArray(v))return v.map(deepStable);if(v&&typeof v===\"object\"){const o={};for(const k of Object.keys(v).sort())o[k]=deepStable(v[k]);return o;}return v;};const VOLATILE=new Set([\"versionId\",\"updatedAt\",\"createdAt\",\"activeVersionId\",\"meta\",\"pinData\",\"staticData\",\"triggerCount\",\"shared\",\"versionCounter\",\"credentials\"]);const scrub=w=>{if(!w||typeof w!==\"object\")return w;const o={};for(const k of Object.keys(w).sort()){if(VOLATILE.has(k))continue;o[k]=deepStable(w[k]);}return o;};const items=$input.all();const g=items[0];const actual=scrub(items[1].json);let orig=null;if(Object.keys(g.json).includes(\"content\")&&g.json.content)orig=JSON.parse(Buffer.from(g.json.content,\"base64\").toString());else if(Object.keys(g.json).includes(\"data\")&&g.json.data)orig=JSON.parse(g.json.data);if(orig){const ordered=scrub(orig);if(JSON.stringify(ordered)===JSON.stringify(actual))g.json.github_status=\"same\";else{g.json.github_status=\"different\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}g.json.content_decoded=ordered;}else{g.json.github_status=\"new\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}return items;"
       },
       "position": [
-        2080,
-        1216
+        1904,
+        1392
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 1
@@ -713,8 +622,8 @@
         "value1": "={{$json.github_status}}"
       },
       "position": [
-        2288,
-        1184
+        2128,
+        1360
       ],
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1
@@ -724,8 +633,8 @@
       "name": "Same file - Do nothing",
       "parameters": {},
       "position": [
-        2544,
-        1040
+        2576,
+        1200
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -735,8 +644,8 @@
       "name": "File is different",
       "parameters": {},
       "position": [
-        2544,
-        1216
+        2352,
+        1392
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -746,8 +655,8 @@
       "name": "File is new",
       "parameters": {},
       "position": [
-        2544,
-        1392
+        2352,
+        1584
       ],
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1
@@ -771,7 +680,6 @@
         "commitMessage": "=[Sorted Signals backup] {{ $('Execute Workflow Trigger').first().json.name }} ({{ $('Execute Workflow Trigger').first().json.id }}) — new",
         "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
         "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
-        "operation": "create",
         "owner": {
           "__rl": true,
           "mode": "name",
@@ -785,8 +693,8 @@
         "resource": "file"
       },
       "position": [
-        3104,
-        1392
+        2576,
+        1584
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -827,8 +735,8 @@
         "resource": "file"
       },
       "position": [
-        2768,
-        1216
+        2576,
+        1392
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -843,8 +751,8 @@
         "options": {}
       },
       "position": [
-        2112,
-        544
+        2128,
+        704
       ],
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3
@@ -863,8 +771,8 @@
         }
       },
       "position": [
-        1248,
-        640
+        560,
+        800
       ],
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2
@@ -874,7 +782,7 @@
       "name": "Sticky Note1",
       "parameters": {
         "color": 4,
-        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Index:** updates `gh_repo_path/README.md` only when the listing changes.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
+        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
         "height": 900,
         "width": 640
       },
@@ -895,8 +803,8 @@
         "width": 2137
       },
       "position": [
-        1152,
-        64
+        1216,
+        320
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
@@ -911,8 +819,8 @@
         "workflowId": "={{ $workflow.id }}"
       },
       "position": [
-        2368,
-        560
+        2352,
+        656
       ],
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1
@@ -950,8 +858,8 @@
         "resource": "file"
       },
       "position": [
-        1312,
-        1104
+        1008,
+        1312
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -974,8 +882,8 @@
         "returnAll": true
       },
       "position": [
-        1472,
-        544
+        784,
+        704
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -997,8 +905,8 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nStarting Sorted Signals workflow backup.\nExecution: {{ $execution.id }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        1696,
-        544
+        1232,
+        704
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1022,8 +930,8 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow backup completed.\nProcessed: {{ $json.processed }}\nNew: {{ $json.new }} · Updated: {{ $json.updated }} · Unchanged: {{ $json.unchanged }}\nFailed: {{ $json.failed }} · Deleted: {{ $json.deleted }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        2608,
-        416
+        3136,
+        192
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1046,8 +954,8 @@
         "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop Over Items').item.json.id }} ({{ $('Loop Over Items').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        2608,
-        576
+        2784,
+        800
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1057,12 +965,11 @@
       "id": "f7a6354d-8049-46b2-8182-72ef6c49fc2f",
       "name": "Resolve backup path",
       "parameters": {
-        "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
       },
       "position": [
-        1120,
-        1104
+        784,
+        1312
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1093,8 +1000,8 @@
         "resource": "file"
       },
       "position": [
-        2336,
-        144
+        2352,
+        368
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -1106,12 +1013,11 @@
       "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
       "name": "Find orphans",
       "parameters": {
-        "jsCode": "const files=$input.all();\nconst ids=new Set($('Filter').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const files=$input.all();\nconst ids=new Set($('Filter').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;"
       },
       "position": [
-        2544,
-        144
+        2576,
+        368
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1123,8 +1029,8 @@
         "options": {}
       },
       "position": [
-        2912,
-        128
+        3136,
+        352
       ],
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3
@@ -1162,8 +1068,8 @@
         "resource": "file"
       },
       "position": [
-        3120,
-        144
+        3408,
+        368
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -1199,8 +1105,8 @@
         "options": {}
       },
       "position": [
-        2688,
-        144
+        2800,
+        368
       ],
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2
@@ -1232,8 +1138,8 @@
         "options": {}
       },
       "position": [
-        2048,
-        272
+        1680,
+        704
       ],
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.3
@@ -1242,12 +1148,11 @@
       "id": "4c7108cb-9c96-4b75-b1f3-f1abe6289f68",
       "name": "Reset backup counts",
       "parameters": {
-        "jsCode": "const s=$getWorkflowStaticData('global');\ns.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn $input.all().map(i=>({json:i.json}));",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn $input.all().map(i=>({json:i.json}));"
       },
       "position": [
-        1584,
-        544
+        1008,
+        704
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1256,12 +1161,11 @@
       "id": "5bff9395-816c-4655-8744-eaff5d68863b",
       "name": "Attach export config",
       "parameters": {
-        "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.gh_repo_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.gh_repo_owner,repo_name:gv.gh_repo_name,repo_path,repo_branch:'main'}}));",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.gh_repo_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.gh_repo_owner,repo_name:gv.gh_repo_name,repo_path,repo_branch:'main'}}));"
       },
       "position": [
-        2112,
-        272
+        1904,
+        704
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1270,12 +1174,11 @@
       "id": "5d6c3846-9e79-4371-b9f6-815fcc9c1ded",
       "name": "Tally backup result",
       "parameters": {
-        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst out=[];\nfor(const item of $input.all()){\n  s.backupCounts.processed++;\n  const st=item.json.github_status;\n  if(st==='new')s.backupCounts.new++;\n  else if(st==='different')s.backupCounts.updated++;\n  else s.backupCounts.unchanged++;\n  out.push({json:{github_status:st||'same',tallied:true}});\n}\nreturn out;",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst out=[];\nfor(const item of $input.all()){\n  s.backupCounts.processed++;\n  const st=item.json.github_status;\n  if(st==='new')s.backupCounts.new++;\n  else if(st==='different')s.backupCounts.updated++;\n  else s.backupCounts.unchanged++;\n  out.push({json:{github_status:st||'same',tallied:true}});\n}\nreturn out;"
       },
       "position": [
-        2528,
-        480
+        2576,
+        608
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1284,12 +1187,11 @@
       "id": "a8421d62-af92-4556-82d2-68e7d66dfd3f",
       "name": "Tally backup failed",
       "parameters": {
-        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\ns.backupCounts.failed++;\ns.backupCounts.processed++;\nreturn [{json:{tallied:true,github_status:'failed'}}];",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\ns.backupCounts.failed++;\ns.backupCounts.processed++;\nreturn [{json:{tallied:true,github_status:'failed'}}];"
       },
       "position": [
-        2528,
-        656
+        2576,
+        800
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1298,219 +1200,24 @@
       "id": "03d3a580-5dc8-41eb-8392-f980abd41352",
       "name": "Tally orphan deleted",
       "parameters": {
-        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst items=$input.all();\ns.backupCounts.deleted+=items.length;\nreturn items.map(i=>({json:{...i.json,tallied:true}}));",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst items=$input.all();\ns.backupCounts.deleted+=items.length;\nreturn items.map(i=>({json:{...i.json,tallied:true}}));"
       },
       "position": [
-        3312,
-        144
+        3632,
+        368
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
-    },
-    {
-      "id": "0da9b592-7b98-4a06-b0e8-6c611110f3e2",
-      "name": "Build README",
-      "parameters": {
-        "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.gh_repo_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nconst workflows=$('Filter').all().map(i=>i.json).sort((a,b)=>String(a.name||'').localeCompare(String(b.name||'')));\nconst rows=workflows.map(w=>{\n  const name=String(w.name||'workflow');\n  const id=w.id;\n  const sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\n  const file=`${sanitized}__${id}.json`;\n  const safe=name.replace(/\\|/g,'/');\n  return `| ${safe} | \\`${id}\\` | \\`${file}\\` |`;\n});\nconst stable=['# Sorted Signals — workflow backups','','Auto-generated by `backup : github`. Do not edit by hand.','','| Name | ID | File |','|------|----|------|',...rows,''].join('\\n');\nconst readmeContent=`${stable}Last backup: ${$now.toISO()}\\n`;\nreturn[{json:{repo_owner:gv.gh_repo_owner,repo_name:gv.gh_repo_name,repo_path,readmePath:`${repo_path}README.md`,readmeStable:stable,readmeContent,workflowCount:workflows.length}}];",
-        "mode": "runOnceForAllItems"
-      },
-      "position": [
-        2544,
-        300
-      ],
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2
-    },
-    {
-      "alwaysOutputData": true,
-      "credentials": {
-        "githubApi": {
-          "id": "oN09JmRFpXyKahsj",
-          "name": "GitHub account"
-        }
-      },
-      "id": "6ed8368b-4cd6-4a56-8391-d04ae662d463",
-      "maxTries": 3,
-      "name": "Get README",
-      "onError": "continueRegularOutput",
-      "parameters": {
-        "additionalParameters": {
-          "reference": "main"
-        },
-        "asBinaryProperty": false,
-        "filePath": "={{ $json.readmePath }}",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_name }}"
-        },
-        "resource": "file"
-      },
-      "position": [
-        2736,
-        300
-      ],
-      "retryOnFail": true,
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1,
-      "waitBetweenTries": 1000,
-      "webhookId": "27254a16-5d2e-43df-9e9e-4b7be1e6f1cb"
-    },
-    {
-      "id": "ee9c755c-3aec-49a9-8117-d62c8889a52e",
-      "name": "Diff README",
-      "parameters": {
-        "jsCode": "const built=$('Build README').first().json;\nconst g=$input.first().json;\nconst stripTs=s=>String(s||'').replace(/Last backup:[^\\n]*\\n?/g,'').trimEnd()+'\\n';\nlet status='new';\nif(g&&Object.keys(g).includes('content')&&g.content){\n  const existing=Buffer.from(g.content,'base64').toString();\n  status=stripTs(existing)===built.readmeStable?'same':'different';\n}else if(g&&!g.error&&g.type==='file'){\n  status='different';\n}\nreturn[{json:{...built,readme_status:status}}];",
-        "mode": "runOnceForAllItems"
-      },
-      "position": [
-        2928,
-        300
-      ],
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2
-    },
-    {
-      "id": "250b1fae-d5b0-47d3-b3bf-0f78a7e1ad35",
-      "name": "README status",
-      "parameters": {
-        "dataType": "string",
-        "rules": {
-          "rules": [
-            {
-              "value2": "same"
-            },
-            {
-              "output": 1,
-              "value2": "different"
-            },
-            {
-              "output": 2,
-              "value2": "new"
-            }
-          ]
-        },
-        "value1": "={{$json.readme_status}}"
-      },
-      "position": [
-        3120,
-        272
-      ],
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 1
-    },
-    {
-      "id": "d50b43dd-6bd1-44b8-b499-a28050717b8f",
-      "name": "README unchanged",
-      "parameters": {},
-      "position": [
-        3344,
-        176
-      ],
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1
-    },
-    {
-      "credentials": {
-        "githubApi": {
-          "id": "oN09JmRFpXyKahsj",
-          "name": "GitHub account"
-        }
-      },
-      "id": "1dc305ff-513a-4002-b7d2-aa40d4e04636",
-      "maxTries": 3,
-      "name": "Edit README",
-      "parameters": {
-        "additionalParameters": {
-          "branch": {
-            "branch": "main"
-          }
-        },
-        "commitMessage": "=[Sorted Signals backup] README — updated",
-        "fileContent": "={{ $json.readmeContent }}",
-        "filePath": "={{ $json.readmePath }}",
-        "operation": "edit",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_name }}"
-        },
-        "resource": "file"
-      },
-      "position": [
-        3344,
-        300
-      ],
-      "retryOnFail": true,
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1,
-      "waitBetweenTries": 1000,
-      "webhookId": "18d7527f-66a2-4e34-8de5-64a3c29ebb9b"
-    },
-    {
-      "credentials": {
-        "githubApi": {
-          "id": "oN09JmRFpXyKahsj",
-          "name": "GitHub account"
-        }
-      },
-      "id": "b176840c-61be-4f8a-996c-25abc51a5dcf",
-      "maxTries": 3,
-      "name": "Create README",
-      "parameters": {
-        "additionalParameters": {
-          "branch": {
-            "branch": "main"
-          }
-        },
-        "commitMessage": "=[Sorted Signals backup] README — new",
-        "fileContent": "={{ $json.readmeContent }}",
-        "filePath": "={{ $json.readmePath }}",
-        "operation": "create",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $json.repo_name }}"
-        },
-        "resource": "file"
-      },
-      "position": [
-        3344,
-        448
-      ],
-      "retryOnFail": true,
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1,
-      "waitBetweenTries": 1000,
-      "webhookId": "a1f8095d-f6d4-42d2-8c94-0bf5fd909a77"
     },
     {
       "id": "058bf39b-67fc-4ce1-82ce-f0e023dab734",
       "name": "Prepare completion",
       "parameters": {
-        "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.backupCounts||{processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn [{json:{...c}}];",
-        "mode": "runOnceForAllItems"
+        "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.backupCounts||{processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn [{json:{...c}}];"
       },
       "position": [
-        3568,
-        300
+        2800,
+        192
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
