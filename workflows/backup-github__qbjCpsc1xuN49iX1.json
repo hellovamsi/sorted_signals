@@ -2032,8 +2032,8 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow backup completed.\nWorkflows processed: {{ $('n8n').all().length }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        2368,
-        352
+        2608,
+        416
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
