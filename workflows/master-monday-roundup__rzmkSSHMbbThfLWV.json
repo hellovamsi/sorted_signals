@@ -2,7 +2,7 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": true,
+    "autosaved": false,
     "connections": {
       "Call 'sub : Run Mainstream Media RSS'": {
         "main": [
@@ -102,9 +102,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-08T20:02:31.012Z",
-    "description": "",
-    "name": "Version cdccaca6",
+    "createdAt": "2026-08-11T20:44:19.804Z",
+    "description": null,
+    "name": null,
     "nodeGroups": [],
     "nodes": [
       {
@@ -141,7 +141,7 @@
             "parse_mode": "MarkdownV2"
           },
           "chatId": "={{ $json.tg_notifs_chat_id }}",
-          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_roundup }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
         },
         "position": [
           224,
@@ -186,7 +186,7 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+              "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
             }
           }
         },
@@ -232,7 +232,7 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+              "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
             }
           }
         },
@@ -275,7 +275,7 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $now.minus(1,'hours') }}"
+              "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}"
             }
           }
         },
@@ -336,7 +336,7 @@
               }
             ],
             "value": {
-              "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+              "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
             }
           }
         },
@@ -359,7 +359,7 @@
         "parameters": {
           "additionalFields": {},
           "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
           896,
@@ -391,8 +391,8 @@
         "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-08T20:02:41.000Z",
-    "versionId": "cdccaca6-60d3-429f-9065-d7a6dcd3d5ff",
+    "updatedAt": "2026-08-11T20:44:19.804Z",
+    "versionId": "59838297-b88d-4aa5-8a0f-b053d95f8982",
     "workflowId": "rzmkSSHMbbThfLWV"
   },
   "connections": {
@@ -533,7 +533,7 @@
           "parse_mode": "MarkdownV2"
         },
         "chatId": "={{ $json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus(6,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_roundup }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
       },
       "position": [
         224,
@@ -578,7 +578,7 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+            "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
           }
         }
       },
@@ -624,7 +624,7 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+            "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
           }
         }
       },
@@ -667,7 +667,7 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $now.minus(1,'hours') }}"
+            "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}"
           }
         }
       },
@@ -728,7 +728,7 @@
             }
           ],
           "value": {
-            "cutOffDate": "={{ $today.startOf('week').minus(1,'days') }}"
+            "cutOffDate": "={{ $today.startOf('week').minus($json.ingest_week_start_offset_days,'days') }}"
           }
         }
       },
@@ -751,7 +751,7 @@
       "parameters": {
         "additionalFields": {},
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
         896,
