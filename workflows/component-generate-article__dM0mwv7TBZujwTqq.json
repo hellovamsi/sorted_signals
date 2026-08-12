@@ -163,7 +163,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-08T20:12:09.793Z",
+    "createdAt": "2026-08-11T20:43:58.501Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -245,7 +245,7 @@
         "id": "cb669dfb-693d-4fdf-882a-6e2874afceaf",
         "name": "Read/Write Files from Disk",
         "parameters": {
-          "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+          "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
           "operation": "write",
           "options": {}
         },
@@ -311,7 +311,7 @@
         "name": "Read/Write Files from Disk1",
         "parameters": {
           "dataPropertyName": "text",
-          "fileName": "=/files/batchupdate/articles/gen-article-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+          "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_article }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
           "operation": "write",
           "options": {}
         },
@@ -342,7 +342,7 @@
         "id": "18ad4c9a-bc6f-4d3c-9dd9-297c2e6a0dbd",
         "name": "Read/Write Files from Disk2",
         "parameters": {
-          "fileSelector": "/files/batchupdate/prompts/article_gen.md",
+          "fileSelector": "={{ $('Lookup global variables').first().json.prompt_article_path }}",
           "options": {}
         },
         "position": [
@@ -434,8 +434,8 @@
         "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-08T20:12:09.793Z",
-    "versionId": "2365d2a0-bb92-4174-8a95-fa508217f867",
+    "updatedAt": "2026-08-11T20:43:58.501Z",
+    "versionId": "3709b8a8-0ded-4dac-970a-64539e42f1d2",
     "workflowId": "dM0mwv7TBZujwTqq"
   },
   "connections": {
@@ -680,7 +680,7 @@
       "id": "cb669dfb-693d-4fdf-882a-6e2874afceaf",
       "name": "Read/Write Files from Disk",
       "parameters": {
-        "fileName": "=/files/batchupdate/summaries/summary_{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+        "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
         "operation": "write",
         "options": {}
       },
@@ -746,7 +746,7 @@
       "name": "Read/Write Files from Disk1",
       "parameters": {
         "dataPropertyName": "text",
-        "fileName": "=/files/batchupdate/articles/gen-article-{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+        "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_article }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
         "operation": "write",
         "options": {}
       },
@@ -777,7 +777,7 @@
       "id": "18ad4c9a-bc6f-4d3c-9dd9-297c2e6a0dbd",
       "name": "Read/Write Files from Disk2",
       "parameters": {
-        "fileSelector": "/files/batchupdate/prompts/article_gen.md",
+        "fileSelector": "={{ $('Lookup global variables').first().json.prompt_article_path }}",
         "options": {}
       },
       "position": [
