@@ -2,7 +2,7 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": true,
+    "autosaved": false,
     "connections": {
       "Call 'component : generate digest'": {
         "main": [
@@ -47,7 +47,7 @@
           [
             {
               "index": 0,
-              "node": "Global",
+              "node": "Lookup global variables",
               "type": "main"
             }
           ]
@@ -73,7 +73,7 @@
             },
             {
               "index": 0,
-              "node": "Lookup global variables",
+              "node": "Send a text message2",
               "type": "main"
             }
           ]
@@ -84,7 +84,7 @@
           [
             {
               "index": 0,
-              "node": "Send a text message2",
+              "node": "Global",
               "type": "main"
             }
           ]
@@ -102,9 +102,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-08T20:00:36.069Z",
-    "description": "",
-    "name": "Version 784d01d9",
+    "createdAt": "2026-08-11T20:44:14.721Z",
+    "description": null,
+    "name": null,
     "nodeGroups": [],
     "nodes": [
       {
@@ -273,8 +273,8 @@
         "name": "Send a text message2",
         "parameters": {
           "additionalFields": {},
-          "chatId": "={{ $json.tg_notifs_chat_id }}",
-          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup.\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+          "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Lookup global variables').first().json.launch_message_daily }}\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
           -192,
@@ -309,7 +309,7 @@
                 "id": "e177e203-0e4b-4d0f-8ad5-e690213ce3d7",
                 "name": "cutOffDate",
                 "type": "string",
-                "value": "={{ $today.minus(1,'days') }}"
+                "value": "={{ $today.minus($json.lookback_days_daily, 'days') }}"
               }
             ]
           },
@@ -387,8 +387,8 @@
         "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-08T20:02:54.000Z",
-    "versionId": "784d01d9-44d6-4e95-a6bd-45eae0287a8e",
+    "updatedAt": "2026-08-11T20:44:14.721Z",
+    "versionId": "9592abe4-cd57-4c27-9628-2d9799ab476c",
     "workflowId": "SoIEMUBKJPynE2jV"
   },
   "connections": {
@@ -435,7 +435,7 @@
         [
           {
             "index": 0,
-            "node": "Global",
+            "node": "Lookup global variables",
             "type": "main"
           }
         ]
@@ -461,7 +461,7 @@
           },
           {
             "index": 0,
-            "node": "Lookup global variables",
+            "node": "Send a text message2",
             "type": "main"
           }
         ]
@@ -472,7 +472,7 @@
         [
           {
             "index": 0,
-            "node": "Send a text message2",
+            "node": "Global",
             "type": "main"
           }
         ]
@@ -661,8 +661,8 @@
       "name": "Send a text message2",
       "parameters": {
         "additionalFields": {},
-        "chatId": "={{ $json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nLaunched Monday Roundup.\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Lookup global variables').first().json.launch_message_daily }}\nCutoff date: {{ $('Global').item.json.cutOffDate.toDate().format('dd.MM.yyyy HH:mm') }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
         -192,
@@ -697,7 +697,7 @@
               "id": "e177e203-0e4b-4d0f-8ad5-e690213ce3d7",
               "name": "cutOffDate",
               "type": "string",
-              "value": "={{ $today.minus(1,'days') }}"
+              "value": "={{ $today.minus($json.lookback_days_daily, 'days') }}"
             }
           ]
         },
