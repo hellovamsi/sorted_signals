@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "authors": "import",
+    "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
       "Categories and Summary": {
@@ -43,6 +43,17 @@
             {
               "index": 0,
               "node": "Split Out",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup llm_config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait for llm_config",
               "type": "main"
             }
           ]
@@ -130,7 +141,7 @@
           ]
         ]
       },
-      "When Executed by Another Workflow": {
+      "Wait for llm_config": {
         "main": [
           [
             {
@@ -140,11 +151,27 @@
             }
           ]
         ]
+      },
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup llm_config",
+              "type": "main"
+            },
+            {
+              "index": 1,
+              "node": "Wait for llm_config",
+              "type": "main"
+            }
+          ]
+        ]
       }
     },
-    "createdAt": "2026-07-19T15:53:24.013Z",
-    "description": "",
-    "name": "Version 6ed68c82",
+    "createdAt": "2026-08-12T08:01:48.603Z",
+    "description": null,
+    "name": null,
     "nodeGroups": [],
     "nodes": [
       {
@@ -180,7 +207,7 @@
         "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
         "name": "OpenRouter Chat Model",
         "parameters": {
-          "model": "google/gemini-2.5-flash-lite",
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_extractor').json.model }}",
           "options": {}
         },
         "position": [
@@ -305,7 +332,7 @@
         "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
         "name": "OpenRouter Chat Model2",
         "parameters": {
-          "model": "x-ai/grok-4.1-fast",
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_classifier').json.model }}",
           "options": {}
         },
         "position": [
@@ -474,10 +501,48 @@
         ],
         "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
         "typeVersion": 1.3
+      },
+      {
+        "id": "c802952d-5faa-489b-9ca3-e4b09b6ef12c",
+        "name": "Lookup llm_config",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "llm_config",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+            "mode": "list",
+            "value": "i6zVgQsWLNIMxbSa"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -688,
+          -240
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "554bf7ea-7f6e-4c48-a0a0-ab2cba20092d",
+        "name": "Wait for llm_config",
+        "parameters": {
+          "chooseBranchMode": "waitForAll",
+          "mode": "chooseBranch",
+          "numberInputs": 2,
+          "output": "specifiedInput",
+          "useDataOfInput": "2"
+        },
+        "position": [
+          -480,
+          -64
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-07-19T16:29:31.000Z",
-    "versionId": "6ed68c82-7b9a-4d84-9672-342c0ad81daa",
+    "updatedAt": "2026-08-12T08:01:48.603Z",
+    "versionId": "f21e0d06-31c4-4bc3-aae1-c69b04313365",
     "workflowId": "go4FNonP2GmrCEHc"
   },
   "connections": {
@@ -520,6 +585,17 @@
           {
             "index": 0,
             "node": "Split Out",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup llm_config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait for llm_config",
             "type": "main"
           }
         ]
@@ -607,12 +683,28 @@
         ]
       ]
     },
-    "When Executed by Another Workflow": {
+    "Wait for llm_config": {
       "main": [
         [
           {
             "index": 0,
             "node": "Read URL content",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup llm_config",
+            "type": "main"
+          },
+          {
+            "index": 1,
+            "node": "Wait for llm_config",
             "type": "main"
           }
         ]
@@ -640,8 +732,8 @@
         "url": "={{ $json.url }}"
       },
       "position": [
-        -464,
-        -64
+        -432,
+        -16
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.jinaAi",
@@ -657,7 +749,7 @@
       "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
       "name": "OpenRouter Chat Model",
       "parameters": {
-        "model": "google/gemini-2.5-flash-lite",
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_extractor').json.model }}",
         "options": {}
       },
       "position": [
@@ -782,7 +874,7 @@
       "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
       "name": "OpenRouter Chat Model2",
       "parameters": {
-        "model": "x-ai/grok-4.1-fast",
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_classifier').json.model }}",
         "options": {}
       },
       "position": [
@@ -852,8 +944,8 @@
         "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
       },
       "position": [
-        -688,
-        -64
+        -992,
+        0
       ],
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1
@@ -951,10 +1043,46 @@
       ],
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3
+    },
+    {
+      "id": "c802952d-5faa-489b-9ca3-e4b09b6ef12c",
+      "name": "Lookup llm_config",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "llm_config",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+          "mode": "list",
+          "value": "i6zVgQsWLNIMxbSa"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -800,
+        -240
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "554bf7ea-7f6e-4c48-a0a0-ab2cba20092d",
+      "name": "Wait for llm_config",
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": "2"
+      },
+      "position": [
+        -608,
+        -16
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
     }
   ],
   "settings": {
     "availableInMCP": true,
+    "binaryMode": "separate",
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "zTMJFr8EYWX9glAC",
     "executionOrder": "v1",
