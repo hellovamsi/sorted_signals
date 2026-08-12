@@ -378,9 +378,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-09T10:24:11.807Z",
+    "createdAt": "2026-08-09T21:57:03.548Z",
     "description": "",
-    "name": "Version 7d4f1441",
+    "name": "Version b59feda7",
     "nodeGroups": [],
     "nodes": [
       {
@@ -1117,8 +1117,8 @@
         "typeVersion": 2.3
       }
     ],
-    "updatedAt": "2026-08-09T10:24:16.000Z",
-    "versionId": "7d4f1441-6ffa-4c48-80d9-798bf70f60ff",
+    "updatedAt": "2026-08-12T06:23:28.000Z",
+    "versionId": "b59feda7-65aa-4407-83dc-cabdcf29d2ab",
     "workflowId": "qbjCpsc1xuN49iX1"
   },
   "connections": {
