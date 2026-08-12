@@ -2,7 +2,7 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": false,
+    "autosaved": true,
     "connections": {
       "Basic LLM Chain2": {
         "main": [
@@ -62,12 +62,45 @@
           ]
         ]
       },
+      "Lookup llm_config": {
+        "main": [
+          [
+            {
+              "index": 2,
+              "node": "Merge",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup text_classifier": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Merge",
+              "type": "main"
+            }
+          ]
+        ]
+      },
       "Map RSS fields": {
         "main": [
           [
             {
               "index": 0,
               "node": "Remove Duplicates",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "RSS Read1",
               "type": "main"
             }
           ]
@@ -155,14 +188,24 @@
           [
             {
               "index": 0,
-              "node": "RSS Read1",
+              "node": "Lookup llm_config",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup text_classifier",
+              "type": "main"
+            },
+            {
+              "index": 1,
+              "node": "Merge",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-11T20:16:53.995Z",
+    "createdAt": "2026-08-12T08:01:48.168Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -223,8 +266,8 @@
           "jsonExample": "{\n  \"publicationName\":\"BBC\",\n\"rssURL\":\"https://feeds.bbci.co.uk/news/rss.xml\",\n  \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n  \"contentURLFieldName\":\"link\",\n  \"contentIdFieldName\":\"dwsyn:contentID\",\n  \"titleFieldName\":\"title\",\n  \"descriptionFieldName\":\"content\",\n  \"snippetFieldName\":\"contentSnippet\",\n  \"pubDateFieldName\":\"pubDate\",\n  \"imageURLFieldName\":\"media:thumbnail.url\"\n}"
         },
         "position": [
-          -736,
-          -816
+          -1488,
+          -800
         ],
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1
@@ -290,7 +333,7 @@
             "fieldValues": [
               {
                 "fieldId": "ai_or_no",
-                "fieldValue": "1"
+                "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_yes }}"
               }
             ]
           },
@@ -363,7 +406,7 @@
         "id": "cad68999-4167-42a2-a76a-978f4fe33800",
         "name": "OpenRouter Chat Model2",
         "parameters": {
-          "model": "deepseek/deepseek-v4-flash",
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_summarizer').json.model }}",
           "options": {}
         },
         "position": [
@@ -403,7 +446,7 @@
         "id": "2847e84e-88d5-49dc-ac62-a59bef64861e",
         "name": "OpenRouter Chat Model3",
         "parameters": {
-          "model": "deepseek/deepseek-v4-flash",
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_ai_gate').json.model }}",
           "options": {}
         },
         "position": [
@@ -434,8 +477,8 @@
           "inputText": "=<title>{{ $json.title }}</title\n<description>{{ $json.description }}</description>\n<snippet>{{ $json.snippet }}</snippet>",
           "options": {
             "batching": {
-              "batchSize": 5,
-              "delayBetweenBatches": 200
+              "batchSize": "={{ $('Lookup text_classifier').first().json.batch_size }}",
+              "delayBetweenBatches": "={{ $('Lookup text_classifier').first().json.delay_ms }}"
             },
             "multiClass": true
           }
@@ -461,7 +504,7 @@
             "fieldValues": [
               {
                 "fieldId": "ai_or_no",
-                "fieldValue": "-1"
+                "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_no }}"
               }
             ]
           },
@@ -545,7 +588,7 @@
             "fieldValues": [
               {
                 "fieldId": "ai_or_no",
-                "fieldValue": "0"
+                "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_unsure }}"
               }
             ]
           },
@@ -626,8 +669,6 @@
               }
             ]
           },
-          "includeOtherFields": false,
-          "mode": "manual",
           "options": {}
         },
         "position": [
@@ -636,10 +677,91 @@
         ],
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4
+      },
+      {
+        "id": "2033384c-4652-4560-816a-e6ef761c67e3",
+        "name": "Lookup llm_config",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "llm_config",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+            "mode": "list",
+            "value": "i6zVgQsWLNIMxbSa"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -1184,
+          -656
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "5a027664-84e7-48e3-9f58-0cc5a4593db7",
+        "name": "Lookup text_classifier",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "text_classifier",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/Ticsjg5mySBskQ0y",
+            "mode": "list",
+            "value": "Ticsjg5mySBskQ0y"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "pipeline",
+                "keyValue": "standard_rss"
+              }
+            ]
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -1184,
+          -960
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "466f491f-6e35-47bd-89e9-65d6cdd44b99",
+        "name": "Merge",
+        "parameters": {
+          "mode": "chooseBranch",
+          "numberInputs": 3,
+          "useDataOfInput": 2
+        },
+        "position": [
+          -704,
+          -832
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "b3c04ea7-b3fd-4e26-9a2c-5f996eafb0b6",
+        "name": "Note: config Lookups + Merge",
+        "parameters": {
+          "color": 5,
+          "content": "## Config Lookups + Merge\n\nThese Lookups load AI settings from tables.\n\nThey feed into **Merge**, which waits for them, then continues with the **trigger** data (feed URL, cutoff, field names) — not the table rows.\n\nThat’s why Merge is set to **choose branch → use the trigger input**. Default “append” would shove table rows into RSS Read and break the URL.\n\nLater AI nodes read the Lookups **by name**. That only works because the Lookups ran on this path (Merge waited).\n\nClassifier **label names** stay typed on the Filter node so the three outputs stay readable. Batch size / delays / AI flags still come from `text_classifier`.",
+          "height": 440,
+          "width": 440
+        },
+        "position": [
+          -1120,
+          -1408
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
       }
     ],
-    "updatedAt": "2026-08-11T20:16:53.995Z",
-    "versionId": "cde8494b-195e-4ea1-afbc-7b50abf153bc",
+    "updatedAt": "2026-08-12T08:01:48.168Z",
+    "versionId": "73a24040-ec80-4d37-a103-d9f5ee97aaa5",
     "workflowId": "X5drlaLIiyY5VOYf"
   },
   "connections": {
@@ -701,12 +823,45 @@
         ]
       ]
     },
+    "Lookup llm_config": {
+      "main": [
+        [
+          {
+            "index": 2,
+            "node": "Merge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup text_classifier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Merge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "Map RSS fields": {
       "main": [
         [
           {
             "index": 0,
             "node": "Remove Duplicates",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "RSS Read1",
             "type": "main"
           }
         ]
@@ -794,7 +949,17 @@
         [
           {
             "index": 0,
-            "node": "RSS Read1",
+            "node": "Lookup llm_config",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup text_classifier",
+            "type": "main"
+          },
+          {
+            "index": 1,
+            "node": "Merge",
             "type": "main"
           }
         ]
@@ -862,8 +1027,8 @@
         "jsonExample": "{\n  \"publicationName\":\"BBC\",\n\"rssURL\":\"https://feeds.bbci.co.uk/news/rss.xml\",\n  \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n  \"contentURLFieldName\":\"link\",\n  \"contentIdFieldName\":\"dwsyn:contentID\",\n  \"titleFieldName\":\"title\",\n  \"descriptionFieldName\":\"content\",\n  \"snippetFieldName\":\"contentSnippet\",\n  \"pubDateFieldName\":\"pubDate\",\n  \"imageURLFieldName\":\"media:thumbnail.url\"\n}"
       },
       "position": [
-        -736,
-        -816
+        -1488,
+        -800
       ],
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1
@@ -929,7 +1094,7 @@
           "fieldValues": [
             {
               "fieldId": "ai_or_no",
-              "fieldValue": "1"
+              "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_yes }}"
             }
           ]
         },
@@ -1002,7 +1167,7 @@
       "id": "cad68999-4167-42a2-a76a-978f4fe33800",
       "name": "OpenRouter Chat Model2",
       "parameters": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_summarizer').json.model }}",
         "options": {}
       },
       "position": [
@@ -1042,7 +1207,7 @@
       "id": "2847e84e-88d5-49dc-ac62-a59bef64861e",
       "name": "OpenRouter Chat Model3",
       "parameters": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_ai_gate').json.model }}",
         "options": {}
       },
       "position": [
@@ -1073,8 +1238,8 @@
         "inputText": "=<title>{{ $json.title }}</title\n<description>{{ $json.description }}</description>\n<snippet>{{ $json.snippet }}</snippet>",
         "options": {
           "batching": {
-            "batchSize": 5,
-            "delayBetweenBatches": 200
+            "batchSize": "={{ $('Lookup text_classifier').first().json.batch_size }}",
+            "delayBetweenBatches": "={{ $('Lookup text_classifier').first().json.delay_ms }}"
           },
           "multiClass": true
         }
@@ -1100,7 +1265,7 @@
           "fieldValues": [
             {
               "fieldId": "ai_or_no",
-              "fieldValue": "-1"
+              "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_no }}"
             }
           ]
         },
@@ -1184,7 +1349,7 @@
           "fieldValues": [
             {
               "fieldId": "ai_or_no",
-              "fieldValue": "0"
+              "fieldValue": "={{ $('Lookup text_classifier').first().json.ai_flag_unsure }}"
             }
           ]
         },
@@ -1265,8 +1430,6 @@
             }
           ]
         },
-        "includeOtherFields": false,
-        "mode": "manual",
         "options": {}
       },
       "position": [
@@ -1275,6 +1438,87 @@
       ],
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4
+    },
+    {
+      "id": "2033384c-4652-4560-816a-e6ef761c67e3",
+      "name": "Lookup llm_config",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "llm_config",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+          "mode": "list",
+          "value": "i6zVgQsWLNIMxbSa"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -1184,
+        -656
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "5a027664-84e7-48e3-9f58-0cc5a4593db7",
+      "name": "Lookup text_classifier",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "text_classifier",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/Ticsjg5mySBskQ0y",
+          "mode": "list",
+          "value": "Ticsjg5mySBskQ0y"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "pipeline",
+              "keyValue": "standard_rss"
+            }
+          ]
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -1184,
+        -960
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "466f491f-6e35-47bd-89e9-65d6cdd44b99",
+      "name": "Merge",
+      "parameters": {
+        "mode": "chooseBranch",
+        "numberInputs": 3,
+        "useDataOfInput": 2
+      },
+      "position": [
+        -704,
+        -832
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "b3c04ea7-b3fd-4e26-9a2c-5f996eafb0b6",
+      "name": "Note: config Lookups + Merge",
+      "parameters": {
+        "color": 5,
+        "content": "## Config Lookups + Merge\n\nThese Lookups load AI settings from tables.\n\nThey feed into **Merge**, which waits for them, then continues with the **trigger** data (feed URL, cutoff, field names) — not the table rows.\n\nThat’s why Merge is set to **choose branch → use the trigger input**. Default “append” would shove table rows into RSS Read and break the URL.\n\nLater AI nodes read the Lookups **by name**. That only works because the Lookups ran on this path (Merge waited).\n\nClassifier **label names** stay typed on the Filter node so the three outputs stay readable. Batch size / delays / AI flags still come from `text_classifier`.",
+        "height": 440,
+        "width": 440
+      },
+      "position": [
+        -1120,
+        -1408
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
     }
   ],
   "settings": {
