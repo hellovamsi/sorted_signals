@@ -130,7 +130,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-12T12:35:17.193Z",
+    "createdAt": "2026-08-14T15:38:39.892Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -142,7 +142,7 @@
           "rule": {
             "interval": [
               {
-                "expression": "0 0 * * SUN",
+                "expression": "0 1 * * SUN",
                 "field": "cronExpression"
               }
             ]
@@ -396,7 +396,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -436,7 +436,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -476,7 +476,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -510,8 +510,8 @@
         "typeVersion": 1.3
       }
     ],
-    "updatedAt": "2026-08-12T12:35:17.193Z",
-    "versionId": "005b6974-4654-465b-a162-d6ac78517c76",
+    "updatedAt": "2026-08-14T15:38:39.892Z",
+    "versionId": "8fe7ebab-bb75-4e51-b4ee-1d6ebd4ff9da",
     "workflowId": "rzmkSSHMbbThfLWV"
   },
   "connections": {
@@ -653,7 +653,7 @@
         "rule": {
           "interval": [
             {
-              "expression": "0 0 * * SUN",
+              "expression": "0 1 * * SUN",
               "field": "cronExpression"
             }
           ]
@@ -907,7 +907,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
@@ -947,7 +947,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
@@ -987,7 +987,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
