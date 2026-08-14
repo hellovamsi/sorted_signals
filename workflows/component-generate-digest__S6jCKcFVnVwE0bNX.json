@@ -4,17 +4,6 @@
     "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Aggregate": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Article Writer",
-              "type": "main"
-            }
-          ]
-        ]
-      },
       "Article Writer": {
         "main": [
           [
@@ -124,7 +113,7 @@
           [
             {
               "index": 0,
-              "node": "Aggregate",
+              "node": "Article Writer",
               "type": "main"
             }
           ]
@@ -174,16 +163,6 @@
           ]
         ]
       },
-      "Send a message": {
-        "main": [
-          []
-        ]
-      },
-      "Send a text message": {
-        "main": [
-          []
-        ]
-      },
       "Wait for config lookups": {
         "main": [
           [
@@ -222,7 +201,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-12T08:02:35.591Z",
+    "createdAt": "2026-08-14T15:07:08.892Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -234,6 +213,7 @@
             "name": "Supabase account"
           }
         },
+        "executeOnce": true,
         "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
         "name": "Get many rows",
         "parameters": {
@@ -333,6 +313,7 @@
         "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
         "name": "Extract from File",
         "parameters": {
+          "destinationKey": "articles",
           "operation": "text",
           "options": {}
         },
@@ -398,6 +379,7 @@
         "typeVersion": 1.1
       },
       {
+        "executeOnce": true,
         "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
         "name": "Read/Write Files from Disk2",
         "parameters": {
@@ -415,6 +397,7 @@
         "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
         "name": "Extract from File1",
         "parameters": {
+          "destinationKey": "prompt",
           "operation": "text",
           "options": {}
         },
@@ -431,7 +414,7 @@
         "parameters": {
           "batching": {},
           "promptType": "define",
-          "text": "={{ $json.data[0] }}\n\n## JSON Data\n{{ $json.data[1] }}"
+          "text": "={{ $json.prompt }}\n\n## JSON Data\n{{ $json.articles }}"
         },
         "position": [
           1584,
@@ -443,33 +426,20 @@
       {
         "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
         "name": "Merge",
-        "parameters": {},
+        "parameters": {
+          "combineBy": "combineByPosition",
+          "mode": "combine",
+          "numberInputs": 2,
+          "options": {
+            "includeUnpaired": false
+          }
+        },
         "position": [
           1136,
           -1104
         ],
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2
-      },
-      {
-        "id": "a2af3a28-b192-407b-8655-2ffcacf7191e",
-        "name": "Aggregate",
-        "parameters": {
-          "fieldsToAggregate": {
-            "fieldToAggregate": [
-              {
-                "fieldToAggregate": "data"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "position": [
-          1360,
-          -1104
-        ],
-        "type": "n8n-nodes-base.aggregate",
-        "typeVersion": 1
       },
       {
         "credentials": {
@@ -571,22 +541,11 @@
         "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-08-12T08:02:35.591Z",
-    "versionId": "dcefff03-cad5-41ce-81bb-3ddb843a31d3",
+    "updatedAt": "2026-08-14T15:07:08.892Z",
+    "versionId": "b92a5eb5-aa35-452f-a6fc-7e548ad24210",
     "workflowId": "S6jCKcFVnVwE0bNX"
   },
   "connections": {
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Article Writer",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Article Writer": {
       "main": [
         [
@@ -696,7 +655,7 @@
         [
           {
             "index": 0,
-            "node": "Aggregate",
+            "node": "Article Writer",
             "type": "main"
           }
         ]
@@ -744,16 +703,6 @@
             "type": "main"
           }
         ]
-      ]
-    },
-    "Send a message": {
-      "main": [
-        []
-      ]
-    },
-    "Send a text message": {
-      "main": [
-        []
       ]
     },
     "Wait for config lookups": {
@@ -806,6 +755,7 @@
           "name": "Supabase account"
         }
       },
+      "executeOnce": true,
       "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
       "name": "Get many rows",
       "parameters": {
@@ -905,6 +855,7 @@
       "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
       "name": "Extract from File",
       "parameters": {
+        "destinationKey": "articles",
         "operation": "text",
         "options": {}
       },
@@ -970,6 +921,7 @@
       "typeVersion": 1.1
     },
     {
+      "executeOnce": true,
       "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
       "name": "Read/Write Files from Disk2",
       "parameters": {
@@ -987,6 +939,7 @@
       "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
       "name": "Extract from File1",
       "parameters": {
+        "destinationKey": "prompt",
         "operation": "text",
         "options": {}
       },
@@ -1003,7 +956,7 @@
       "parameters": {
         "batching": {},
         "promptType": "define",
-        "text": "={{ $json.data[0] }}\n\n## JSON Data\n{{ $json.data[1] }}"
+        "text": "={{ $json.prompt }}\n\n## JSON Data\n{{ $json.articles }}"
       },
       "position": [
         1584,
@@ -1015,33 +968,20 @@
     {
       "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
       "name": "Merge",
-      "parameters": {},
+      "parameters": {
+        "combineBy": "combineByPosition",
+        "mode": "combine",
+        "numberInputs": 2,
+        "options": {
+          "includeUnpaired": false
+        }
+      },
       "position": [
         1136,
         -1104
       ],
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2
-    },
-    {
-      "id": "a2af3a28-b192-407b-8655-2ffcacf7191e",
-      "name": "Aggregate",
-      "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "data"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "position": [
-        1360,
-        -1104
-      ],
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1
     },
     {
       "credentials": {
