@@ -37,7 +37,7 @@
           ]
         ]
       },
-      "Everyday at Midnight UTC": {
+      "Everyday at 00:30 UTC": {
         "main": [
           [
             {
@@ -69,6 +69,11 @@
             {
               "index": 0,
               "node": "Lookup mainstream rss_sources",
+              "type": "main"
+            },
+            {
+              "index": 3,
+              "node": "Merge1",
               "type": "main"
             }
           ]
@@ -130,18 +135,23 @@
         ]
       }
     },
-    "createdAt": "2026-08-12T12:39:53.115Z",
+    "createdAt": "2026-08-14T15:38:37.719Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
     "nodes": [
       {
         "id": "5fcc0b82-59ec-4c20-854e-75d71371ec3f",
-        "name": "Everyday at Midnight UTC",
+        "name": "Everyday at 00:30 UTC",
         "parameters": {
           "rule": {
             "interval": [
-              {}
+              {
+                "daysInterval": 1,
+                "field": "days",
+                "triggerAtHour": 0,
+                "triggerAtMinute": 30
+              }
             ]
           }
         },
@@ -178,9 +188,11 @@
         "id": "19b25ecb-a164-4bc1-a93a-cc6407eaf5ea",
         "name": "Merge1",
         "parameters": {
+          "chooseBranchMode": "waitForAll",
           "mode": "chooseBranch",
-          "numberInputs": 3,
-          "useDataOfInput": "2"
+          "numberInputs": 4,
+          "output": "specifiedInput",
+          "useDataOfInput": "4"
         },
         "position": [
           32,
@@ -213,6 +225,7 @@
         "typeVersion": 3.4
       },
       {
+        "executeOnce": true,
         "id": "28f24a22-24ea-4051-8570-b7506e606d15",
         "name": "Call 'component : generate digest'",
         "parameters": {
@@ -392,7 +405,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -432,7 +445,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -472,7 +485,7 @@
         "parameters": {
           "mode": "each",
           "options": {
-            "waitForSubWorkflow": false
+            "waitForSubWorkflow": true
           },
           "workflowId": {
             "__rl": true,
@@ -506,8 +519,8 @@
         "typeVersion": 1.3
       }
     ],
-    "updatedAt": "2026-08-12T12:39:53.115Z",
-    "versionId": "153b6cd7-2f05-42cb-a669-7e4ab06761b2",
+    "updatedAt": "2026-08-14T15:38:37.719Z",
+    "versionId": "52501624-4e12-4822-a92b-9d416d0fa69d",
     "workflowId": "SoIEMUBKJPynE2jV"
   },
   "connections": {
@@ -544,7 +557,7 @@
         ]
       ]
     },
-    "Everyday at Midnight UTC": {
+    "Everyday at 00:30 UTC": {
       "main": [
         [
           {
@@ -576,6 +589,11 @@
           {
             "index": 0,
             "node": "Lookup mainstream rss_sources",
+            "type": "main"
+          },
+          {
+            "index": 3,
+            "node": "Merge1",
             "type": "main"
           }
         ]
@@ -644,11 +662,16 @@
   "nodes": [
     {
       "id": "5fcc0b82-59ec-4c20-854e-75d71371ec3f",
-      "name": "Everyday at Midnight UTC",
+      "name": "Everyday at 00:30 UTC",
       "parameters": {
         "rule": {
           "interval": [
-            {}
+            {
+              "daysInterval": 1,
+              "field": "days",
+              "triggerAtHour": 0,
+              "triggerAtMinute": 30
+            }
           ]
         }
       },
@@ -685,9 +708,11 @@
       "id": "19b25ecb-a164-4bc1-a93a-cc6407eaf5ea",
       "name": "Merge1",
       "parameters": {
+        "chooseBranchMode": "waitForAll",
         "mode": "chooseBranch",
-        "numberInputs": 3,
-        "useDataOfInput": "2"
+        "numberInputs": 4,
+        "output": "specifiedInput",
+        "useDataOfInput": "4"
       },
       "position": [
         32,
@@ -720,6 +745,7 @@
       "typeVersion": 3.4
     },
     {
+      "executeOnce": true,
       "id": "28f24a22-24ea-4051-8570-b7506e606d15",
       "name": "Call 'component : generate digest'",
       "parameters": {
@@ -899,7 +925,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
@@ -939,7 +965,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
@@ -979,7 +1005,7 @@
       "parameters": {
         "mode": "each",
         "options": {
-          "waitForSubWorkflow": false
+          "waitForSubWorkflow": true
         },
         "workflowId": {
           "__rl": true,
