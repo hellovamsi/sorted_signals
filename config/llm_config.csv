@@ -1,0 +1,7 @@
+purpose,provider,model,temperature,response_format,notes
+rss_ai_gate,openrouter,deepseek/deepseek-v4-flash,,,Text Classifier model in fetch standard rss
+rss_summarizer,openrouter,deepseek/deepseek-v4-flash,,,Summarize + taxonomy classify in fetch standard rss
+scrape_extractor,openrouter,google/gemini-2.5-flash-lite,,,LLM Scraper listing extract in scrape page
+scrape_classifier,openrouter,x-ai/grok-4.1-fast,,,Categories and Summary in scrape page
+article_writer,openrouter,deepseek/deepseek-v4-flash,0.8,text,generate article writer
+digest_writer,openrouter,deepseek/deepseek-v4-flash,0.8,text,generate digest writer

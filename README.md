@@ -2,11 +2,15 @@
 
 n8n workflows for an AI news digest and newsletter pipeline.
 
-This repo is a **skeleton**, not a finished newsletter. You get the workflow structure (12 workflows and sub-workflows in `sortedsignals.json`). You bring your own scraping targets and your own prompts so the output matches *your* taste, not mine.
+This repo is a **skeleton**, not a finished newsletter. You get the workflow JSON plus starter table seeds and writer prompts. Swap the feeds and prompts so the output matches *your* taste, not mine.
 
 ## What’s included
 
-[`sortedsignals.json`](./sortedsignals.json) — a single JSON export from a Docker-hosted n8n instance (12 workflows). Pipeline shape: scrape → digest → article → notify/error handling.
+| Folder | What it is |
+|--------|------------|
+| [`workflows/`](./workflows) | One JSON file per n8n workflow (daily backup from the live instance) |
+| [`config/`](./config) | Data-table seeds for a fresh install. Telegram/email fields are **placeholders** (`YOUR_TELEGRAM_CHAT_ID`, `you@example.com`) |
+| [`prompts/`](./prompts) | Writer prompts for Generate Article and Daily Digest. Copy these onto the n8n host (paths in `global_variables`) |
 
 | Role | Workflow |
 |------|----------|
@@ -25,10 +29,11 @@ This repo is a **skeleton**, not a finished newsletter. You get the workflow str
 
 ## What’s *not* included (on purpose)
 
-- **Content scraping target lists** (RSS feeds, sites, URLs)
-- **AI agent prompts**
+- Live Telegram chat IDs, email addresses, or API keys
+- Personalized / account-tied feed URLs
+- Data-table row dumps from production
 
-You’ll need to add both. That’s intentional: shared sources and shared prompts produce the same digest everyone else has. Your list + your prompts = unique results suited to what you actually care about.
+Starter RSS/scrape lists and prompts **are** in `config/` and `prompts/`. Replace them if you want a digest that is not a clone of this one.
 
 ## Prerequisites
 
@@ -86,4 +91,4 @@ Example prompt:
 
 Built and shared in the open as a learning project. Forks, issues, and suggestions welcome. No monetization.
 
-Proper per-workflow GitHub sync is on the roadmap; for now `sortedsignals.json` is the source of truth.
+Workflow JSON under `workflows/` is the import source for `master : setup`. `config/` and `prompts/` are seeds; they are not rewritten by the nightly workflow backup.

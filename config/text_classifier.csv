@@ -1,0 +1,2 @@
+pipeline,categories_json,batch_size,delay_ms,ai_flag_yes,ai_flag_no,ai_flag_unsure,notes
+standard_rss,"[""AI Related"",""Not AI Related"",""Unsure AI or Not""]",5,200,1,-1,0,fetch standard rss AI gate

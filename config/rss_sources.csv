@@ -1,0 +1,14 @@
+publication_name,rss_url,enabled,category,content_url_field,content_id_field,title_field,description_field,snippet_field,pub_date_field,image_url_field,wait_for_subworkflow,sort_order
+The Economist,https://www.economist.com/science-and-technology/rss.xml,true,mainstream,link,content,title,contentSnippet,,pubDate,,false,1
+BBC News,http://feeds.bbci.co.uk/news/technology/rss.xml,true,mainstream,link,guid._,title,,contentSnippet,pubDate,,false,2
+Washington Post,https://feeds.washingtonpost.com/rss/business/technology,true,mainstream,link,content,title,,contentSnippet,pubDate,,false,3
+Fast Company,https://www.fastcompany.com/section/artificial-intelligence/rss,true,mainstream,link,content,title,,contentSnippet,pubDate,,false,4
+France24,https://www.france24.com/en/tag/artificial-intelligence/rss,true,mainstream,link,content,title,,contentSnippet,pubDate,,true,5
+LiveMint,https://www.livemint.com/rss/AI,true,mainstream,link,content,title,,contentSnippet,pubDate,,false,6
+The Guardian,https://www.theguardian.com/technology/artificialintelligenceai/rss,true,mainstream,link,content,title,,contentSnippet,pubDate,,true,7
+MIT Technology Review,https://www.technologyreview.com/topic/artificial-intelligence/feed,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,false,8
+Crunchbase,https://news.crunchbase.com/sections/ai/feed/,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,false,9
+Ars Technica,https://arstechnica.com/ai/feed/,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,true,10
+TechCrunch,https://techcrunch.com/category/artificial-intelligence/feed/,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,false,11
+Wired,https://www.wired.com/feed/tag/ai/latest/rss,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,false,12
+Microsoft News,https://news.microsoft.com/source/topics/ai/feed/,true,non_mainstream,link,content,title,,contentSnippet,pubDate,,true,13
