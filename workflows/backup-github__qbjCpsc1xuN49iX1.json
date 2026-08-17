@@ -2,78 +2,20 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": false,
+    "autosaved": true,
     "connections": {
       "Attach export config": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Loop Over Items",
+              "node": "Loop over workflows",
               "type": "main"
             }
           ]
         ]
       },
-      "Check Status": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Same file - Do nothing",
-              "type": "main"
-            }
-          ],
-          [
-            {
-              "index": 0,
-              "node": "File is different",
-              "type": "main"
-            }
-          ],
-          [
-            {
-              "index": 0,
-              "node": "File is new",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Create new file": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Return",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Delete orphan file": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Tally orphan deleted",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Edit existing file": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Return",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Execute Workflow": {
+      "Backup one workflow": {
         "main": [
           [
             {
@@ -91,17 +33,67 @@
           ]
         ]
       },
-      "Execute Workflow Trigger": {
+      "Check GitHub config": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Resolve backup path",
+              "node": "GitHub backup configured?",
               "type": "main"
-            },
+            }
+          ]
+        ]
+      },
+      "Create new file": {
+        "main": [
+          [
             {
-              "index": 1,
-              "node": "Merge Items",
+              "index": 0,
+              "node": "Return github status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Daily at 01:33": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Delete orphan file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Tally orphan deleted",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Download large file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Merge GitHub file with workflow",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Edit existing file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Return github status",
               "type": "main"
             }
           ]
@@ -129,17 +121,6 @@
           ]
         ]
       },
-      "Filter": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Attach export config",
-              "type": "main"
-            }
-          ]
-        ]
-      },
       "Find orphans": {
         "main": [
           [
@@ -151,23 +132,30 @@
           ]
         ]
       },
-      "Get File": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Merge Items",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Get file data": {
+      "Get GitHub file": {
         "main": [
           [
             {
               "index": 0,
               "node": "If file too large",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "GitHub backup configured?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Reset backup counts",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Send backup skipped",
               "type": "main"
             }
           ]
@@ -196,14 +184,36 @@
           [
             {
               "index": 0,
-              "node": "Get File",
+              "node": "Download large file",
               "type": "main"
             }
           ],
           [
             {
               "index": 0,
-              "node": "Merge Items",
+              "node": "Merge GitHub file with workflow",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Keep non-archived workflows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Attach export config",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List Sorted_Signals workflows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Keep non-archived workflows",
               "type": "main"
             }
           ]
@@ -225,25 +235,7 @@
           [
             {
               "index": 0,
-              "node": "Reset backup counts",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Loop Over Items": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "List backup files",
-              "type": "main"
-            }
-          ],
-          [
-            {
-              "index": 0,
-              "node": "Execute Workflow",
+              "node": "Check GitHub config",
               "type": "main"
             }
           ]
@@ -267,23 +259,41 @@
           ]
         ]
       },
-      "Merge Items": {
+      "Loop over workflows": {
         "main": [
           [
             {
               "index": 0,
-              "node": "isDiffOrNew",
+              "node": "List backup files",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Backup one workflow",
               "type": "main"
             }
           ]
         ]
       },
-      "On clicking 'execute'": {
+      "Manual start": {
         "main": [
           [
             {
               "index": 0,
               "node": "Lookup global variables",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Merge GitHub file with workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Scrub and compare to GitHub",
               "type": "main"
             }
           ]
@@ -316,7 +326,32 @@
           [
             {
               "index": 0,
-              "node": "Get file data",
+              "node": "Get GitHub file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Route by GitHub status": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Same file - Do nothing",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "File is different",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "File is new",
               "type": "main"
             }
           ]
@@ -327,18 +362,18 @@
           [
             {
               "index": 0,
-              "node": "Return",
+              "node": "Return github status",
               "type": "main"
             }
           ]
         ]
       },
-      "Schedule Trigger": {
+      "Scrub and compare to GitHub": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Lookup global variables",
+              "node": "Route by GitHub status",
               "type": "main"
             }
           ]
@@ -349,7 +384,7 @@
           [
             {
               "index": 0,
-              "node": "Loop Over Items",
+              "node": "Loop over workflows",
               "type": "main"
             }
           ]
@@ -360,7 +395,7 @@
           [
             {
               "index": 0,
-              "node": "n8n",
+              "node": "List Sorted_Signals workflows",
               "type": "main"
             }
           ]
@@ -382,7 +417,7 @@
           [
             {
               "index": 0,
-              "node": "Loop Over Items",
+              "node": "Loop over workflows",
               "type": "main"
             }
           ]
@@ -399,48 +434,42 @@
           ]
         ]
       },
-      "isDiffOrNew": {
+      "When called for one workflow": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Check Status",
+              "node": "Resolve backup path",
               "type": "main"
-            }
-          ]
-        ]
-      },
-      "n8n": {
-        "main": [
-          [
+            },
             {
-              "index": 0,
-              "node": "Filter",
+              "index": 1,
+              "node": "Merge GitHub file with workflow",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-12T11:07:43.389Z",
+    "createdAt": "2026-08-16T13:13:05.536Z",
     "description": "",
-    "name": "Version 0597bef6",
+    "name": "Version cf3d86bd",
     "nodeGroups": [],
     "nodes": [
       {
         "id": "421824c2-59a2-441b-aacc-7dadf2ec153b",
-        "name": "On clicking 'execute'",
+        "name": "Manual start",
         "parameters": {},
         "position": [
-          1104,
-          688
+          1120,
+          80
         ],
         "type": "n8n-nodes-base.manualTrigger",
         "typeVersion": 1
       },
       {
         "id": "c6024a57-1957-4714-84e3-8d326c83cd89",
-        "name": "Sticky Note",
+        "name": "Note: subworkflow",
         "parameters": {
           "color": 6,
           "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nTrigger is **Execute Workflow Trigger v1.2** with Input data mode = **Accept all data** (passthrough).\nCaller is **Execute Workflow v1.3** (same workflow id, mode=each, continue on error output).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
@@ -462,7 +491,7 @@
           }
         },
         "id": "2b1dd138-7872-42ea-9882-8750ef4cf227",
-        "name": "n8n",
+        "name": "List Sorted_Signals workflows",
         "parameters": {
           "filters": {
             "tags": "Sorted_Signals"
@@ -470,15 +499,15 @@
           "requestOptions": {}
         },
         "position": [
-          1888,
-          592
+          1984,
+          320
         ],
         "type": "n8n-nodes-base.n8n",
         "typeVersion": 1
       },
       {
         "id": "96c0c6a7-2a11-441d-8177-e0a18030daf9",
-        "name": "Return",
+        "name": "Return github status",
         "parameters": {
           "assignments": {
             "assignments": [
@@ -492,7 +521,7 @@
                 "id": "a1b2c3d4-status-0001",
                 "name": "github_status",
                 "type": "string",
-                "value": "={{ $('isDiffOrNew').first().json.github_status }}"
+                "value": "={{ $('Scrub and compare to GitHub').first().json.github_status }}"
               }
             ]
           },
@@ -508,7 +537,7 @@
       {
         "id": "6715d1ff-a1f0-4e1a-b96e-f680d1495047",
         "maxTries": 3,
-        "name": "Get File",
+        "name": "Download large file",
         "parameters": {
           "options": {},
           "url": "={{ $json.download_url }}"
@@ -568,7 +597,7 @@
       },
       {
         "id": "e460a2cd-f7af-4551-8ea2-84d9b9e5cb7f",
-        "name": "Merge Items",
+        "name": "Merge GitHub file with workflow",
         "parameters": {},
         "position": [
           2016,
@@ -579,7 +608,7 @@
       },
       {
         "id": "f795180a-66aa-4a86-acb0-96cf8c487db0",
-        "name": "isDiffOrNew",
+        "name": "Scrub and compare to GitHub",
         "parameters": {
           "jsCode": "const deepStable=v=>{if(Array.isArray(v))return v.map(deepStable);if(v&&typeof v===\"object\"){const o={};for(const k of Object.keys(v).sort())o[k]=deepStable(v[k]);return o;}return v;};const VOLATILE=new Set([\"versionId\",\"updatedAt\",\"createdAt\",\"activeVersionId\",\"meta\",\"pinData\",\"staticData\",\"triggerCount\",\"shared\",\"versionCounter\",\"credentials\"]);const scrub=w=>{if(!w||typeof w!==\"object\")return w;const o={};for(const k of Object.keys(w).sort()){if(VOLATILE.has(k))continue;o[k]=deepStable(w[k]);}return o;};const items=$input.all();const g=items[0];const actual=scrub(items[1].json);let orig=null;if(Object.keys(g.json).includes(\"content\")&&g.json.content)orig=JSON.parse(Buffer.from(g.json.content,\"base64\").toString());else if(Object.keys(g.json).includes(\"data\")&&g.json.data)orig=JSON.parse(g.json.data);if(orig){const ordered=scrub(orig);if(JSON.stringify(ordered)===JSON.stringify(actual))g.json.github_status=\"same\";else{g.json.github_status=\"different\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}g.json.content_decoded=ordered;}else{g.json.github_status=\"new\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}return items;"
         },
@@ -592,7 +621,7 @@
       },
       {
         "id": "30e7d6fc-327e-4693-95ce-376a3b1f145c",
-        "name": "Check Status",
+        "name": "Route by GitHub status",
         "parameters": {
           "dataType": "string",
           "rules": {
@@ -668,8 +697,8 @@
               "branch": "main"
             }
           },
-          "commitMessage": "=[Sorted Signals backup] {{ $('Execute Workflow Trigger').first().json.name }} ({{ $('Execute Workflow Trigger').first().json.id }}) — new",
-          "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
+          "commitMessage": "=[Sorted Signals backup] {{ $('When called for one workflow').first().json.name }} ({{ $('When called for one workflow').first().json.id }}) — new",
+          "fileContent": "={{ $('Scrub and compare to GitHub').item.json.n8n_data_stringy }}",
           "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
           "owner": {
             "__rl": true,
@@ -709,8 +738,8 @@
               "branch": "main"
             }
           },
-          "commitMessage": "=[Sorted Signals backup] {{ $('Execute Workflow Trigger').first().json.name }} ({{ $('Execute Workflow Trigger').first().json.id }}) — updated",
-          "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
+          "commitMessage": "=[Sorted Signals backup] {{ $('When called for one workflow').first().json.name }} ({{ $('When called for one workflow').first().json.id }}) — updated",
+          "fileContent": "={{ $('Scrub and compare to GitHub').item.json.n8n_data_stringy }}",
           "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
           "operation": "edit",
           "owner": {
@@ -737,7 +766,7 @@
       },
       {
         "id": "806db72c-c9f6-461d-be1a-1e6867a25382",
-        "name": "Loop Over Items",
+        "name": "Loop over workflows",
         "parameters": {
           "options": {}
         },
@@ -750,7 +779,7 @@
       },
       {
         "id": "e5c433e4-bf56-4a0a-906c-7d74f6fe7287",
-        "name": "Schedule Trigger",
+        "name": "Daily at 01:33",
         "parameters": {
           "rule": {
             "interval": [
@@ -762,18 +791,18 @@
           }
         },
         "position": [
-          1104,
-          848
+          1120,
+          240
         ],
         "type": "n8n-nodes-base.scheduleTrigger",
         "typeVersion": 1.2
       },
       {
         "id": "9e2412f6-df25-4c12-8faf-0200558b537c",
-        "name": "Sticky Note1",
+        "name": "Note: backup to GitHub",
         "parameters": {
           "color": 4,
-          "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
+          "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `backup_gh_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once. If `backup_gh_owner` / `backup_gh_repo` / `backup_gh_path` are blank or placeholders, skip GitHub and send one Telegram error. Else `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
           "height": 900,
           "width": 640
         },
@@ -786,7 +815,7 @@
       },
       {
         "id": "00fdb977-4f3e-49f6-81c3-bc7f9520914f",
-        "name": "Sticky Note2",
+        "name": "Note: main workflow loop",
         "parameters": {
           "color": 7,
           "content": "## Main workflow loop",
@@ -811,7 +840,7 @@
         },
         "id": "e4d70af5-5c21-4340-8054-7ba0203f3ee1",
         "maxTries": 3,
-        "name": "Get file data",
+        "name": "Get GitHub file",
         "onError": "continueRegularOutput",
         "parameters": {
           "additionalParameters": {
@@ -857,8 +886,8 @@
           "returnAll": true
         },
         "position": [
-          1536,
-          848
+          1552,
+          240
         ],
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1
@@ -880,8 +909,8 @@
           "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nStarting Sorted Signals workflow backup.\nExecution: {{ $execution.id }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          1888,
-          336
+          1984,
+          128
         ],
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -905,8 +934,8 @@
           "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow backup completed.\nProcessed: {{ $json.processed }}\nNew: {{ $json.new }} · Updated: {{ $json.updated }} · Unchanged: {{ $json.unchanged }}\nFailed: {{ $json.failed }} · Deleted: {{ $json.deleted }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
-          3376,
-          352
+          3264,
+          224
         ],
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -926,7 +955,7 @@
             "appendAttribution": false
           },
           "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-          "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop Over Items').item.json.id }} ({{ $('Loop Over Items').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+          "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop over workflows').item.json.id }} ({{ $('Loop over workflows').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
         },
         "position": [
           2800,
@@ -940,7 +969,7 @@
         "id": "f7a6354d-8049-46b2-8182-72ef6c49fc2f",
         "name": "Resolve backup path",
         "parameters": {
-          "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
+          "jsCode": "const trig=$('When called for one workflow').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
         },
         "position": [
           1312,
@@ -960,23 +989,23 @@
         "maxTries": 3,
         "name": "List backup files",
         "parameters": {
-          "filePath": "={{ (() => { const p = String($('Lookup global variables').first().json.gh_repo_path ?? '').replace(/^\\/+/, '').replace(/\\/+$/, ''); return p; })() }}",
+          "filePath": "={{ (() => { const p = String($('Lookup global variables').first().json.backup_gh_path ?? '').replace(/^\\/+/, '').replace(/\\/+$/, ''); return p; })() }}",
           "operation": "list",
           "owner": {
             "__rl": true,
             "mode": "name",
-            "value": "={{ $('Lookup global variables').first().json.gh_repo_owner }}"
+            "value": "={{ $('Lookup global variables').first().json.backup_gh_owner }}"
           },
           "repository": {
             "__rl": true,
             "mode": "name",
-            "value": "={{ $('Lookup global variables').first().json.gh_repo_name }}"
+            "value": "={{ $('Lookup global variables').first().json.backup_gh_repo }}"
           },
           "resource": "file"
         },
         "position": [
-          2256,
-          528
+          2480,
+          400
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.github",
@@ -988,11 +1017,11 @@
         "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
         "name": "Find orphans",
         "parameters": {
-          "jsCode": "const files=$input.all();\nconst ids=new Set($('Filter').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;"
+          "jsCode": "const files=$input.all();\nconst ids=new Set($('Keep non-archived workflows').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;"
         },
         "position": [
-          2624,
-          528
+          2672,
+          400
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
@@ -1004,8 +1033,8 @@
           "options": {}
         },
         "position": [
-          3376,
-          512
+          3264,
+          384
         ],
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3
@@ -1033,18 +1062,18 @@
           "owner": {
             "__rl": true,
             "mode": "name",
-            "value": "={{ $('Lookup global variables').first().json.gh_repo_owner }}"
+            "value": "={{ $('Lookup global variables').first().json.backup_gh_owner }}"
           },
           "repository": {
             "__rl": true,
             "mode": "name",
-            "value": "={{ $('Lookup global variables').first().json.gh_repo_name }}"
+            "value": "={{ $('Lookup global variables').first().json.backup_gh_repo }}"
           },
           "resource": "file"
         },
         "position": [
-          3648,
-          528
+          3536,
+          400
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.github",
@@ -1080,15 +1109,15 @@
           "options": {}
         },
         "position": [
-          3040,
-          528
+          2928,
+          400
         ],
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2
       },
       {
         "id": "323c1e69-2b6e-4340-ba47-f29251c62d49",
-        "name": "Filter",
+        "name": "Keep non-archived workflows",
         "parameters": {
           "conditions": {
             "combinator": "and",
@@ -1113,8 +1142,8 @@
           "options": {}
         },
         "position": [
-          1888,
-          864
+          1984,
+          512
         ],
         "type": "n8n-nodes-base.filter",
         "typeVersion": 2.3
@@ -1126,8 +1155,8 @@
           "jsCode": "const s=$getWorkflowStaticData('global');\ns.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn $input.all().map(i=>({json:i.json}));"
         },
         "position": [
-          1552,
-          336
+          1968,
+          -64
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
@@ -1136,11 +1165,11 @@
         "id": "5bff9395-816c-4655-8744-eaff5d68863b",
         "name": "Attach export config",
         "parameters": {
-          "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.gh_repo_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.gh_repo_owner,repo_name:gv.gh_repo_name,repo_path,repo_branch:'main'}}));"
+          "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.backup_gh_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.backup_gh_owner,repo_name:gv.backup_gh_repo,repo_path,repo_branch:'main'}}));"
         },
         "position": [
-          1904,
-          1120
+          1984,
+          704
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
@@ -1178,8 +1207,8 @@
           "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst items=$input.all();\ns.backupCounts.deleted+=items.length;\nreturn items.map(i=>({json:{...i.json,tallied:true}}));"
         },
         "position": [
-          3872,
-          528
+          3760,
+          400
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
@@ -1191,15 +1220,15 @@
           "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.backupCounts||{processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn [{json:{...c}}];"
         },
         "position": [
-          3040,
-          352
+          2928,
+          224
         ],
         "type": "n8n-nodes-base.code",
         "typeVersion": 2
       },
       {
         "id": "78b92fb1-4498-410a-92c8-cdac305b563c",
-        "name": "Execute Workflow Trigger",
+        "name": "When called for one workflow",
         "parameters": {
           "inputSource": "passthrough"
         },
@@ -1212,14 +1241,13 @@
       },
       {
         "id": "85dfd5f0-0ea5-47d6-9aa8-24c44c0324d5",
-        "name": "Execute Workflow",
+        "name": "Backup one workflow",
         "onError": "continueErrorOutput",
         "parameters": {
           "mode": "each",
           "options": {
             "waitForSubWorkflow": true
           },
-          "source": "database",
           "workflowId": {
             "__rl": true,
             "mode": "id",
@@ -1240,10 +1268,81 @@
         ],
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3
+      },
+      {
+        "id": "25badfff-faa6-4aae-a781-b10557b01c4d",
+        "name": "Check GitHub config",
+        "parameters": {
+          "jsCode": "const gv=$input.first().json;\nconst isSet=(v)=>{const s=String(v??'').trim();if(!s)return false;if(/^YOUR_/i.test(s))return false;return true;};\nconst backup_gh_ready=isSet(gv.backup_gh_owner)&&isSet(gv.backup_gh_repo)&&isSet(gv.backup_gh_path);\nreturn[{json:{...gv,backup_gh_ready}}];"
+        },
+        "position": [
+          1552,
+          -48
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "47da7837-8ec7-43a4-9197-8f880d6c60ad",
+        "name": "GitHub backup configured?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "c0nfig-ready-0001",
+                "leftValue": "={{ $json.backup_gh_ready }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          1728,
+          -48
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "4d7d10f3-058f-412a-89d4-cc1319f65ac0",
+        "name": "Send backup skipped",
+        "parameters": {
+          "additionalFields": {
+            "appendAttribution": false
+          },
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGitHub backup skipped: owner, repo, or folder is not set (backup_gh_owner, backup_gh_repo, backup_gh_path).\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        },
+        "position": [
+          1728,
+          -208
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "a89e5652-0cfa-4572-ae7c-ae6b40196165"
       }
     ],
-    "updatedAt": "2026-08-12T11:08:11.000Z",
-    "versionId": "0597bef6-fe73-423b-aae3-2e7a215aac1b",
+    "updatedAt": "2026-08-16T13:13:23.000Z",
+    "versionId": "cf3d86bd-8d57-4ff3-adbb-e67fae9cdf8a",
     "workflowId": "qbjCpsc1xuN49iX1"
   },
   "connections": {
@@ -1252,71 +1351,13 @@
         [
           {
             "index": 0,
-            "node": "Loop Over Items",
+            "node": "Loop over workflows",
             "type": "main"
           }
         ]
       ]
     },
-    "Check Status": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Same file - Do nothing",
-            "type": "main"
-          }
-        ],
-        [
-          {
-            "index": 0,
-            "node": "File is different",
-            "type": "main"
-          }
-        ],
-        [
-          {
-            "index": 0,
-            "node": "File is new",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Create new file": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Return",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Delete orphan file": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Tally orphan deleted",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Edit existing file": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Return",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Execute Workflow": {
+    "Backup one workflow": {
       "main": [
         [
           {
@@ -1334,17 +1375,67 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
+    "Check GitHub config": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Resolve backup path",
+            "node": "GitHub backup configured?",
             "type": "main"
-          },
+          }
+        ]
+      ]
+    },
+    "Create new file": {
+      "main": [
+        [
           {
-            "index": 1,
-            "node": "Merge Items",
+            "index": 0,
+            "node": "Return github status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Daily at 01:33": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Delete orphan file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Tally orphan deleted",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Download large file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Merge GitHub file with workflow",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Edit existing file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Return github status",
             "type": "main"
           }
         ]
@@ -1372,17 +1463,6 @@
         ]
       ]
     },
-    "Filter": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Attach export config",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Find orphans": {
       "main": [
         [
@@ -1394,23 +1474,30 @@
         ]
       ]
     },
-    "Get File": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Merge Items",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Get file data": {
+    "Get GitHub file": {
       "main": [
         [
           {
             "index": 0,
             "node": "If file too large",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GitHub backup configured?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Reset backup counts",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Send backup skipped",
             "type": "main"
           }
         ]
@@ -1439,14 +1526,36 @@
         [
           {
             "index": 0,
-            "node": "Get File",
+            "node": "Download large file",
             "type": "main"
           }
         ],
         [
           {
             "index": 0,
-            "node": "Merge Items",
+            "node": "Merge GitHub file with workflow",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Keep non-archived workflows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attach export config",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List Sorted_Signals workflows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Keep non-archived workflows",
             "type": "main"
           }
         ]
@@ -1468,25 +1577,7 @@
         [
           {
             "index": 0,
-            "node": "Reset backup counts",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "List backup files",
-            "type": "main"
-          }
-        ],
-        [
-          {
-            "index": 0,
-            "node": "Execute Workflow",
+            "node": "Check GitHub config",
             "type": "main"
           }
         ]
@@ -1510,23 +1601,41 @@
         ]
       ]
     },
-    "Merge Items": {
+    "Loop over workflows": {
       "main": [
         [
           {
             "index": 0,
-            "node": "isDiffOrNew",
+            "node": "List backup files",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Backup one workflow",
             "type": "main"
           }
         ]
       ]
     },
-    "On clicking 'execute'": {
+    "Manual start": {
       "main": [
         [
           {
             "index": 0,
             "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Merge GitHub file with workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Scrub and compare to GitHub",
             "type": "main"
           }
         ]
@@ -1559,7 +1668,32 @@
         [
           {
             "index": 0,
-            "node": "Get file data",
+            "node": "Get GitHub file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Route by GitHub status": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Same file - Do nothing",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "File is different",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "File is new",
             "type": "main"
           }
         ]
@@ -1570,18 +1704,18 @@
         [
           {
             "index": 0,
-            "node": "Return",
+            "node": "Return github status",
             "type": "main"
           }
         ]
       ]
     },
-    "Schedule Trigger": {
+    "Scrub and compare to GitHub": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Lookup global variables",
+            "node": "Route by GitHub status",
             "type": "main"
           }
         ]
@@ -1592,7 +1726,7 @@
         [
           {
             "index": 0,
-            "node": "Loop Over Items",
+            "node": "Loop over workflows",
             "type": "main"
           }
         ]
@@ -1603,7 +1737,7 @@
         [
           {
             "index": 0,
-            "node": "n8n",
+            "node": "List Sorted_Signals workflows",
             "type": "main"
           }
         ]
@@ -1625,7 +1759,7 @@
         [
           {
             "index": 0,
-            "node": "Loop Over Items",
+            "node": "Loop over workflows",
             "type": "main"
           }
         ]
@@ -1642,23 +1776,17 @@
         ]
       ]
     },
-    "isDiffOrNew": {
+    "When called for one workflow": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Check Status",
+            "node": "Resolve backup path",
             "type": "main"
-          }
-        ]
-      ]
-    },
-    "n8n": {
-      "main": [
-        [
+          },
           {
-            "index": 0,
-            "node": "Filter",
+            "index": 1,
+            "node": "Merge GitHub file with workflow",
             "type": "main"
           }
         ]
@@ -1672,18 +1800,18 @@
   "nodes": [
     {
       "id": "421824c2-59a2-441b-aacc-7dadf2ec153b",
-      "name": "On clicking 'execute'",
+      "name": "Manual start",
       "parameters": {},
       "position": [
-        1104,
-        688
+        1120,
+        80
       ],
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1
     },
     {
       "id": "c6024a57-1957-4714-84e3-8d326c83cd89",
-      "name": "Sticky Note",
+      "name": "Note: subworkflow",
       "parameters": {
         "color": 6,
         "content": "## Subworkflow\nReceives one workflow item (already includes repo_* from parent).\n\nTrigger is **Execute Workflow Trigger v1.2** with Input data mode = **Accept all data** (passthrough).\nCaller is **Execute Workflow v1.3** (same workflow id, mode=each, continue on error output).\n\nResolve path → Get file (branch `main`) → large-file HTTP fallback → scrub/compare → create/edit/skip.\n\nReturn `github_status` for parent tallies.",
@@ -1705,7 +1833,7 @@
         }
       },
       "id": "2b1dd138-7872-42ea-9882-8750ef4cf227",
-      "name": "n8n",
+      "name": "List Sorted_Signals workflows",
       "parameters": {
         "filters": {
           "tags": "Sorted_Signals"
@@ -1713,15 +1841,15 @@
         "requestOptions": {}
       },
       "position": [
-        1888,
-        592
+        1984,
+        320
       ],
       "type": "n8n-nodes-base.n8n",
       "typeVersion": 1
     },
     {
       "id": "96c0c6a7-2a11-441d-8177-e0a18030daf9",
-      "name": "Return",
+      "name": "Return github status",
       "parameters": {
         "assignments": {
           "assignments": [
@@ -1735,7 +1863,7 @@
               "id": "a1b2c3d4-status-0001",
               "name": "github_status",
               "type": "string",
-              "value": "={{ $('isDiffOrNew').first().json.github_status }}"
+              "value": "={{ $('Scrub and compare to GitHub').first().json.github_status }}"
             }
           ]
         },
@@ -1751,7 +1879,7 @@
     {
       "id": "6715d1ff-a1f0-4e1a-b96e-f680d1495047",
       "maxTries": 3,
-      "name": "Get File",
+      "name": "Download large file",
       "parameters": {
         "options": {},
         "url": "={{ $json.download_url }}"
@@ -1811,7 +1939,7 @@
     },
     {
       "id": "e460a2cd-f7af-4551-8ea2-84d9b9e5cb7f",
-      "name": "Merge Items",
+      "name": "Merge GitHub file with workflow",
       "parameters": {},
       "position": [
         2016,
@@ -1822,7 +1950,7 @@
     },
     {
       "id": "f795180a-66aa-4a86-acb0-96cf8c487db0",
-      "name": "isDiffOrNew",
+      "name": "Scrub and compare to GitHub",
       "parameters": {
         "jsCode": "const deepStable=v=>{if(Array.isArray(v))return v.map(deepStable);if(v&&typeof v===\"object\"){const o={};for(const k of Object.keys(v).sort())o[k]=deepStable(v[k]);return o;}return v;};const VOLATILE=new Set([\"versionId\",\"updatedAt\",\"createdAt\",\"activeVersionId\",\"meta\",\"pinData\",\"staticData\",\"triggerCount\",\"shared\",\"versionCounter\",\"credentials\"]);const scrub=w=>{if(!w||typeof w!==\"object\")return w;const o={};for(const k of Object.keys(w).sort()){if(VOLATILE.has(k))continue;o[k]=deepStable(w[k]);}return o;};const items=$input.all();const g=items[0];const actual=scrub(items[1].json);let orig=null;if(Object.keys(g.json).includes(\"content\")&&g.json.content)orig=JSON.parse(Buffer.from(g.json.content,\"base64\").toString());else if(Object.keys(g.json).includes(\"data\")&&g.json.data)orig=JSON.parse(g.json.data);if(orig){const ordered=scrub(orig);if(JSON.stringify(ordered)===JSON.stringify(actual))g.json.github_status=\"same\";else{g.json.github_status=\"different\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}g.json.content_decoded=ordered;}else{g.json.github_status=\"new\";g.json.n8n_data_stringy=JSON.stringify(actual,null,2);}return items;"
       },
@@ -1835,7 +1963,7 @@
     },
     {
       "id": "30e7d6fc-327e-4693-95ce-376a3b1f145c",
-      "name": "Check Status",
+      "name": "Route by GitHub status",
       "parameters": {
         "dataType": "string",
         "rules": {
@@ -1911,8 +2039,8 @@
             "branch": "main"
           }
         },
-        "commitMessage": "=[Sorted Signals backup] {{ $('Execute Workflow Trigger').first().json.name }} ({{ $('Execute Workflow Trigger').first().json.id }}) — new",
-        "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
+        "commitMessage": "=[Sorted Signals backup] {{ $('When called for one workflow').first().json.name }} ({{ $('When called for one workflow').first().json.id }}) — new",
+        "fileContent": "={{ $('Scrub and compare to GitHub').item.json.n8n_data_stringy }}",
         "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
         "owner": {
           "__rl": true,
@@ -1952,8 +2080,8 @@
             "branch": "main"
           }
         },
-        "commitMessage": "=[Sorted Signals backup] {{ $('Execute Workflow Trigger').first().json.name }} ({{ $('Execute Workflow Trigger').first().json.id }}) — updated",
-        "fileContent": "={{ $('isDiffOrNew').item.json.n8n_data_stringy }}",
+        "commitMessage": "=[Sorted Signals backup] {{ $('When called for one workflow').first().json.name }} ({{ $('When called for one workflow').first().json.id }}) — updated",
+        "fileContent": "={{ $('Scrub and compare to GitHub').item.json.n8n_data_stringy }}",
         "filePath": "={{ $('Resolve backup path').first().json.repo_path }}{{ $('Resolve backup path').first().json.fileName }}",
         "operation": "edit",
         "owner": {
@@ -1980,7 +2108,7 @@
     },
     {
       "id": "806db72c-c9f6-461d-be1a-1e6867a25382",
-      "name": "Loop Over Items",
+      "name": "Loop over workflows",
       "parameters": {
         "options": {}
       },
@@ -1993,7 +2121,7 @@
     },
     {
       "id": "e5c433e4-bf56-4a0a-906c-7d74f6fe7287",
-      "name": "Schedule Trigger",
+      "name": "Daily at 01:33",
       "parameters": {
         "rule": {
           "interval": [
@@ -2005,18 +2133,18 @@
         }
       },
       "position": [
-        1104,
-        848
+        1120,
+        240
       ],
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2
     },
     {
       "id": "9e2412f6-df25-4c12-8faf-0200558b537c",
-      "name": "Sticky Note1",
+      "name": "Note: backup to GitHub",
       "parameters": {
         "color": 4,
-        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `gh_repo_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once → `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
+        "content": "## Backup to GitHub\nBacks up Sorted_Signals-tagged workflows to GitHub daily at 01:33 (instance timezone — set in n8n UI).\n\n**Layout:** `{sanitizedName}__{workflowId}.json` under `backup_gh_path` (flat). Old `YYYY/MM/{id}.json` left for manual cleanup.\n\n**Config:** parent Lookup `global_variables` once. If `backup_gh_owner` / `backup_gh_repo` / `backup_gh_path` are blank or placeholders, skip GitHub and send one Telegram error. Else `Attach export config` puts `repo_owner` / `repo_name` / `repo_path` / `repo_branch=main` on each item. Subworkflow does **not** re-lookup.\n\n**GitHub:** branch pinned to `main`. Retries on file ops + large-file HTTP (`retryOnFail`, 3× / 1s between tries). No fixed Wait between successful items.\n\n**Compare:** scrub strips volatile fields so metadata-only changes do not commit.\n\n**Orphans:** alive set = **Filter** output (`isArchived === false`), not raw n8n list — so archived tagged workflows are deleted from GitHub. README / old month paths ignored. Paths deduped before delete.\n\n**Commits:** `[Sorted Signals backup] {name} ({id}) — {new|updated|deleted}`\n\n**Errors:** workflow `errorWorkflow` = `error : telegram notification failed` (`KNq8suchhu3gSATZ`) — file-log fallback, avoids Telegram recursion. Per-item fails still Telegram via **Send backup failed**.\n\n**Also exports** this backup workflow itself (included on purpose).\n\nSelf-call per item for memory. Telegram: start + one completion summary with counts.",
         "height": 900,
         "width": 640
       },
@@ -2029,7 +2157,7 @@
     },
     {
       "id": "00fdb977-4f3e-49f6-81c3-bc7f9520914f",
-      "name": "Sticky Note2",
+      "name": "Note: main workflow loop",
       "parameters": {
         "color": 7,
         "content": "## Main workflow loop",
@@ -2054,7 +2182,7 @@
       },
       "id": "e4d70af5-5c21-4340-8054-7ba0203f3ee1",
       "maxTries": 3,
-      "name": "Get file data",
+      "name": "Get GitHub file",
       "onError": "continueRegularOutput",
       "parameters": {
         "additionalParameters": {
@@ -2100,8 +2228,8 @@
         "returnAll": true
       },
       "position": [
-        1536,
-        848
+        1552,
+        240
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -2123,8 +2251,8 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nStarting Sorted Signals workflow backup.\nExecution: {{ $execution.id }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        1888,
-        336
+        1984,
+        128
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -2148,8 +2276,8 @@
         "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow backup completed.\nProcessed: {{ $json.processed }}\nNew: {{ $json.new }} · Updated: {{ $json.updated }} · Unchanged: {{ $json.unchanged }}\nFailed: {{ $json.failed }} · Deleted: {{ $json.deleted }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
-        3376,
-        352
+        3264,
+        224
       ],
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -2169,7 +2297,7 @@
           "appendAttribution": false
         },
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-        "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop Over Items').item.json.id }} ({{ $('Loop Over Items').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nFailed to backup workflow {{ $('Loop over workflows').item.json.id }} ({{ $('Loop over workflows').item.json.name }})\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
       },
       "position": [
         2800,
@@ -2183,7 +2311,7 @@
       "id": "f7a6354d-8049-46b2-8182-72ef6c49fc2f",
       "name": "Resolve backup path",
       "parameters": {
-        "jsCode": "const trig=$('Execute Workflow Trigger').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
+        "jsCode": "const trig=$('When called for one workflow').first().json;\nconst name=String(trig.name||'workflow');\nconst id=trig.id;\nconst sanitized=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'workflow';\nreturn[{json:{repo_owner:trig.repo_owner,repo_name:trig.repo_name,repo_path:trig.repo_path,repo_branch:trig.repo_branch||'main',fileName:`${sanitized}__${id}.json`,workflowName:name,workflowId:id}}];"
       },
       "position": [
         1312,
@@ -2203,23 +2331,23 @@
       "maxTries": 3,
       "name": "List backup files",
       "parameters": {
-        "filePath": "={{ (() => { const p = String($('Lookup global variables').first().json.gh_repo_path ?? '').replace(/^\\/+/, '').replace(/\\/+$/, ''); return p; })() }}",
+        "filePath": "={{ (() => { const p = String($('Lookup global variables').first().json.backup_gh_path ?? '').replace(/^\\/+/, '').replace(/\\/+$/, ''); return p; })() }}",
         "operation": "list",
         "owner": {
           "__rl": true,
           "mode": "name",
-          "value": "={{ $('Lookup global variables').first().json.gh_repo_owner }}"
+          "value": "={{ $('Lookup global variables').first().json.backup_gh_owner }}"
         },
         "repository": {
           "__rl": true,
           "mode": "name",
-          "value": "={{ $('Lookup global variables').first().json.gh_repo_name }}"
+          "value": "={{ $('Lookup global variables').first().json.backup_gh_repo }}"
         },
         "resource": "file"
       },
       "position": [
-        2256,
-        528
+        2480,
+        400
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -2231,11 +2359,11 @@
       "id": "11b24955-8ecb-4b8b-be66-7f4bba7364b8",
       "name": "Find orphans",
       "parameters": {
-        "jsCode": "const files=$input.all();\nconst ids=new Set($('Filter').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;"
+        "jsCode": "const files=$input.all();\nconst ids=new Set($('Keep non-archived workflows').all().map(i=>i.json.id));\nconst seen=new Set();\nconst orphans=[];\nfor(const item of files){\n  const f=item.json;\n  if(f.type&&f.type!=='file')continue;\n  const name=f.name||'';\n  const m=name.match(/__([A-Za-z0-9]+)\\.json$/);\n  if(!m)continue;\n  const id=m[1];\n  if(ids.has(id))continue;\n  const filePath=f.path;\n  if(!filePath||seen.has(filePath))continue;\n  seen.add(filePath);\n  orphans.push({json:{origin:'github',name,filePath,id,hasOrphans:true}});\n}\nif(orphans.length===0)return[{json:{hasOrphans:false}}];\nreturn orphans;"
       },
       "position": [
-        2624,
-        528
+        2672,
+        400
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -2247,8 +2375,8 @@
         "options": {}
       },
       "position": [
-        3376,
-        512
+        3264,
+        384
       ],
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3
@@ -2276,18 +2404,18 @@
         "owner": {
           "__rl": true,
           "mode": "name",
-          "value": "={{ $('Lookup global variables').first().json.gh_repo_owner }}"
+          "value": "={{ $('Lookup global variables').first().json.backup_gh_owner }}"
         },
         "repository": {
           "__rl": true,
           "mode": "name",
-          "value": "={{ $('Lookup global variables').first().json.gh_repo_name }}"
+          "value": "={{ $('Lookup global variables').first().json.backup_gh_repo }}"
         },
         "resource": "file"
       },
       "position": [
-        3648,
-        528
+        3536,
+        400
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.github",
@@ -2323,15 +2451,15 @@
         "options": {}
       },
       "position": [
-        3040,
-        528
+        2928,
+        400
       ],
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2
     },
     {
       "id": "323c1e69-2b6e-4340-ba47-f29251c62d49",
-      "name": "Filter",
+      "name": "Keep non-archived workflows",
       "parameters": {
         "conditions": {
           "combinator": "and",
@@ -2356,8 +2484,8 @@
         "options": {}
       },
       "position": [
-        1888,
-        864
+        1984,
+        512
       ],
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.3
@@ -2369,8 +2497,8 @@
         "jsCode": "const s=$getWorkflowStaticData('global');\ns.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn $input.all().map(i=>({json:i.json}));"
       },
       "position": [
-        1552,
-        336
+        1968,
+        -64
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -2379,11 +2507,11 @@
       "id": "5bff9395-816c-4655-8744-eaff5d68863b",
       "name": "Attach export config",
       "parameters": {
-        "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.gh_repo_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.gh_repo_owner,repo_name:gv.gh_repo_name,repo_path,repo_branch:'main'}}));"
+        "jsCode": "const gv=$('Lookup global variables').first().json;\nconst raw=String(gv.backup_gh_path??'').replace(/^\\/+/, '');\nconst repo_path=!raw||raw.endsWith('/')?raw:`${raw}/`;\nreturn $input.all().map(i=>({json:{...i.json,repo_owner:gv.backup_gh_owner,repo_name:gv.backup_gh_repo,repo_path,repo_branch:'main'}}));"
       },
       "position": [
-        1904,
-        1120
+        1984,
+        704
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -2421,8 +2549,8 @@
         "jsCode": "const s=$getWorkflowStaticData('global');\nif(!s.backupCounts)s.backupCounts={processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nconst items=$input.all();\ns.backupCounts.deleted+=items.length;\nreturn items.map(i=>({json:{...i.json,tallied:true}}));"
       },
       "position": [
-        3872,
-        528
+        3760,
+        400
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -2434,15 +2562,15 @@
         "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.backupCounts||{processed:0,new:0,updated:0,unchanged:0,failed:0,deleted:0};\nreturn [{json:{...c}}];"
       },
       "position": [
-        3040,
-        352
+        2928,
+        224
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
     },
     {
       "id": "78b92fb1-4498-410a-92c8-cdac305b563c",
-      "name": "Execute Workflow Trigger",
+      "name": "When called for one workflow",
       "parameters": {
         "inputSource": "passthrough"
       },
@@ -2455,14 +2583,13 @@
     },
     {
       "id": "85dfd5f0-0ea5-47d6-9aa8-24c44c0324d5",
-      "name": "Execute Workflow",
+      "name": "Backup one workflow",
       "onError": "continueErrorOutput",
       "parameters": {
         "mode": "each",
         "options": {
           "waitForSubWorkflow": true
         },
-        "source": "database",
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -2483,6 +2610,77 @@
       ],
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3
+    },
+    {
+      "id": "25badfff-faa6-4aae-a781-b10557b01c4d",
+      "name": "Check GitHub config",
+      "parameters": {
+        "jsCode": "const gv=$input.first().json;\nconst isSet=(v)=>{const s=String(v??'').trim();if(!s)return false;if(/^YOUR_/i.test(s))return false;return true;};\nconst backup_gh_ready=isSet(gv.backup_gh_owner)&&isSet(gv.backup_gh_repo)&&isSet(gv.backup_gh_path);\nreturn[{json:{...gv,backup_gh_ready}}];"
+      },
+      "position": [
+        1552,
+        -48
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "47da7837-8ec7-43a4-9197-8f880d6c60ad",
+      "name": "GitHub backup configured?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c0nfig-ready-0001",
+              "leftValue": "={{ $json.backup_gh_ready }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1728,
+        -48
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "4d7d10f3-058f-412a-89d4-cc1319f65ac0",
+      "name": "Send backup skipped",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=__*Error Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGitHub backup skipped: owner, repo, or folder is not set (backup_gh_owner, backup_gh_repo, backup_gh_path).\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+      },
+      "position": [
+        1728,
+        -208
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "a89e5652-0cfa-4572-ae7c-ae6b40196165"
     }
   ],
   "repo_branch": "main",
@@ -2493,7 +2691,7 @@
     "availableInMCP": true,
     "binaryMode": "separate",
     "callerPolicy": "workflowsFromSameOwner",
-    "errorWorkflow": "KNq8suchhu3gSATZ",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
     "executionOrder": "v1",
     "timeSavedMode": "fixed"
   },
