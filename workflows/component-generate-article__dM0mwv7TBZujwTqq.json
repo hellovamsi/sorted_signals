@@ -4,7 +4,29 @@
     "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Aggregate": {
+      "Article Writer": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert article to markdown file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Article writer model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Article Writer",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Bundle prompt and articles": {
         "main": [
           [
             {
@@ -15,67 +37,67 @@
           ]
         ]
       },
-      "Article Writer": {
+      "Combine prompt and articles": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Convert to File1",
+              "node": "Bundle prompt and articles",
               "type": "main"
             }
           ]
         ]
       },
-      "Convert to File": {
+      "Convert article to markdown file": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Read/Write Files from Disk",
+              "node": "Write article markdown",
               "type": "main"
             }
           ]
         ]
       },
-      "Convert to File1": {
+      "Convert articles to JSON": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Read/Write Files from Disk1",
+              "node": "Write summaries snapshot",
               "type": "main"
             }
           ]
         ]
       },
-      "Extract from File": {
+      "Extract article prompt": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Combine prompt and articles",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract articles JSON": {
         "main": [
           [
             {
               "index": 1,
-              "node": "Merge",
+              "node": "Combine prompt and articles",
               "type": "main"
             }
           ]
         ]
       },
-      "Extract from File1": {
+      "Get AI articles since cutoff": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Merge",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Get many rows": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Convert to File",
+              "node": "Convert articles to JSON",
               "type": "main"
             }
           ]
@@ -103,62 +125,18 @@
           ]
         ]
       },
-      "Merge": {
+      "Read article prompt": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Aggregate",
+              "node": "Extract article prompt",
               "type": "main"
             }
           ]
         ]
       },
-      "OpenRouter Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "Article Writer",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Extract from File",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Send a text message",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk2": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Extract from File1",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Send a text message": {
+      "Send article ready notification": {
         "main": [
           []
         ]
@@ -168,18 +146,18 @@
           [
             {
               "index": 0,
-              "node": "Get many rows",
+              "node": "Get AI articles since cutoff",
               "type": "main"
             },
             {
               "index": 0,
-              "node": "Read/Write Files from Disk2",
+              "node": "Read article prompt",
               "type": "main"
             }
           ]
         ]
       },
-      "When Executed by Another Workflow": {
+      "When called": {
         "main": [
           [
             {
@@ -199,9 +177,31 @@
             }
           ]
         ]
+      },
+      "Write article markdown": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send article ready notification",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Write summaries snapshot": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract articles JSON",
+              "type": "main"
+            }
+          ]
+        ]
       }
     },
-    "createdAt": "2026-08-12T08:02:32.399Z",
+    "createdAt": "2026-08-16T08:56:19.487Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -214,7 +214,7 @@
           }
         },
         "id": "99d1e94f-1fea-49e3-8b19-6ba06e93ad94",
-        "name": "Get many rows",
+        "name": "Get AI articles since cutoff",
         "parameters": {
           "filters": {
             "conditions": [
@@ -250,7 +250,7 @@
           }
         },
         "id": "def30ec8-862e-4de4-844e-5ccea7eb533e",
-        "name": "OpenRouter Chat Model",
+        "name": "Article writer model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'article_writer').json.model }}",
           "options": {
@@ -267,7 +267,7 @@
       },
       {
         "id": "5f77fac6-5b6b-4d54-963a-b9d71b476067",
-        "name": "When Executed by Another Workflow",
+        "name": "When called",
         "parameters": {
           "inputSource": "jsonExample",
           "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
@@ -281,7 +281,7 @@
       },
       {
         "id": "cb669dfb-693d-4fdf-882a-6e2874afceaf",
-        "name": "Read/Write Files from Disk",
+        "name": "Write summaries snapshot",
         "parameters": {
           "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
           "operation": "write",
@@ -296,7 +296,7 @@
       },
       {
         "id": "a35340b6-e69b-4f49-9558-ca22ddd6ba86",
-        "name": "Convert to File",
+        "name": "Convert articles to JSON",
         "parameters": {
           "operation": "toJson",
           "options": {}
@@ -310,7 +310,7 @@
       },
       {
         "id": "07deef5a-add5-47c1-98a0-69d0596cf206",
-        "name": "Extract from File",
+        "name": "Extract articles JSON",
         "parameters": {
           "operation": "text",
           "options": {}
@@ -330,7 +330,7 @@
           }
         },
         "id": "d25c43e5-3fbd-4b52-ab39-b57644273ef1",
-        "name": "Send a text message",
+        "name": "Send article ready notification",
         "parameters": {
           "additionalFields": {},
           "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
@@ -346,7 +346,7 @@
       },
       {
         "id": "fe3b4b23-5d4f-4ab1-a77b-c38544faa236",
-        "name": "Read/Write Files from Disk1",
+        "name": "Write article markdown",
         "parameters": {
           "dataPropertyName": "text",
           "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_article }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
@@ -362,7 +362,7 @@
       },
       {
         "id": "cc28bc48-9d1e-493e-af56-8c318e96832a",
-        "name": "Convert to File1",
+        "name": "Convert article to markdown file",
         "parameters": {
           "binaryPropertyName": "text",
           "operation": "toText",
@@ -378,7 +378,7 @@
       },
       {
         "id": "18ad4c9a-bc6f-4d3c-9dd9-297c2e6a0dbd",
-        "name": "Read/Write Files from Disk2",
+        "name": "Read article prompt",
         "parameters": {
           "fileSelector": "={{ $('Lookup global variables').first().json.prompt_article_path }}",
           "options": {}
@@ -392,7 +392,7 @@
       },
       {
         "id": "89cad350-505d-4cb0-ae22-e7e9c0ee63fb",
-        "name": "Extract from File1",
+        "name": "Extract article prompt",
         "parameters": {
           "operation": "text",
           "options": {}
@@ -421,7 +421,7 @@
       },
       {
         "id": "fcfaf956-8eee-469b-bef2-0affd2052ea1",
-        "name": "Merge",
+        "name": "Combine prompt and articles",
         "parameters": {},
         "position": [
           1136,
@@ -432,7 +432,7 @@
       },
       {
         "id": "d9ab8979-2316-4208-8bc8-61d600e0b410",
-        "name": "Aggregate",
+        "name": "Bundle prompt and articles",
         "parameters": {
           "fieldsToAggregate": {
             "fieldToAggregate": [
@@ -510,12 +510,34 @@
         "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-08-12T08:02:32.399Z",
-    "versionId": "b02fe7d6-bb64-4e0c-bd4d-ed2631e7b7b4",
+    "updatedAt": "2026-08-16T08:56:19.487Z",
+    "versionId": "926ddc3f-ba44-4420-92b5-d2c28b688b86",
     "workflowId": "dM0mwv7TBZujwTqq"
   },
   "connections": {
-    "Aggregate": {
+    "Article Writer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert article to markdown file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Article writer model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Article Writer",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Bundle prompt and articles": {
       "main": [
         [
           {
@@ -526,67 +548,67 @@
         ]
       ]
     },
-    "Article Writer": {
+    "Combine prompt and articles": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Convert to File1",
+            "node": "Bundle prompt and articles",
             "type": "main"
           }
         ]
       ]
     },
-    "Convert to File": {
+    "Convert article to markdown file": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Read/Write Files from Disk",
+            "node": "Write article markdown",
             "type": "main"
           }
         ]
       ]
     },
-    "Convert to File1": {
+    "Convert articles to JSON": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Read/Write Files from Disk1",
+            "node": "Write summaries snapshot",
             "type": "main"
           }
         ]
       ]
     },
-    "Extract from File": {
+    "Extract article prompt": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Combine prompt and articles",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract articles JSON": {
       "main": [
         [
           {
             "index": 1,
-            "node": "Merge",
+            "node": "Combine prompt and articles",
             "type": "main"
           }
         ]
       ]
     },
-    "Extract from File1": {
+    "Get AI articles since cutoff": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Merge",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Get many rows": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Convert to File",
+            "node": "Convert articles to JSON",
             "type": "main"
           }
         ]
@@ -614,62 +636,18 @@
         ]
       ]
     },
-    "Merge": {
+    "Read article prompt": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Aggregate",
+            "node": "Extract article prompt",
             "type": "main"
           }
         ]
       ]
     },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "Article Writer",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Extract from File",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Send a text message",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk2": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Extract from File1",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Send a text message": {
+    "Send article ready notification": {
       "main": [
         []
       ]
@@ -679,18 +657,18 @@
         [
           {
             "index": 0,
-            "node": "Get many rows",
+            "node": "Get AI articles since cutoff",
             "type": "main"
           },
           {
             "index": 0,
-            "node": "Read/Write Files from Disk2",
+            "node": "Read article prompt",
             "type": "main"
           }
         ]
       ]
     },
-    "When Executed by Another Workflow": {
+    "When called": {
       "main": [
         [
           {
@@ -710,6 +688,28 @@
           }
         ]
       ]
+    },
+    "Write article markdown": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send article ready notification",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write summaries snapshot": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract articles JSON",
+            "type": "main"
+          }
+        ]
+      ]
     }
   },
   "id": "dM0mwv7TBZujwTqq",
@@ -725,7 +725,7 @@
         }
       },
       "id": "99d1e94f-1fea-49e3-8b19-6ba06e93ad94",
-      "name": "Get many rows",
+      "name": "Get AI articles since cutoff",
       "parameters": {
         "filters": {
           "conditions": [
@@ -761,7 +761,7 @@
         }
       },
       "id": "def30ec8-862e-4de4-844e-5ccea7eb533e",
-      "name": "OpenRouter Chat Model",
+      "name": "Article writer model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'article_writer').json.model }}",
         "options": {
@@ -778,7 +778,7 @@
     },
     {
       "id": "5f77fac6-5b6b-4d54-963a-b9d71b476067",
-      "name": "When Executed by Another Workflow",
+      "name": "When called",
       "parameters": {
         "inputSource": "jsonExample",
         "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
@@ -792,7 +792,7 @@
     },
     {
       "id": "cb669dfb-693d-4fdf-882a-6e2874afceaf",
-      "name": "Read/Write Files from Disk",
+      "name": "Write summaries snapshot",
       "parameters": {
         "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
         "operation": "write",
@@ -807,7 +807,7 @@
     },
     {
       "id": "a35340b6-e69b-4f49-9558-ca22ddd6ba86",
-      "name": "Convert to File",
+      "name": "Convert articles to JSON",
       "parameters": {
         "operation": "toJson",
         "options": {}
@@ -821,7 +821,7 @@
     },
     {
       "id": "07deef5a-add5-47c1-98a0-69d0596cf206",
-      "name": "Extract from File",
+      "name": "Extract articles JSON",
       "parameters": {
         "operation": "text",
         "options": {}
@@ -841,7 +841,7 @@
         }
       },
       "id": "d25c43e5-3fbd-4b52-ab39-b57644273ef1",
-      "name": "Send a text message",
+      "name": "Send article ready notification",
       "parameters": {
         "additionalFields": {},
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
@@ -857,7 +857,7 @@
     },
     {
       "id": "fe3b4b23-5d4f-4ab1-a77b-c38544faa236",
-      "name": "Read/Write Files from Disk1",
+      "name": "Write article markdown",
       "parameters": {
         "dataPropertyName": "text",
         "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_article }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
@@ -873,7 +873,7 @@
     },
     {
       "id": "cc28bc48-9d1e-493e-af56-8c318e96832a",
-      "name": "Convert to File1",
+      "name": "Convert article to markdown file",
       "parameters": {
         "binaryPropertyName": "text",
         "operation": "toText",
@@ -889,7 +889,7 @@
     },
     {
       "id": "18ad4c9a-bc6f-4d3c-9dd9-297c2e6a0dbd",
-      "name": "Read/Write Files from Disk2",
+      "name": "Read article prompt",
       "parameters": {
         "fileSelector": "={{ $('Lookup global variables').first().json.prompt_article_path }}",
         "options": {}
@@ -903,7 +903,7 @@
     },
     {
       "id": "89cad350-505d-4cb0-ae22-e7e9c0ee63fb",
-      "name": "Extract from File1",
+      "name": "Extract article prompt",
       "parameters": {
         "operation": "text",
         "options": {}
@@ -932,7 +932,7 @@
     },
     {
       "id": "fcfaf956-8eee-469b-bef2-0affd2052ea1",
-      "name": "Merge",
+      "name": "Combine prompt and articles",
       "parameters": {},
       "position": [
         1136,
@@ -943,7 +943,7 @@
     },
     {
       "id": "d9ab8979-2316-4208-8bc8-61d600e0b410",
-      "name": "Aggregate",
+      "name": "Bundle prompt and articles",
       "parameters": {
         "fieldsToAggregate": {
           "fieldToAggregate": [
