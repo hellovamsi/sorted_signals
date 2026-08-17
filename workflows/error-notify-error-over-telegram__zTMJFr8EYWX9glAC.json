@@ -1,0 +1,771 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi",
+    "autosaved": false,
+    "connections": {
+      "Append error JSON to log": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare blank line",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check Telegram": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Telegram set up?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert blank line to text": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Append blank line to log",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert error to JSON": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Append error JSON to log",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup Telegram chat ID": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Check Telegram",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "On error": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup Telegram chat ID",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare blank line": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert blank line to text",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare file logs": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert error to JSON",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Send Telegram error alert": {
+        "main": [
+          [],
+          [
+            {
+              "index": 0,
+              "node": "Prepare file logs",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Telegram set up?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send Telegram error alert",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Prepare file logs",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-16T18:28:20.298Z",
+    "description": null,
+    "name": null,
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "6201f9a4-44e6-4d90-a189-f61715dc7a96",
+        "name": "On error",
+        "parameters": {},
+        "position": [
+          -960,
+          -448
+        ],
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "6300ee38-9ad3-4d88-9998-b74537a21cb8",
+        "name": "Send Telegram error alert",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "additionalFields": {},
+          "chatId": "={{ $('Lookup Telegram chat ID').first().json.tg_notifs_chat_id }}",
+          "text": "=__*Error Notification*__\n\n{{ $('On error').item.json.execution.error.level.toSentenceCase() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow: {{ $('On error').item.json.workflow.name }}\nNode name: {{ $('On error').item.json.execution.error.node.name }}\nNode type: {{ $('On error').item.json.execution.error.node.type.split('.').pop() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nError messages:\n{{ $('On error').item.json.execution.error.messages }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd\\.MM\\.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+        },
+        "position": [
+          -64,
+          -640
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "aa5ecf72-d655-45fa-bb82-45a4e6b8b0f9"
+      },
+      {
+        "id": "7e96be90-743a-4bbf-8130-227f39fb5454",
+        "name": "Lookup Telegram chat ID",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "filters": {
+            "conditions": []
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -736,
+          -448
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "executeOnce": true,
+        "id": "eac95192-1191-4525-b287-a02ecae690c7",
+        "name": "Check Telegram",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "chatId": "={{ $('Lookup Telegram chat ID').first().json.tg_notifs_chat_id }}",
+          "resource": "chat"
+        },
+        "position": [
+          -512,
+          -448
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "a8eb013e-52d5-471f-9bde-cfd017d42f84"
+      },
+      {
+        "id": "f35c07f4-74d5-41c4-a8ba-222ccc60d064",
+        "name": "Telegram set up?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "tg-ok-0001",
+                "leftValue": "={{ $json.ok }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          -288,
+          -448
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "cd6e6102-daca-4b08-b4a5-e2ff52b332ea",
+        "name": "Prepare file logs",
+        "parameters": {
+          "jsCode": "function asPlain(v) {\n  if (v == null) return v;\n  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return v;\n  try { return JSON.parse(JSON.stringify(v)); } catch (e) { return String(v); }\n}\nfunction probeTelegram() {\n  try {\n    const item = $('Check Telegram').first();\n    const j = (item && item.json) || {};\n    const err = j.error || (item && item.error);\n    if (err) return { ok: false, json: asPlain(j), error: asPlain(err) };\n    if (j.ok === true) return { ok: true, json: asPlain(j) };\n    return { ok: false, json: asPlain(j), error: null };\n  } catch (e) {\n    return { ok: false, json: {}, error: { message: String(e.message || e) } };\n  }\n}\nconst original = asPlain($('On error').first().json);\nconst probe = probeTelegram();\nlet fallback;\nif (!probe.ok) {\n  fallback = {\n    kind: 'telegram_unavailable',\n    message: 'Telegram is not set up to handle error notifications.',\n    checkTelegram: probe.json,\n    checkError: probe.error,\n    loggedAt: new Date().toISOString(),\n  };\n} else {\n  const item = $input.first();\n  const j = (item && item.json) || {};\n  const err = (item && item.error) || j.error;\n  fallback = {\n    kind: 'telegram_send_failed',\n    message: 'Telegram message failed.',\n    telegramSend: asPlain(j),\n    telegramError: asPlain(err),\n    loggedAt: new Date().toISOString(),\n  };\n}\nreturn [{ json: original }, { json: fallback }];",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          -64,
+          -80
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "4c56b716-a651-41ac-9f9b-0c165509f576",
+        "name": "Convert error to JSON",
+        "parameters": {
+          "mode": "each",
+          "operation": "toJson",
+          "options": {
+            "format": false
+          }
+        },
+        "position": [
+          176,
+          -80
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "20e84750-e111-4e55-aa6a-97b8d8012013",
+        "name": "Append error JSON to log",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "operation": "write",
+          "options": {
+            "append": true
+          }
+        },
+        "position": [
+          416,
+          -80
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "e939b2a5-213e-4a91-8788-62df78048f81",
+        "name": "Prepare blank line",
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "newline-1",
+                "name": "newline",
+                "type": "string",
+                "value": "={{ '\\n' }}"
+              }
+            ]
+          },
+          "mode": "manual",
+          "options": {}
+        },
+        "position": [
+          656,
+          -80
+        ],
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4
+      },
+      {
+        "id": "f2bc8c9d-6afe-45bd-81b4-57373ab211bb",
+        "name": "Convert blank line to text",
+        "parameters": {
+          "operation": "toText",
+          "options": {
+            "encoding": "utf8",
+            "fileName": "newline.txt"
+          },
+          "sourceProperty": "newline"
+        },
+        "position": [
+          896,
+          -80
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "8729bb08-dec0-410b-8a8e-41fddba21936",
+        "name": "Append blank line to log",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "operation": "write",
+          "options": {
+            "append": true
+          }
+        },
+        "position": [
+          1136,
+          -80
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "a5e99018-0e54-4884-840e-e36a6c765395",
+        "name": "Note: error notify",
+        "parameters": {
+          "color": 4,
+          "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
+          "height": 420,
+          "width": 980
+        },
+        "position": [
+          -960,
+          -920
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      }
+    ],
+    "updatedAt": "2026-08-16T18:28:20.298Z",
+    "versionId": "d5e1e58c-4560-4fa6-92b1-0a569f616d3a",
+    "workflowId": "zTMJFr8EYWX9glAC"
+  },
+  "connections": {
+    "Append error JSON to log": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare blank line",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Telegram set up?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert blank line to text": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Append blank line to log",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert error to JSON": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Append error JSON to log",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup Telegram chat ID": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Check Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "On error": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup Telegram chat ID",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare blank line": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert blank line to text",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare file logs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert error to JSON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Send Telegram error alert": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "Prepare file logs",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Telegram set up?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send Telegram error alert",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Prepare file logs",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "zTMJFr8EYWX9glAC",
+  "isArchived": false,
+  "name": "error : notify error over telegram",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "6201f9a4-44e6-4d90-a189-f61715dc7a96",
+      "name": "On error",
+      "parameters": {},
+      "position": [
+        -960,
+        -448
+      ],
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "6300ee38-9ad3-4d88-9998-b74537a21cb8",
+      "name": "Send Telegram error alert",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $('Lookup Telegram chat ID').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Error Notification*__\n\n{{ $('On error').item.json.execution.error.level.toSentenceCase() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nWorkflow: {{ $('On error').item.json.workflow.name }}\nNode name: {{ $('On error').item.json.execution.error.node.name }}\nNode type: {{ $('On error').item.json.execution.error.node.type.split('.').pop() }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nError messages:\n{{ $('On error').item.json.execution.error.messages }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.format('dd\\.MM\\.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+      },
+      "position": [
+        -64,
+        -640
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "aa5ecf72-d655-45fa-bb82-45a4e6b8b0f9"
+    },
+    {
+      "id": "7e96be90-743a-4bbf-8130-227f39fb5454",
+      "name": "Lookup Telegram chat ID",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "filters": {
+          "conditions": []
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -736,
+        -448
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "eac95192-1191-4525-b287-a02ecae690c7",
+      "name": "Check Telegram",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "chatId": "={{ $('Lookup Telegram chat ID').first().json.tg_notifs_chat_id }}",
+        "resource": "chat"
+      },
+      "position": [
+        -512,
+        -448
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "a8eb013e-52d5-471f-9bde-cfd017d42f84"
+    },
+    {
+      "id": "f35c07f4-74d5-41c4-a8ba-222ccc60d064",
+      "name": "Telegram set up?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "tg-ok-0001",
+              "leftValue": "={{ $json.ok }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -288,
+        -448
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "cd6e6102-daca-4b08-b4a5-e2ff52b332ea",
+      "name": "Prepare file logs",
+      "parameters": {
+        "jsCode": "function asPlain(v) {\n  if (v == null) return v;\n  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return v;\n  try { return JSON.parse(JSON.stringify(v)); } catch (e) { return String(v); }\n}\nfunction probeTelegram() {\n  try {\n    const item = $('Check Telegram').first();\n    const j = (item && item.json) || {};\n    const err = j.error || (item && item.error);\n    if (err) return { ok: false, json: asPlain(j), error: asPlain(err) };\n    if (j.ok === true) return { ok: true, json: asPlain(j) };\n    return { ok: false, json: asPlain(j), error: null };\n  } catch (e) {\n    return { ok: false, json: {}, error: { message: String(e.message || e) } };\n  }\n}\nconst original = asPlain($('On error').first().json);\nconst probe = probeTelegram();\nlet fallback;\nif (!probe.ok) {\n  fallback = {\n    kind: 'telegram_unavailable',\n    message: 'Telegram is not set up to handle error notifications.',\n    checkTelegram: probe.json,\n    checkError: probe.error,\n    loggedAt: new Date().toISOString(),\n  };\n} else {\n  const item = $input.first();\n  const j = (item && item.json) || {};\n  const err = (item && item.error) || j.error;\n  fallback = {\n    kind: 'telegram_send_failed',\n    message: 'Telegram message failed.',\n    telegramSend: asPlain(j),\n    telegramError: asPlain(err),\n    loggedAt: new Date().toISOString(),\n  };\n}\nreturn [{ json: original }, { json: fallback }];",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        -64,
+        -80
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "4c56b716-a651-41ac-9f9b-0c165509f576",
+      "name": "Convert error to JSON",
+      "parameters": {
+        "mode": "each",
+        "operation": "toJson",
+        "options": {
+          "format": false
+        }
+      },
+      "position": [
+        176,
+        -80
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "20e84750-e111-4e55-aa6a-97b8d8012013",
+      "name": "Append error JSON to log",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "operation": "write",
+        "options": {
+          "append": true
+        }
+      },
+      "position": [
+        416,
+        -80
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "e939b2a5-213e-4a91-8788-62df78048f81",
+      "name": "Prepare blank line",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "newline-1",
+              "name": "newline",
+              "type": "string",
+              "value": "={{ '\\n' }}"
+            }
+          ]
+        },
+        "mode": "manual",
+        "options": {}
+      },
+      "position": [
+        656,
+        -80
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    },
+    {
+      "id": "f2bc8c9d-6afe-45bd-81b4-57373ab211bb",
+      "name": "Convert blank line to text",
+      "parameters": {
+        "operation": "toText",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "newline.txt"
+        },
+        "sourceProperty": "newline"
+      },
+      "position": [
+        896,
+        -80
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "8729bb08-dec0-410b-8a8e-41fddba21936",
+      "name": "Append blank line to log",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "operation": "write",
+        "options": {
+          "append": true
+        }
+      },
+      "position": [
+        1136,
+        -80
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "a5e99018-0e54-4884-840e-e36a6c765395",
+      "name": "Note: error notify",
+      "parameters": {
+        "color": 4,
+        "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
+        "height": 420,
+        "width": 980
+      },
+      "position": [
+        -960,
+        -920
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    },
+    {
+      "createdAt": "2026-07-19T15:58:00.895Z",
+      "id": "stPvA6IXEWYUHzi9",
+      "name": "devops",
+      "updatedAt": "2026-07-19T15:58:00.895Z"
+    }
+  ]
+}
