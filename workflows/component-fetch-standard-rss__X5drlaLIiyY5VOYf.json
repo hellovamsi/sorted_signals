@@ -2,56 +2,56 @@
   "active": true,
   "activeVersion": {
     "authors": "Vamsi Varanasi",
-    "autosaved": true,
+    "autosaved": false,
     "connections": {
-      "Basic LLM Chain2": {
-        "main": [
+      "AI-gate model": {
+        "ai_languageModel": [
           [
             {
               "index": 0,
-              "node": "Update a row2",
-              "type": "main"
+              "node": "Classify AI relevance",
+              "type": "ai_languageModel"
             }
           ]
         ]
       },
-      "Create a row": {
+      "Classify AI relevance": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Filter out non AI stuff",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Filter out non AI stuff": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Update a row",
+              "node": "Mark as AI related",
               "type": "main"
             }
           ],
           [
             {
               "index": 0,
-              "node": "Update a row3",
+              "node": "Mark as unsure AI",
               "type": "main"
             }
           ],
           [
             {
               "index": 0,
-              "node": "Update a row1",
+              "node": "Mark as not AI related",
               "type": "main"
             }
           ]
         ]
       },
-      "Filter1": {
+      "Insert new article": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Classify AI relevance",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Keep items after cutoff": {
         "main": [
           [
             {
@@ -67,7 +67,7 @@
           [
             {
               "index": 2,
-              "node": "Merge",
+              "node": "Wait for config lookups",
               "type": "main"
             }
           ]
@@ -78,7 +78,7 @@
           [
             {
               "index": 0,
-              "node": "Merge",
+              "node": "Wait for config lookups",
               "type": "main"
             }
           ]
@@ -89,101 +89,101 @@
           [
             {
               "index": 0,
-              "node": "Remove Duplicates",
+              "node": "Remove duplicate URLs",
               "type": "main"
             }
           ]
         ]
       },
-      "Merge": {
+      "Mark as AI related": {
         "main": [
           [
             {
               "index": 0,
-              "node": "RSS Read1",
+              "node": "Read article page",
               "type": "main"
             }
           ]
         ]
       },
-      "OpenRouter Chat Model2": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "Basic LLM Chain2",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "OpenRouter Chat Model3": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "Filter out non AI stuff",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "RSS Read1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Filter1",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read URL content": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Basic LLM Chain2",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Remove Duplicates": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Create a row",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Structured Output Parser": {
+      "Parse summary and categories": {
         "ai_outputParser": [
           [
             {
               "index": 0,
-              "node": "Basic LLM Chain2",
+              "node": "Summarize and classify article",
               "type": "ai_outputParser"
             }
           ]
         ]
       },
-      "Update a row": {
+      "Read RSS feed": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Read URL content",
+              "node": "Keep items after cutoff",
               "type": "main"
             }
           ]
         ]
       },
-      "trigger": {
+      "Read article page": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize and classify article",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Remove duplicate URLs": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Insert new article",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Summarize and classify article": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Save summary and categories",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Summarizer model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize and classify article",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Wait for config lookups": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read RSS feed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "When called": {
         "main": [
           [
             {
@@ -198,21 +198,21 @@
             },
             {
               "index": 1,
-              "node": "Merge",
+              "node": "Wait for config lookups",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-12T08:01:48.168Z",
+    "createdAt": "2026-08-16T08:57:47.292Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
     "nodes": [
       {
         "id": "1e172055-1862-49b3-8359-b4d7a436757d",
-        "name": "Filter1",
+        "name": "Keep items after cutoff",
         "parameters": {
           "conditions": {
             "combinator": "and",
@@ -224,7 +224,7 @@
                   "operation": "after",
                   "type": "dateTime"
                 },
-                "rightValue": "={{ $('trigger').item.json.cutOffDate }}"
+                "rightValue": "={{ $('When called').item.json.cutOffDate }}"
               }
             ],
             "options": {
@@ -245,7 +245,7 @@
       },
       {
         "id": "d6016823-17dd-4ea4-9a84-dfe504f2a443",
-        "name": "RSS Read1",
+        "name": "Read RSS feed",
         "parameters": {
           "options": {},
           "url": "={{ $json.rssURL }}"
@@ -260,7 +260,7 @@
       {
         "alwaysOutputData": false,
         "id": "297872c9-329b-4f75-8bd7-1535b7e1aea1",
-        "name": "trigger",
+        "name": "When called",
         "parameters": {
           "inputSource": "jsonExample",
           "jsonExample": "{\n  \"publicationName\":\"BBC\",\n\"rssURL\":\"https://feeds.bbci.co.uk/news/rss.xml\",\n  \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n  \"contentURLFieldName\":\"link\",\n  \"contentIdFieldName\":\"dwsyn:contentID\",\n  \"titleFieldName\":\"title\",\n  \"descriptionFieldName\":\"content\",\n  \"snippetFieldName\":\"contentSnippet\",\n  \"pubDateFieldName\":\"pubDate\",\n  \"imageURLFieldName\":\"media:thumbnail.url\"\n}"
@@ -280,7 +280,7 @@
           }
         },
         "id": "6fe93d32-0219-4b5a-b0ee-56b8501b2bd9",
-        "name": "Create a row",
+        "name": "Insert new article",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -327,7 +327,7 @@
           }
         },
         "id": "1ce4d2b9-f073-4594-b5fe-e7d38a443e2d",
-        "name": "Update a row",
+        "name": "Mark as AI related",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -359,7 +359,7 @@
       },
       {
         "id": "e31056e0-8eb6-4176-b708-3f8ec30eb4b2",
-        "name": "Remove Duplicates",
+        "name": "Remove duplicate URLs",
         "parameters": {
           "compare": "selectedFields",
           "fieldsToCompare": "url",
@@ -380,7 +380,7 @@
           }
         },
         "id": "824016b9-9b80-4641-a0be-cd41e6ed67b3",
-        "name": "Read URL content",
+        "name": "Read article page",
         "onError": "continueErrorOutput",
         "parameters": {
           "options": {},
@@ -404,7 +404,7 @@
           }
         },
         "id": "cad68999-4167-42a2-a76a-978f4fe33800",
-        "name": "OpenRouter Chat Model2",
+        "name": "Summarizer model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_summarizer').json.model }}",
           "options": {}
@@ -420,7 +420,7 @@
         "alwaysOutputData": true,
         "id": "00c61911-5a3d-4db8-86a8-9e7fe4ccbeef",
         "maxTries": 2,
-        "name": "Basic LLM Chain2",
+        "name": "Summarize and classify article",
         "onError": "continueErrorOutput",
         "parameters": {
           "batching": {},
@@ -444,7 +444,7 @@
           }
         },
         "id": "2847e84e-88d5-49dc-ac62-a59bef64861e",
-        "name": "OpenRouter Chat Model3",
+        "name": "AI-gate model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_ai_gate').json.model }}",
           "options": {}
@@ -459,7 +459,7 @@
       {
         "alwaysOutputData": false,
         "id": "2bb549b1-537f-426d-8610-55bd7bc29e5f",
-        "name": "Filter out non AI stuff",
+        "name": "Classify AI relevance",
         "parameters": {
           "categories": {
             "categories": [
@@ -498,7 +498,7 @@
           }
         },
         "id": "555622f0-63ea-4d5e-be72-776ad2467701",
-        "name": "Update a row1",
+        "name": "Mark as not AI related",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -536,7 +536,7 @@
           }
         },
         "id": "74f55067-8c50-40a7-96bb-ca1a803925ab",
-        "name": "Update a row2",
+        "name": "Save summary and categories",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -582,7 +582,7 @@
           }
         },
         "id": "b4bd1497-270b-430d-8b62-6d3a68e3f0a2",
-        "name": "Update a row3",
+        "name": "Mark as unsure AI",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -614,7 +614,7 @@
       },
       {
         "id": "b77fef21-5c4c-43cb-be92-356e57f7eabc",
-        "name": "Structured Output Parser",
+        "name": "Parse summary and categories",
         "parameters": {
           "jsonSchemaExample": "{\n  \"url\":\"www.example.com\",\n  \"summary\": \"BBC Newscast podcast episode 'The Week' discusses the 13th day of anti-government protests in Iran, with internet blackouts and warnings of no leniency from security forces. BBC chief international correspondent Lyse Doucet provides context on the unrest's history, U.S. President Trump's warnings to Ayatollah Ali Khamenei, and his response. Political editors from New Statesman and The House magazine review the first week of UK politics, including how Prime Minister Keir Starmer handles issues involving Trump, Grok, and the Iranian situation.\",\n  \"category\": \"Pop Culture & Media\",\n  \"subcategories\": [\"Media coverage\", \"Public discourse\"]\n}"
         },
@@ -635,25 +635,25 @@
                 "id": "title",
                 "name": "title",
                 "type": "string",
-                "value": "={{ (() => { const path = $('trigger').item.json.titleFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+                "value": "={{ (() => { const path = $('When called').item.json.titleFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
               },
               {
                 "id": "url",
                 "name": "url",
                 "type": "string",
-                "value": "={{ (() => { const path = $('trigger').item.json.contentURLFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+                "value": "={{ (() => { const path = $('When called').item.json.contentURLFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
               },
               {
                 "id": "description",
                 "name": "description",
                 "type": "string",
-                "value": "={{ (() => { const path = $('trigger').item.json.descriptionFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+                "value": "={{ (() => { const path = $('When called').item.json.descriptionFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
               },
               {
                 "id": "snippet",
                 "name": "snippet",
                 "type": "string",
-                "value": "={{ (() => { const path = $('trigger').item.json.snippetFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+                "value": "={{ (() => { const path = $('When called').item.json.snippetFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
               },
               {
                 "id": "published_date",
@@ -665,7 +665,7 @@
                 "id": "publication",
                 "name": "publication",
                 "type": "string",
-                "value": "={{ $('trigger').item.json.publicationName }}"
+                "value": "={{ $('When called').item.json.publicationName }}"
               }
             ]
           },
@@ -730,7 +730,7 @@
       },
       {
         "id": "466f491f-6e35-47bd-89e9-65d6cdd44b99",
-        "name": "Merge",
+        "name": "Wait for config lookups",
         "parameters": {
           "mode": "chooseBranch",
           "numberInputs": 3,
@@ -760,59 +760,59 @@
         "typeVersion": 1
       }
     ],
-    "updatedAt": "2026-08-12T08:01:48.168Z",
-    "versionId": "73a24040-ec80-4d37-a103-d9f5ee97aaa5",
+    "updatedAt": "2026-08-16T08:57:47.292Z",
+    "versionId": "b2431062-3f12-4b86-9395-a0f03bd09953",
     "workflowId": "X5drlaLIiyY5VOYf"
   },
   "connections": {
-    "Basic LLM Chain2": {
-      "main": [
+    "AI-gate model": {
+      "ai_languageModel": [
         [
           {
             "index": 0,
-            "node": "Update a row2",
-            "type": "main"
+            "node": "Classify AI relevance",
+            "type": "ai_languageModel"
           }
         ]
       ]
     },
-    "Create a row": {
+    "Classify AI relevance": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Filter out non AI stuff",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Filter out non AI stuff": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Update a row",
+            "node": "Mark as AI related",
             "type": "main"
           }
         ],
         [
           {
             "index": 0,
-            "node": "Update a row3",
+            "node": "Mark as unsure AI",
             "type": "main"
           }
         ],
         [
           {
             "index": 0,
-            "node": "Update a row1",
+            "node": "Mark as not AI related",
             "type": "main"
           }
         ]
       ]
     },
-    "Filter1": {
+    "Insert new article": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Classify AI relevance",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Keep items after cutoff": {
       "main": [
         [
           {
@@ -828,7 +828,7 @@
         [
           {
             "index": 2,
-            "node": "Merge",
+            "node": "Wait for config lookups",
             "type": "main"
           }
         ]
@@ -839,7 +839,7 @@
         [
           {
             "index": 0,
-            "node": "Merge",
+            "node": "Wait for config lookups",
             "type": "main"
           }
         ]
@@ -850,101 +850,101 @@
         [
           {
             "index": 0,
-            "node": "Remove Duplicates",
+            "node": "Remove duplicate URLs",
             "type": "main"
           }
         ]
       ]
     },
-    "Merge": {
+    "Mark as AI related": {
       "main": [
         [
           {
             "index": 0,
-            "node": "RSS Read1",
+            "node": "Read article page",
             "type": "main"
           }
         ]
       ]
     },
-    "OpenRouter Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "Basic LLM Chain2",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "Filter out non AI stuff",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "RSS Read1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Filter1",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read URL content": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Basic LLM Chain2",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Remove Duplicates": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Create a row",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser": {
+    "Parse summary and categories": {
       "ai_outputParser": [
         [
           {
             "index": 0,
-            "node": "Basic LLM Chain2",
+            "node": "Summarize and classify article",
             "type": "ai_outputParser"
           }
         ]
       ]
     },
-    "Update a row": {
+    "Read RSS feed": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Read URL content",
+            "node": "Keep items after cutoff",
             "type": "main"
           }
         ]
       ]
     },
-    "trigger": {
+    "Read article page": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize and classify article",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Remove duplicate URLs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Insert new article",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Summarize and classify article": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Save summary and categories",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Summarizer model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize and classify article",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Wait for config lookups": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read RSS feed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When called": {
       "main": [
         [
           {
@@ -959,7 +959,7 @@
           },
           {
             "index": 1,
-            "node": "Merge",
+            "node": "Wait for config lookups",
             "type": "main"
           }
         ]
@@ -973,7 +973,7 @@
   "nodes": [
     {
       "id": "1e172055-1862-49b3-8359-b4d7a436757d",
-      "name": "Filter1",
+      "name": "Keep items after cutoff",
       "parameters": {
         "conditions": {
           "combinator": "and",
@@ -985,7 +985,7 @@
                 "operation": "after",
                 "type": "dateTime"
               },
-              "rightValue": "={{ $('trigger').item.json.cutOffDate }}"
+              "rightValue": "={{ $('When called').item.json.cutOffDate }}"
             }
           ],
           "options": {
@@ -1006,7 +1006,7 @@
     },
     {
       "id": "d6016823-17dd-4ea4-9a84-dfe504f2a443",
-      "name": "RSS Read1",
+      "name": "Read RSS feed",
       "parameters": {
         "options": {},
         "url": "={{ $json.rssURL }}"
@@ -1021,7 +1021,7 @@
     {
       "alwaysOutputData": false,
       "id": "297872c9-329b-4f75-8bd7-1535b7e1aea1",
-      "name": "trigger",
+      "name": "When called",
       "parameters": {
         "inputSource": "jsonExample",
         "jsonExample": "{\n  \"publicationName\":\"BBC\",\n\"rssURL\":\"https://feeds.bbci.co.uk/news/rss.xml\",\n  \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n  \"contentURLFieldName\":\"link\",\n  \"contentIdFieldName\":\"dwsyn:contentID\",\n  \"titleFieldName\":\"title\",\n  \"descriptionFieldName\":\"content\",\n  \"snippetFieldName\":\"contentSnippet\",\n  \"pubDateFieldName\":\"pubDate\",\n  \"imageURLFieldName\":\"media:thumbnail.url\"\n}"
@@ -1041,7 +1041,7 @@
         }
       },
       "id": "6fe93d32-0219-4b5a-b0ee-56b8501b2bd9",
-      "name": "Create a row",
+      "name": "Insert new article",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1088,7 +1088,7 @@
         }
       },
       "id": "1ce4d2b9-f073-4594-b5fe-e7d38a443e2d",
-      "name": "Update a row",
+      "name": "Mark as AI related",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1120,7 +1120,7 @@
     },
     {
       "id": "e31056e0-8eb6-4176-b708-3f8ec30eb4b2",
-      "name": "Remove Duplicates",
+      "name": "Remove duplicate URLs",
       "parameters": {
         "compare": "selectedFields",
         "fieldsToCompare": "url",
@@ -1141,7 +1141,7 @@
         }
       },
       "id": "824016b9-9b80-4641-a0be-cd41e6ed67b3",
-      "name": "Read URL content",
+      "name": "Read article page",
       "onError": "continueErrorOutput",
       "parameters": {
         "options": {},
@@ -1165,7 +1165,7 @@
         }
       },
       "id": "cad68999-4167-42a2-a76a-978f4fe33800",
-      "name": "OpenRouter Chat Model2",
+      "name": "Summarizer model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_summarizer').json.model }}",
         "options": {}
@@ -1181,7 +1181,7 @@
       "alwaysOutputData": true,
       "id": "00c61911-5a3d-4db8-86a8-9e7fe4ccbeef",
       "maxTries": 2,
-      "name": "Basic LLM Chain2",
+      "name": "Summarize and classify article",
       "onError": "continueErrorOutput",
       "parameters": {
         "batching": {},
@@ -1205,7 +1205,7 @@
         }
       },
       "id": "2847e84e-88d5-49dc-ac62-a59bef64861e",
-      "name": "OpenRouter Chat Model3",
+      "name": "AI-gate model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'rss_ai_gate').json.model }}",
         "options": {}
@@ -1220,7 +1220,7 @@
     {
       "alwaysOutputData": false,
       "id": "2bb549b1-537f-426d-8610-55bd7bc29e5f",
-      "name": "Filter out non AI stuff",
+      "name": "Classify AI relevance",
       "parameters": {
         "categories": {
           "categories": [
@@ -1259,7 +1259,7 @@
         }
       },
       "id": "555622f0-63ea-4d5e-be72-776ad2467701",
-      "name": "Update a row1",
+      "name": "Mark as not AI related",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1297,7 +1297,7 @@
         }
       },
       "id": "74f55067-8c50-40a7-96bb-ca1a803925ab",
-      "name": "Update a row2",
+      "name": "Save summary and categories",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1343,7 +1343,7 @@
         }
       },
       "id": "b4bd1497-270b-430d-8b62-6d3a68e3f0a2",
-      "name": "Update a row3",
+      "name": "Mark as unsure AI",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1375,7 +1375,7 @@
     },
     {
       "id": "b77fef21-5c4c-43cb-be92-356e57f7eabc",
-      "name": "Structured Output Parser",
+      "name": "Parse summary and categories",
       "parameters": {
         "jsonSchemaExample": "{\n  \"url\":\"www.example.com\",\n  \"summary\": \"BBC Newscast podcast episode 'The Week' discusses the 13th day of anti-government protests in Iran, with internet blackouts and warnings of no leniency from security forces. BBC chief international correspondent Lyse Doucet provides context on the unrest's history, U.S. President Trump's warnings to Ayatollah Ali Khamenei, and his response. Political editors from New Statesman and The House magazine review the first week of UK politics, including how Prime Minister Keir Starmer handles issues involving Trump, Grok, and the Iranian situation.\",\n  \"category\": \"Pop Culture & Media\",\n  \"subcategories\": [\"Media coverage\", \"Public discourse\"]\n}"
       },
@@ -1396,25 +1396,25 @@
               "id": "title",
               "name": "title",
               "type": "string",
-              "value": "={{ (() => { const path = $('trigger').item.json.titleFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+              "value": "={{ (() => { const path = $('When called').item.json.titleFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
             },
             {
               "id": "url",
               "name": "url",
               "type": "string",
-              "value": "={{ (() => { const path = $('trigger').item.json.contentURLFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+              "value": "={{ (() => { const path = $('When called').item.json.contentURLFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
             },
             {
               "id": "description",
               "name": "description",
               "type": "string",
-              "value": "={{ (() => { const path = $('trigger').item.json.descriptionFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+              "value": "={{ (() => { const path = $('When called').item.json.descriptionFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
             },
             {
               "id": "snippet",
               "name": "snippet",
               "type": "string",
-              "value": "={{ (() => { const path = $('trigger').item.json.snippetFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
+              "value": "={{ (() => { const path = $('When called').item.json.snippetFieldName; if (!path) return ''; const v = String(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), $json); return v == null ? '' : v; })() }}"
             },
             {
               "id": "published_date",
@@ -1426,7 +1426,7 @@
               "id": "publication",
               "name": "publication",
               "type": "string",
-              "value": "={{ $('trigger').item.json.publicationName }}"
+              "value": "={{ $('When called').item.json.publicationName }}"
             }
           ]
         },
@@ -1491,7 +1491,7 @@
     },
     {
       "id": "466f491f-6e35-47bd-89e9-65d6cdd44b99",
-      "name": "Merge",
+      "name": "Wait for config lookups",
       "parameters": {
         "mode": "chooseBranch",
         "numberInputs": 3,
