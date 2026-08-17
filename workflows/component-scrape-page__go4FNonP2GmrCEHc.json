@@ -4,34 +4,34 @@
     "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Categories and Summary": {
+      "Classifier model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize and classify article",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Insert scraped article": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Update a row",
+              "node": "Read article page",
               "type": "main"
             }
           ]
         ]
       },
-      "Create a row": {
+      "Keep AI items after cutoff": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Read URL content1",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Filter": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Remove Duplicates1",
+              "node": "Remove duplicate URLs",
               "type": "main"
             }
           ]
@@ -42,7 +42,7 @@
           [
             {
               "index": 0,
-              "node": "Split Out",
+              "node": "Split listing articles",
               "type": "main"
             }
           ]
@@ -59,84 +59,84 @@
           ]
         ]
       },
-      "OpenRouter Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "LLM Scraper",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "OpenRouter Chat Model2": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "Categories and Summary",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "Read URL content": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "LLM Scraper",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read URL content1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Categories and Summary",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Remove Duplicates1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Create a row",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Split Out": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Filter",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Structured Output Parser": {
+      "Parse listing articles": {
         "ai_outputParser": [
           []
         ]
       },
-      "Structured Output Parser1": {
+      "Parse summary and categories": {
         "ai_outputParser": [
           [
             {
               "index": 0,
-              "node": "Categories and Summary",
+              "node": "Summarize and classify article",
               "type": "ai_outputParser"
+            }
+          ]
+        ]
+      },
+      "Read article page": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize and classify article",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read listing page": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "LLM Scraper",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Remove duplicate URLs": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Insert scraped article",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Scraper model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "LLM Scraper",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Split listing articles": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Keep AI items after cutoff",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Summarize and classify article": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Save summary and categories",
+              "type": "main"
             }
           ]
         ]
@@ -146,13 +146,13 @@
           [
             {
               "index": 0,
-              "node": "Read URL content",
+              "node": "Read listing page",
               "type": "main"
             }
           ]
         ]
       },
-      "When Executed by Another Workflow": {
+      "When called": {
         "main": [
           [
             {
@@ -169,7 +169,7 @@
         ]
       }
     },
-    "createdAt": "2026-08-12T08:01:48.603Z",
+    "createdAt": "2026-08-16T08:59:13.015Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -182,7 +182,7 @@
           }
         },
         "id": "9474b16c-5f33-4458-92a4-c540c1c353e6",
-        "name": "Read URL content",
+        "name": "Read listing page",
         "onError": "continueErrorOutput",
         "parameters": {
           "options": {},
@@ -190,8 +190,8 @@
           "url": "={{ $json.url }}"
         },
         "position": [
-          -464,
-          -64
+          -432,
+          -16
         ],
         "retryOnFail": true,
         "type": "n8n-nodes-base.jinaAi",
@@ -205,7 +205,7 @@
           }
         },
         "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
-        "name": "OpenRouter Chat Model",
+        "name": "Scraper model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_extractor').json.model }}",
           "options": {}
@@ -225,7 +225,7 @@
           }
         },
         "id": "7b23eb05-62a9-4c20-8dc1-d4e4a1919d7e",
-        "name": "Create a row",
+        "name": "Insert scraped article",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -266,7 +266,7 @@
       },
       {
         "id": "a6187e7d-7de1-40de-a36c-435ee6a4f999",
-        "name": "Filter",
+        "name": "Keep AI items after cutoff",
         "notes": "{{ $today.startOf('week').minus(1,'days') }} is the cutoff if the reference doesn't work",
         "parameters": {
           "conditions": {
@@ -279,7 +279,7 @@
                   "operation": "after",
                   "type": "dateTime"
                 },
-                "rightValue": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}"
+                "rightValue": "={{ $('When called').item.json.cutOffDate }}"
               },
               {
                 "id": "24a51962-6324-41d3-bb7e-e9b8d635d2b9",
@@ -310,7 +310,7 @@
       },
       {
         "id": "222b078e-b424-46f9-95e4-1168cb93790b",
-        "name": "Split Out",
+        "name": "Split listing articles",
         "parameters": {
           "fieldToSplitOut": "output",
           "options": {}
@@ -330,7 +330,7 @@
           }
         },
         "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
-        "name": "OpenRouter Chat Model2",
+        "name": "Classifier model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_classifier').json.model }}",
           "options": {}
@@ -350,7 +350,7 @@
           }
         },
         "id": "0172651f-6bd5-4bbb-b49d-ffa5604c0c37",
-        "name": "Read URL content1",
+        "name": "Read article page",
         "onError": "continueErrorOutput",
         "parameters": {
           "options": {},
@@ -368,7 +368,7 @@
       },
       {
         "id": "be75a915-79a2-44b8-ab3b-c8884a6d1b38",
-        "name": "Structured Output Parser1",
+        "name": "Parse summary and categories",
         "parameters": {
           "jsonSchemaExample": "{\n  \"summary\": \"Anthropic details safeguards in Claude AI to protect user well-being, focusing on handling suicide/self-harm discussions and reducing sycophancy. Using system prompts, reinforcement learning, and expert input, Claude responds empathetically, directs to helplines via ThroughLine partnerships, and partners with IASP for guidance. Evaluations show high performance: 98-99% appropriate single-turn responses on risky prompts, 78-86% in multi-turn scenarios (up from 56%), and 70-73% course-correction in real prefilled conversations. Sycophancy reduced 70-85% via behavioral audits; open-sourced Petri benchmark shows Claude 4.5 outperforming peers. Age restriction to 18+ enforced with classifiers. Ongoing transparency and improvements committed.\",\n  \"category\": \"Safety & Ethics\",\n  \"subcategories\": [\"AI safety research\", \"Ethical concerns\", \"Responsible AI\"]\n}"
         },
@@ -381,7 +381,7 @@
       },
       {
         "id": "a3b46d78-d13c-4e48-a4bd-fe532dc2cb70",
-        "name": "Remove Duplicates1",
+        "name": "Remove duplicate URLs",
         "parameters": {
           "compare": "selectedFields",
           "fieldsToCompare": "url",
@@ -396,14 +396,14 @@
       },
       {
         "id": "74b8839f-e8c7-4f0e-b0d8-5f57553321ca",
-        "name": "When Executed by Another Workflow",
+        "name": "When called",
         "parameters": {
           "inputSource": "jsonExample",
           "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
         },
         "position": [
-          -688,
-          -64
+          -992,
+          0
         ],
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1
@@ -416,7 +416,7 @@
           "batching": {},
           "hasOutputParser": true,
           "promptType": "define",
-          "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When Executed by Another Workflow').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When Executed by Another Workflow').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When Executed by Another Workflow').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When Executed by Another Workflow').item.json.url }}\n\nPublication name\n{{ $('When Executed by Another Workflow').item.json.publication }}\n\nDate format and pattern\n{{ $('When Executed by Another Workflow').item.json.dateFormat }}\n\nStructure\n{{ $('When Executed by Another Workflow').item.json.structure }}\n\nCategories array\n{{ $('When Executed by Another Workflow').item.json.categories }}\n\nSeparators\n{{ $('When Executed by Another Workflow').item.json.separators }}\n\nExtraction hints\n{{ $('When Executed by Another Workflow').item.json.extractionHints }}\n\nExamples array\n{{ $('When Executed by Another Workflow').item.json.examples }}"
+          "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When called').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When called').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When called').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When called').item.json.url }}\n\nPublication name\n{{ $('When called').item.json.publication }}\n\nDate format and pattern\n{{ $('When called').item.json.dateFormat }}\n\nStructure\n{{ $('When called').item.json.structure }}\n\nCategories array\n{{ $('When called').item.json.categories }}\n\nSeparators\n{{ $('When called').item.json.separators }}\n\nExtraction hints\n{{ $('When called').item.json.extractionHints }}\n\nExamples array\n{{ $('When called').item.json.examples }}"
         },
         "position": [
           -208,
@@ -428,7 +428,7 @@
       {
         "alwaysOutputData": true,
         "id": "bc2875c6-7001-4468-983c-5b85c84e6fed",
-        "name": "Categories and Summary",
+        "name": "Summarize and classify article",
         "parameters": {
           "batching": {},
           "hasOutputParser": true,
@@ -451,7 +451,7 @@
           }
         },
         "id": "cfa4dfbb-2476-4b5e-8b0b-c46d05c2d94d",
-        "name": "Update a row",
+        "name": "Save summary and categories",
         "parameters": {
           "fieldsUi": {
             "fieldValues": [
@@ -474,7 +474,7 @@
               {
                 "condition": "eq",
                 "keyName": "url",
-                "keyValue": "={{ $('Read URL content1').item.json.data.url }}"
+                "keyValue": "={{ $('Read article page').item.json.data.url }}"
               }
             ]
           },
@@ -491,7 +491,7 @@
       },
       {
         "id": "7fe78d9d-9497-41f9-8c12-6398e431fa80",
-        "name": "Structured Output Parser",
+        "name": "Parse listing articles",
         "parameters": {
           "jsonSchemaExample": "\"output\":[\n    {\n      \"publication\": \"Anthropic Newsroom\",\n      \"category\": \"Announcements\",\n      \"title\": \"Introducing Claude Opus 4.5\",\n      \"description\": \"The best model in the world for coding, agents, and computer use, with meaningful improvements to everyday tasks like slides and spreadsheets. Claude Opus 4.5 delivers frontier performance and dramatically improved token efficiency.\",\n      \"url\": \"https://www.anthropic.com/news/claude-opus-4-5\",\n      \"date\": \"2025-11-24\",\n      \"ai_or_no\": 1\n    }\n  ]"
         },
@@ -517,7 +517,7 @@
           "returnAll": true
         },
         "position": [
-          -688,
+          -800,
           -240
         ],
         "type": "n8n-nodes-base.dataTable",
@@ -527,53 +527,50 @@
         "id": "554bf7ea-7f6e-4c48-a0a0-ab2cba20092d",
         "name": "Wait for llm_config",
         "parameters": {
-          "chooseBranchMode": "waitForAll",
           "mode": "chooseBranch",
-          "numberInputs": 2,
-          "output": "specifiedInput",
           "useDataOfInput": "2"
         },
         "position": [
-          -480,
-          -64
+          -608,
+          -16
         ],
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-08-12T08:01:48.603Z",
-    "versionId": "f21e0d06-31c4-4bc3-aae1-c69b04313365",
+    "updatedAt": "2026-08-16T08:59:13.015Z",
+    "versionId": "5bff0558-fd89-4823-b8f2-eb3cff367e85",
     "workflowId": "go4FNonP2GmrCEHc"
   },
   "connections": {
-    "Categories and Summary": {
+    "Classifier model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize and classify article",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Insert scraped article": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Update a row",
+            "node": "Read article page",
             "type": "main"
           }
         ]
       ]
     },
-    "Create a row": {
+    "Keep AI items after cutoff": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Read URL content1",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Filter": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Remove Duplicates1",
+            "node": "Remove duplicate URLs",
             "type": "main"
           }
         ]
@@ -584,7 +581,7 @@
         [
           {
             "index": 0,
-            "node": "Split Out",
+            "node": "Split listing articles",
             "type": "main"
           }
         ]
@@ -601,84 +598,84 @@
         ]
       ]
     },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "LLM Scraper",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "Categories and Summary",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "Read URL content": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "LLM Scraper",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read URL content1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Categories and Summary",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Remove Duplicates1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Create a row",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Filter",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser": {
+    "Parse listing articles": {
       "ai_outputParser": [
         []
       ]
     },
-    "Structured Output Parser1": {
+    "Parse summary and categories": {
       "ai_outputParser": [
         [
           {
             "index": 0,
-            "node": "Categories and Summary",
+            "node": "Summarize and classify article",
             "type": "ai_outputParser"
+          }
+        ]
+      ]
+    },
+    "Read article page": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize and classify article",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read listing page": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LLM Scraper",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Remove duplicate URLs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Insert scraped article",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Scraper model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "LLM Scraper",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Split listing articles": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Keep AI items after cutoff",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Summarize and classify article": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Save summary and categories",
+            "type": "main"
           }
         ]
       ]
@@ -688,13 +685,13 @@
         [
           {
             "index": 0,
-            "node": "Read URL content",
+            "node": "Read listing page",
             "type": "main"
           }
         ]
       ]
     },
-    "When Executed by Another Workflow": {
+    "When called": {
       "main": [
         [
           {
@@ -724,7 +721,7 @@
         }
       },
       "id": "9474b16c-5f33-4458-92a4-c540c1c353e6",
-      "name": "Read URL content",
+      "name": "Read listing page",
       "onError": "continueErrorOutput",
       "parameters": {
         "options": {},
@@ -747,7 +744,7 @@
         }
       },
       "id": "1afc980a-8c56-44be-a7d8-60ae9a48d9ea",
-      "name": "OpenRouter Chat Model",
+      "name": "Scraper model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_extractor').json.model }}",
         "options": {}
@@ -767,7 +764,7 @@
         }
       },
       "id": "7b23eb05-62a9-4c20-8dc1-d4e4a1919d7e",
-      "name": "Create a row",
+      "name": "Insert scraped article",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -808,7 +805,7 @@
     },
     {
       "id": "a6187e7d-7de1-40de-a36c-435ee6a4f999",
-      "name": "Filter",
+      "name": "Keep AI items after cutoff",
       "notes": "{{ $today.startOf('week').minus(1,'days') }} is the cutoff if the reference doesn't work",
       "parameters": {
         "conditions": {
@@ -821,7 +818,7 @@
                 "operation": "after",
                 "type": "dateTime"
               },
-              "rightValue": "={{ $('When Executed by Another Workflow').item.json.cutOffDate }}"
+              "rightValue": "={{ $('When called').item.json.cutOffDate }}"
             },
             {
               "id": "24a51962-6324-41d3-bb7e-e9b8d635d2b9",
@@ -852,7 +849,7 @@
     },
     {
       "id": "222b078e-b424-46f9-95e4-1168cb93790b",
-      "name": "Split Out",
+      "name": "Split listing articles",
       "parameters": {
         "fieldToSplitOut": "output",
         "options": {}
@@ -872,7 +869,7 @@
         }
       },
       "id": "6757d867-5e1c-48f0-8c76-ae81af623a60",
-      "name": "OpenRouter Chat Model2",
+      "name": "Classifier model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'scrape_classifier').json.model }}",
         "options": {}
@@ -892,7 +889,7 @@
         }
       },
       "id": "0172651f-6bd5-4bbb-b49d-ffa5604c0c37",
-      "name": "Read URL content1",
+      "name": "Read article page",
       "onError": "continueErrorOutput",
       "parameters": {
         "options": {},
@@ -910,7 +907,7 @@
     },
     {
       "id": "be75a915-79a2-44b8-ab3b-c8884a6d1b38",
-      "name": "Structured Output Parser1",
+      "name": "Parse summary and categories",
       "parameters": {
         "jsonSchemaExample": "{\n  \"summary\": \"Anthropic details safeguards in Claude AI to protect user well-being, focusing on handling suicide/self-harm discussions and reducing sycophancy. Using system prompts, reinforcement learning, and expert input, Claude responds empathetically, directs to helplines via ThroughLine partnerships, and partners with IASP for guidance. Evaluations show high performance: 98-99% appropriate single-turn responses on risky prompts, 78-86% in multi-turn scenarios (up from 56%), and 70-73% course-correction in real prefilled conversations. Sycophancy reduced 70-85% via behavioral audits; open-sourced Petri benchmark shows Claude 4.5 outperforming peers. Age restriction to 18+ enforced with classifiers. Ongoing transparency and improvements committed.\",\n  \"category\": \"Safety & Ethics\",\n  \"subcategories\": [\"AI safety research\", \"Ethical concerns\", \"Responsible AI\"]\n}"
       },
@@ -923,7 +920,7 @@
     },
     {
       "id": "a3b46d78-d13c-4e48-a4bd-fe532dc2cb70",
-      "name": "Remove Duplicates1",
+      "name": "Remove duplicate URLs",
       "parameters": {
         "compare": "selectedFields",
         "fieldsToCompare": "url",
@@ -938,7 +935,7 @@
     },
     {
       "id": "74b8839f-e8c7-4f0e-b0d8-5f57553321ca",
-      "name": "When Executed by Another Workflow",
+      "name": "When called",
       "parameters": {
         "inputSource": "jsonExample",
         "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
@@ -958,7 +955,7 @@
         "batching": {},
         "hasOutputParser": true,
         "promptType": "define",
-        "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When Executed by Another Workflow').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When Executed by Another Workflow').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When Executed by Another Workflow').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When Executed by Another Workflow').item.json.url }}\n\nPublication name\n{{ $('When Executed by Another Workflow').item.json.publication }}\n\nDate format and pattern\n{{ $('When Executed by Another Workflow').item.json.dateFormat }}\n\nStructure\n{{ $('When Executed by Another Workflow').item.json.structure }}\n\nCategories array\n{{ $('When Executed by Another Workflow').item.json.categories }}\n\nSeparators\n{{ $('When Executed by Another Workflow').item.json.separators }}\n\nExtraction hints\n{{ $('When Executed by Another Workflow').item.json.extractionHints }}\n\nExamples array\n{{ $('When Executed by Another Workflow').item.json.examples }}"
+        "text": "=# TASK: Extract Articles from HTML Content\n\nYou are given scraped content from {{ $('When called').item.json.publication }}. Extract ALL articles and return them in the exact format specified below.\n\n## Instructions:\n\n1. Look for entries that contain these three elements together:\n   - A **category label** (varies by source - see scraping hints if provided)\n   - A **date** (format varies - see scraping hints if provided)\n   - An **article title** (may be in markdown link format `[Title](URL)` or plain text)\n   - A **URL** (may be in markdown link format or separate)\n\n2. The order of these elements may vary:\n   - Date-Category-Title\n   - Category-Date-Title\n   - Category-Title-Date\n   - Title-Category-Date\n   - Or other combinations\n\n3. For each entry you find, extract:\n   - **Publication**: {{ $('When called').item.json.publication }}\n   - **Category**: The category label (exact text as it appears)\n   - **Title**: The article title (extract from markdown link if present, otherwise use plain text)\n   - **Description**: Other text related to an entry which is not the title\n   - **URL**: The article URL (extract from markdown link if present, otherwise look for nearby URLs)\n   - **Date**: Convert to \"DD-MM-YYYY\" format (see date conversion rules below)\n   - **ai_or_no**: make your best guess whether this entry is related to AI or not then send these values\n        - if it is ai related = 1\n        - if it is NOT ai related = 0\n        - if you are unsure = -1\n\n4. Return results as an array of results this JSON format:\n\n```json\n[\n  {\n    \"publication\":\"{{ $('When called').item.json.publication }}\",\n    \"category\": \"Category name\",\n    \"title\": \"Article title here\",\n    \"description\": \"Article description here\",\n    \"url\": \"URL you found for the article\",\n    \"date\": \"2025-12-18\",\n    \"ai_or_no\":\"1\"\n  }\n]\n```\n\n## Date Format Handling:\n\nDates may appear in various formats. Convert all dates to \"YYYY-MM-DD\" format:\n\n### Common Formats:\n\n**Format: \"Month DD, YYYY\"**\n- \"Dec 18, 2025\" → \"2025-12-18\"\n- \"Dec 16, 2025\" → \"2025-12-16\"\n- \"Jan 5, 2026\" → \"2026-01-05\"\n- \"January 2, 2026\" → \"2026-01-02\"\n\n**Format: \"YYYY/MM/DD\"**\n- \"2026/01/07\" → \"2026-01-07\"\n- \"2025/12/31\" → \"2025-12-31\"\n\n**Format: \"Month DD, YYYY\" (full month names)**\n- \"December 17, 2025\" → \"2025-12-17\"\n- \"November 19, 2025\" → \"2025-11-19\"\n\n### Month Abbreviations:\n- Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec\n\n## Extraction Guidelines:\n\n1. **Be flexible with spacing**: Elements may be separated by spaces, newlines, dashes, or other characters\n2. **Look for patterns**: Articles typically appear in lists or repeated structures\n3. **Extract all articles**: Don't stop at the first few - scan the entire content\n4. **Handle missing elements**: If a URL is not found but a title is present, you may need to construct it or mark it as missing\n5. **Category matching**: Use the categories provided in scraping hints if available, otherwise extract any category-like labels you find\n\n## Example Patterns:\n\n**Pattern 1: Category-Date-Title with markdown link**\n```\nResearch\n\nDec 18, 2025\n\n[Evaluating chain-of-thought monitorability...](https://openai.com/index/evaluating-chain-of-thought-monitorability/)\n```\n\n**Pattern 2: Date-Category-Title**\n```\nDec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\n```\n\n**Pattern 3: Category-Title-Date**\n```\nResearch Introducing Mistral OCR 3 December 17, 2025\n```\n\n**Pattern 4: Date-Category-Title with URL**\n```\n2026/01/07 Open-Source Qwen3-VL-Embedding and Qwen3-VL-Reranker: For the Next Generation of Multimodal Retrieval\n```\n\nNow extract ALL articles from the provided HTML content below:\n\n<content>\n{{ $json.content }}\n</content>\n\n---\n\n## Scraping Hints\n\n<!-- This section will be populated with URL-specific hints when processing a particular source -->\nURL\n{{ $('When called').item.json.url }}\n\nPublication name\n{{ $('When called').item.json.publication }}\n\nDate format and pattern\n{{ $('When called').item.json.dateFormat }}\n\nStructure\n{{ $('When called').item.json.structure }}\n\nCategories array\n{{ $('When called').item.json.categories }}\n\nSeparators\n{{ $('When called').item.json.separators }}\n\nExtraction hints\n{{ $('When called').item.json.extractionHints }}\n\nExamples array\n{{ $('When called').item.json.examples }}"
       },
       "position": [
         -208,
@@ -970,7 +967,7 @@
     {
       "alwaysOutputData": true,
       "id": "bc2875c6-7001-4468-983c-5b85c84e6fed",
-      "name": "Categories and Summary",
+      "name": "Summarize and classify article",
       "parameters": {
         "batching": {},
         "hasOutputParser": true,
@@ -993,7 +990,7 @@
         }
       },
       "id": "cfa4dfbb-2476-4b5e-8b0b-c46d05c2d94d",
-      "name": "Update a row",
+      "name": "Save summary and categories",
       "parameters": {
         "fieldsUi": {
           "fieldValues": [
@@ -1016,7 +1013,7 @@
             {
               "condition": "eq",
               "keyName": "url",
-              "keyValue": "={{ $('Read URL content1').item.json.data.url }}"
+              "keyValue": "={{ $('Read article page').item.json.data.url }}"
             }
           ]
         },
@@ -1033,7 +1030,7 @@
     },
     {
       "id": "7fe78d9d-9497-41f9-8c12-6398e431fa80",
-      "name": "Structured Output Parser",
+      "name": "Parse listing articles",
       "parameters": {
         "jsonSchemaExample": "\"output\":[\n    {\n      \"publication\": \"Anthropic Newsroom\",\n      \"category\": \"Announcements\",\n      \"title\": \"Introducing Claude Opus 4.5\",\n      \"description\": \"The best model in the world for coding, agents, and computer use, with meaningful improvements to everyday tasks like slides and spreadsheets. Claude Opus 4.5 delivers frontier performance and dramatically improved token efficiency.\",\n      \"url\": \"https://www.anthropic.com/news/claude-opus-4-5\",\n      \"date\": \"2025-11-24\",\n      \"ai_or_no\": 1\n    }\n  ]"
       },
