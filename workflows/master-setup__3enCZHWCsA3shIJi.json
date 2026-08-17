@@ -1,0 +1,2911 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi",
+    "autosaved": false,
+    "connections": {
+      "Attach repo config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Check if repo is starred",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Check Gmail",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Check Telegram",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Check Supabase",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Check Jina",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Check n8n",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Build credential report": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send credential report",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check Gmail": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check Jina": {
+        "main": [
+          [
+            {
+              "index": 4,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check Supabase": {
+        "main": [
+          [
+            {
+              "index": 3,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check Telegram": {
+        "main": [
+          [
+            {
+              "index": 2,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check if repo is starred": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Check n8n": {
+        "main": [
+          [
+            {
+              "index": 5,
+              "node": "Wait for all checks",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Copy user config into globals": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Attach repo config",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Create workflow on this instance": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Return import status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Return import status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Credentials ok?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare import config",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Download large file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Parse and decide create",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get GitHub workflow file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "If file too large",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Has workflow files?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop over GitHub files",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Prepare completion",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "If file too large": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Download large file",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Parse and decide create",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Import one workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Route by import action",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally failed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List GitHub workflow files": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare GitHub files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup global variables": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Copy user config into globals",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup user config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Loop over GitHub files": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare completion",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Import one workflow",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Manual start": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup user config",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Parse and decide create": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Should create workflow?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare GitHub files": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Has workflow files?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare completion": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send import completed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare import config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Reset import counts",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Reset import counts": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send import started",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "List GitHub workflow files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Route by import action": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Tally created",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally skipped",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally failed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Send credential report": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Credentials ok?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Should create workflow?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Create workflow on this instance",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Return import status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally created": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally failed": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally skipped": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait for all checks": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Build credential report",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait rate limit": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop over GitHub files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "When called for one file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get GitHub workflow file",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-16T18:02:38.684Z",
+    "description": null,
+    "name": null,
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "762c324b-f9e2-4762-8102-e7f3a16d9500",
+        "name": "Manual start",
+        "parameters": {},
+        "position": [
+          240,
+          400
+        ],
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1
+      },
+      {
+        "id": "ef310e68-a688-4c41-9342-0bddfe83011b",
+        "name": "Lookup global variables",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          480,
+          400
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "9c1ae56d-335b-4f34-a7e6-d35440fa4137",
+        "name": "Attach repo config",
+        "parameters": {
+          "jsCode": "const gv=$input.first().json;\nconst uc=$('Lookup user config').first().json;\nconst tg=uc.tg_notifs_chat_id||gv.tg_notifs_chat_id;\nconst email=uc.g_email_id||gv.g_email_id;\nconst owner=uc.backup_gh_owner||gv.backup_gh_owner;\nreturn[{json:{...gv,tg_notifs_chat_id:tg,g_email_id:email,backup_gh_owner:owner}}];"
+        },
+        "position": [
+          720,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "executeOnce": true,
+        "id": "a086f716-82fb-48a6-b8c2-6e460a7ada80",
+        "maxTries": 3,
+        "name": "Check if repo is starred",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Accept",
+                "value": "application/vnd.github+json"
+              },
+              {
+                "name": "X-GitHub-Api-Version",
+                "value": "2022-11-28"
+              }
+            ]
+          },
+          "nodeCredentialType": "githubApi",
+          "options": {
+            "response": {
+              "response": {
+                "fullResponse": true,
+                "neverError": true
+              }
+            }
+          },
+          "sendHeaders": true,
+          "url": "https://api.github.com/user/starred/hellovamsi/sorted_signals"
+        },
+        "position": [
+          960,
+          400
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "waitBetweenTries": 1000
+      },
+      {
+        "id": "8cb3cdb3-3fce-40db-a561-485ff8a7eb3e",
+        "name": "Sticky Note 1558b8be",
+        "parameters": {
+          "color": 4,
+          "content": "## master : setup\n\n1. Copy `user_config` into `global_variables`.\n2. Probe Gmail, GitHub, Telegram, Supabase, Jina, and n8n (continue on error).\n3. Telegram the report. GitHub 204 or 404 both count as working. Star check is always hellovamsi/sorted_signals.\n4. If every probe works, import missing workflows from https://github.com/hellovamsi/sorted_signals (`workflows/`). Per-file create/skip is a same-canvas sub-run (like backup : github). If any probe fails, skip import.\n\nDoes not overwrite workflows, import credentials, or import data tables. Backup export still uses `backup_gh_*`.",
+          "height": 360,
+          "width": 1100
+        },
+        "position": [
+          -80,
+          112
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "7y2G4h8UjS5wUIhm",
+            "name": "Gmail account"
+          }
+        },
+        "executeOnce": true,
+        "id": "8af7459d-8680-46b4-8e36-182241718931",
+        "name": "Check Gmail",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "limit": 1,
+          "resource": "label"
+        },
+        "position": [
+          960,
+          80
+        ],
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "webhookId": "c435327f-e7b6-4400-a23c-8d2b3ab97054"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "executeOnce": true,
+        "id": "40c089c1-b874-49a9-aa2c-166494f1c90c",
+        "name": "Check Telegram",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "chatId": "={{ $('Attach repo config').first().json.tg_notifs_chat_id }}",
+          "resource": "chat"
+        },
+        "position": [
+          960,
+          240
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "f13c2805-6213-420d-a05d-34711fd4c387"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "dTJY0l3sZc3jSBwR",
+            "name": "Supabase account"
+          }
+        },
+        "executeOnce": true,
+        "id": "782ab2c6-3b6b-4d60-b691-8d82fcebe74c",
+        "name": "Check Supabase",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "filterType": "none",
+          "limit": 1,
+          "operation": "getAll",
+          "tableId": "rss_fetched_items"
+        },
+        "position": [
+          960,
+          560
+        ],
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "jinaAiApi": {
+            "id": "4W5ZoT7PWlbCQYny",
+            "name": "Jina AI account"
+          }
+        },
+        "executeOnce": true,
+        "id": "08063e0c-6ee4-481c-a165-2e78ff7a233c",
+        "name": "Check Jina",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "operation": "search",
+          "options": {},
+          "requestOptions": {},
+          "searchQuery": "n8n"
+        },
+        "position": [
+          960,
+          720
+        ],
+        "type": "n8n-nodes-base.jinaAi",
+        "typeVersion": 1
+      },
+      {
+        "id": "4bb0e89b-5c06-479f-ad38-8c17eb108e5e",
+        "name": "Wait for all checks",
+        "parameters": {
+          "numberInputs": 6
+        },
+        "position": [
+          1248,
+          400
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "b20ed59c-f4a1-4e3c-85b7-a09fa37a0829",
+        "name": "Build credential report",
+        "parameters": {
+          "jsCode": "function probe(name, extra) {\n  try {\n    const item = $(name).first();\n    const j = (item && item.json) || {};\n    const err = j.error || (item && item.error);\n    if (err) {\n      const msg = err.message || err.description || String(err);\n      return extra({ ok: false, detail: String(msg).slice(0, 120) }, j);\n    }\n    return extra({ ok: true }, j);\n  } catch (e) {\n    return extra({ ok: false, detail: String(e.message || e).slice(0, 120) }, {});\n  }\n}\nfunction line(label, r) {\n  return label + ': ' + (r.ok ? 'working' : ('not working' + (r.detail ? ' (' + r.detail + ')' : '')));\n}\nconst gh = probe('Check if repo is starred', (base, j) => {\n  const c = Number(j.statusCode);\n  if (c === 204) return { ok: true, starred: true };\n  if (c === 404) return { ok: true, starred: false };\n  if (!base.ok) return base;\n  return { ok: false, detail: 'HTTP ' + c };\n});\nconst gmail = probe('Check Gmail', (base) => base);\nconst tg = probe('Check Telegram', (base) => base);\nconst sb = probe('Check Supabase', (base) => base);\nconst jina = probe('Check Jina', (base) => base);\nconst n8nApi = probe('Check n8n', (base) => base);\nlet starLine = 'You have not starred';\nif (gh.ok && gh.starred) starLine = 'You have starred';\nconst checks = [['Gmail', gmail], ['GitHub', gh], ['Telegram', tg], ['Supabase', sb], ['Jina', jina], ['n8n', n8nApi]];\nconst credReport = checks.map(([label, r]) => line(label, r)).join('\\n');\nconst failed = checks.filter(([, r]) => !r.ok).map(([label]) => label);\nconst allCredsOk = failed.length === 0;\nconst cfg = $('Attach repo config').first().json;\nconst copyLine = 'Copied user_config into global_variables.';\nconst importLine = allCredsOk ? 'GitHub import will run next.' : ('GitHub import skipped. Failed checks: ' + failed.join(', ') + '.');\nreturn [{ json: { starLine, credReport, allCredsOk, text: copyLine + '\\n' + importLine + '\\n\\n' + starLine + '\\n\\n' + credReport, tg_notifs_chat_id: cfg.tg_notifs_chat_id } }];\n"
+        },
+        "position": [
+          1488,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "6e1a4988-9503-40d1-ba76-e490959f1f8f",
+        "name": "Send credential report",
+        "parameters": {
+          "additionalFields": {
+            "appendAttribution": false
+          },
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "text": "={{ $json.text }}"
+        },
+        "position": [
+          1728,
+          400
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "8ca4773a-ea0c-4ed9-960e-94862eb0fccb"
+      },
+      {
+        "id": "625093fb-2bb3-41c4-85e1-4dfbe5692917",
+        "name": "Lookup user config",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "user_config",
+            "mode": "list",
+            "value": "FsQNE0iq4GWOPJkd"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          368,
+          400
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "4a5d74cd-1d31-4a97-9b50-64368e6f1042",
+        "name": "Copy user config into globals",
+        "parameters": {
+          "columns": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "canBeUsedToMatch": false,
+                "display": true,
+                "displayName": "tg_notifs_chat_id",
+                "id": "tg_notifs_chat_id",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": false,
+                "display": true,
+                "displayName": "g_email_id",
+                "id": "g_email_id",
+                "required": false,
+                "type": "string"
+              },
+              {
+                "canBeUsedToMatch": false,
+                "display": true,
+                "displayName": "backup_gh_owner",
+                "id": "backup_gh_owner",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "value": {
+              "backup_gh_owner": "={{ $('Lookup user config').first().json.backup_gh_owner }}",
+              "g_email_id": "={{ $('Lookup user config').first().json.g_email_id }}",
+              "tg_notifs_chat_id": "={{ $('Lookup user config').first().json.tg_notifs_chat_id }}"
+            }
+          },
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $json.id }}"
+              }
+            ]
+          },
+          "matchType": "allConditions",
+          "operation": "update",
+          "options": {}
+        },
+        "position": [
+          608,
+          400
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "executeOnce": true,
+        "id": "ad56d637-103d-4dc1-bb6d-510402d7a289",
+        "name": "Check n8n",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "filters": {
+            "activeWorkflows": false
+          },
+          "requestOptions": {}
+        },
+        "position": [
+          960,
+          880
+        ],
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "id": "10168469-165c-4b41-aebd-e6b5bc5bf8e5",
+        "name": "Credentials ok?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "all-creds-ok-0001",
+                "leftValue": "={{ $('Build credential report').first().json.allCredsOk }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          1968,
+          400
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "e29f7b80-fb8f-4c82-a428-77369d6ac3da",
+        "name": "Prepare import config",
+        "parameters": {
+          "jsCode": "const cfg=$('Attach repo config').first().json;\nreturn[{json:{...cfg,repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_path:'workflows/',repo_branch:'main'}}];"
+        },
+        "position": [
+          2208,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "02ca99c0-3bf5-479a-ac19-63476564f00f",
+        "name": "Reset import counts",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts={created:0,skipped:0,failed:0,listed:0};\nreturn $input.all();"
+        },
+        "position": [
+          2448,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "f857bf58-fe9f-451a-ad03-f8f267fcaebd",
+        "name": "Send import started",
+        "parameters": {
+          "additionalFields": {
+            "appendAttribution": false
+          },
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "text": "=Sorted Signals GitHub import starting.\nRepo: https://github.com/hellovamsi/sorted_signals\nPlease open that link and star the repo if you can. GitHub does not allow this workflow to star it for you.\nExecution: {{ $execution.id }}\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        },
+        "position": [
+          2688,
+          240
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "c8eea570-3586-4598-bbb4-c39d9701e6e3"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "id": "efe80e87-d2c4-4677-a9d6-d7a1e066b2f0",
+        "name": "List GitHub workflow files",
+        "parameters": {
+          "filePath": "workflows",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          2688,
+          480
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "a649d08c-1860-4312-a9e2-80ee3145922b"
+      },
+      {
+        "id": "28feca66-a21c-4fcf-9fa9-9f821518290a",
+        "name": "Prepare GitHub files",
+        "parameters": {
+          "jsCode": "const listed=$('List GitHub workflow files').all().map(i=>i.json).filter(f=>f&&f.type==='file'&&/\\.json$/i.test(String(f.name||''))&&String(f.name).includes('__'));\nconst existing=$('Check n8n').all().map(i=>i.json);\nconst existingNames=existing.map(w=>w.name);\nconst existingIds=existing.map(w=>String(w.id));\nconst s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.listed=listed.length;\nconst repo_owner='hellovamsi';\nconst repo_name='sorted_signals';\nconst repo_path='workflows/';\nconst repo_branch='main';\nif(!listed.length){return[{json:{hasFiles:false,repo_owner,repo_name}}];}\nreturn listed.map(f=>({json:{hasFiles:true,name:f.name,path:f.path,download_url:f.download_url,sha:f.sha,size:f.size,repo_owner,repo_name,repo_path,repo_branch,existingNames,existingIds}}));"
+        },
+        "position": [
+          2928,
+          480
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "7d15f9b0-cc85-4e15-9641-caad97dcbd69",
+        "name": "Has workflow files?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "leftValue": "={{ $json.hasFiles }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "boolean"
+                },
+                "rightValue": true
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          3168,
+          480
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "9aef2f7b-2f67-4b41-9e8d-9fe81d1f14e6",
+        "name": "Loop over GitHub files",
+        "parameters": {
+          "options": {}
+        },
+        "position": [
+          3408,
+          560
+        ],
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3
+      },
+      {
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "id": "e34a7354-4a8f-4fc6-9e78-f99edfcb2d93",
+        "name": "Get GitHub workflow file",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "additionalParameters": {
+            "reference": "main"
+          },
+          "asBinaryProperty": false,
+          "filePath": "={{ $json.path }}",
+          "operation": "get",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          2208,
+          1280
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "77af7f40-130e-41b6-ac9b-bd68a87ea2d1"
+      },
+      {
+        "id": "3ad1be8a-430e-4ccf-aa75-1d2998d3e30e",
+        "name": "If file too large",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "45ce825e-9fa6-430c-8931-9aaf22c42585",
+                "leftValue": "={{ $json.content }}",
+                "operator": {
+                  "operation": "empty",
+                  "singleValue": true,
+                  "type": "string"
+                },
+                "rightValue": ""
+              },
+              {
+                "id": "9619a55f-7fb1-4f24-b1a7-7aeb82365806",
+                "leftValue": "={{ $json.error }}",
+                "operator": {
+                  "operation": "notExists",
+                  "singleValue": true,
+                  "type": "string"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          2448,
+          1280
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "c806d5bf-fac8-44d5-ac5e-a2c4bb473a08",
+        "name": "Download large file",
+        "parameters": {
+          "options": {},
+          "url": "={{ $json.download_url }}"
+        },
+        "position": [
+          2688,
+          1120
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "110fd5ed-8f18-44b7-bfd3-0822600dc16f",
+        "name": "Parse and decide create",
+        "parameters": {
+          "jsCode": "const item=$input.first().json;\nconst orig=$('When called for one file').first().json;\nlet raw;\nif(item.content){raw=JSON.parse(Buffer.from(item.content,'base64').toString('utf8'));}\nelse if(typeof item.data==='string'&&item.data.trim().startsWith('{')){raw=JSON.parse(item.data);}\nelse if(item.nodes&&item.name){raw=item;}\nelse{throw new Error('Could not parse workflow JSON from GitHub file');}\nconst names=new Set(orig.existingNames||[]);\nconst ids=new Set((orig.existingIds||[]).map(String));\nconst exportId=raw.id!=null?String(raw.id):'';\nconst name=String(raw.name||'');\nlet action='create';\nlet skipReason='';\nif(name==='master : setup'||name==='import : github'){action='skip';skipReason='self';}\nelse if((exportId&&ids.has(exportId))||names.has(name)){action='skip';skipReason='already_on_instance';}\nconst settings=raw.settings&&typeof raw.settings==='object'?{...raw.settings}:{};\nconst workflowObject={name,nodes:raw.nodes||[],connections:raw.connections||{},settings};\nreturn[{json:{action,skipReason,name,exportId,fileName:orig.name,workflowObject:JSON.stringify(workflowObject)}}];"
+        },
+        "position": [
+          2928,
+          1280
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "cd2a181d-9a27-4f3b-89a1-423eba90f515",
+        "name": "Should create workflow?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+                "leftValue": "={{ $json.action }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "string"
+                },
+                "rightValue": "create"
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          3168,
+          1280
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "633d3818-fe43-4677-8481-284b63b8253a",
+        "name": "Create workflow on this instance",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "operation": "create",
+          "requestOptions": {},
+          "workflowObject": "={{ $json.workflowObject }}"
+        },
+        "position": [
+          3408,
+          1120
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "id": "80bcfb6b-fbf0-480c-a3f0-1b648484cd14",
+        "name": "Tally created",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.created+=1;\nreturn $input.all();"
+        },
+        "position": [
+          4128,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "2dd0bed4-9702-45e2-a78e-d62bc21bd57d",
+        "name": "Tally skipped",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.skipped+=1;\nreturn $input.all();"
+        },
+        "position": [
+          4128,
+          720
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "58872c26-5b7b-4840-b3bd-6196d9f10247",
+        "name": "Tally failed",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.failed+=1;\nreturn $input.all();"
+        },
+        "position": [
+          4128,
+          560
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "c22bca2b-1783-4a3d-a3d3-034061778250",
+        "name": "Wait rate limit",
+        "parameters": {
+          "amount": 1
+        },
+        "position": [
+          4368,
+          560
+        ],
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "webhookId": "1dedc59b-3136-4001-b053-42097e99a155"
+      },
+      {
+        "executeOnce": true,
+        "id": "5ce9ab82-3a2b-4b27-9a8a-20df6ba36c23",
+        "name": "Prepare completion",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nconst cfg=$('Attach repo config').first().json;\nconst repo_url='https://github.com/hellovamsi/sorted_signals';\nreturn[{json:{...c,repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_url,tg_notifs_chat_id:cfg.tg_notifs_chat_id}}];"
+        },
+        "position": [
+          3408,
+          240
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "executeOnce": true,
+        "id": "8ee6b070-684e-49e4-b6f0-c1f611bcf69f",
+        "name": "Send import completed",
+        "parameters": {
+          "additionalFields": {
+            "appendAttribution": false
+          },
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "text": "=Sorted Signals GitHub import finished.\nRepo: {{ $json.repo_url }}\nFiles listed: {{ $json.listed }}\nCreated: {{ $json.created }}\nSkipped (already present): {{ $json.skipped }}\nFailed: {{ $json.failed }}\nPlease go to GitHub and star the repo if you found this useful: {{ $json.repo_url }}\nExecution: {{ $execution.id }}\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+        },
+        "position": [
+          3648,
+          240
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "d7f7c29f-633e-496a-b611-982b568775c0"
+      },
+      {
+        "id": "14f2adbf-b94f-4c09-981e-f5db2eb74f5c",
+        "name": "When called for one file",
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "position": [
+          1968,
+          1280
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.2
+      },
+      {
+        "id": "697d990e-d566-4453-9c7b-df17a5690524",
+        "name": "Import one workflow",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $workflow.id }}"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [],
+            "value": {}
+          }
+        },
+        "position": [
+          3648,
+          560
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "e3319d81-f00a-485b-bfee-0071ccb45094",
+        "name": "Route by import action",
+        "parameters": {
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "fail"
+          },
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "imp-act-create-0001",
+                      "leftValue": "={{ $json.action }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "create"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "create",
+                "renameOutput": true
+              },
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "imp-act-skip-0001",
+                      "leftValue": "={{ $json.action }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "skip"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "skip",
+                "renameOutput": true
+              }
+            ]
+          }
+        },
+        "position": [
+          3856,
+          416
+        ],
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "2a5174ce-528c-4fe3-847c-954ba7a7aa06",
+        "name": "Return import status",
+        "parameters": {
+          "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst err=item.error||(item.json&&item.json.error);\nlet action=parsed.action||'fail';\nif(err&&action==='create')action='fail';\nreturn[{json:{action,name:parsed.name,skipReason:parsed.skipReason||''}}];"
+        },
+        "position": [
+          3648,
+          1280
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "0ed80028-2bbc-48fa-bf37-b39ba335aa63",
+        "name": "Note: import loop",
+        "parameters": {
+          "color": 7,
+          "content": "## Import loop (main path)\nList GitHub files → call this same workflow once per file → tally create/skip/fail.\nCaller is Execute Workflow v1.3 (`={{ $workflow.id }}`, mode each, wait, continue on error).",
+          "height": 720,
+          "width": 2480
+        },
+        "position": [
+          2160,
+          160
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      },
+      {
+        "id": "de803786-297d-44de-8513-a029cf2ed2fb",
+        "name": "Note: subworkflow",
+        "parameters": {
+          "color": 6,
+          "content": "## Sub-run: one GitHub file\nTrigger is Execute Workflow Trigger v1.2, Accept all data.\nItem already has repo_* plus existingNames / existingIds from the parent (this path cannot see Check n8n).\nGet file → large-file fallback → parse → create or skip → return action.",
+          "height": 560,
+          "width": 2200
+        },
+        "position": [
+          1904,
+          1040
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      }
+    ],
+    "updatedAt": "2026-08-16T18:02:38.684Z",
+    "versionId": "8d6b2729-5afc-4024-82a1-ecad2512b08c",
+    "workflowId": "3enCZHWCsA3shIJi"
+  },
+  "connections": {
+    "Attach repo config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Check GitHub",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Check Gmail",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Check Telegram",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Check Supabase",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Check Jina",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Check n8n",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Build credential report": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send credential report",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check GitHub": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check Gmail": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check Jina": {
+      "main": [
+        [
+          {
+            "index": 4,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check Supabase": {
+      "main": [
+        [
+          {
+            "index": 3,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check Telegram": {
+      "main": [
+        [
+          {
+            "index": 2,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Check n8n": {
+      "main": [
+        [
+          {
+            "index": 5,
+            "node": "Wait for all checks",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Copy user config into globals": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attach repo config",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Create workflow on this instance": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Return import status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Return import status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Credentials ok?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare import config",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Download large file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Parse and decide create",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get GitHub workflow file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "If file too large",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Has workflow files?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop over GitHub files",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Prepare completion",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "If file too large": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Download large file",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Parse and decide create",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Import one workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Route by import action",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally failed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List GitHub workflow files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare GitHub files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Copy user config into globals",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup user config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop over GitHub files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare completion",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Import one workflow",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Manual start": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup user config",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Parse and decide create": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Should create workflow?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare GitHub files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Has workflow files?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare completion": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send import completed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare import config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Reset import counts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Reset import counts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send import started",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "List GitHub workflow files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Route by import action": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Tally created",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally skipped",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally failed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Send credential report": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Credentials ok?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Should create workflow?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create workflow on this instance",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Return import status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally created": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally failed": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally skipped": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait for all checks": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Build credential report",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait rate limit": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop over GitHub files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When called for one file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get GitHub workflow file",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "3enCZHWCsA3shIJi",
+  "isArchived": false,
+  "name": "master : setup",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "762c324b-f9e2-4762-8102-e7f3a16d9500",
+      "name": "Manual start",
+      "parameters": {},
+      "position": [
+        -96,
+        400
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "ef310e68-a688-4c41-9342-0bddfe83011b",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        416,
+        656
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "9c1ae56d-335b-4f34-a7e6-d35440fa4137",
+      "name": "Attach repo config",
+      "parameters": {
+        "jsCode": "const gv=$input.first().json;\nconst uc=$('Lookup user config').first().json;\nconst tg=uc.tg_notifs_chat_id||gv.tg_notifs_chat_id;\nconst email=uc.g_email_id||gv.g_email_id;\nconst owner=uc.backup_gh_owner||gv.backup_gh_owner;\nreturn[{json:{...gv,tg_notifs_chat_id:tg,g_email_id:email,backup_gh_owner:owner}}];"
+      },
+      "position": [
+        720,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8cb3cdb3-3fce-40db-a561-485ff8a7eb3e",
+      "name": "Sticky Note 1558b8be",
+      "parameters": {
+        "color": 4,
+        "content": "## master : setup\n\n1. Copy `user_config` into `global_variables`.\n2. Probe Gmail, GitHub, Telegram, Supabase, Jina, and n8n (continue on error).\n3. Telegram the report. GitHub 204 or 404 both count as working. Star check is always hellovamsi/sorted_signals.\n4. If every probe works, import missing workflows from https://github.com/hellovamsi/sorted_signals (`workflows/`). Per-file create/skip is a same-canvas sub-run (like backup : github). If any probe fails, skip import.\n\nDoes not overwrite workflows, import credentials, or import data tables. Backup export still uses `backup_gh_*`.",
+        "height": 360,
+        "width": 1100
+      },
+      "position": [
+        -80,
+        112
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7y2G4h8UjS5wUIhm",
+          "name": "Gmail account"
+        }
+      },
+      "executeOnce": true,
+      "id": "8af7459d-8680-46b4-8e36-182241718931",
+      "name": "Check Gmail",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "limit": 1,
+        "resource": "label"
+      },
+      "position": [
+        960,
+        80
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "webhookId": "c435327f-e7b6-4400-a23c-8d2b3ab97054"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "40c089c1-b874-49a9-aa2c-166494f1c90c",
+      "name": "Check Telegram",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "chatId": "={{ $('Attach repo config').first().json.tg_notifs_chat_id }}",
+        "resource": "chat"
+      },
+      "position": [
+        960,
+        240
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "f13c2805-6213-420d-a05d-34711fd4c387"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "dTJY0l3sZc3jSBwR",
+          "name": "Supabase account"
+        }
+      },
+      "executeOnce": true,
+      "id": "782ab2c6-3b6b-4d60-b691-8d82fcebe74c",
+      "name": "Check Supabase",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filterType": "none",
+        "limit": 1,
+        "operation": "getAll",
+        "tableId": "rss_fetched_items"
+      },
+      "position": [
+        960,
+        560
+      ],
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "jinaAiApi": {
+          "id": "4W5ZoT7PWlbCQYny",
+          "name": "Jina AI account"
+        }
+      },
+      "executeOnce": true,
+      "id": "08063e0c-6ee4-481c-a165-2e78ff7a233c",
+      "name": "Check Jina",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "operation": "search",
+        "options": {},
+        "requestOptions": {},
+        "searchQuery": "n8n"
+      },
+      "position": [
+        960,
+        720
+      ],
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1
+    },
+    {
+      "id": "4bb0e89b-5c06-479f-ad38-8c17eb108e5e",
+      "name": "Wait for all checks",
+      "parameters": {
+        "numberInputs": 6
+      },
+      "position": [
+        1248,
+        400
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "b20ed59c-f4a1-4e3c-85b7-a09fa37a0829",
+      "name": "Build credential report",
+      "parameters": {
+        "jsCode": "function probe(name, extra) {\n  try {\n    const item = $(name).first();\n    const j = (item && item.json) || {};\n    const err = j.error || (item && item.error);\n    if (err) {\n      const msg = err.message || err.description || String(err);\n      return extra({ ok: false, detail: String(msg).slice(0, 120) }, j);\n    }\n    return extra({ ok: true }, j);\n  } catch (e) {\n    return extra({ ok: false, detail: String(e.message || e).slice(0, 120) }, {});\n  }\n}\nfunction line(label, r) {\n  return label + ': ' + (r.ok ? 'working' : ('not working' + (r.detail ? ' (' + r.detail + ')' : '')));\n}\nconst gh = probe('Check if repo is starred', (base, j) => {\n  const c = Number(j.statusCode);\n  if (c === 204) return { ok: true, starred: true };\n  if (c === 404) return { ok: true, starred: false };\n  if (!base.ok) return base;\n  return { ok: false, detail: 'HTTP ' + c };\n});\nconst gmail = probe('Check Gmail', (base) => base);\nconst tg = probe('Check Telegram', (base) => base);\nconst sb = probe('Check Supabase', (base) => base);\nconst jina = probe('Check Jina', (base) => base);\nconst n8nApi = probe('Check n8n', (base) => base);\nlet starLine = 'You have not starred';\nif (gh.ok && gh.starred) starLine = 'You have starred';\nconst checks = [['Gmail', gmail], ['GitHub', gh], ['Telegram', tg], ['Supabase', sb], ['Jina', jina], ['n8n', n8nApi]];\nconst credReport = checks.map(([label, r]) => line(label, r)).join('\\n');\nconst failed = checks.filter(([, r]) => !r.ok).map(([label]) => label);\nconst allCredsOk = failed.length === 0;\nconst cfg = $('Attach repo config').first().json;\nconst copyLine = 'Copied user_config into global_variables.';\nconst importLine = allCredsOk ? 'GitHub import will run next.' : ('GitHub import skipped. Failed checks: ' + failed.join(', ') + '.');\nreturn [{ json: { starLine, credReport, allCredsOk, text: copyLine + '\\n' + importLine + '\\n\\n' + starLine + '\\n\\n' + credReport, tg_notifs_chat_id: cfg.tg_notifs_chat_id } }];\n"
+      },
+      "position": [
+        1488,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "6e1a4988-9503-40d1-ba76-e490959f1f8f",
+      "name": "Send credential report",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "={{ $json.text }}"
+      },
+      "position": [
+        1728,
+        400
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "8ca4773a-ea0c-4ed9-960e-94862eb0fccb"
+    },
+    {
+      "id": "625093fb-2bb3-41c4-85e1-4dfbe5692917",
+      "name": "Lookup user config",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "user_config",
+          "mode": "list",
+          "value": "FsQNE0iq4GWOPJkd"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        176,
+        416
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "4a5d74cd-1d31-4a97-9b50-64368e6f1042",
+      "name": "Copy user config into globals",
+      "parameters": {
+        "columns": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": false,
+              "display": true,
+              "displayName": "tg_notifs_chat_id",
+              "id": "tg_notifs_chat_id",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "display": true,
+              "displayName": "g_email_id",
+              "id": "g_email_id",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "display": true,
+              "displayName": "backup_gh_owner",
+              "id": "backup_gh_owner",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "backup_gh_owner": "={{ $('Lookup user config').first().json.backup_gh_owner }}",
+            "g_email_id": "={{ $('Lookup user config').first().json.g_email_id }}",
+            "tg_notifs_chat_id": "={{ $('Lookup user config').first().json.tg_notifs_chat_id }}"
+          }
+        },
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        544,
+        384
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "executeOnce": true,
+      "id": "ad56d637-103d-4dc1-bb6d-510402d7a289",
+      "name": "Check n8n",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "activeWorkflows": false
+        },
+        "requestOptions": {}
+      },
+      "position": [
+        960,
+        880
+      ],
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "id": "10168469-165c-4b41-aebd-e6b5bc5bf8e5",
+      "name": "Credentials ok?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "all-creds-ok-0001",
+              "leftValue": "={{ $('Build credential report').first().json.allCredsOk }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1968,
+        400
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "e29f7b80-fb8f-4c82-a428-77369d6ac3da",
+      "name": "Prepare import config",
+      "parameters": {
+        "jsCode": "const cfg=$('Attach repo config').first().json;\nreturn[{json:{...cfg,repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_path:'workflows/',repo_branch:'main'}}];"
+      },
+      "position": [
+        2208,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "02ca99c0-3bf5-479a-ac19-63476564f00f",
+      "name": "Reset import counts",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts={created:0,skipped:0,failed:0,listed:0};\nreturn $input.all();"
+      },
+      "position": [
+        2448,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "f857bf58-fe9f-451a-ad03-f8f267fcaebd",
+      "name": "Send import started",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=Sorted Signals GitHub import starting.\nRepo: https://github.com/hellovamsi/sorted_signals\nPlease open that link and star the repo if you can. GitHub does not allow this workflow to star it for you.\nExecution: {{ $execution.id }}\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+      },
+      "position": [
+        2688,
+        240
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "c8eea570-3586-4598-bbb4-c39d9701e6e3"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "id": "efe80e87-d2c4-4677-a9d6-d7a1e066b2f0",
+      "name": "List GitHub workflow files",
+      "parameters": {
+        "filePath": "workflows",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        2688,
+        480
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "a649d08c-1860-4312-a9e2-80ee3145922b"
+    },
+    {
+      "id": "28feca66-a21c-4fcf-9fa9-9f821518290a",
+      "name": "Prepare GitHub files",
+      "parameters": {
+        "jsCode": "const listed=$('List GitHub workflow files').all().map(i=>i.json).filter(f=>f&&f.type==='file'&&/\\.json$/i.test(String(f.name||''))&&String(f.name).includes('__'));\nconst existing=$('Check n8n').all().map(i=>i.json);\nconst existingNames=existing.map(w=>w.name);\nconst existingIds=existing.map(w=>String(w.id));\nconst s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.listed=listed.length;\nconst repo_owner='hellovamsi';\nconst repo_name='sorted_signals';\nconst repo_path='workflows/';\nconst repo_branch='main';\nif(!listed.length){return[{json:{hasFiles:false,repo_owner,repo_name}}];}\nreturn listed.map(f=>({json:{hasFiles:true,name:f.name,path:f.path,download_url:f.download_url,sha:f.sha,size:f.size,repo_owner,repo_name,repo_path,repo_branch,existingNames,existingIds}}));"
+      },
+      "position": [
+        2928,
+        480
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "7d15f9b0-cc85-4e15-9641-caad97dcbd69",
+      "name": "Has workflow files?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "leftValue": "={{ $json.hasFiles }}",
+              "operator": {
+                "operation": "equals",
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3168,
+        480
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "9aef2f7b-2f67-4b41-9e8d-9fe81d1f14e6",
+      "name": "Loop over GitHub files",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        3408,
+        560
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "id": "e34a7354-4a8f-4fc6-9e78-f99edfcb2d93",
+      "name": "Get GitHub workflow file",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalParameters": {
+          "reference": "main"
+        },
+        "asBinaryProperty": false,
+        "filePath": "={{ $json.path }}",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        2208,
+        1280
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "77af7f40-130e-41b6-ac9b-bd68a87ea2d1"
+    },
+    {
+      "id": "3ad1be8a-430e-4ccf-aa75-1d2998d3e30e",
+      "name": "If file too large",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "45ce825e-9fa6-430c-8931-9aaf22c42585",
+              "leftValue": "={{ $json.content }}",
+              "operator": {
+                "operation": "empty",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            },
+            {
+              "id": "9619a55f-7fb1-4f24-b1a7-7aeb82365806",
+              "leftValue": "={{ $json.error }}",
+              "operator": {
+                "operation": "notExists",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        2448,
+        1280
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "c806d5bf-fac8-44d5-ac5e-a2c4bb473a08",
+      "name": "Download large file",
+      "parameters": {
+        "options": {},
+        "url": "={{ $json.download_url }}"
+      },
+      "position": [
+        2688,
+        1120
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "110fd5ed-8f18-44b7-bfd3-0822600dc16f",
+      "name": "Parse and decide create",
+      "parameters": {
+        "jsCode": "const item=$input.first().json;\nconst orig=$('When called for one file').first().json;\nlet raw;\nif(item.content){raw=JSON.parse(Buffer.from(item.content,'base64').toString('utf8'));}\nelse if(typeof item.data==='string'&&item.data.trim().startsWith('{')){raw=JSON.parse(item.data);}\nelse if(item.nodes&&item.name){raw=item;}\nelse{throw new Error('Could not parse workflow JSON from GitHub file');}\nconst names=new Set(orig.existingNames||[]);\nconst ids=new Set((orig.existingIds||[]).map(String));\nconst exportId=raw.id!=null?String(raw.id):'';\nconst name=String(raw.name||'');\nlet action='create';\nlet skipReason='';\nif(name==='master : setup'||name==='import : github'){action='skip';skipReason='self';}\nelse if((exportId&&ids.has(exportId))||names.has(name)){action='skip';skipReason='already_on_instance';}\nconst settings=raw.settings&&typeof raw.settings==='object'?{...raw.settings}:{};\nconst workflowObject={name,nodes:raw.nodes||[],connections:raw.connections||{},settings};\nreturn[{json:{action,skipReason,name,exportId,fileName:orig.name,workflowObject:JSON.stringify(workflowObject)}}];"
+      },
+      "position": [
+        2928,
+        1280
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cd2a181d-9a27-4f3b-89a1-423eba90f515",
+      "name": "Should create workflow?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "create"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3168,
+        1280
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "633d3818-fe43-4677-8481-284b63b8253a",
+      "name": "Create workflow on this instance",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "operation": "create",
+        "requestOptions": {},
+        "workflowObject": "={{ $json.workflowObject }}"
+      },
+      "position": [
+        3408,
+        1120
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "id": "80bcfb6b-fbf0-480c-a3f0-1b648484cd14",
+      "name": "Tally created",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.created+=1;\nreturn $input.all();"
+      },
+      "position": [
+        4128,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "2dd0bed4-9702-45e2-a78e-d62bc21bd57d",
+      "name": "Tally skipped",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.skipped+=1;\nreturn $input.all();"
+      },
+      "position": [
+        4128,
+        720
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "58872c26-5b7b-4840-b3bd-6196d9f10247",
+      "name": "Tally failed",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.failed+=1;\nreturn $input.all();"
+      },
+      "position": [
+        4128,
+        560
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c22bca2b-1783-4a3d-a3d3-034061778250",
+      "name": "Wait rate limit",
+      "parameters": {
+        "amount": 1
+      },
+      "position": [
+        4368,
+        560
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "1dedc59b-3136-4001-b053-42097e99a155"
+    },
+    {
+      "executeOnce": true,
+      "id": "5ce9ab82-3a2b-4b27-9a8a-20df6ba36c23",
+      "name": "Prepare completion",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nconst cfg=$('Attach repo config').first().json;\nconst repo_url='https://github.com/hellovamsi/sorted_signals';\nreturn[{json:{...c,repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_url,tg_notifs_chat_id:cfg.tg_notifs_chat_id}}];"
+      },
+      "position": [
+        3408,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "8ee6b070-684e-49e4-b6f0-c1f611bcf69f",
+      "name": "Send import completed",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=Sorted Signals GitHub import finished.\nRepo: {{ $json.repo_url }}\nFiles listed: {{ $json.listed }}\nCreated: {{ $json.created }}\nSkipped (already present): {{ $json.skipped }}\nFailed: {{ $json.failed }}\nPlease go to GitHub and star the repo if you found this useful: {{ $json.repo_url }}\nExecution: {{ $execution.id }}\nSent at {{ $now.format('dd.MM.yyyy HH:mm:ss') }}"
+      },
+      "position": [
+        3648,
+        240
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "d7f7c29f-633e-496a-b611-982b568775c0"
+    },
+    {
+      "id": "14f2adbf-b94f-4c09-981e-f5db2eb74f5c",
+      "name": "When called for one file",
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "position": [
+        1968,
+        1280
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "697d990e-d566-4453-9c7b-df17a5690524",
+      "name": "Import one workflow",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $workflow.id }}"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        }
+      },
+      "position": [
+        3648,
+        560
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "e3319d81-f00a-485b-bfee-0071ccb45094",
+      "name": "Route by import action",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "fail"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "imp-act-create-0001",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "create"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "create",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "imp-act-skip-0001",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "skip"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "skip",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        3856,
+        416
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "2a5174ce-528c-4fe3-847c-954ba7a7aa06",
+      "name": "Return import status",
+      "parameters": {
+        "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst err=item.error||(item.json&&item.json.error);\nlet action=parsed.action||'fail';\nif(err&&action==='create')action='fail';\nreturn[{json:{action,name:parsed.name,skipReason:parsed.skipReason||''}}];"
+      },
+      "position": [
+        3648,
+        1280
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "0ed80028-2bbc-48fa-bf37-b39ba335aa63",
+      "name": "Note: import loop",
+      "parameters": {
+        "color": 7,
+        "content": "## Import loop (main path)\nList GitHub files → call this same workflow once per file → tally create/skip/fail.\nCaller is Execute Workflow v1.3 (`={{ $workflow.id }}`, mode each, wait, continue on error).",
+        "height": 720,
+        "width": 2480
+      },
+      "position": [
+        2160,
+        160
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "de803786-297d-44de-8513-a029cf2ed2fb",
+      "name": "Note: subworkflow",
+      "parameters": {
+        "color": 6,
+        "content": "## Sub-run: one GitHub file\nTrigger is Execute Workflow Trigger v1.2, Accept all data.\nItem already has repo_* plus existingNames / existingIds from the parent (this path cannot see Check n8n).\nGet file → large-file fallback → parse → create or skip → return action.",
+        "height": 560,
+        "width": 2200
+      },
+      "position": [
+        1904,
+        1040
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a086f716-82fb-48a6-b8c2-6e460a7ada80",
+      "maxTries": 3,
+      "name": "Check GitHub",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "nodeCredentialType": "githubApi",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        },
+        "sendHeaders": true,
+        "url": "https://api.github.com/user/starred/hellovamsi/sorted_signals"
+      },
+      "position": [
+        960,
+        400
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "waitBetweenTries": 1000
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    },
+    {
+      "createdAt": "2026-07-19T15:58:00.895Z",
+      "id": "stPvA6IXEWYUHzi9",
+      "name": "devops",
+      "updatedAt": "2026-07-19T15:58:00.895Z"
+    },
+    {
+      "createdAt": "2026-08-09T09:38:13.673Z",
+      "id": "tCqftATraqIEGJbv",
+      "name": "test",
+      "updatedAt": "2026-08-09T09:38:13.673Z"
+    }
+  ]
+}
