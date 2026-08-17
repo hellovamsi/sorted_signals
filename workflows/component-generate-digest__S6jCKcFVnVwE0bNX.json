@@ -4,72 +4,105 @@
     "authors": "Vamsi Varanasi",
     "autosaved": false,
     "connections": {
-      "Article Writer": {
+      "Combine prompt and articles": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Convert to File1",
+              "node": "Digest writer",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert articles to JSON": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Write summaries snapshot",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert digest to HTML": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Email daily digest",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert digest to markdown file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Write digest markdown",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Digest writer": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert digest to markdown file",
               "type": "main"
             },
             {
               "index": 0,
-              "node": "Markdown",
+              "node": "Convert digest to HTML",
               "type": "main"
             }
           ]
         ]
       },
-      "Convert to File": {
-        "main": [
+      "Digest writer model": {
+        "ai_languageModel": [
           [
             {
               "index": 0,
-              "node": "Read/Write Files from Disk",
-              "type": "main"
+              "node": "Digest writer",
+              "type": "ai_languageModel"
             }
           ]
         ]
       },
-      "Convert to File1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Read/Write Files from Disk1",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Extract from File": {
+      "Extract articles JSON": {
         "main": [
           [
             {
               "index": 1,
-              "node": "Merge",
+              "node": "Combine prompt and articles",
               "type": "main"
             }
           ]
         ]
       },
-      "Extract from File1": {
+      "Extract digest prompt": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Merge",
+              "node": "Combine prompt and articles",
               "type": "main"
             }
           ]
         ]
       },
-      "Get many rows": {
+      "Get AI articles since cutoff": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Convert to File",
+              "node": "Convert articles to JSON",
               "type": "main"
             }
           ]
@@ -97,67 +130,12 @@
           ]
         ]
       },
-      "Markdown": {
+      "Read digest prompt": {
         "main": [
           [
             {
               "index": 0,
-              "node": "Send a message",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Merge": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Article Writer",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "OpenRouter Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "index": 0,
-              "node": "Article Writer",
-              "type": "ai_languageModel"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Extract from File",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk1": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Send a text message",
-              "type": "main"
-            }
-          ]
-        ]
-      },
-      "Read/Write Files from Disk2": {
-        "main": [
-          [
-            {
-              "index": 0,
-              "node": "Extract from File1",
+              "node": "Extract digest prompt",
               "type": "main"
             }
           ]
@@ -168,18 +146,18 @@
           [
             {
               "index": 0,
-              "node": "Get many rows",
+              "node": "Get AI articles since cutoff",
               "type": "main"
             },
             {
               "index": 0,
-              "node": "Read/Write Files from Disk2",
+              "node": "Read digest prompt",
               "type": "main"
             }
           ]
         ]
       },
-      "When Executed by Another Workflow": {
+      "When called": {
         "main": [
           [
             {
@@ -199,9 +177,31 @@
             }
           ]
         ]
+      },
+      "Write digest markdown": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send digest ready notification",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Write summaries snapshot": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract articles JSON",
+              "type": "main"
+            }
+          ]
+        ]
       }
     },
-    "createdAt": "2026-08-14T15:07:08.892Z",
+    "createdAt": "2026-08-16T08:56:32.714Z",
     "description": null,
     "name": null,
     "nodeGroups": [],
@@ -215,7 +215,7 @@
         },
         "executeOnce": true,
         "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
-        "name": "Get many rows",
+        "name": "Get AI articles since cutoff",
         "parameters": {
           "filters": {
             "conditions": [
@@ -251,7 +251,7 @@
           }
         },
         "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
-        "name": "OpenRouter Chat Model",
+        "name": "Digest writer model",
         "parameters": {
           "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.model }}",
           "options": {
@@ -268,7 +268,7 @@
       },
       {
         "id": "f687de65-5d3c-4824-868a-163a0e1141df",
-        "name": "When Executed by Another Workflow",
+        "name": "When called",
         "parameters": {
           "inputSource": "jsonExample",
           "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
@@ -282,7 +282,7 @@
       },
       {
         "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
-        "name": "Read/Write Files from Disk",
+        "name": "Write summaries snapshot",
         "parameters": {
           "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
           "operation": "write",
@@ -297,7 +297,7 @@
       },
       {
         "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
-        "name": "Convert to File",
+        "name": "Convert articles to JSON",
         "parameters": {
           "operation": "toJson",
           "options": {}
@@ -311,7 +311,7 @@
       },
       {
         "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
-        "name": "Extract from File",
+        "name": "Extract articles JSON",
         "parameters": {
           "destinationKey": "articles",
           "operation": "text",
@@ -332,7 +332,7 @@
           }
         },
         "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
-        "name": "Send a text message",
+        "name": "Send digest ready notification",
         "parameters": {
           "additionalFields": {},
           "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
@@ -348,7 +348,7 @@
       },
       {
         "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
-        "name": "Read/Write Files from Disk1",
+        "name": "Write digest markdown",
         "parameters": {
           "dataPropertyName": "text",
           "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_digest }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
@@ -364,7 +364,7 @@
       },
       {
         "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
-        "name": "Convert to File1",
+        "name": "Convert digest to markdown file",
         "parameters": {
           "binaryPropertyName": "text",
           "operation": "toText",
@@ -381,7 +381,7 @@
       {
         "executeOnce": true,
         "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
-        "name": "Read/Write Files from Disk2",
+        "name": "Read digest prompt",
         "parameters": {
           "fileSelector": "={{ $('Lookup global variables').first().json.prompt_digest_path }}",
           "options": {}
@@ -395,7 +395,7 @@
       },
       {
         "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
-        "name": "Extract from File1",
+        "name": "Extract digest prompt",
         "parameters": {
           "destinationKey": "prompt",
           "operation": "text",
@@ -410,7 +410,7 @@
       },
       {
         "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
-        "name": "Article Writer",
+        "name": "Digest writer",
         "parameters": {
           "batching": {},
           "promptType": "define",
@@ -425,7 +425,7 @@
       },
       {
         "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
-        "name": "Merge",
+        "name": "Combine prompt and articles",
         "parameters": {
           "combineBy": "combineByPosition",
           "mode": "combine",
@@ -449,7 +449,7 @@
           }
         },
         "id": "c5a17457-fb46-4026-8a1e-06cee922c3b0",
-        "name": "Send a message",
+        "name": "Email daily digest",
         "parameters": {
           "message": "={{ $json.data }}",
           "options": {
@@ -468,7 +468,7 @@
       },
       {
         "id": "0b55fc2e-7de8-4df5-9b32-6a6655262bcf",
-        "name": "Markdown",
+        "name": "Convert digest to HTML",
         "parameters": {
           "markdown": "={{ $json.text }}",
           "mode": "markdownToHtml",
@@ -541,77 +541,110 @@
         "typeVersion": 3.2
       }
     ],
-    "updatedAt": "2026-08-14T15:07:08.892Z",
-    "versionId": "b92a5eb5-aa35-452f-a6fc-7e548ad24210",
+    "updatedAt": "2026-08-16T08:56:32.714Z",
+    "versionId": "7bda9320-3a67-4777-a020-97995ff9d8df",
     "workflowId": "S6jCKcFVnVwE0bNX"
   },
   "connections": {
-    "Article Writer": {
+    "Combine prompt and articles": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Convert to File1",
+            "node": "Digest writer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert articles to JSON": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write summaries snapshot",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert digest to HTML": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Email daily digest",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert digest to markdown file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write digest markdown",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Digest writer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert digest to markdown file",
             "type": "main"
           },
           {
             "index": 0,
-            "node": "Markdown",
+            "node": "Convert digest to HTML",
             "type": "main"
           }
         ]
       ]
     },
-    "Convert to File": {
-      "main": [
+    "Digest writer model": {
+      "ai_languageModel": [
         [
           {
             "index": 0,
-            "node": "Read/Write Files from Disk",
-            "type": "main"
+            "node": "Digest writer",
+            "type": "ai_languageModel"
           }
         ]
       ]
     },
-    "Convert to File1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Read/Write Files from Disk1",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Extract from File": {
+    "Extract articles JSON": {
       "main": [
         [
           {
             "index": 1,
-            "node": "Merge",
+            "node": "Combine prompt and articles",
             "type": "main"
           }
         ]
       ]
     },
-    "Extract from File1": {
+    "Extract digest prompt": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Merge",
+            "node": "Combine prompt and articles",
             "type": "main"
           }
         ]
       ]
     },
-    "Get many rows": {
+    "Get AI articles since cutoff": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Convert to File",
+            "node": "Convert articles to JSON",
             "type": "main"
           }
         ]
@@ -639,67 +672,12 @@
         ]
       ]
     },
-    "Markdown": {
+    "Read digest prompt": {
       "main": [
         [
           {
             "index": 0,
-            "node": "Send a message",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Article Writer",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "index": 0,
-            "node": "Article Writer",
-            "type": "ai_languageModel"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Extract from File",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk1": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Send a text message",
-            "type": "main"
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk2": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Extract from File1",
+            "node": "Extract digest prompt",
             "type": "main"
           }
         ]
@@ -710,18 +688,18 @@
         [
           {
             "index": 0,
-            "node": "Get many rows",
+            "node": "Get AI articles since cutoff",
             "type": "main"
           },
           {
             "index": 0,
-            "node": "Read/Write Files from Disk2",
+            "node": "Read digest prompt",
             "type": "main"
           }
         ]
       ]
     },
-    "When Executed by Another Workflow": {
+    "When called": {
       "main": [
         [
           {
@@ -737,6 +715,28 @@
           {
             "index": 2,
             "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write digest markdown": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send digest ready notification",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write summaries snapshot": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract articles JSON",
             "type": "main"
           }
         ]
@@ -757,7 +757,7 @@
       },
       "executeOnce": true,
       "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
-      "name": "Get many rows",
+      "name": "Get AI articles since cutoff",
       "parameters": {
         "filters": {
           "conditions": [
@@ -793,7 +793,7 @@
         }
       },
       "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
-      "name": "OpenRouter Chat Model",
+      "name": "Digest writer model",
       "parameters": {
         "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === 'digest_writer').json.model }}",
         "options": {
@@ -810,7 +810,7 @@
     },
     {
       "id": "f687de65-5d3c-4824-868a-163a0e1141df",
-      "name": "When Executed by Another Workflow",
+      "name": "When called",
       "parameters": {
         "inputSource": "jsonExample",
         "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\"\n }"
@@ -824,7 +824,7 @@
     },
     {
       "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
-      "name": "Read/Write Files from Disk",
+      "name": "Write summaries snapshot",
       "parameters": {
         "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
         "operation": "write",
@@ -839,7 +839,7 @@
     },
     {
       "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
-      "name": "Convert to File",
+      "name": "Convert articles to JSON",
       "parameters": {
         "operation": "toJson",
         "options": {}
@@ -853,7 +853,7 @@
     },
     {
       "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
-      "name": "Extract from File",
+      "name": "Extract articles JSON",
       "parameters": {
         "destinationKey": "articles",
         "operation": "text",
@@ -874,7 +874,7 @@
         }
       },
       "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
-      "name": "Send a text message",
+      "name": "Send digest ready notification",
       "parameters": {
         "additionalFields": {},
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
@@ -890,7 +890,7 @@
     },
     {
       "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
-      "name": "Read/Write Files from Disk1",
+      "name": "Write digest markdown",
       "parameters": {
         "dataPropertyName": "text",
         "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json.prefix_digest }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
@@ -906,7 +906,7 @@
     },
     {
       "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
-      "name": "Convert to File1",
+      "name": "Convert digest to markdown file",
       "parameters": {
         "binaryPropertyName": "text",
         "operation": "toText",
@@ -923,7 +923,7 @@
     {
       "executeOnce": true,
       "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
-      "name": "Read/Write Files from Disk2",
+      "name": "Read digest prompt",
       "parameters": {
         "fileSelector": "={{ $('Lookup global variables').first().json.prompt_digest_path }}",
         "options": {}
@@ -937,7 +937,7 @@
     },
     {
       "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
-      "name": "Extract from File1",
+      "name": "Extract digest prompt",
       "parameters": {
         "destinationKey": "prompt",
         "operation": "text",
@@ -952,7 +952,7 @@
     },
     {
       "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
-      "name": "Article Writer",
+      "name": "Digest writer",
       "parameters": {
         "batching": {},
         "promptType": "define",
@@ -967,7 +967,7 @@
     },
     {
       "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
-      "name": "Merge",
+      "name": "Combine prompt and articles",
       "parameters": {
         "combineBy": "combineByPosition",
         "mode": "combine",
@@ -991,7 +991,7 @@
         }
       },
       "id": "c5a17457-fb46-4026-8a1e-06cee922c3b0",
-      "name": "Send a message",
+      "name": "Email daily digest",
       "parameters": {
         "message": "={{ $json.data }}",
         "options": {
@@ -1010,7 +1010,7 @@
     },
     {
       "id": "0b55fc2e-7de8-4df5-9b32-6a6655262bcf",
-      "name": "Markdown",
+      "name": "Convert digest to HTML",
       "parameters": {
         "markdown": "={{ $json.text }}",
         "mode": "markdownToHtml",
