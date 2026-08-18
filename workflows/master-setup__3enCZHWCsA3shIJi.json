@@ -2154,39 +2154,211 @@
       "name": "Copy user config into globals",
       "parameters": {
         "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
           "mappingMode": "defineBelow",
           "matchingColumns": [
             "id"
           ],
           "schema": [
             {
-              "canBeUsedToMatch": false,
-              "display": true,
-              "displayName": "tg_notifs_chat_id",
-              "id": "tg_notifs_chat_id",
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": false,
-              "display": true,
-              "displayName": "g_email_id",
-              "id": "g_email_id",
-              "required": false,
-              "type": "string"
-            },
-            {
-              "canBeUsedToMatch": false,
+              "defaultMatch": false,
               "display": true,
               "displayName": "backup_gh_owner",
               "id": "backup_gh_owner",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "backup_gh_repo",
+              "id": "backup_gh_repo",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "backup_gh_path",
+              "id": "backup_gh_path",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "tg_notifs_chat_id",
+              "id": "tg_notifs_chat_id",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "g_email_id",
+              "id": "g_email_id",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "prompt_article_path",
+              "id": "prompt_article_path",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "prompt_digest_path",
+              "id": "prompt_digest_path",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "dir_summaries",
+              "id": "dir_summaries",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "dir_articles",
+              "id": "dir_articles",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "prefix_summary",
+              "id": "prefix_summary",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "prefix_article",
+              "id": "prefix_article",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "prefix_digest",
+              "id": "prefix_digest",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "lookback_days_daily",
+              "id": "lookback_days_daily",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "number"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "ingest_week_start_offset_days",
+              "id": "ingest_week_start_offset_days",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "number"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "article_cutoff_hours",
+              "id": "article_cutoff_hours",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "number"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "display_tz_offset_hours",
+              "id": "display_tz_offset_hours",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "number"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "launch_message_daily",
+              "id": "launch_message_daily",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "launch_message_roundup",
+              "id": "launch_message_roundup",
+              "readOnly": false,
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "launch_message_article",
+              "id": "launch_message_article",
+              "readOnly": false,
+              "removed": false,
               "required": false,
               "type": "string"
             }
           ],
           "value": {
+            "article_cutoff_hours": 0,
             "backup_gh_owner": "={{ $('Lookup user config').first().json.backup_gh_owner }}",
+            "display_tz_offset_hours": 0,
             "g_email_id": "={{ $('Lookup user config').first().json.g_email_id }}",
+            "ingest_week_start_offset_days": 0,
+            "lookback_days_daily": 0,
             "tg_notifs_chat_id": "={{ $('Lookup user config').first().json.tg_notifs_chat_id }}"
           }
         },
