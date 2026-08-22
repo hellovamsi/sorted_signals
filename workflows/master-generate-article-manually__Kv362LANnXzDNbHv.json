@@ -2,7 +2,7 @@
   "active": false,
   "activeVersion": null,
   "connections": {
-    "Call 'component : generate article'": {
+    "Call 'component : generate'": {
       "main": [
         [
           {
@@ -23,7 +23,7 @@
           },
           {
             "index": 0,
-            "node": "Call 'component : generate article'",
+            "node": "Call 'component : generate'",
             "type": "main"
           }
         ]
@@ -72,22 +72,25 @@
     },
     {
       "id": "121adb7f-6c5d-4b4a-86a1-a2aba1ff1808",
-      "name": "Call 'component : generate article'",
+      "name": "Call 'component : generate'",
       "parameters": {
-        "options": {},
+        "options": {
+          "waitForSubWorkflow": true
+        },
         "workflowId": {
           "__rl": true,
-          "cachedResultName": "component : generate article",
-          "cachedResultUrl": "/workflow/dM0mwv7TBZujwTqq",
+          "cachedResultName": "component : generate",
+          "cachedResultUrl": "/workflow/S6jCKcFVnVwE0bNX",
           "mode": "list",
-          "value": "dM0mwv7TBZujwTqq"
+          "value": "S6jCKcFVnVwE0bNX"
         },
         "workflowInputs": {
           "attemptToConvertTypes": false,
           "convertFieldsToString": true,
           "mappingMode": "defineBelow",
           "matchingColumns": [
-            "cutOffDate"
+            "cutOffDate",
+            "kind"
           ],
           "schema": [
             {
@@ -99,10 +102,21 @@
               "removed": false,
               "required": false,
               "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "kind",
+              "id": "kind",
+              "removed": false,
+              "required": true,
+              "type": "string"
             }
           ],
           "value": {
-            "cutOffDate": "={{ $now.minus($json.article_cutoff_hours,'hours') }}"
+            "cutOffDate": "={{ $now.minus($json.article_cutoff_hours,'hours') }}",
+            "kind": "generate_article"
           }
         }
       },
@@ -125,7 +139,7 @@
       "parameters": {
         "additionalFields": {},
         "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
-        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nGenerate Article Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ {daily_digest:'Daily Digest',monday_roundup:'Monday Roundup',generate_article:'Generate Article'}[$json.kind] }} complete.\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd.MM.yyyy HH:mm') }}"
       },
       "position": [
         448,
