@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "authors": "Vamsi Varanasi",
+    "authors": "Vamsi Varanasi (via MCP)",
     "autosaved": false,
     "connections": {
       "AI-gate model": {
@@ -57,6 +57,17 @@
             {
               "index": 0,
               "node": "Map RSS fields",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup global variables": {
+        "main": [
+          [
+            {
+              "index": 3,
+              "node": "Wait for config lookups",
               "type": "main"
             }
           ]
@@ -136,6 +147,13 @@
               "node": "Summarize and classify article",
               "type": "main"
             }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Log article page error",
+              "type": "main"
+            }
           ]
         ]
       },
@@ -156,6 +174,13 @@
             {
               "index": 0,
               "node": "Save summary and categories",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Log summarize error",
               "type": "main"
             }
           ]
@@ -200,14 +225,19 @@
               "index": 1,
               "node": "Wait for config lookups",
               "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-16T08:57:47.292Z",
-    "description": null,
-    "name": null,
+    "createdAt": "2026-08-22T16:52:35.512Z",
+    "description": "Tag RSS Jina article reads vs OpenRouter summarize failures so the daily email names the vendor.",
+    "name": "Tag service on RSS error logs",
     "nodeGroups": [],
     "nodes": [
       {
@@ -310,7 +340,7 @@
               }
             ]
           },
-          "tableId": "batchupdate"
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
         },
         "position": [
           160,
@@ -348,7 +378,7 @@
           },
           "matchType": "allFilters",
           "operation": "update",
-          "tableId": "batchupdate"
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
         },
         "position": [
           736,
@@ -519,7 +549,7 @@
           },
           "matchType": "allFilters",
           "operation": "update",
-          "tableId": "batchupdate"
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
         },
         "position": [
           736,
@@ -565,7 +595,7 @@
           },
           "matchType": "allFilters",
           "operation": "update",
-          "tableId": "batchupdate"
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
         },
         "position": [
           1536,
@@ -603,7 +633,7 @@
           },
           "matchType": "allFilters",
           "operation": "update",
-          "tableId": "batchupdate"
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
         },
         "position": [
           736,
@@ -733,7 +763,7 @@
         "name": "Wait for config lookups",
         "parameters": {
           "mode": "chooseBranch",
-          "numberInputs": 3,
+          "numberInputs": 4,
           "useDataOfInput": 2
         },
         "position": [
@@ -758,10 +788,99 @@
         ],
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1
+      },
+      {
+        "id": "49a9639e-3ff1-411e-8020-b26efc2010a6",
+        "name": "Log article page error",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : append node error",
+            "cachedResultUrl": "/workflow/ySr3LZRexU7vXCBD",
+            "mode": "list",
+            "value": "ySr3LZRexU7vXCBD"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "value": {
+              "error": "={{ $json.error }}",
+              "parentNode": "Read article page",
+              "parentWorkflow": "={{ $workflow.name }}",
+              "service": "Jina",
+              "url": "={{ $json.contentURL || $json.link || $json.url }}"
+            }
+          }
+        },
+        "position": [
+          960,
+          -800
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "089ae9f9-27a5-4208-bbd8-947cadd63a62",
+        "name": "Log summarize error",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "cachedResultName": "component : append node error",
+            "cachedResultUrl": "/workflow/ySr3LZRexU7vXCBD",
+            "mode": "list",
+            "value": "ySr3LZRexU7vXCBD"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "value": {
+              "error": "={{ $json.error }}",
+              "parentNode": "Summarize and classify article",
+              "parentWorkflow": "={{ $workflow.name }}",
+              "service": "OpenRouter",
+              "url": "={{ $json.contentURL || $json.link || $json.url }}"
+            }
+          }
+        },
+        "position": [
+          1184,
+          -800
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "f2695da9-a075-4ef9-9198-c1427d0f6622",
+        "name": "Lookup global variables",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          -1184,
+          -1120
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
       }
     ],
-    "updatedAt": "2026-08-16T08:57:47.292Z",
-    "versionId": "b2431062-3f12-4b86-9395-a0f03bd09953",
+    "updatedAt": "2026-08-22T16:52:35.512Z",
+    "versionId": "cd80949e-de4e-4e64-99d2-a365cc9422a4",
     "workflowId": "X5drlaLIiyY5VOYf"
   },
   "connections": {
@@ -818,6 +937,17 @@
           {
             "index": 0,
             "node": "Map RSS fields",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 3,
+            "node": "Wait for config lookups",
             "type": "main"
           }
         ]
@@ -897,6 +1027,13 @@
             "node": "Summarize and classify article",
             "type": "main"
           }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Log article page error",
+            "type": "main"
+          }
         ]
       ]
     },
@@ -917,6 +1054,13 @@
           {
             "index": 0,
             "node": "Save summary and categories",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Log summarize error",
             "type": "main"
           }
         ]
@@ -960,6 +1104,11 @@
           {
             "index": 1,
             "node": "Wait for config lookups",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup global variables",
             "type": "main"
           }
         ]
@@ -1071,7 +1220,7 @@
             }
           ]
         },
-        "tableId": "batchupdate"
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
       },
       "position": [
         160,
@@ -1109,7 +1258,7 @@
         },
         "matchType": "allFilters",
         "operation": "update",
-        "tableId": "batchupdate"
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
       },
       "position": [
         736,
@@ -1280,7 +1429,7 @@
         },
         "matchType": "allFilters",
         "operation": "update",
-        "tableId": "batchupdate"
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
       },
       "position": [
         736,
@@ -1326,7 +1475,7 @@
         },
         "matchType": "allFilters",
         "operation": "update",
-        "tableId": "batchupdate"
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
       },
       "position": [
         1536,
@@ -1364,7 +1513,7 @@
         },
         "matchType": "allFilters",
         "operation": "update",
-        "tableId": "batchupdate"
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
       },
       "position": [
         736,
@@ -1494,7 +1643,7 @@
       "name": "Wait for config lookups",
       "parameters": {
         "mode": "chooseBranch",
-        "numberInputs": 3,
+        "numberInputs": 4,
         "useDataOfInput": 2
       },
       "position": [
@@ -1519,6 +1668,95 @@
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
+    },
+    {
+      "id": "49a9639e-3ff1-411e-8020-b26efc2010a6",
+      "name": "Log article page error",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : append node error",
+          "cachedResultUrl": "/workflow/ySr3LZRexU7vXCBD",
+          "mode": "list",
+          "value": "ySr3LZRexU7vXCBD"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "error": "={{ $json.error }}",
+            "parentNode": "Read article page",
+            "parentWorkflow": "={{ $workflow.name }}",
+            "service": "Jina",
+            "url": "={{ $json.contentURL || $json.link || $json.url }}"
+          }
+        }
+      },
+      "position": [
+        960,
+        -800
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "089ae9f9-27a5-4208-bbd8-947cadd63a62",
+      "name": "Log summarize error",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : append node error",
+          "cachedResultUrl": "/workflow/ySr3LZRexU7vXCBD",
+          "mode": "list",
+          "value": "ySr3LZRexU7vXCBD"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "error": "={{ $json.error }}",
+            "parentNode": "Summarize and classify article",
+            "parentWorkflow": "={{ $workflow.name }}",
+            "service": "OpenRouter",
+            "url": "={{ $json.contentURL || $json.link || $json.url }}"
+          }
+        }
+      },
+      "position": [
+        1184,
+        -800
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "f2695da9-a075-4ef9-9198-c1427d0f6622",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        -1184,
+        -1120
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
     }
   ],
   "repo_branch": "main",
