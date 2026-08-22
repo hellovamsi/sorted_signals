@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "authors": "Vamsi Varanasi",
+    "authors": "Vamsi Varanasi (via MCP)",
     "autosaved": false,
     "connections": {
       "Call 'component : fetch mainstream rss'": {
@@ -26,7 +26,7 @@
           ]
         ]
       },
-      "Call 'component : generate article'": {
+      "Call 'component : generate'": {
         "main": [
           [
             {
@@ -123,16 +123,16 @@
           [
             {
               "index": 0,
-              "node": "Call 'component : generate article'",
+              "node": "Call 'component : generate'",
               "type": "main"
             }
           ]
         ]
       }
     },
-    "createdAt": "2026-08-16T08:56:06.698Z",
-    "description": null,
-    "name": null,
+    "createdAt": "2026-08-22T14:12:42.585Z",
+    "description": "Updated nodes: Call 'component : generate'\nConnections: 2 added, 2 removed",
+    "name": "Call unified generate with monday_roundup",
     "nodeGroups": [],
     "nodes": [
       {
@@ -181,22 +181,25 @@
       },
       {
         "id": "c7cf7d53-25e2-4ebe-b8d0-6a3acb343307",
-        "name": "Call 'component : generate article'",
+        "name": "Call 'component : generate'",
         "parameters": {
-          "options": {},
+          "options": {
+            "waitForSubWorkflow": true
+          },
           "workflowId": {
             "__rl": true,
-            "cachedResultName": "component : generate article",
-            "cachedResultUrl": "/workflow/dM0mwv7TBZujwTqq",
+            "cachedResultName": "component : generate",
+            "cachedResultUrl": "/workflow/S6jCKcFVnVwE0bNX",
             "mode": "list",
-            "value": "dM0mwv7TBZujwTqq"
+            "value": "S6jCKcFVnVwE0bNX"
           },
           "workflowInputs": {
             "attemptToConvertTypes": false,
             "convertFieldsToString": true,
             "mappingMode": "defineBelow",
             "matchingColumns": [
-              "cutOffDate"
+              "cutOffDate",
+              "kind"
             ],
             "schema": [
               {
@@ -208,10 +211,21 @@
                 "removed": false,
                 "required": false,
                 "type": "string"
+              },
+              {
+                "canBeUsedToMatch": true,
+                "defaultMatch": false,
+                "display": true,
+                "displayName": "kind",
+                "id": "kind",
+                "removed": false,
+                "required": true,
+                "type": "string"
               }
             ],
             "value": {
-              "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}"
+              "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}",
+              "kind": "monday_roundup"
             }
           }
         },
@@ -331,7 +345,6 @@
                 "keyName": "enabled"
               },
               {
-                "condition": "eq",
                 "keyName": "category",
                 "keyValue": "non_mainstream"
               }
@@ -369,7 +382,6 @@
                 "keyName": "enabled"
               },
               {
-                "condition": "eq",
                 "keyName": "category",
                 "keyValue": "mainstream"
               }
@@ -510,8 +522,8 @@
         "typeVersion": 1.3
       }
     ],
-    "updatedAt": "2026-08-16T08:56:06.698Z",
-    "versionId": "229a9d90-9844-44db-8fd2-693899610878",
+    "updatedAt": "2026-08-22T14:12:42.585Z",
+    "versionId": "ec18ea4b-ee54-47c0-939d-360571ee5c18",
     "workflowId": "rzmkSSHMbbThfLWV"
   },
   "connections": {
@@ -537,7 +549,7 @@
         ]
       ]
     },
-    "Call 'component : generate article'": {
+    "Call 'component : generate'": {
       "main": [
         [
           {
@@ -634,7 +646,7 @@
         [
           {
             "index": 0,
-            "node": "Call 'component : generate article'",
+            "node": "Call 'component : generate'",
             "type": "main"
           }
         ]
@@ -692,22 +704,25 @@
     },
     {
       "id": "c7cf7d53-25e2-4ebe-b8d0-6a3acb343307",
-      "name": "Call 'component : generate article'",
+      "name": "Call 'component : generate'",
       "parameters": {
-        "options": {},
+        "options": {
+          "waitForSubWorkflow": true
+        },
         "workflowId": {
           "__rl": true,
-          "cachedResultName": "component : generate article",
-          "cachedResultUrl": "/workflow/dM0mwv7TBZujwTqq",
+          "cachedResultName": "component : generate",
+          "cachedResultUrl": "/workflow/S6jCKcFVnVwE0bNX",
           "mode": "list",
-          "value": "dM0mwv7TBZujwTqq"
+          "value": "S6jCKcFVnVwE0bNX"
         },
         "workflowInputs": {
           "attemptToConvertTypes": false,
           "convertFieldsToString": true,
           "mappingMode": "defineBelow",
           "matchingColumns": [
-            "cutOffDate"
+            "cutOffDate",
+            "kind"
           ],
           "schema": [
             {
@@ -719,10 +734,21 @@
               "removed": false,
               "required": false,
               "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "kind",
+              "id": "kind",
+              "removed": false,
+              "required": true,
+              "type": "string"
             }
           ],
           "value": {
-            "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}"
+            "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}",
+            "kind": "monday_roundup"
           }
         }
       },
