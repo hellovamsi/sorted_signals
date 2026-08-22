@@ -1,0 +1,608 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi (via MCP)",
+    "autosaved": false,
+    "connections": {
+      "Error report model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize node errors",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      },
+      "Every day at 18:00 UTC": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Wait for lookup",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract error log text": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Summarize node errors",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup global variables": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Wait for lookup",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Pick today error file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read today error file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read today error file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract error log text",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Summarize node errors": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Email error status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait for lookup": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Pick today error file",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-22T16:52:25.096Z",
+    "description": "Tell the summarizer to name the billed vendor (Jina vs OpenRouter) when credits ran out.",
+    "name": "Name the unpaid service in the email",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "043b6ab5-16ad-4a55-9fdd-770fc9cffec4",
+        "name": "Every day at 18:00 UTC",
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "daysInterval": 1,
+                "field": "days",
+                "triggerAtHour": 18,
+                "triggerAtMinute": 0
+              }
+            ]
+          }
+        },
+        "position": [
+          0,
+          112
+        ],
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3
+      },
+      {
+        "executeOnce": true,
+        "id": "5e6fd2f3-0720-40d0-9a1e-f01173c6b5a9",
+        "name": "Lookup global variables",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          224,
+          32
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "8c830aa4-775e-4036-97ab-feefc103bc81",
+        "name": "Wait for lookup",
+        "parameters": {
+          "chooseBranchMode": "waitForAll",
+          "mode": "chooseBranch",
+          "numberInputs": 2,
+          "output": "specifiedInput",
+          "useDataOfInput": "1"
+        },
+        "position": [
+          448,
+          112
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "0d2fa156-61cc-4a7f-84f3-82497d7db7c3",
+        "name": "Pick today error file",
+        "parameters": {
+          "jsCode": "const globals = $('Lookup global variables').first().json;\nconst offset = Number(globals.display_tz_offset_hours || 0);\nconst local = $now.plus({ hours: offset });\nconst fileDate = local.hour >= 20 ? local.plus({ days: 1 }) : local;\nconst y = fileDate.year;\nconst m = String(fileDate.month).padStart(2, '0');\nconst d = String(fileDate.day).padStart(2, '0');\nconst fileName = '/files/sortedsignals/logs/NODE_ERRORS_' + y + '_' + m + '_' + d + '.json';\nreturn [{ json: { fileName: fileName, g_email_id: globals.g_email_id, error_report_model: globals.error_report_model } }];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          672,
+          112
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "4327cb99-38ec-442f-9919-d502379b2d06",
+        "name": "Read today error file",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "fileSelector": "={{ $json.fileName }}",
+          "operation": "read"
+        },
+        "position": [
+          896,
+          112
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "f63ed59b-e938-40ff-8745-a6b4ef683524",
+        "name": "Extract error log text",
+        "parameters": {
+          "destinationKey": "logText",
+          "operation": "text"
+        },
+        "position": [
+          1120,
+          112
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "75840e00-783b-46c2-8d96-f1c7a7de5f68",
+        "name": "Summarize node errors",
+        "parameters": {
+          "batching": {},
+          "promptType": "define",
+          "text": "=Write a short operations status email for Sorted Signals.\n\nGroup repeated errors. Name the workflow and the node.\n\nIf this is a credits, payment, or HTTP 402 problem, say which billed service to top up. Use the `service` field when it is present. If it is missing:\n- Read listing page or Read article page, or InsufficientBalanceError / Payment required → Jina\n- Summarize/classify or other LLM nodes, or the error text mentions OpenRouter → OpenRouter\nDo not say “the account” without naming the vendor (Jina, OpenRouter, or whatever `service` says).\n\nKeep it under 400 words. Plain language. Email body only — no fake signature.\n\n## Error log\n{{ $json.logText }}"
+        },
+        "position": [
+          1344,
+          112
+        ],
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.8
+      },
+      {
+        "credentials": {
+          "openRouterApi": {
+            "id": "WBlXYobJqwEGYFhl",
+            "name": "OpenRouter account"
+          }
+        },
+        "id": "82407404-8d81-4e2b-9e40-88084610af8b",
+        "name": "Error report model",
+        "parameters": {
+          "model": "={{ $('Lookup global variables').first().json.error_report_model }}",
+          "options": {
+            "temperature": 0.3
+          }
+        },
+        "position": [
+          1424,
+          336
+        ],
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "7y2G4h8UjS5wUIhm",
+            "name": "Gmail account"
+          }
+        },
+        "id": "16d387c7-d2cc-4a15-a725-81189a7f9292",
+        "name": "Email error status",
+        "parameters": {
+          "emailType": "text",
+          "message": "={{ $json.text }}",
+          "operation": "send",
+          "options": {
+            "appendAttribution": false,
+            "senderName": "Sorted Signals"
+          },
+          "resource": "message",
+          "sendTo": "={{ $('Lookup global variables').first().json.g_email_id }}",
+          "subject": "=Sorted Signals node errors {{ $now.format('dd.MM.yy') }}"
+        },
+        "position": [
+          1696,
+          112
+        ],
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "webhookId": "2cf42031-f695-4cd4-a30d-3ad5892a6809"
+      },
+      {
+        "id": "658c5739-08e6-45b2-8d90-fc2c8806d5cd",
+        "name": "Sticky Note d3fe13c9",
+        "parameters": {
+          "color": 4,
+          "content": "18:00 UTC is 20:00 local at +2. Reads /files/sortedsignals/logs/NODE_ERRORS_{yyyy_MM_dd}.json. If missing, no email.",
+          "height": 200,
+          "width": 300
+        },
+        "position": [
+          -50,
+          -50
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      }
+    ],
+    "updatedAt": "2026-08-22T16:52:25.096Z",
+    "versionId": "93f53136-97df-4ead-a59b-c83ef9a7d626",
+    "workflowId": "Y41e9Eh2nmZoCTrN"
+  },
+  "connections": {
+    "Error report model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize node errors",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "Every day at 18:00 UTC": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Wait for lookup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract error log text": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Summarize node errors",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Wait for lookup",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pick today error file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read today error file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read today error file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract error log text",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Summarize node errors": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Email error status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait for lookup": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pick today error file",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "Y41e9Eh2nmZoCTrN",
+  "isArchived": false,
+  "name": "master : daily node error report",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "043b6ab5-16ad-4a55-9fdd-770fc9cffec4",
+      "name": "Every day at 18:00 UTC",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 1,
+              "field": "days",
+              "triggerAtHour": 18,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        112
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3
+    },
+    {
+      "executeOnce": true,
+      "id": "5e6fd2f3-0720-40d0-9a1e-f01173c6b5a9",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        224,
+        32
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "8c830aa4-775e-4036-97ab-feefc103bc81",
+      "name": "Wait for lookup",
+      "parameters": {
+        "chooseBranchMode": "waitForAll",
+        "mode": "chooseBranch",
+        "numberInputs": 2,
+        "output": "specifiedInput",
+        "useDataOfInput": "1"
+      },
+      "position": [
+        448,
+        112
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "0d2fa156-61cc-4a7f-84f3-82497d7db7c3",
+      "name": "Pick today error file",
+      "parameters": {
+        "jsCode": "const globals = $('Lookup global variables').first().json;\nconst offset = Number(globals.display_tz_offset_hours || 0);\nconst local = $now.plus({ hours: offset });\nconst fileDate = local.hour >= 20 ? local.plus({ days: 1 }) : local;\nconst y = fileDate.year;\nconst m = String(fileDate.month).padStart(2, '0');\nconst d = String(fileDate.day).padStart(2, '0');\nconst fileName = '/files/sortedsignals/logs/NODE_ERRORS_' + y + '_' + m + '_' + d + '.json';\nreturn [{ json: { fileName: fileName, g_email_id: globals.g_email_id, error_report_model: globals.error_report_model } }];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        672,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "4327cb99-38ec-442f-9919-d502379b2d06",
+      "name": "Read today error file",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "fileSelector": "={{ $json.fileName }}",
+        "operation": "read"
+      },
+      "position": [
+        896,
+        112
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "f63ed59b-e938-40ff-8745-a6b4ef683524",
+      "name": "Extract error log text",
+      "parameters": {
+        "destinationKey": "logText",
+        "operation": "text"
+      },
+      "position": [
+        1120,
+        112
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "75840e00-783b-46c2-8d96-f1c7a7de5f68",
+      "name": "Summarize node errors",
+      "parameters": {
+        "batching": {},
+        "promptType": "define",
+        "text": "=Write a short operations status email for Sorted Signals.\n\nGroup repeated errors. Name the workflow and the node.\n\nIf this is a credits, payment, or HTTP 402 problem, say which billed service to top up. Use the `service` field when it is present. If it is missing:\n- Read listing page or Read article page, or InsufficientBalanceError / Payment required → Jina\n- Summarize/classify or other LLM nodes, or the error text mentions OpenRouter → OpenRouter\nDo not say “the account” without naming the vendor (Jina, OpenRouter, or whatever `service` says).\n\nKeep it under 400 words. Plain language. Email body only — no fake signature.\n\n## Error log\n{{ $json.logText }}"
+      },
+      "position": [
+        1344,
+        112
+      ],
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8
+    },
+    {
+      "credentials": {
+        "openRouterApi": {
+          "id": "WBlXYobJqwEGYFhl",
+          "name": "OpenRouter account"
+        }
+      },
+      "id": "82407404-8d81-4e2b-9e40-88084610af8b",
+      "name": "Error report model",
+      "parameters": {
+        "model": "={{ $('Lookup global variables').first().json.error_report_model }}",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "position": [
+        1424,
+        336
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7y2G4h8UjS5wUIhm",
+          "name": "Gmail account"
+        }
+      },
+      "id": "16d387c7-d2cc-4a15-a725-81189a7f9292",
+      "name": "Email error status",
+      "parameters": {
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "operation": "send",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "Sorted Signals"
+        },
+        "resource": "message",
+        "sendTo": "={{ $('Lookup global variables').first().json.g_email_id }}",
+        "subject": "=Sorted Signals node errors {{ $now.format('dd.MM.yy') }}"
+      },
+      "position": [
+        1696,
+        112
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "webhookId": "2cf42031-f695-4cd4-a30d-3ad5892a6809"
+    },
+    {
+      "id": "658c5739-08e6-45b2-8d90-fc2c8806d5cd",
+      "name": "Sticky Note d3fe13c9",
+      "parameters": {
+        "color": 4,
+        "content": "18:00 UTC is 20:00 local at +2. Reads /files/sortedsignals/logs/NODE_ERRORS_{yyyy_MM_dd}.json. If missing, no email.",
+        "height": 200,
+        "width": 300
+      },
+      "position": [
+        -50,
+        -50
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    },
+    {
+      "createdAt": "2026-07-19T15:58:00.895Z",
+      "id": "stPvA6IXEWYUHzi9",
+      "name": "devops",
+      "updatedAt": "2026-07-19T15:58:00.895Z"
+    }
+  ]
+}
