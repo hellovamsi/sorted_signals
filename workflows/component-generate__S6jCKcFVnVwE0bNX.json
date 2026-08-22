@@ -1,0 +1,1142 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi (via MCP)",
+    "autosaved": false,
+    "connections": {
+      "Combine prompt and articles": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Writer",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert articles to JSON": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Write summaries snapshot",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert to markdown file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Write markdown",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract articles JSON": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Combine prompt and articles",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Extract writer prompt": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Combine prompt and articles",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get AI articles since cutoff": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert articles to JSON",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup global variables": {
+        "main": [
+          [
+            {
+              "index": 1,
+              "node": "Wait for config lookups",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Lookup llm_config": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait for config lookups",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read writer prompt": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract writer prompt",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Resolve kind": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get AI articles since cutoff",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Read writer prompt",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Send ready notification": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Return markdown to caller",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait for config lookups": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Resolve kind",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "When called": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Lookup llm_config",
+              "type": "main"
+            },
+            {
+              "index": 0,
+              "node": "Lookup global variables",
+              "type": "main"
+            },
+            {
+              "index": 2,
+              "node": "Wait for config lookups",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Write markdown": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send ready notification",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Write summaries snapshot": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Extract articles JSON",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Writer": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert to markdown file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Writer model": {
+        "ai_languageModel": [
+          [
+            {
+              "index": 0,
+              "node": "Writer",
+              "type": "ai_languageModel"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-22T16:14:11.096Z",
+    "description": "Read article store name from global_variables.supabase_articles_table.",
+    "name": "Supabase table from globals",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "credentials": {
+          "supabaseApi": {
+            "id": "dTJY0l3sZc3jSBwR",
+            "name": "Supabase account"
+          }
+        },
+        "executeOnce": true,
+        "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
+        "name": "Get AI articles since cutoff",
+        "parameters": {
+          "filters": {
+            "conditions": [
+              {
+                "condition": "gt",
+                "keyName": "created_at",
+                "keyValue": "={{ $json.cutOffDate}}"
+              },
+              {
+                "condition": "eq",
+                "keyName": "ai_or_no",
+                "keyValue": "1"
+              }
+            ]
+          },
+          "matchType": "allFilters",
+          "operation": "getAll",
+          "returnAll": true,
+          "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
+        },
+        "position": [
+          240,
+          -1008
+        ],
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1
+      },
+      {
+        "credentials": {
+          "openRouterApi": {
+            "id": "WBlXYobJqwEGYFhl",
+            "name": "OpenRouter account"
+          }
+        },
+        "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
+        "name": "Writer model",
+        "parameters": {
+          "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.model }}",
+          "options": {
+            "responseFormat": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.response_format || 'text' }}",
+            "temperature": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.temperature }}"
+          }
+        },
+        "position": [
+          1664,
+          -880
+        ],
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1
+      },
+      {
+        "id": "f687de65-5d3c-4824-868a-163a0e1141df",
+        "name": "When called",
+        "parameters": {
+          "inputSource": "jsonExample",
+          "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n \"kind\":\"daily_digest\"\n }"
+        },
+        "position": [
+          16,
+          -1104
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
+        "name": "Write summaries snapshot",
+        "parameters": {
+          "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+          "operation": "write",
+          "options": {}
+        },
+        "position": [
+          688,
+          -1008
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
+        "name": "Convert articles to JSON",
+        "parameters": {
+          "operation": "toJson",
+          "options": {}
+        },
+        "position": [
+          464,
+          -1008
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
+        "name": "Extract articles JSON",
+        "parameters": {
+          "destinationKey": "articles",
+          "operation": "text",
+          "options": {}
+        },
+        "position": [
+          912,
+          -1008
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
+        "name": "Send ready notification",
+        "parameters": {
+          "additionalFields": {},
+          "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+          "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Resolve kind').first().json.writeFamily === 'digest' ? 'Digest' : 'Article' }} is ready ({{ $('Resolve kind').first().json.productName }}).\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $now.format('dd.MM.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+        },
+        "position": [
+          2384,
+          -1104
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "e0b088eb-e406-4149-b73f-5cea6050ee35"
+      },
+      {
+        "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
+        "name": "Write markdown",
+        "parameters": {
+          "dataPropertyName": "text",
+          "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json['prefix_' + $('Resolve kind').first().json.writeFamily] }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+          "operation": "write",
+          "options": {}
+        },
+        "position": [
+          2160,
+          -1104
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
+        "name": "Convert to markdown file",
+        "parameters": {
+          "binaryPropertyName": "text",
+          "operation": "toText",
+          "options": {},
+          "sourceProperty": "text"
+        },
+        "position": [
+          1936,
+          -1104
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "executeOnce": true,
+        "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
+        "name": "Read writer prompt",
+        "parameters": {
+          "fileSelector": "={{ $('Lookup global variables').first().json['prompt_' + $('Resolve kind').first().json.writeFamily + '_path'] }}",
+          "options": {}
+        },
+        "position": [
+          688,
+          -1200
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
+        "name": "Extract writer prompt",
+        "parameters": {
+          "destinationKey": "prompt",
+          "operation": "text",
+          "options": {}
+        },
+        "position": [
+          912,
+          -1200
+        ],
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
+        "name": "Writer",
+        "parameters": {
+          "batching": {},
+          "promptType": "define",
+          "text": "={{ $json.prompt }}\n\n## JSON Data\n{{ $json.articles }}"
+        },
+        "position": [
+          1584,
+          -1104
+        ],
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.8
+      },
+      {
+        "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
+        "name": "Combine prompt and articles",
+        "parameters": {
+          "combineBy": "combineByPosition",
+          "mode": "combine",
+          "numberInputs": 2,
+          "options": {
+            "includeUnpaired": false
+          }
+        },
+        "position": [
+          1136,
+          -1104
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "5ca9948f-efc4-475d-8e8f-2aa03477908a",
+        "name": "Lookup global variables",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "global_variables",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+            "mode": "list",
+            "value": "WyizWkG5igYx0GVV"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          240,
+          -1312
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "e159846a-8994-4f5f-a2c6-84a725fe6e24",
+        "name": "Lookup llm_config",
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "cachedResultName": "llm_config",
+            "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+            "mode": "list",
+            "value": "i6zVgQsWLNIMxbSa"
+          },
+          "operation": "get",
+          "returnAll": true
+        },
+        "position": [
+          240,
+          -1440
+        ],
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "eae07e3d-f9fd-476d-9272-61d4ee89c37a",
+        "name": "Wait for config lookups",
+        "parameters": {
+          "chooseBranchMode": "waitForAll",
+          "mode": "chooseBranch",
+          "numberInputs": 3,
+          "output": "specifiedInput",
+          "useDataOfInput": "3"
+        },
+        "position": [
+          120,
+          -1104
+        ],
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2
+      },
+      {
+        "executeOnce": true,
+        "id": "dbc85873-cbc3-4e2a-9799-aac57f2e96b9",
+        "name": "Resolve kind",
+        "parameters": {
+          "jsCode": "const kind = $input.item.json.kind;\nconst map = {\n  daily_digest: { writeFamily: 'digest', productName: 'Daily Digest' },\n  monday_roundup: { writeFamily: 'article', productName: 'Monday Roundup' },\n  generate_article: { writeFamily: 'article', productName: 'Generate Article' },\n};\nconst resolved = map[kind];\nif (!resolved) {\n  throw new Error('Unknown kind \"' + kind + '\". Expected daily_digest, monday_roundup, or generate_article.');\n}\nreturn { json: Object.assign({}, $input.item.json, resolved) };\n",
+          "language": "javaScript",
+          "mode": "runOnceForEachItem"
+        },
+        "position": [
+          180,
+          -1104
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "576dca27-e968-4da5-b332-61c40ddb4f55",
+        "name": "Return markdown to caller",
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "t1",
+                "name": "text",
+                "type": "string",
+                "value": "={{ $('Writer').first().json.text }}"
+              },
+              {
+                "id": "f1",
+                "name": "fileName",
+                "type": "string",
+                "value": "={{ $('Write markdown').first().json.fileName }}"
+              },
+              {
+                "id": "k1",
+                "name": "kind",
+                "type": "string",
+                "value": "={{ $('Resolve kind').first().json.kind }}"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "mode": "manual"
+        },
+        "position": [
+          2608,
+          -1104
+        ],
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4
+      }
+    ],
+    "updatedAt": "2026-08-22T16:14:11.096Z",
+    "versionId": "a70501c9-dc73-42f8-b5bd-df1aa8ba1336",
+    "workflowId": "S6jCKcFVnVwE0bNX"
+  },
+  "connections": {
+    "Combine prompt and articles": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Writer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert articles to JSON": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write summaries snapshot",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert to markdown file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write markdown",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract articles JSON": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Combine prompt and articles",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Extract writer prompt": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Combine prompt and articles",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get AI articles since cutoff": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert articles to JSON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup llm_config": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read writer prompt": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract writer prompt",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Resolve kind": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get AI articles since cutoff",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Read writer prompt",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Send ready notification": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Return markdown to caller",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait for config lookups": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Resolve kind",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When called": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup llm_config",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          },
+          {
+            "index": 2,
+            "node": "Wait for config lookups",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write markdown": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send ready notification",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write summaries snapshot": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Extract articles JSON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Writer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert to markdown file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Writer model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "Writer",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "S6jCKcFVnVwE0bNX",
+  "isArchived": false,
+  "name": "component : generate",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "credentials": {
+        "supabaseApi": {
+          "id": "dTJY0l3sZc3jSBwR",
+          "name": "Supabase account"
+        }
+      },
+      "executeOnce": true,
+      "id": "7a589016-2ce1-47e3-ad90-322bfc4c283d",
+      "name": "Get AI articles since cutoff",
+      "parameters": {
+        "filters": {
+          "conditions": [
+            {
+              "condition": "gt",
+              "keyName": "created_at",
+              "keyValue": "={{ $json.cutOffDate}}"
+            },
+            {
+              "condition": "eq",
+              "keyName": "ai_or_no",
+              "keyValue": "1"
+            }
+          ]
+        },
+        "matchType": "allFilters",
+        "operation": "getAll",
+        "returnAll": true,
+        "tableId": "={{ $('Lookup global variables').first().json.supabase_articles_table }}"
+      },
+      "position": [
+        240,
+        -1008
+      ],
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "openRouterApi": {
+          "id": "WBlXYobJqwEGYFhl",
+          "name": "OpenRouter account"
+        }
+      },
+      "id": "7b451de8-292c-42a3-bedb-c28e48e0f7b9",
+      "name": "Writer model",
+      "parameters": {
+        "model": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.model }}",
+        "options": {
+          "responseFormat": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.response_format || 'text' }}",
+          "temperature": "={{ $('Lookup llm_config').all().find(i => i.json.purpose === $('Resolve kind').first().json.writeFamily + '_writer').json.temperature }}"
+        }
+      },
+      "position": [
+        1664,
+        -880
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1
+    },
+    {
+      "id": "f687de65-5d3c-4824-868a-163a0e1141df",
+      "name": "When called",
+      "parameters": {
+        "inputSource": "jsonExample",
+        "jsonExample": "{\n \"cutOffDate\":\"2025-12-31T00:00:00.000-05:00\",\n \"kind\":\"daily_digest\"\n }"
+      },
+      "position": [
+        16,
+        -1104
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "87ed49b8-2e04-4866-81b0-1338740272b9",
+      "name": "Write summaries snapshot",
+      "parameters": {
+        "fileName": "={{ $('Lookup global variables').first().json.dir_summaries }}/{{ $('Lookup global variables').first().json.prefix_summary }}{{$now.format('dd_MM_yyyy_HHmm')}}.json",
+        "operation": "write",
+        "options": {}
+      },
+      "position": [
+        688,
+        -1008
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "1e9ae1e5-95d7-4d8f-82ef-784b85e66cdf",
+      "name": "Convert articles to JSON",
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "position": [
+        464,
+        -1008
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "73afccff-6e64-48ee-8fb2-3f2204cb95ea",
+      "name": "Extract articles JSON",
+      "parameters": {
+        "destinationKey": "articles",
+        "operation": "text",
+        "options": {}
+      },
+      "position": [
+        912,
+        -1008
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "id": "9b8fd1be-ea49-47d2-89ee-50235c6ffec8",
+      "name": "Send ready notification",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $('Resolve kind').first().json.writeFamily === 'digest' ? 'Digest' : 'Article' }} is ready ({{ $('Resolve kind').first().json.productName }}).\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $now.format('dd.MM.yyyy') }}, {{ $now.format('HH:mm:ss') }}"
+      },
+      "position": [
+        2384,
+        -1104
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "e0b088eb-e406-4149-b73f-5cea6050ee35"
+    },
+    {
+      "id": "b2323a8a-1c95-4cd8-94a0-2b6375412d46",
+      "name": "Write markdown",
+      "parameters": {
+        "dataPropertyName": "text",
+        "fileName": "={{ $('Lookup global variables').first().json.dir_articles }}/{{ $('Lookup global variables').first().json['prefix_' + $('Resolve kind').first().json.writeFamily] }}{{$now.format('dd-MM-yyyy-HHmm')}}.md",
+        "operation": "write",
+        "options": {}
+      },
+      "position": [
+        2160,
+        -1104
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "e550e0d0-565d-4455-b83b-e8d6f975523f",
+      "name": "Convert to markdown file",
+      "parameters": {
+        "binaryPropertyName": "text",
+        "operation": "toText",
+        "options": {},
+        "sourceProperty": "text"
+      },
+      "position": [
+        1936,
+        -1104
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "executeOnce": true,
+      "id": "412b4f7e-e28b-43ff-9bcf-cd7f3e1b4037",
+      "name": "Read writer prompt",
+      "parameters": {
+        "fileSelector": "={{ $('Lookup global variables').first().json['prompt_' + $('Resolve kind').first().json.writeFamily + '_path'] }}",
+        "options": {}
+      },
+      "position": [
+        688,
+        -1200
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d6b925f6-dc49-4e6a-9fc4-b3b4993c4c5c",
+      "name": "Extract writer prompt",
+      "parameters": {
+        "destinationKey": "prompt",
+        "operation": "text",
+        "options": {}
+      },
+      "position": [
+        912,
+        -1200
+      ],
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "53f29551-f950-4f42-b966-e2e47ed1a3c4",
+      "name": "Writer",
+      "parameters": {
+        "batching": {},
+        "promptType": "define",
+        "text": "={{ $json.prompt }}\n\n## JSON Data\n{{ $json.articles }}"
+      },
+      "position": [
+        1584,
+        -1104
+      ],
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.8
+    },
+    {
+      "id": "c7235f63-0186-4dac-9c92-dcb2d8505282",
+      "name": "Combine prompt and articles",
+      "parameters": {
+        "combineBy": "combineByPosition",
+        "mode": "combine",
+        "numberInputs": 2,
+        "options": {
+          "includeUnpaired": false
+        }
+      },
+      "position": [
+        1136,
+        -1104
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "5ca9948f-efc4-475d-8e8f-2aa03477908a",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        240,
+        -1312
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "e159846a-8994-4f5f-a2c6-84a725fe6e24",
+      "name": "Lookup llm_config",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "llm_config",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/i6zVgQsWLNIMxbSa",
+          "mode": "list",
+          "value": "i6zVgQsWLNIMxbSa"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        240,
+        -1440
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "eae07e3d-f9fd-476d-9272-61d4ee89c37a",
+      "name": "Wait for config lookups",
+      "parameters": {
+        "chooseBranchMode": "waitForAll",
+        "mode": "chooseBranch",
+        "numberInputs": 3,
+        "output": "specifiedInput",
+        "useDataOfInput": "3"
+      },
+      "position": [
+        120,
+        -1104
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "executeOnce": true,
+      "id": "dbc85873-cbc3-4e2a-9799-aac57f2e96b9",
+      "name": "Resolve kind",
+      "parameters": {
+        "jsCode": "const kind = $input.item.json.kind;\nconst map = {\n  daily_digest: { writeFamily: 'digest', productName: 'Daily Digest' },\n  monday_roundup: { writeFamily: 'article', productName: 'Monday Roundup' },\n  generate_article: { writeFamily: 'article', productName: 'Generate Article' },\n};\nconst resolved = map[kind];\nif (!resolved) {\n  throw new Error('Unknown kind \"' + kind + '\". Expected daily_digest, monday_roundup, or generate_article.');\n}\nreturn { json: Object.assign({}, $input.item.json, resolved) };\n",
+        "language": "javaScript",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        180,
+        -1104
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "576dca27-e968-4da5-b332-61c40ddb4f55",
+      "name": "Return markdown to caller",
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "t1",
+              "name": "text",
+              "type": "string",
+              "value": "={{ $('Writer').first().json.text }}"
+            },
+            {
+              "id": "f1",
+              "name": "fileName",
+              "type": "string",
+              "value": "={{ $('Write markdown').first().json.fileName }}"
+            },
+            {
+              "id": "k1",
+              "name": "kind",
+              "type": "string",
+              "value": "={{ $('Resolve kind').first().json.kind }}"
+            }
+          ]
+        },
+        "includeOtherFields": false,
+        "mode": "manual"
+      },
+      "position": [
+        2608,
+        -1104
+      ],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "availableInMCP": true,
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zTMJFr8EYWX9glAC",
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
