@@ -1,7 +1,7 @@
 {
   "active": true,
   "activeVersion": {
-    "authors": "Vamsi Varanasi",
+    "authors": "Vamsi Varanasi (via MCP)",
     "autosaved": false,
     "connections": {
       "Append error JSON to log": {
@@ -123,9 +123,9 @@
         ]
       }
     },
-    "createdAt": "2026-08-16T18:28:20.298Z",
-    "description": null,
-    "name": null,
+    "createdAt": "2026-08-22T16:14:03.610Z",
+    "description": "Fallback JSON log writes under /files/sortedsignals/logs instead of the legacy batchupdate folder.",
+    "name": "Error log path sortedsignals",
     "nodeGroups": [],
     "nodes": [
       {
@@ -281,7 +281,7 @@
         "name": "Append error JSON to log",
         "onError": "continueRegularOutput",
         "parameters": {
-          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "fileName": "=/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
           "operation": "write",
           "options": {
             "append": true
@@ -341,7 +341,7 @@
         "name": "Append blank line to log",
         "onError": "continueRegularOutput",
         "parameters": {
-          "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+          "fileName": "=/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
           "operation": "write",
           "options": {
             "append": true
@@ -359,7 +359,7 @@
         "name": "Note: error notify",
         "parameters": {
           "color": 4,
-          "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
+          "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
           "height": 420,
           "width": 980
         },
@@ -371,8 +371,8 @@
         "typeVersion": 1
       }
     ],
-    "updatedAt": "2026-08-16T18:28:20.298Z",
-    "versionId": "d5e1e58c-4560-4fa6-92b1-0a569f616d3a",
+    "updatedAt": "2026-08-22T16:14:03.610Z",
+    "versionId": "d99057cf-8596-4906-ba7d-1dc36c24fdf2",
     "workflowId": "zTMJFr8EYWX9glAC"
   },
   "connections": {
@@ -653,7 +653,7 @@
       "name": "Append error JSON to log",
       "onError": "continueRegularOutput",
       "parameters": {
-        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "fileName": "=/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
         "operation": "write",
         "options": {
           "append": true
@@ -713,7 +713,7 @@
       "name": "Append blank line to log",
       "onError": "continueRegularOutput",
       "parameters": {
-        "fileName": "=/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
+        "fileName": "=/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{{ $now.format('yyyy_MM') }}.json",
         "operation": "write",
         "options": {
           "append": true
@@ -731,7 +731,7 @@
       "name": "Note: error notify",
       "parameters": {
         "color": 4,
-        "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/batchupdate/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
+        "content": "## error : notify error over telegram\n\n1. Look up `tg_notifs_chat_id`.\n2. Probe Telegram the same way as master : setup (get chat, continue on error).\n3. If the probe works, send the error alert.\n4. If Telegram is not set up, or the send fails: append the original error JSON to `/files/sortedsignals/logs/ERROR_TELEGRAM_NOTIFICATION_FAIL_{yyyy_MM}.json`, then append a second JSON note (not set up, or send-failed with details).\n\nDo not point this workflow’s own Error Workflow at itself.",
         "height": 420,
         "width": 980
       },
