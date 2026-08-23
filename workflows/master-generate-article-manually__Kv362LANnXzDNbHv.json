@@ -110,7 +110,7 @@
               "displayName": "kind",
               "id": "kind",
               "removed": false,
-              "required": true,
+              "required": false,
               "type": "string"
             }
           ],
