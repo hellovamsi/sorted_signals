@@ -948,8 +948,8 @@
         "url": "={{ $json.url }}"
       },
       "position": [
-        -320,
-        160
+        -336,
+        496
       ],
       "retryOnFail": true,
       "type": "n8n-nodes-base.jinaAi",
@@ -969,8 +969,8 @@
         "options": {}
       },
       "position": [
-        -24,
-        136
+        -16,
+        256
       ],
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1
@@ -1019,6 +1019,7 @@
         928,
         16
       ],
+      "retryOnFail": false,
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1
     },
@@ -1060,8 +1061,8 @@
         "options": {}
       },
       "position": [
-        480,
-        16
+        496,
+        128
       ],
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.3
@@ -1074,8 +1075,8 @@
         "options": {}
       },
       "position": [
-        256,
-        16
+        272,
+        128
       ],
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1
@@ -1094,8 +1095,8 @@
         "options": {}
       },
       "position": [
-        1384,
-        -8
+        1392,
+        -16
       ],
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1
@@ -1131,8 +1132,8 @@
         "jsonSchemaExample": "{\n  \"summary\": \"Anthropic details safeguards in Claude AI to protect user well-being, focusing on handling suicide/self-harm discussions and reducing sycophancy. Using system prompts, reinforcement learning, and expert input, Claude responds empathetically, directs to helplines via ThroughLine partnerships, and partners with IASP for guidance. Evaluations show high performance: 98-99% appropriate single-turn responses on risky prompts, 78-86% in multi-turn scenarios (up from 56%), and 70-73% course-correction in real prefilled conversations. Sycophancy reduced 70-85% via behavioral audits; open-sourced Petri benchmark shows Claude 4.5 outperforming peers. Age restriction to 18+ enforced with classifiers. Ongoing transparency and improvements committed.\",\n  \"category\": \"Safety & Ethics\",\n  \"subcategories\": [\"AI safety research\", \"Ethical concerns\", \"Responsible AI\"]\n}"
       },
       "position": [
-        1512,
-        -8
+        1520,
+        -16
       ],
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3
@@ -1160,8 +1161,8 @@
         "jsonExample": "{\n  \"cutOffDate\":\"2025-12-15 00:00:00\",\n  \"url\": \"https://www.anthropic.com/news\",\n  \"publication\": \"Anthropic Newsroom\",\n  \"dateFormat\": \"Month DD, YYYY\",\n  \"datePattern\": \"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\\\s+\\\\d{1,2},\\\\s+\\\\d{4}\",\n  \"structure\": \"Date-Category-Title\",\n  \"categories\": [\"Policy\", \"Announcements\", \"Product\"],\n  \"separators\": \"Space-separated, typically: 'Date Category Title'\",\n  \"extractionHints\": \"Articles appear in a list format with date first, followed by category, then title. Dates are in 'Month DD, YYYY' format (e.g., 'Dec 19, 2025'). Categories are single words: Policy, Announcements, or Product. Titles follow immediately after the category. Look for entries in the 'News' section table/list format.\",\n  \"examples\": [\n    \"Dec 19, 2025 Policy Sharing our compliance framework for California's Transparency in Frontier AI Act\",\n    \"Dec 18, 2025 Announcements Working with the US Department of Energy to unlock the next era of scientific discovery\",\n    \"Nov 24, 2025 Announcements Introducing Claude Opus 4.5\"\n  ]\n}\n"
       },
       "position": [
-        -992,
-        160
+        -1008,
+        496
       ],
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1
@@ -1263,8 +1264,8 @@
         "returnAll": true
       },
       "position": [
-        -768,
-        16
+        -784,
+        352
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -1278,8 +1279,8 @@
         "useDataOfInput": "2"
       },
       "position": [
-        -544,
-        144
+        -560,
+        480
       ],
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2
@@ -1312,8 +1313,8 @@
         }
       },
       "position": [
-        256,
-        304
+        240,
+        640
       ],
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3
@@ -1367,8 +1368,8 @@
         "returnAll": true
       },
       "position": [
-        -768,
-        304
+        -784,
+        640
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -1380,8 +1381,8 @@
         "jsCode": "function asPlain(v) {\n  if (v == null) return v;\n  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return v;\n  try { return JSON.parse(JSON.stringify(v)); } catch (e) { return String(v); }\n}\nconst trigger = $('When called').first().json;\nreturn $input.all().map((item) => ({\n  json: {\n    url: (item.json && (item.json.url || item.json.contentURL)) || trigger.url || null,\n    service: 'Jina',\n    error: asPlain(item.error || (item.json && item.json.error) || null),\n  },\n}));"
       },
       "position": [
-        -32,
-        304
+        -48,
+        640
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
