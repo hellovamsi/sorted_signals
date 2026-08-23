@@ -291,7 +291,7 @@
       },
       "position": [
         224,
-        0
+        176
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -300,15 +300,12 @@
       "id": "864bae1c-e68c-4ecf-826d-eefe777215eb",
       "name": "Wait for lookup",
       "parameters": {
-        "chooseBranchMode": "waitForAll",
         "mode": "chooseBranch",
-        "numberInputs": 2,
-        "output": "specifiedInput",
         "useDataOfInput": "1"
       },
       "position": [
         448,
-        80
+        96
       ],
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2
@@ -317,13 +314,11 @@
       "id": "de720036-3eef-4c2f-852f-6b52aa487b7e",
       "name": "Prepare error line",
       "parameters": {
-        "jsCode": "function asPlain(v) {\n  if (v == null) return v;\n  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return v;\n  try { return JSON.parse(JSON.stringify(v)); } catch (e) { return String(v); }\n}\nfunction errorMessage(err) {\n  if (err == null) return null;\n  if (typeof err === 'string') return err;\n  return err.message || err.description || err.readableMessage || null;\n}\nfunction inferService(item) {\n  if (item.service && String(item.service).trim()) return String(item.service).trim();\n  const node = String(item.parentNode || '');\n  const err = item.error;\n  const blob = (typeof err === 'string' ? err : JSON.stringify(asPlain(err) || '')).toLowerCase();\n  const ctxName = err && err.context && err.context.data && err.context.data.name;\n  if (ctxName === 'InsufficientBalanceError' || blob.indexOf('insufficientbalanceerror') !== -1) return 'Jina';\n  if (blob.indexOf('openrouter') !== -1) return 'OpenRouter';\n  if (node === 'Read listing page' || node === 'Read article page') return 'Jina';\n  if (/summarize|classif|llm scraper/i.test(node)) return 'OpenRouter';\n  return null;\n}\nconst globals = $('Lookup global variables').first().json;\nconst offset = Number(globals.display_tz_offset_hours || 0);\nconst local = $now.plus({ hours: offset });\nconst fileDate = local.hour >= 20 ? local.plus({ days: 1 }) : local;\nconst y = fileDate.year;\nconst m = String(fileDate.month).padStart(2, '0');\nconst d = String(fileDate.day).padStart(2, '0');\nconst fileName = '/files/sortedsignals/logs/NODE_ERRORS_' + y + '_' + m + '_' + d + '.json';\nconst item = $input.first().json;\nconst record = {\n  loggedAt: new Date().toISOString(),\n  parentWorkflow: item.parentWorkflow || null,\n  parentNode: item.parentNode || null,\n  service: inferService(item),\n  url: item.url || item.contentURL || item.link || null,\n  message: errorMessage(item.error) || item.message || null,\n  error: asPlain(item.error || null),\n};\nreturn [{ json: { fileName: fileName, line: JSON.stringify(record) + '\\n' } }];",
-        "language": "javaScript",
-        "mode": "runOnceForAllItems"
+        "jsCode": "function asPlain(v) {\n  if (v == null) return v;\n  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return v;\n  try { return JSON.parse(JSON.stringify(v)); } catch (e) { return String(v); }\n}\nfunction errorMessage(err) {\n  if (err == null) return null;\n  if (typeof err === 'string') return err;\n  return err.message || err.description || err.readableMessage || null;\n}\nfunction inferService(item) {\n  if (item.service && String(item.service).trim()) return String(item.service).trim();\n  const node = String(item.parentNode || '');\n  const err = item.error;\n  const blob = (typeof err === 'string' ? err : JSON.stringify(asPlain(err) || '')).toLowerCase();\n  const ctxName = err && err.context && err.context.data && err.context.data.name;\n  if (ctxName === 'InsufficientBalanceError' || blob.indexOf('insufficientbalanceerror') !== -1) return 'Jina';\n  if (blob.indexOf('openrouter') !== -1) return 'OpenRouter';\n  if (node === 'Read listing page' || node === 'Read article page') return 'Jina';\n  if (/summarize|classif|llm scraper/i.test(node)) return 'OpenRouter';\n  return null;\n}\nconst globals = $('Lookup global variables').first().json;\nconst offset = Number(globals.display_tz_offset_hours || 0);\nconst local = $now.plus({ hours: offset });\nconst fileDate = local.hour >= 20 ? local.plus({ days: 1 }) : local;\nconst y = fileDate.year;\nconst m = String(fileDate.month).padStart(2, '0');\nconst d = String(fileDate.day).padStart(2, '0');\nconst fileName = '/files/sortedsignals/logs/NODE_ERRORS_' + y + '_' + m + '_' + d + '.json';\nconst item = $input.first().json;\nconst record = {\n  loggedAt: new Date().toISOString(),\n  parentWorkflow: item.parentWorkflow || null,\n  parentNode: item.parentNode || null,\n  service: inferService(item),\n  url: item.url || item.contentURL || item.link || null,\n  message: errorMessage(item.error) || item.message || null,\n  error: asPlain(item.error || null),\n};\nreturn [{ json: { fileName: fileName, line: JSON.stringify(record) + '\\n' } }];"
       },
       "position": [
-        672,
-        80
+        608,
+        96
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -340,8 +335,8 @@
         "sourceProperty": "line"
       },
       "position": [
-        896,
-        80
+        800,
+        96
       ],
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1
@@ -358,8 +353,8 @@
         }
       },
       "position": [
-        1120,
-        80
+        992,
+        96
       ],
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1
@@ -374,8 +369,8 @@
         "width": 300
       },
       "position": [
-        -50,
-        -50
+        128,
+        -112
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
@@ -387,6 +382,7 @@
   "repo_path": "workflows/",
   "settings": {
     "availableInMCP": true,
+    "binaryMode": "separate",
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "zTMJFr8EYWX9glAC",
     "executionOrder": "v1"
