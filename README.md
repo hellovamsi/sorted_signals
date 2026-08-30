@@ -23,7 +23,7 @@ Built in public on [Trello](https://trello.com/b/5ttJxOKc/sorted-signals). Demo:
 | [`config/`](./config) | Data-table seed CSVs. First setup creates a missing table from the matching CSV. |
 | [`prompts/`](./prompts) | Writer instructions. First setup writes a missing file onto the host. |
 
-**Not in the repo:** API keys, live chat/email, paywalled feed URLs, production table dumps. There is no `master : setup` workflow.
+**Not in the repo:** API keys, live chat/email, paywalled feed URLs, production table dumps.
 
 ## Prerequisites
 
@@ -104,7 +104,7 @@ Tag: `Sorted_Signals`. IDs below match the JSON filenames in this repo. After fi
 | `backup : github` | `mHFCJIFLGDvshgOj` | Nightly 01:33 export to your fork |
 | `error : notify error over telegram` | `goB83Sc0EKWZkYZx` | Crash → Telegram (or a log file if Telegram is down) |
 
-Ignore old names if you see them: `master : setup`, `import : github`, `sub :` RSS/scrape wrappers, twin article writer, file-only error workflow.
+Ignore old names if you see them: `import : github`, `sub :` RSS/scrape wrappers, twin article writer, file-only error workflow.
 
 ## After install
 
