@@ -1,0 +1,188 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "connections": {
+    "Call 'component : generate'": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send article complete notification",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send article started notification",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Call 'component : generate'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Manual start": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "SeqfvIBhBPBi5oLL",
+  "isArchived": false,
+  "name": "master : generate article manually",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "7ea7f779-b834-4834-b2d1-6cd3f260032d",
+      "name": "Send article started notification",
+      "parameters": {
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_article }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+      },
+      "position": [
+        224,
+        -272
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "a3dccfb0-a437-46ff-a67a-ec1a2820992d"
+    },
+    {
+      "id": "121adb7f-6c5d-4b4a-86a1-a2aba1ff1808",
+      "name": "Call 'component : generate'",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : generate",
+          "cachedResultUrl": "/workflow/S6jCKcFVnVwE0bNX",
+          "mode": "list",
+          "value": "S4ap9r37QHoR730E"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cutOffDate",
+            "kind"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "kind",
+              "id": "kind",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cutOffDate": "={{ $now.minus($json.article_cutoff_hours,'hours') }}",
+            "kind": "generate_article"
+          }
+        }
+      },
+      "position": [
+        224,
+        -80
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "4ef4745f-6ad2-496c-9ae3-c62f5ba8222b",
+      "name": "Send article complete notification",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ {daily_digest:'Daily Digest',monday_roundup:'Monday Roundup',generate_article:'Generate Article'}[$json.kind] }} complete.\nPath: {{ $json.fileName }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd.MM.yyyy HH:mm') }}"
+      },
+      "position": [
+        448,
+        -80
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "511c1032-103a-4e85-a1bc-f482693086b1"
+    },
+    {
+      "id": "68dfb796-7cc4-439e-9bac-1a0be5d96395",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        0,
+        -176
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "44d721c8-e759-4b85-8221-c812c0a092a4",
+      "name": "Manual start",
+      "parameters": {},
+      "position": [
+        -240,
+        -176
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
