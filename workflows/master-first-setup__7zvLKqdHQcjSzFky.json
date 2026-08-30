@@ -1,0 +1,5337 @@
+{
+  "active": true,
+  "activeVersion": {
+    "authors": "Vamsi Varanasi (via MCP)",
+    "autosaved": false,
+    "connections": {
+      "Attach chat id if real": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Can send Telegram?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Can send Telegram?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Send first setup report",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Classify GitHub file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Route by file kind",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Convert prompt to file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Write prompt file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Create data table": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Insert table rows",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Table created status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Create workflow on this instance": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Workflow created status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Workflow created status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Delete archived workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Create workflow on this instance",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Workflow unarchived status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Delete probe workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List n8n workflows",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Download large file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Classify GitHub file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get GitHub file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "If file too large",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get global_variables rows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Plan prompt write",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get user_config rows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Attach chat id if real",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Get workflow for remap": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Patch workflow IDs",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Has files?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Reset import counts",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "List data tables after import",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Has remap jobs?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop remap workflows",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Prepare completion",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "If file too large": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Download large file",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Classify GitHub file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Insert table rows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Table created status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Table created status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List config folder": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List prompts folder",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List data tables": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Plan table action",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List data tables after import": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List n8n workflows after import",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List n8n workflows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List config folder",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List n8n workflows after import": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Tag Sorted_Signals",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List prompts folder": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List workflows folder",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List tables for prompt path": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get global_variables rows",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "List workflows folder": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare GitHub files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Loop over GitHub files": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List data tables after import",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Process one GitHub file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Loop remap workflows": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare completion",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Get workflow for remap",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Manual start": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Probe tiny workflow create",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Needs remap update?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Update remapped workflow",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Wait remap rate",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Parse and decide create": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Should unarchive workflow?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Patch workflow IDs": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Needs remap update?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Plan prompt write": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Should write prompt?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Plan table action": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Should create table?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare GitHub files": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Has files?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare completion": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get user_config rows",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prepare remap jobs": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Has remap jobs?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Probe created?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Delete probe workflow",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "List n8n workflows",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Probe tiny workflow create": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Remember API create flag",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Process one GitHub file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Route by action",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally failed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Prompt file exists?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prompt exists status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Restore prompt payload",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Read existing prompt file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prompt file exists?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Remember API create flag": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Probe created?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Reset import counts": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop over GitHub files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Restore prompt payload": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Convert prompt to file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Restore workflow list": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prepare remap jobs",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Route by action": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Tally created",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally skipped",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Tally failed",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Route by file kind": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "List data tables",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "List tables for prompt path",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Parse and decide create",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Unknown file skip",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Should create table?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Create data table",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Table skipped status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Should create workflow?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Create workflow on this instance",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Workflow skipped status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Should unarchive workflow?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Unarchive workflow",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Should create workflow?",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Should write prompt?": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Read existing prompt file",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Prompt plan skip status",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tag Sorted_Signals": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Restore workflow list",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally created": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally failed": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Tally skipped": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait rate limit",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Unarchive workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Workflow unarchived status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Delete archived workflow",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Update remapped workflow": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Wait remap rate",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait rate limit": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop over GitHub files",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Wait remap rate": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Loop remap workflows",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "When called for one file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Get GitHub file",
+              "type": "main"
+            }
+          ]
+        ]
+      },
+      "Write prompt file": {
+        "main": [
+          [
+            {
+              "index": 0,
+              "node": "Prompt written status",
+              "type": "main"
+            }
+          ],
+          [
+            {
+              "index": 0,
+              "node": "Prompt written status",
+              "type": "main"
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2026-08-30T15:41:23.204Z",
+    "description": "After import, put the Sorted_Signals tag on every workflow so backup can find them.",
+    "name": "Tag imported workflows Sorted_Signals",
+    "nodeGroups": [],
+    "nodes": [
+      {
+        "id": "650348cb-41fa-437c-bfed-b03126a3ea3d",
+        "name": "Manual start",
+        "parameters": {},
+        "position": [
+          0,
+          0
+        ],
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "executeOnce": true,
+        "id": "686e938d-43ef-46a0-83b1-f977a9437639",
+        "name": "List n8n workflows",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "filters": {
+            "activeWorkflows": false
+          },
+          "operation": "getAll",
+          "resource": "workflow",
+          "returnAll": true
+        },
+        "position": [
+          1120,
+          0
+        ],
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "executeOnce": true,
+        "id": "737cc1a7-0ae6-4946-9a48-aad599d4c1df",
+        "name": "List config folder",
+        "parameters": {
+          "filePath": "config",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          1344,
+          0
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "aa5556d5-a531-4c93-8007-4bdde03b6228"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "executeOnce": true,
+        "id": "8e2ab57d-dc6a-4ce0-913d-3f42f3d548ee",
+        "name": "List prompts folder",
+        "parameters": {
+          "filePath": "prompts",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          1568,
+          0
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "f49fb879-be69-4ac3-ac52-c737c9b41af4"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "executeOnce": true,
+        "id": "e868ae31-99a9-47cb-9d77-aef35f8adf93",
+        "name": "List workflows folder",
+        "parameters": {
+          "filePath": "workflows",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          1792,
+          0
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "48881f69-4385-4133-9795-eeb86666a462"
+      },
+      {
+        "executeOnce": true,
+        "id": "bdc48324-be48-4718-9cb8-42652f2aef90",
+        "name": "Prepare GitHub files",
+        "parameters": {
+          "jsCode": "const allW=$('List n8n workflows').all().map(i=>i.json).filter(w=>w&&w.id);\nconst existing=allW.filter(w=>!w.isArchived);\nconst archived=allW.filter(w=>w.isArchived);\nconst existingNames=existing.map(w=>w.name);\nconst existingIds=existing.map(w=>String(w.id));\nconst archivedByName={};\nconst archivedById={};\nfor(const w of archived){archivedByName[w.name]=String(w.id);archivedById[String(w.id)]=String(w.id);}\nconst me=String($workflow.id);\nconst sample=existing.find(w=>String(w.id)===me)||existing[0]||{};\nconst projectId=sample.homeProjectId||sample.projectId||(sample.homeProject&&sample.homeProject.id)||'KgPGbMAWBC3Dm64D';\nfunction filesOf(nodeName){try{return $(nodeName).all().map(i=>i.json).filter(f=>f&&f.type==='file');}catch(e){return[];}}\nconst listed=[];\nfor(const f of filesOf('List config folder')){if(/\\.csv$/i.test(String(f.name||'')))listed.push({...f,kind:'csv',rank:0});}\nfor(const f of filesOf('List prompts folder')){if(/\\.md$/i.test(String(f.name||'')))listed.push({...f,kind:'prompt',rank:1});}\nconst wfFiles=filesOf('List workflows folder').filter(f=>/\\.json$/i.test(String(f.name||''))&&String(f.name).includes('__'));\nconst s=$getWorkflowStaticData('global');\nconst canCreate=s.apiCanCreateWorkflows!==false;\nlet wfBlocked=0;\nif(canCreate){for(const f of wfFiles)listed.push({...f,kind:'workflow',rank:2});}\nelse wfBlocked=wfFiles.length;\nlisted.sort((a,b)=>a.rank-b.rank||String(a.path).localeCompare(String(b.path)));\ns.importCounts={created:0,skipped:0,failed:wfBlocked,listed:listed.length+wfBlocked};\nconst repo={repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_branch:'main'};\nconst extra={existingNames,existingIds,archivedByName,archivedById,projectId};\nif(!listed.length){return[{json:{hasFiles:false,...repo,...extra}}];}\nreturn listed.map(f=>({json:{hasFiles:true,kind:f.kind,name:f.name,path:f.path,download_url:f.download_url,sha:f.sha,size:f.size,...repo,...extra}}));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2016,
+          0
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "cc8b3be0-7d45-4a42-8705-2694390072cc",
+        "name": "Has files?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "has-files-0001",
+                "leftValue": "={{ $json.hasFiles }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          2240,
+          0
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "0f7249e1-18d4-4d12-82e3-8d297391df54",
+        "name": "Reset import counts",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nreturn $input.all().map(item => ({ json: item.json }));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2464,
+          0
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "7062e98b-cd6b-4f18-86ab-dc0f4652c3ce",
+        "name": "Loop over GitHub files",
+        "parameters": {
+          "options": {}
+        },
+        "position": [
+          2688,
+          0
+        ],
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3
+      },
+      {
+        "id": "c8972bce-fa1c-4983-b97c-b9f0df429900",
+        "name": "Process one GitHub file",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "mode": "each",
+          "options": {
+            "waitForSubWorkflow": true
+          },
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $workflow.id }}"
+          },
+          "workflowInputs": {
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true,
+            "mappingMode": "defineBelow",
+            "matchingColumns": [],
+            "schema": [],
+            "value": {}
+          }
+        },
+        "position": [
+          2912,
+          80
+        ],
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3
+      },
+      {
+        "id": "ae3a737d-4aee-4a81-9d66-c3c3f975a126",
+        "name": "Route by action",
+        "parameters": {
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "fail"
+          },
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "act-create",
+                      "leftValue": "={{ $json.action }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "create"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "create",
+                "renameOutput": true
+              },
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "act-skip",
+                      "leftValue": "={{ $json.action }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "skip"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "skip",
+                "renameOutput": true
+              }
+            ]
+          }
+        },
+        "position": [
+          3136,
+          80
+        ],
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2
+      },
+      {
+        "id": "da8bc5ed-d799-4f03-86b2-100e74f8d205",
+        "name": "Tally created",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.created+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3360,
+          -80
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "60cecd9f-85e2-4db7-877c-f34659c8e670",
+        "name": "Tally skipped",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.skipped+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3360,
+          80
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "b85ff131-2c76-4911-bc75-1ceb97d67bef",
+        "name": "Tally failed",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.failed+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3360,
+          240
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "70576e40-259d-4781-a0a5-80a9d651b99f",
+        "name": "Wait rate limit",
+        "parameters": {
+          "amount": 1
+        },
+        "position": [
+          3584,
+          80
+        ],
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "webhookId": "f357bdf9-d9a8-4ddf-af19-46f76f4c6199"
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "executeOnce": true,
+        "id": "3bd2e0cd-3dc1-4faf-aa8f-547242a7790a",
+        "name": "List data tables after import",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "GET",
+          "nodeCredentialType": "n8nApi",
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "250"
+              }
+            ]
+          },
+          "sendQuery": true,
+          "specifyQuery": "keypair",
+          "url": "https://app.easyn8n.work/api/v1/data-tables"
+        },
+        "position": [
+          2688,
+          -240
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "executeOnce": true,
+        "id": "8a6fd084-cd0e-4a20-a806-b9c9aea4b79a",
+        "name": "List n8n workflows after import",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "filters": {
+            "activeWorkflows": false
+          },
+          "operation": "getAll",
+          "resource": "workflow",
+          "returnAll": true
+        },
+        "position": [
+          2912,
+          -240
+        ],
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "executeOnce": true,
+        "id": "fe7a6ff6-38fc-41dd-b624-9f8398cdbd9a",
+        "name": "Prepare remap jobs",
+        "parameters": {
+          "jsCode": "const tablesResp=$('List data tables after import').first().json;\nconst tables=tablesResp.data||tablesResp||[];\nconst tableByName={};\nfor(const t of (Array.isArray(tables)?tables:[tables])){if(t&&t.name&&t.id)tableByName[t.name]=t.id;}\nconst wfs=$('List n8n workflows after import').all().map(i=>i.json).filter(w=>w&&w.id&&!w.isArchived&&w.name!=='master : first_setup');\nconst s=$getWorkflowStaticData('global');\ns.tableByName=tableByName;\ns.wfByName={};\nfor(const w of wfs)s.wfByName[w.name]=String(w.id);\nif(!wfs.length)return[{json:{hasRemap:false,userConfigTableId:tableByName.user_config||''}}];\nreturn wfs.map(w=>({json:{hasRemap:true,id:String(w.id),name:w.name,userConfigTableId:tableByName.user_config||''}}));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3136,
+          -240
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "38f43d74-058c-4170-8d2f-256777db9d6f",
+        "name": "Has remap jobs?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "has-remap",
+                "leftValue": "={{ $json.hasRemap }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          3360,
+          -240
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "26ab0f94-2eec-49f0-9291-f3d83f3436e7",
+        "name": "Loop remap workflows",
+        "parameters": {
+          "options": {}
+        },
+        "position": [
+          3584,
+          -320
+        ],
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "b671aeb3-26bc-4b43-9737-b9b47aae7f0a",
+        "name": "Get workflow for remap",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "operation": "get",
+          "resource": "workflow",
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $json.id }}"
+          }
+        },
+        "position": [
+          3808,
+          -400
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "id": "2aa94ce7-fe7b-4271-b9fa-9b066ab9e6f0",
+        "name": "Patch workflow IDs",
+        "parameters": {
+          "jsCode": "const TABLE_ALIASES={WyizWkG5igYx0GVV:['global_variables'],FsQNE0iq4GWOPJkd:['user_config'],PNzdSBPjg673eGI5:['rss_sources'],'9VHlPKcRcFryOiiF':['scrape_sources'],i6zVgQsWLNIMxbSa:['llm_config'],Ticsjg5mySBskQ0y:['text_classifier']};\nconst WF_ALIASES={SoIEMUBKJPynE2jV:['master : Daily Digest','Daily Digest'],rzmkSSHMbbThfLWV:['master : Monday Roundup','Monday Roundup'],Kv362LANnXzDNbHv:['master : Generate Article','Generate Article'],'3enCZHWCsA3shIJi':['master : setup'],X5drlaLIiyY5VOYf:['component : fetch standard rss','fetch standard rss'],go4FNonP2GmrCEHc:['component : scrape page','scrape page'],S6jCKcFVnVwE0bNX:['component : generate','generate'],qbjCpsc1xuN49iX1:['backup : github'],zTMJFr8EYWX9glAC:['error : notify error over telegram']};\nconst s=$getWorkflowStaticData('global');\nconst tableByName=s.tableByName||{};\nconst wfByName=s.wfByName||{};\nconst wf=$input.first().json;\nlet changed=false;\nfunction pickNew(candidates,newMap,current){for(const name of candidates){if(name&&newMap[name]&&String(newMap[name])!==String(current))return newMap[name];}return null;}\nfunction retarget(obj,oldToNames,newMap){if(!obj||typeof obj!=='object')return;const val=obj.value;if(val==null||String(val).includes('{{'))return;const key=String(val);const names=[obj.cachedResultName].concat(oldToNames[key]||[]).filter(Boolean);const next=pickNew(names,newMap,key);if(next){obj.value=next;changed=true;}}\nfor(const n of (wf.nodes||[])){const p=n.parameters||{};retarget(p.dataTableId,TABLE_ALIASES,tableByName);retarget(p.workflowId,WF_ALIASES,wfByName);}\nif(wf.settings&&wf.settings.errorWorkflow){const old=String(wf.settings.errorWorkflow);const next=pickNew(WF_ALIASES[old]||[],wfByName,old);if(next){wf.settings.errorWorkflow=next;changed=true;}}\nconst workflowObject=JSON.stringify({name:wf.name,nodes:wf.nodes||[],connections:wf.connections||{},settings:wf.settings&&typeof wf.settings==='object'?wf.settings:{}});\nreturn[{json:{changed,id:wf.id,name:wf.name,workflowObject}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          4032,
+          -400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "8ac4eb93-b080-4e29-ae86-b6ba6cdcbac4",
+        "name": "Needs remap update?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "needs-upd",
+                "leftValue": "={{ $json.changed }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          4256,
+          -400
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "bd696855-9ed0-469c-b152-741e987a3738",
+        "name": "Update remapped workflow",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "operation": "update",
+          "resource": "workflow",
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $json.id }}"
+          },
+          "workflowObject": "={{ $json.workflowObject }}"
+        },
+        "position": [
+          4480,
+          -480
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "id": "d460175a-164d-4849-988f-ff266916217a",
+        "name": "Wait remap rate",
+        "parameters": {
+          "amount": 1
+        },
+        "position": [
+          4704,
+          -400
+        ],
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "webhookId": "04843679-d187-43ac-b81c-7e8485835334"
+      },
+      {
+        "executeOnce": true,
+        "id": "f932c7d3-bb29-4ddb-a700-0452903b9eb7",
+        "name": "Prepare completion",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nconst tables=s.tableByName||{};\nconst userConfigTableId=tables.user_config||'';\nlet text='Sorted Signals first setup finished.\\nCreated: '+c.created+'\\nSkipped: '+c.skipped+'\\nFailed: '+c.failed+'\\nListed files: '+c.listed;\nif(c.failed){\n  text+='\\n\\nIf workflow creates failed with 403: the n8n API key cannot create workflows. In n8n open Settings → n8n API, edit the key used by credential \"n8n account\", and enable workflow create (not only list/read). Then run first_setup again.';\n}\ntext+='\\n\\nhttps://github.com/hellovamsi/sorted_signals';\nreturn[{json:{...c,text,userConfigTableId,repo_url:'https://github.com/hellovamsi/sorted_signals'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3584,
+          -80
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "executeOnce": true,
+        "id": "943c7343-474d-41d2-a13e-5bde7dbd1f41",
+        "name": "Get user_config rows",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "GET",
+          "nodeCredentialType": "n8nApi",
+          "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + ($json.userConfigTableId || 'MISSING') + '/rows' }}"
+        },
+        "position": [
+          3808,
+          -80
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "executeOnce": true,
+        "id": "37a4fd2e-def0-4556-b913-50573824053f",
+        "name": "Attach chat id if real",
+        "parameters": {
+          "jsCode": "const done=$('Prepare completion').first().json;\nlet chat='';\ntry{const rows=$('Get user_config rows').first().json;const data=rows.data||rows||[];const row=Array.isArray(data)?data[0]:data;chat=String((row&&row.tg_notifs_chat_id)||'');}catch(e){chat='';}\nconst placeholder=/YOUR_|example|placeholder|^$/i.test(chat);\nreturn[{json:{...done,tg_notifs_chat_id:chat,canSend:!placeholder&&chat.length>0}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          4032,
+          -80
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "1f0606a8-d1da-41ff-b99f-211d51728ca9",
+        "name": "Can send Telegram?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "can-send",
+                "leftValue": "={{ $json.canSend }}",
+                "operator": {
+                  "operation": "true",
+                  "singleValue": true,
+                  "type": "boolean"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          4256,
+          -80
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "credentials": {
+          "telegramApi": {
+            "id": "JmRinGOvLHYfWsMM",
+            "name": "Telegram account"
+          }
+        },
+        "executeOnce": true,
+        "id": "f5143982-78ca-4629-a18e-a112605dfa65",
+        "name": "Send first setup report",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "additionalFields": {
+            "appendAttribution": false
+          },
+          "chatId": "={{ $json.tg_notifs_chat_id }}",
+          "operation": "sendMessage",
+          "resource": "message",
+          "text": "={{ $json.text }}"
+        },
+        "position": [
+          4480,
+          -160
+        ],
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "webhookId": "c3bfb85b-c5a7-4ff9-80eb-275d0bd67604"
+      },
+      {
+        "id": "920a89ea-4e19-481d-9d4d-9a45c2e6f76c",
+        "name": "When called for one file",
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "position": [
+          0,
+          640
+        ],
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.2
+      },
+      {
+        "credentials": {
+          "githubApi": {
+            "id": "oN09JmRFpXyKahsj",
+            "name": "GitHub account"
+          }
+        },
+        "id": "465a8edb-e72b-4df7-b33d-a8a8f3528695",
+        "name": "Get GitHub file",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "additionalParameters": {
+            "reference": "main"
+          },
+          "asBinaryProperty": false,
+          "filePath": "={{ $json.path }}",
+          "operation": "get",
+          "owner": {
+            "__rl": true,
+            "mode": "name",
+            "value": "hellovamsi"
+          },
+          "repository": {
+            "__rl": true,
+            "mode": "name",
+            "value": "sorted_signals"
+          },
+          "resource": "file"
+        },
+        "position": [
+          224,
+          640
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "webhookId": "332aca7a-12a0-4135-bd61-40dc63c57566"
+      },
+      {
+        "id": "72b3dbf8-62eb-4b66-8709-c9775a23f899",
+        "name": "If file too large",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "empty-content",
+                "leftValue": "={{ $json.content }}",
+                "operator": {
+                  "operation": "empty",
+                  "singleValue": true,
+                  "type": "string"
+                },
+                "rightValue": ""
+              },
+              {
+                "id": "no-err",
+                "leftValue": "={{ $json.error }}",
+                "operator": {
+                  "operation": "notExists",
+                  "singleValue": true,
+                  "type": "string"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            }
+          }
+        },
+        "position": [
+          448,
+          640
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "188e8a3d-c214-40c7-84df-dc3e2059479b",
+        "name": "Download large file",
+        "parameters": {
+          "method": "GET",
+          "options": {},
+          "url": "={{ $json.download_url }}"
+        },
+        "position": [
+          672,
+          520
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "9f408955-c62f-441c-8dc7-5c544ad8b870",
+        "name": "Classify GitHub file",
+        "parameters": {
+          "jsCode": "const orig=$('When called for one file').first().json;\nconst item=$input.first().json;\nlet rawText='';\nif(item.content){rawText=Buffer.from(item.content,'base64').toString('utf8');}\nelse if(typeof item.data==='string'){rawText=item.data;}\nelse if(item.nodes&&item.name){rawText=JSON.stringify(item);}\nconst kind=orig.kind||'skip';\nreturn[{json:{...orig,rawText,kind,fileName:orig.name,path:orig.path}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          896,
+          640
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "015ec02a-19a8-49ff-aeeb-a1fa8df973a6",
+        "name": "Route by file kind",
+        "parameters": {
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "skip"
+          },
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "kind-csv",
+                      "leftValue": "={{ $json.kind }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "csv"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "csv",
+                "renameOutput": true
+              },
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "kind-prompt",
+                      "leftValue": "={{ $json.kind }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "prompt"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "prompt",
+                "renameOutput": true
+              },
+              {
+                "conditions": {
+                  "combinator": "and",
+                  "conditions": [
+                    {
+                      "id": "kind-wf",
+                      "leftValue": "={{ $json.kind }}",
+                      "operator": {
+                        "operation": "equals",
+                        "type": "string"
+                      },
+                      "rightValue": "workflow"
+                    }
+                  ],
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 1
+                  }
+                },
+                "outputKey": "workflow",
+                "renameOutput": true
+              }
+            ]
+          }
+        },
+        "position": [
+          1120,
+          640
+        ],
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "56b0ebb7-793d-4f77-8100-666355b4c535",
+        "name": "List data tables",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "GET",
+          "nodeCredentialType": "n8nApi",
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "250"
+              }
+            ]
+          },
+          "sendQuery": true,
+          "url": "https://app.easyn8n.work/api/v1/data-tables"
+        },
+        "position": [
+          1344,
+          400
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "50684d6f-7a33-40b2-ad91-df7709e06aed",
+        "name": "Plan table action",
+        "parameters": {
+          "jsCode": "const SCHEMAS={user_config:[{name:'tg_notifs_chat_id',type:'string'},{name:'g_email_id',type:'string'},{name:'backup_gh_owner',type:'string'}],global_variables:[{name:'backup_gh_owner',type:'string'},{name:'backup_gh_repo',type:'string'},{name:'backup_gh_path',type:'string'},{name:'tg_notifs_chat_id',type:'string'},{name:'g_email_id',type:'string'},{name:'prompt_article_path',type:'string'},{name:'prompt_digest_path',type:'string'},{name:'dir_summaries',type:'string'},{name:'dir_articles',type:'string'},{name:'prefix_summary',type:'string'},{name:'prefix_article',type:'string'},{name:'prefix_digest',type:'string'},{name:'lookback_days_daily',type:'number'},{name:'ingest_week_start_offset_days',type:'number'},{name:'article_cutoff_hours',type:'number'},{name:'display_tz_offset_hours',type:'number'},{name:'launch_message_daily',type:'string'},{name:'launch_message_roundup',type:'string'},{name:'launch_message_article',type:'string'},{name:'error_report_model',type:'string'},{name:'supabase_articles_table',type:'string'}],rss_sources:[{name:'publication_name',type:'string'},{name:'rss_url',type:'string'},{name:'enabled',type:'boolean'},{name:'category',type:'string'},{name:'content_url_field',type:'string'},{name:'content_id_field',type:'string'},{name:'title_field',type:'string'},{name:'description_field',type:'string'},{name:'snippet_field',type:'string'},{name:'pub_date_field',type:'string'},{name:'image_url_field',type:'string'},{name:'wait_for_subworkflow',type:'boolean'},{name:'sort_order',type:'number'}],scrape_sources:[{name:'publication',type:'string'},{name:'url',type:'string'},{name:'enabled',type:'boolean'},{name:'date_format',type:'string'},{name:'date_pattern',type:'string'},{name:'structure',type:'string'},{name:'categories',type:'string'},{name:'separators',type:'string'},{name:'extraction_hints',type:'string'},{name:'examples',type:'string'},{name:'wait_for_subworkflow',type:'boolean'},{name:'sort_order',type:'number'}],llm_config:[{name:'purpose',type:'string'},{name:'provider',type:'string'},{name:'model',type:'string'},{name:'temperature',type:'number'},{name:'response_format',type:'string'},{name:'notes',type:'string'}],text_classifier:[{name:'pipeline',type:'string'},{name:'categories_json',type:'string'},{name:'batch_size',type:'number'},{name:'delay_ms',type:'number'},{name:'ai_flag_yes',type:'number'},{name:'ai_flag_no',type:'number'},{name:'ai_flag_unsure',type:'number'},{name:'notes',type:'string'}]};\nconst FILE_TO_TABLE={'rss_sources.csv':'rss_sources','scrape_sources.csv':'scrape_sources','llm_config.csv':'llm_config','text_classifier.csv':'text_classifier','user_config.example.csv':'user_config','global_variables.example.csv':'global_variables'};\nfunction parseCsv(text){\n  const NL=String.fromCharCode(10);\n  const CR=String.fromCharCode(13);\n  const rows=[]; let row=[]; let cur=''; let q=false;\n  const s=String(text||'').replace(/^\\uFEFF/,'');\n  for(let i=0;i<s.length;i++){\n    const ch=s[i];\n    if(q){\n      if(ch==='\"'){ if(s[i+1]==='\"'){ cur+='\"'; i++; } else q=false; }\n      else cur+=ch;\n    } else if(ch==='\"'){ q=true; }\n    else if(ch===','){ row.push(cur); cur=''; }\n    else if(ch===NL||ch===CR){\n      if(ch===CR&&s[i+1]===NL)i++;\n      row.push(cur);\n      if(row.some(c=>c!==''))rows.push(row);\n      row=[]; cur='';\n    } else cur+=ch;\n  }\n  if(cur!==''||row.length){ row.push(cur); if(row.some(c=>c!==''))rows.push(row); }\n  if(!rows.length)return[];\n  const headers=rows[0].map(h=>h.trim());\n  return rows.slice(1).map(r=>{ const o={}; headers.forEach((h,idx)=>o[h]=r[idx]==null?'':r[idx]); return o; });\n}\nfunction coerce(table,row){\n  const cols=SCHEMAS[table]||[]; const out={};\n  for(const c of cols){\n    let v=row[c.name]; if(v===undefined)v='';\n    if(c.type==='boolean'){ const t=String(v).trim().toLowerCase(); out[c.name]=t==='true'||t==='1'||t==='yes'; }\n    else if(c.type==='number'){ const n=Number(String(v).trim()); out[c.name]=String(v).trim()===''||Number.isNaN(n)?null:n; }\n    else out[c.name]=v==null?'':String(v);\n  }\n  return out;\n}\nconst file=$('Classify GitHub file').first().json;\nconst tableName=FILE_TO_TABLE[file.name];\nif(!tableName||!SCHEMAS[tableName])return[{json:{action:'skip',skipReason:'unknown_csv',name:file.name,kind:'csv'}}];\nconst listed=$input.first().json;\nconst tables=listed.data||listed||[];\nconst exists=(Array.isArray(tables)?tables:[]).some(t=>t&&t.name===tableName);\nif(exists)return[{json:{action:'skip',skipReason:'table_exists',name:tableName,kind:'csv'}}];\nconst rows=parseCsv(file.rawText).map(r=>coerce(tableName,r));\nreturn[{json:{action:'create',name:tableName,kind:'csv',columns:SCHEMAS[tableName],rows,projectId:'KgPGbMAWBC3Dm64D'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1568,
+          400
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "8d76db0b-a016-4210-b9fd-e9dcfd0282a7",
+        "name": "Should create table?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "create-tbl",
+                "leftValue": "={{ $json.action }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "string"
+                },
+                "rightValue": "create"
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          1792,
+          400
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "08d51ba5-377e-49a5-abd7-78dd82bdf7f4",
+        "name": "Create data table",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "contentType": "json",
+          "jsonBody": "={{ JSON.stringify({ name: $json.name, columns: $json.columns, projectId: $json.projectId }) }}",
+          "method": "POST",
+          "nodeCredentialType": "n8nApi",
+          "sendBody": true,
+          "specifyBody": "json",
+          "url": "https://app.easyn8n.work/api/v1/data-tables"
+        },
+        "position": [
+          2016,
+          320
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "488bd27a-124c-45bf-bce0-b81e4e43e452",
+        "name": "Insert table rows",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "contentType": "json",
+          "jsonBody": "={{ JSON.stringify({ data: $('Plan table action').first().json.rows, returnType: 'count' }) }}",
+          "method": "POST",
+          "nodeCredentialType": "n8nApi",
+          "sendBody": true,
+          "specifyBody": "json",
+          "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + $json.id + '/rows' }}"
+        },
+        "position": [
+          2240,
+          320
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "03973cd0-ae81-470f-a160-e97b71f33f3e",
+        "name": "Table created status",
+        "parameters": {
+          "jsCode": "const plan=$('Plan table action').first().json;\nconst created=$('Create data table').first();\nconst err=created.error||(created.json&&created.json.error);\nif(err)return[{json:{action:'fail',name:plan.name,kind:'csv',skipReason:String(err.message||err)}}];\nreturn[{json:{action:'create',name:plan.name,kind:'csv'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2464,
+          320
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "a99e91ce-67c5-464c-b12c-0d030eb44e2e",
+        "name": "Table skipped status",
+        "parameters": {
+          "jsCode": "const plan=$('Plan table action').first().json;\nreturn[{json:{action:plan.action||'skip',name:plan.name,kind:'csv',skipReason:plan.skipReason||''}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2016,
+          520
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "a5dea12c-34f3-4e0e-9467-fd2d94bb54d3",
+        "name": "Unknown file skip",
+        "parameters": {
+          "jsCode": "const f=$('Classify GitHub file').first().json;\nreturn[{json:{action:'skip',name:f.name,kind:f.kind||'skip',skipReason:'unhandled_kind'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1344,
+          880
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "a4657b5d-bfc2-4c88-874f-e5bd49088bdc",
+        "name": "List tables for prompt path",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "GET",
+          "nodeCredentialType": "n8nApi",
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "250"
+              }
+            ]
+          },
+          "sendQuery": true,
+          "url": "https://app.easyn8n.work/api/v1/data-tables"
+        },
+        "position": [
+          1344,
+          640
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "062c29d0-bb13-47d9-abff-3d9f81f8093b",
+        "name": "Get global_variables rows",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "GET",
+          "nodeCredentialType": "n8nApi",
+          "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + ((($json.data || []).filter(function(t){ return t && t.name === 'global_variables'; })[0] || {}).id || 'MISSING') + '/rows' }}"
+        },
+        "position": [
+          1568,
+          640
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "31e5cd5c-9f0a-4f47-86d5-6e599bb8b230",
+        "name": "Plan prompt write",
+        "parameters": {
+          "jsCode": "const file=$('Classify GitHub file').first().json;\nconst MAP={'article_gen.md':'prompt_article_path','digest_gen.md':'prompt_digest_path'};\nconst key=MAP[file.name];\nif(!key)return[{json:{action:'skip',name:file.name,kind:'prompt',skipReason:'unknown_prompt'}}];\nlet dest='';\ntry{const rows=$input.first().json;const data=rows.data||rows||[];const row=Array.isArray(data)?data[0]:data;dest=row&&row[key]?String(row[key]):'';}catch(e){dest='';}\nif(!dest)return[{json:{action:'skip',name:file.name,kind:'prompt',skipReason:'no_dest_path'}}];\nconst fileBase64=Buffer.from(String(file.rawText||''),'utf8').toString('base64');\nreturn[{json:{action:'write',name:file.name,kind:'prompt',destPath:dest,fileBase64}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1792,
+          640
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "dc026b85-dd70-46e5-9d76-176f9266ec8c",
+        "name": "Should write prompt?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "write-p",
+                "leftValue": "={{ $json.action }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "string"
+                },
+                "rightValue": "write"
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          2016,
+          640
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "alwaysOutputData": true,
+        "id": "33ec529a-496e-459c-af89-37b311cb78fc",
+        "name": "Read existing prompt file",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "fileSelector": "={{ $json.destPath }}",
+          "operation": "read"
+        },
+        "position": [
+          2240,
+          560
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "c9e9d555-effa-494a-bae5-056fcb8436df",
+        "name": "Prompt file exists?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "has-bin",
+                "leftValue": "={{ $binary.data }}",
+                "operator": {
+                  "operation": "exists",
+                  "singleValue": true,
+                  "type": "object"
+                },
+                "rightValue": ""
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          2464,
+          560
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "04baccf9-c18d-485e-b5f1-64d1ad908a38",
+        "name": "Prompt exists status",
+        "parameters": {
+          "jsCode": "const plan=$('Plan prompt write').first().json;\nreturn[{json:{action:'skip',name:plan.name,kind:'prompt',skipReason:'file_exists'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2688,
+          480
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "442971b8-ca6b-440b-a12c-c2f8e8013a22",
+        "name": "Restore prompt payload",
+        "parameters": {
+          "jsCode": "return [{ json: $('Plan prompt write').first().json }];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2688,
+          640
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "9759fbdc-631f-45ad-b5ab-88a2852bebf0",
+        "name": "Convert prompt to file",
+        "parameters": {
+          "operation": "toBinary",
+          "options": {
+            "dataIsBase64": true,
+            "fileName": "={{ $json.name }}",
+            "mimeType": "text/markdown"
+          },
+          "sourceProperty": "fileBase64"
+        },
+        "position": [
+          2912,
+          640
+        ],
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "213439b6-eae8-4ef9-9d6f-f89182e36b90",
+        "name": "Write prompt file",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "dataPropertyName": "data",
+          "fileName": "={{ $('Plan prompt write').first().json.destPath }}",
+          "operation": "write"
+        },
+        "position": [
+          3136,
+          640
+        ],
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1.1
+      },
+      {
+        "id": "bc39f380-2f71-4f28-b9fe-b2bb1161882e",
+        "name": "Prompt written status",
+        "parameters": {
+          "jsCode": "const plan=$('Plan prompt write').first().json;\nconst wr=$input.first();\nconst err=wr.error||(wr.json&&wr.json.error);\nif(err)return[{json:{action:'fail',name:plan.name,kind:'prompt',skipReason:String(err.message||err)}}];\nreturn[{json:{action:'create',name:plan.name,kind:'prompt'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3360,
+          640
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "e6ba13fc-d99e-442a-9caf-bf0db7f9db78",
+        "name": "Prompt plan skip status",
+        "parameters": {
+          "jsCode": "const plan=$('Plan prompt write').first().json;\nreturn[{json:{action:'skip',name:plan.name,kind:'prompt',skipReason:plan.skipReason||''}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2240,
+          760
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "2ccf0909-cfba-455f-931d-1c31cc2b0fa7",
+        "name": "Parse and decide create",
+        "parameters": {
+          "jsCode": "const orig=$('When called for one file').first().json;\nconst file=$('Classify GitHub file').first().json;\nlet raw;\ntry{raw=JSON.parse(file.rawText);}catch(e){return[{json:{action:'fail',name:orig.name,kind:'workflow',skipReason:'invalid_json'}}];}\nconst names=new Set(orig.existingNames||[]);\nconst ids=new Set((orig.existingIds||[]).map(String));\nconst archivedByName=orig.archivedByName||{};\nconst archivedById=orig.archivedById||{};\nconst exportId=raw.id!=null?String(raw.id):'';\nconst name=String(raw.name||'');\nlet action='create';\nlet skipReason='';\nlet archivedId='';\nif(name==='master : first_setup'||name==='import : github'){action='skip';skipReason='self';}\nelse if((exportId&&ids.has(exportId))||names.has(name)){action='skip';skipReason='already_on_instance';}\nelse {\n  archivedId=archivedById[exportId]||archivedByName[name]||'';\n  if(archivedId){action='unarchive';skipReason='was_archived';}\n}\nconst KEEP=new Set(['id','name','type','typeVersion','position','parameters','disabled']);\nconst nodes=(raw.nodes||[]).map(n=>{\n  const copy={};\n  for(const k of KEEP){ if(n[k]!==undefined) copy[k]=n[k]; }\n  return copy;\n});\nconst settings={executionOrder:'v1'};\nconst workflowObject={name,nodes,connections:raw.connections||{},settings};\nreturn[{json:{action,skipReason,name,exportId,archivedId,fileName:orig.name,kind:'workflow',workflowObject:JSON.stringify(workflowObject)}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1344,
+          1040
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "afe08245-0439-436a-8220-be62e890e76e",
+        "name": "Should create workflow?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "create-wf",
+                "leftValue": "={{ $json.action }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "string"
+                },
+                "rightValue": "create"
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          1568,
+          1040
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "id": "d16fa0dd-7747-4636-97a0-44ff24a7bcba",
+        "name": "Workflow created status",
+        "parameters": {
+          "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst j=item.json||{};\nconst err=item.error||j.error;\nconst status=Number(j.statusCode||j.status||0);\nconst httpMsg=j.message||(j.body&&j.body.message)||'';\nif(err)return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String(err.message||err)}}];\nif(status>=400)return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String(status)+' '+String(httpMsg||JSON.stringify(j).slice(0,400))}}];\nif(j.id)return[{json:{action:'create',name:parsed.name,kind:'workflow',id:j.id}}];\nif(j.body&&j.body.id)return[{json:{action:'create',name:parsed.name,kind:'workflow',id:j.body.id}}];\nreturn[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:JSON.stringify(j).slice(0,500)}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          2016,
+          960
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "0e3b2323-704e-4837-a60a-1eebaaae596b",
+        "name": "Workflow skipped status",
+        "parameters": {
+          "jsCode": "const parsed=$('Parse and decide create').first().json;\nreturn[{json:{action:parsed.action||'skip',name:parsed.name,kind:'workflow',skipReason:parsed.skipReason||''}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1792,
+          1160
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "id": "d19dd08b-ce87-4566-88ce-563bd3f8a336",
+        "name": "Note: first setup",
+        "parameters": {
+          "color": 4,
+          "content": "## master : first_setup\n\nInstalls Sorted Signals on a blank n8n. Assumes GitHub and Telegram credentials already work.\n\n1. List config, prompts, and workflows folders from hellovamsi/sorted_signals on main.\n2. Same-canvas sub-run per file. Switch: csv / prompt / workflow json.\n3. Existing tables are not created or changed. Existing prompt files are not overwritten. Existing workflows are skipped.\n4. After the loop, retarget Lookups and call-workflow nodes by name.\n\nDoes not copy user_config (that is master : setup). Does not probe Gmail, Supabase, Jina, GitHub, or Telegram. n8n API credential is required on create nodes.",
+          "height": 420,
+          "width": 520
+        },
+        "position": [
+          -520,
+          -40
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      },
+      {
+        "id": "c31b170b-919f-4bbf-986d-59a313c074d4",
+        "name": "Note: file loop",
+        "parameters": {
+          "color": 7,
+          "content": "## File loop\nCSVs first, then prompts, then workflow JSON.\nExecute Workflow v1.3 uses this workflow ID, mode each, wait, continue on error.",
+          "height": 200,
+          "width": 420
+        },
+        "position": [
+          2464,
+          -280
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      },
+      {
+        "id": "6f506c43-8ad1-495a-bfa5-06644bdd8c6a",
+        "name": "Note: one file",
+        "parameters": {
+          "color": 6,
+          "content": "## One GitHub file\nGet file, then Switch csv / prompt / json.\nCSV: list tables; skip if the named table exists; else create and seed.\nPrompt: Read/Write Files from Disk at prompt paths; skip if the file exists.\nJSON: create missing workflows only.",
+          "height": 280,
+          "width": 480
+        },
+        "position": [
+          -520,
+          560
+        ],
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1
+      },
+      {
+        "id": "07afec3f-9a5f-43bc-8142-c4a16e675cc4",
+        "name": "Should unarchive workflow?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "unarch-wf",
+                "leftValue": "={{ $json.action }}",
+                "operator": {
+                  "operation": "equals",
+                  "type": "string"
+                },
+                "rightValue": "unarchive"
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            }
+          }
+        },
+        "position": [
+          1456,
+          920
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "64bf6e08-a8b5-46e2-a05e-2a41e96f8bbb",
+        "name": "Unarchive workflow",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "POST",
+          "nodeCredentialType": "n8nApi",
+          "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + $json.archivedId + '/unarchive' }}"
+        },
+        "position": [
+          1680,
+          840
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "7da32d54-a47c-470a-a649-50316ddbd2d6",
+        "name": "Workflow unarchived status",
+        "parameters": {
+          "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst err=item.error||(item.json&&item.json.error);\nconst status=item.json&&item.json.statusCode;\nif(err||(status&&Number(status)>=400))return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String((err&&(err.message||err))||('HTTP '+status))}}];\nreturn[{json:{action:'create',name:parsed.name,kind:'workflow',skipReason:'unarchived'}}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          1904,
+          840
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "39030f06-2716-4d88-8dcb-dcf3dbe58f5a",
+        "name": "Delete archived workflow",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "operation": "delete",
+          "resource": "workflow",
+          "workflowId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $('Parse and decide create').first().json.archivedId }}"
+          }
+        },
+        "position": [
+          1680,
+          1040
+        ],
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "c6d7ba54-f03e-45f8-a0f1-52dadc8ee1c5",
+        "name": "Create workflow on this instance",
+        "onError": "continueErrorOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "contentType": "json",
+          "jsonBody": "={{ $('Parse and decide create').first().json.workflowObject }}",
+          "method": "POST",
+          "nodeCredentialType": "n8nApi",
+          "options": {
+            "response": {
+              "response": {
+                "fullResponse": true,
+                "neverError": true,
+                "responseFormat": "json"
+              }
+            }
+          },
+          "sendBody": true,
+          "sendQuery": false,
+          "specifyBody": "json",
+          "url": "https://app.easyn8n.work/api/v1/workflows"
+        },
+        "position": [
+          1792,
+          960
+        ],
+        "retryOnFail": true,
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "574f1295-8507-47de-ae86-e187cff4811e",
+        "name": "Probe tiny workflow create",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "contentType": "json",
+          "jsonBody": "={{ JSON.stringify({ name: 'ss_api_create_probe', nodes: [{ id: 'probe-start', name: 'Start', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0], parameters: {} }], connections: {}, settings: { executionOrder: 'v1' } }) }}",
+          "method": "POST",
+          "nodeCredentialType": "n8nApi",
+          "options": {
+            "response": {
+              "response": {
+                "fullResponse": true,
+                "neverError": true,
+                "responseFormat": "json"
+              }
+            }
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "url": "https://app.easyn8n.work/api/v1/workflows"
+        },
+        "position": [
+          280,
+          0
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "0031e35e-099e-4d05-929a-0641476b5607",
+        "name": "Probe created?",
+        "parameters": {
+          "conditions": {
+            "combinator": "and",
+            "conditions": [
+              {
+                "id": "probe-ok",
+                "leftValue": "={{ Number($json.statusCode) }}",
+                "operator": {
+                  "operation": "lt",
+                  "type": "number"
+                },
+                "rightValue": 400
+              }
+            ],
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 2
+            }
+          },
+          "options": {}
+        },
+        "position": [
+          560,
+          0
+        ],
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "5ee2b840-8cd2-454a-a75b-f98154b1fea5",
+        "name": "Delete probe workflow",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "method": "DELETE",
+          "nodeCredentialType": "n8nApi",
+          "options": {
+            "response": {
+              "response": {
+                "neverError": true
+              }
+            }
+          },
+          "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + (($json.body && $json.body.id) ? $json.body.id : $json.id) }}"
+        },
+        "position": [
+          840,
+          0
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "3e9128c1-6e9f-47bf-997c-9c0b89aaab64",
+        "name": "Remember API create flag",
+        "parameters": {
+          "jsCode": "const s=$getWorkflowStaticData('global');\nconst code=Number($json.statusCode||0);\ns.apiCanCreateWorkflows=code>0&&code<400;\nreturn[{json:$input.first().json}];",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          420,
+          0
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      },
+      {
+        "alwaysOutputData": true,
+        "credentials": {
+          "n8nApi": {
+            "id": "UXsx5QXzrQeGp0zF",
+            "name": "n8n account"
+          }
+        },
+        "id": "efea64f4-9aef-434c-826c-fe8ed3fc68b6",
+        "name": "Tag Sorted_Signals",
+        "onError": "continueRegularOutput",
+        "parameters": {
+          "authentication": "predefinedCredentialType",
+          "contentType": "json",
+          "jsonBody": "={{ JSON.stringify([{ id: '7L2K9YKtUQZh9Lf6' }]) }}",
+          "method": "PUT",
+          "nodeCredentialType": "n8nApi",
+          "options": {
+            "response": {
+              "response": {
+                "neverError": true
+              }
+            }
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + $json.id + '/tags' }}"
+        },
+        "position": [
+          3024,
+          -400
+        ],
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4
+      },
+      {
+        "id": "dbd3b389-437c-4436-8166-4b7e5c1732fe",
+        "name": "Restore workflow list",
+        "parameters": {
+          "jsCode": "return $('List n8n workflows after import').all().map(i=>({json:i.json}));",
+          "language": "javaScript",
+          "mode": "runOnceForAllItems"
+        },
+        "position": [
+          3024,
+          -240
+        ],
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2
+      }
+    ],
+    "updatedAt": "2026-08-30T15:41:23.204Z",
+    "versionId": "5bd0cce3-9ee6-493b-b434-800e0f458d83",
+    "workflowId": "7zvLKqdHQcjSzFky"
+  },
+  "connections": {
+    "Attach chat id if real": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Can send Telegram?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Can send Telegram?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send first setup report",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Classify GitHub file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Route by file kind",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Convert prompt to file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write prompt file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Create data table": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Insert table rows",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Table created status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Create workflow on this instance": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Workflow created status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Workflow created status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Delete archived workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create workflow on this instance",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Workflow unarchived status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Delete probe workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List n8n workflows",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Download large file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Classify GitHub file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get GitHub file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "If file too large",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get global_variables rows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Plan prompt write",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get user_config rows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attach chat id if real",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Get workflow for remap": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Patch workflow IDs",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Has files?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Reset import counts",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "List data tables after import",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Has remap jobs?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop remap workflows",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Prepare completion",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "If file too large": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Download large file",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Classify GitHub file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Insert table rows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Table created status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Table created status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List config folder": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List prompts folder",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List data tables": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Plan table action",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List data tables after import": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List n8n workflows after import",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List n8n workflows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List config folder",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List n8n workflows after import": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Tag Sorted_Signals",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List prompts folder": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List workflows folder",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List tables for prompt path": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get global_variables rows",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List workflows folder": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare GitHub files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop over GitHub files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List data tables after import",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Process one GitHub file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Loop remap workflows": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare completion",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Get workflow for remap",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Manual start": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Probe tiny workflow create",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Needs remap update?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Update remapped workflow",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Wait remap rate",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Parse and decide create": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Should unarchive workflow?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Patch workflow IDs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Needs remap update?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Plan prompt write": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Should write prompt?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Plan table action": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Should create table?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare GitHub files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Has files?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare completion": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get user_config rows",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prepare remap jobs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Has remap jobs?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Probe created?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Delete probe workflow",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "List n8n workflows",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Probe tiny workflow create": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Remember API create flag",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Process one GitHub file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Route by action",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally failed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prompt file exists?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prompt exists status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Restore prompt payload",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Read existing prompt file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prompt file exists?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Remember API create flag": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Probe created?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Reset import counts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop over GitHub files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Restore prompt payload": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Convert prompt to file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Restore workflow list": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prepare remap jobs",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Route by action": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Tally created",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally skipped",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Tally failed",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Route by file kind": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List data tables",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "List tables for prompt path",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Parse and decide create",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Unknown file skip",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Should create table?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create data table",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Table skipped status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Should create workflow?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create workflow on this instance",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Workflow skipped status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Should unarchive workflow?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Unarchive workflow",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Should create workflow?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Should write prompt?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Read existing prompt file",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Prompt plan skip status",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tag Sorted_Signals": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Restore workflow list",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally created": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally failed": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Tally skipped": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait rate limit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Unarchive workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Workflow unarchived status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Delete archived workflow",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Update remapped workflow": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait remap rate",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait rate limit": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop over GitHub files",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait remap rate": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Loop remap workflows",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When called for one file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Get GitHub file",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write prompt file": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prompt written status",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Prompt written status",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "7zvLKqdHQcjSzFky",
+  "isArchived": false,
+  "name": "master : first_setup",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "650348cb-41fa-437c-bfed-b03126a3ea3d",
+      "name": "Manual start",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "executeOnce": true,
+      "id": "686e938d-43ef-46a0-83b1-f977a9437639",
+      "name": "List n8n workflows",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "activeWorkflows": false
+        },
+        "operation": "getAll",
+        "resource": "workflow",
+        "returnAll": true
+      },
+      "position": [
+        1120,
+        0
+      ],
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "executeOnce": true,
+      "id": "737cc1a7-0ae6-4946-9a48-aad599d4c1df",
+      "name": "List config folder",
+      "parameters": {
+        "filePath": "config",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        1344,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "aa5556d5-a531-4c93-8007-4bdde03b6228"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "executeOnce": true,
+      "id": "8e2ab57d-dc6a-4ce0-913d-3f42f3d548ee",
+      "name": "List prompts folder",
+      "parameters": {
+        "filePath": "prompts",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        1568,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "f49fb879-be69-4ac3-ac52-c737c9b41af4"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "executeOnce": true,
+      "id": "e868ae31-99a9-47cb-9d77-aef35f8adf93",
+      "name": "List workflows folder",
+      "parameters": {
+        "filePath": "workflows",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        1792,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "48881f69-4385-4133-9795-eeb86666a462"
+    },
+    {
+      "executeOnce": true,
+      "id": "bdc48324-be48-4718-9cb8-42652f2aef90",
+      "name": "Prepare GitHub files",
+      "parameters": {
+        "jsCode": "const allW=$('List n8n workflows').all().map(i=>i.json).filter(w=>w&&w.id);\nconst existing=allW.filter(w=>!w.isArchived);\nconst archived=allW.filter(w=>w.isArchived);\nconst existingNames=existing.map(w=>w.name);\nconst existingIds=existing.map(w=>String(w.id));\nconst archivedByName={};\nconst archivedById={};\nfor(const w of archived){archivedByName[w.name]=String(w.id);archivedById[String(w.id)]=String(w.id);}\nconst me=String($workflow.id);\nconst sample=existing.find(w=>String(w.id)===me)||existing[0]||{};\nconst projectId=sample.homeProjectId||sample.projectId||(sample.homeProject&&sample.homeProject.id)||'KgPGbMAWBC3Dm64D';\nfunction filesOf(nodeName){try{return $(nodeName).all().map(i=>i.json).filter(f=>f&&f.type==='file');}catch(e){return[];}}\nconst listed=[];\nfor(const f of filesOf('List config folder')){if(/\\.csv$/i.test(String(f.name||'')))listed.push({...f,kind:'csv',rank:0});}\nfor(const f of filesOf('List prompts folder')){if(/\\.md$/i.test(String(f.name||'')))listed.push({...f,kind:'prompt',rank:1});}\nconst wfFiles=filesOf('List workflows folder').filter(f=>/\\.json$/i.test(String(f.name||''))&&String(f.name).includes('__'));\nconst s=$getWorkflowStaticData('global');\nconst canCreate=s.apiCanCreateWorkflows!==false;\nlet wfBlocked=0;\nif(canCreate){for(const f of wfFiles)listed.push({...f,kind:'workflow',rank:2});}\nelse wfBlocked=wfFiles.length;\nlisted.sort((a,b)=>a.rank-b.rank||String(a.path).localeCompare(String(b.path)));\ns.importCounts={created:0,skipped:0,failed:wfBlocked,listed:listed.length+wfBlocked};\nconst repo={repo_owner:'hellovamsi',repo_name:'sorted_signals',repo_branch:'main'};\nconst extra={existingNames,existingIds,archivedByName,archivedById,projectId};\nif(!listed.length){return[{json:{hasFiles:false,...repo,...extra}}];}\nreturn listed.map(f=>({json:{hasFiles:true,kind:f.kind,name:f.name,path:f.path,download_url:f.download_url,sha:f.sha,size:f.size,...repo,...extra}}));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2016,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cc8b3be0-7d45-4a42-8705-2694390072cc",
+      "name": "Has files?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "has-files-0001",
+              "leftValue": "={{ $json.hasFiles }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        2240,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "0f7249e1-18d4-4d12-82e3-8d297391df54",
+      "name": "Reset import counts",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nreturn $input.all().map(item => ({ json: item.json }));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2464,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "7062e98b-cd6b-4f18-86ab-dc0f4652c3ce",
+      "name": "Loop over GitHub files",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        2688,
+        0
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "c8972bce-fa1c-4983-b97c-b9f0df429900",
+      "name": "Process one GitHub file",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $workflow.id }}"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        }
+      },
+      "position": [
+        2912,
+        80
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "ae3a737d-4aee-4a81-9d66-c3c3f975a126",
+      "name": "Route by action",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "fail"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "act-create",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "create"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "create",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "act-skip",
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "skip"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "skip",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        3136,
+        80
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "da8bc5ed-d799-4f03-86b2-100e74f8d205",
+      "name": "Tally created",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.created+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3360,
+        -80
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "60cecd9f-85e2-4db7-877c-f34659c8e670",
+      "name": "Tally skipped",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.skipped+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3360,
+        80
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "b85ff131-2c76-4911-bc75-1ceb97d67bef",
+      "name": "Tally failed",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\ns.importCounts=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\ns.importCounts.failed+=1;\nreturn $input.all().map(item => ({ json: item.json }));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3360,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "70576e40-259d-4781-a0a5-80a9d651b99f",
+      "name": "Wait rate limit",
+      "parameters": {
+        "amount": 1
+      },
+      "position": [
+        3584,
+        80
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "f357bdf9-d9a8-4ddf-af19-46f76f4c6199"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "executeOnce": true,
+      "id": "3bd2e0cd-3dc1-4faf-aa8f-547242a7790a",
+      "name": "List data tables after import",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "n8nApi",
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "specifyQuery": "keypair",
+        "url": "https://app.easyn8n.work/api/v1/data-tables"
+      },
+      "position": [
+        2688,
+        -240
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "executeOnce": true,
+      "id": "8a6fd084-cd0e-4a20-a806-b9c9aea4b79a",
+      "name": "List n8n workflows after import",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "activeWorkflows": false
+        },
+        "operation": "getAll",
+        "resource": "workflow",
+        "returnAll": true
+      },
+      "position": [
+        2912,
+        -240
+      ],
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "executeOnce": true,
+      "id": "fe7a6ff6-38fc-41dd-b624-9f8398cdbd9a",
+      "name": "Prepare remap jobs",
+      "parameters": {
+        "jsCode": "const tablesResp=$('List data tables after import').first().json;\nconst tables=tablesResp.data||tablesResp||[];\nconst tableByName={};\nfor(const t of (Array.isArray(tables)?tables:[tables])){if(t&&t.name&&t.id)tableByName[t.name]=t.id;}\nconst wfs=$('List n8n workflows after import').all().map(i=>i.json).filter(w=>w&&w.id&&!w.isArchived&&w.name!=='master : first_setup');\nconst s=$getWorkflowStaticData('global');\ns.tableByName=tableByName;\ns.wfByName={};\nfor(const w of wfs)s.wfByName[w.name]=String(w.id);\nif(!wfs.length)return[{json:{hasRemap:false,userConfigTableId:tableByName.user_config||''}}];\nreturn wfs.map(w=>({json:{hasRemap:true,id:String(w.id),name:w.name,userConfigTableId:tableByName.user_config||''}}));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3136,
+        -240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "38f43d74-058c-4170-8d2f-256777db9d6f",
+      "name": "Has remap jobs?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "has-remap",
+              "leftValue": "={{ $json.hasRemap }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        3360,
+        -240
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "26ab0f94-2eec-49f0-9291-f3d83f3436e7",
+      "name": "Loop remap workflows",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        3584,
+        -320
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "b671aeb3-26bc-4b43-9737-b9b47aae7f0a",
+      "name": "Get workflow for remap",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "operation": "get",
+        "resource": "workflow",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        }
+      },
+      "position": [
+        3808,
+        -400
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "id": "2aa94ce7-fe7b-4271-b9fa-9b066ab9e6f0",
+      "name": "Patch workflow IDs",
+      "parameters": {
+        "jsCode": "const TABLE_ALIASES={WyizWkG5igYx0GVV:['global_variables'],FsQNE0iq4GWOPJkd:['user_config'],PNzdSBPjg673eGI5:['rss_sources'],'9VHlPKcRcFryOiiF':['scrape_sources'],i6zVgQsWLNIMxbSa:['llm_config'],Ticsjg5mySBskQ0y:['text_classifier']};\nconst WF_ALIASES={SoIEMUBKJPynE2jV:['master : Daily Digest','Daily Digest'],rzmkSSHMbbThfLWV:['master : Monday Roundup','Monday Roundup'],Kv362LANnXzDNbHv:['master : Generate Article','Generate Article'],'3enCZHWCsA3shIJi':['master : setup'],X5drlaLIiyY5VOYf:['component : fetch standard rss','fetch standard rss'],go4FNonP2GmrCEHc:['component : scrape page','scrape page'],S6jCKcFVnVwE0bNX:['component : generate','generate'],qbjCpsc1xuN49iX1:['backup : github'],zTMJFr8EYWX9glAC:['error : notify error over telegram']};\nconst s=$getWorkflowStaticData('global');\nconst tableByName=s.tableByName||{};\nconst wfByName=s.wfByName||{};\nconst wf=$input.first().json;\nlet changed=false;\nfunction pickNew(candidates,newMap,current){for(const name of candidates){if(name&&newMap[name]&&String(newMap[name])!==String(current))return newMap[name];}return null;}\nfunction retarget(obj,oldToNames,newMap){if(!obj||typeof obj!=='object')return;const val=obj.value;if(val==null||String(val).includes('{{'))return;const key=String(val);const names=[obj.cachedResultName].concat(oldToNames[key]||[]).filter(Boolean);const next=pickNew(names,newMap,key);if(next){obj.value=next;changed=true;}}\nfor(const n of (wf.nodes||[])){const p=n.parameters||{};retarget(p.dataTableId,TABLE_ALIASES,tableByName);retarget(p.workflowId,WF_ALIASES,wfByName);}\nif(wf.settings&&wf.settings.errorWorkflow){const old=String(wf.settings.errorWorkflow);const next=pickNew(WF_ALIASES[old]||[],wfByName,old);if(next){wf.settings.errorWorkflow=next;changed=true;}}\nconst workflowObject=JSON.stringify({name:wf.name,nodes:wf.nodes||[],connections:wf.connections||{},settings:wf.settings&&typeof wf.settings==='object'?wf.settings:{}});\nreturn[{json:{changed,id:wf.id,name:wf.name,workflowObject}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        4032,
+        -400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8ac4eb93-b080-4e29-ae86-b6ba6cdcbac4",
+      "name": "Needs remap update?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "needs-upd",
+              "leftValue": "={{ $json.changed }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        4256,
+        -400
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "bd696855-9ed0-469c-b152-741e987a3738",
+      "name": "Update remapped workflow",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "operation": "update",
+        "resource": "workflow",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "workflowObject": "={{ $json.workflowObject }}"
+      },
+      "position": [
+        4480,
+        -480
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "id": "d460175a-164d-4849-988f-ff266916217a",
+      "name": "Wait remap rate",
+      "parameters": {
+        "amount": 1
+      },
+      "position": [
+        4704,
+        -400
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "04843679-d187-43ac-b81c-7e8485835334"
+    },
+    {
+      "executeOnce": true,
+      "id": "f932c7d3-bb29-4ddb-a700-0452903b9eb7",
+      "name": "Prepare completion",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\nconst c=s.importCounts||{created:0,skipped:0,failed:0,listed:0};\nconst tables=s.tableByName||{};\nconst userConfigTableId=tables.user_config||'';\nlet text='Sorted Signals first setup finished.\\nCreated: '+c.created+'\\nSkipped: '+c.skipped+'\\nFailed: '+c.failed+'\\nListed files: '+c.listed;\nif(c.failed){\n  text+='\\n\\nIf workflow creates failed with 403: the n8n API key cannot create workflows. In n8n open Settings → n8n API, edit the key used by credential \"n8n account\", and enable workflow create (not only list/read). Then run first_setup again.';\n}\ntext+='\\n\\nhttps://github.com/hellovamsi/sorted_signals';\nreturn[{json:{...c,text,userConfigTableId,repo_url:'https://github.com/hellovamsi/sorted_signals'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3584,
+        -80
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "executeOnce": true,
+      "id": "943c7343-474d-41d2-a13e-5bde7dbd1f41",
+      "name": "Get user_config rows",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "n8nApi",
+        "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + ($json.userConfigTableId || 'MISSING') + '/rows' }}"
+      },
+      "position": [
+        3808,
+        -80
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "executeOnce": true,
+      "id": "37a4fd2e-def0-4556-b913-50573824053f",
+      "name": "Attach chat id if real",
+      "parameters": {
+        "jsCode": "const done=$('Prepare completion').first().json;\nlet chat='';\ntry{const rows=$('Get user_config rows').first().json;const data=rows.data||rows||[];const row=Array.isArray(data)?data[0]:data;chat=String((row&&row.tg_notifs_chat_id)||'');}catch(e){chat='';}\nconst placeholder=/YOUR_|example|placeholder|^$/i.test(chat);\nreturn[{json:{...done,tg_notifs_chat_id:chat,canSend:!placeholder&&chat.length>0}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        4032,
+        -80
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "1f0606a8-d1da-41ff-b99f-211d51728ca9",
+      "name": "Can send Telegram?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "can-send",
+              "leftValue": "={{ $json.canSend }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        4256,
+        -80
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "JmRinGOvLHYfWsMM",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "f5143982-78ca-4629-a18e-a112605dfa65",
+      "name": "Send first setup report",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "operation": "sendMessage",
+        "resource": "message",
+        "text": "={{ $json.text }}"
+      },
+      "position": [
+        4480,
+        -160
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "c3bfb85b-c5a7-4ff9-80eb-275d0bd67604"
+    },
+    {
+      "id": "920a89ea-4e19-481d-9d4d-9a45c2e6f76c",
+      "name": "When called for one file",
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "position": [
+        0,
+        640
+      ],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "credentials": {
+        "githubApi": {
+          "id": "oN09JmRFpXyKahsj",
+          "name": "GitHub account"
+        }
+      },
+      "id": "465a8edb-e72b-4df7-b33d-a8a8f3528695",
+      "name": "Get GitHub file",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalParameters": {
+          "reference": "main"
+        },
+        "asBinaryProperty": false,
+        "filePath": "={{ $json.path }}",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "mode": "name",
+          "value": "hellovamsi"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "name",
+          "value": "sorted_signals"
+        },
+        "resource": "file"
+      },
+      "position": [
+        224,
+        640
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "webhookId": "332aca7a-12a0-4135-bd61-40dc63c57566"
+    },
+    {
+      "id": "72b3dbf8-62eb-4b66-8709-c9775a23f899",
+      "name": "If file too large",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "empty-content",
+              "leftValue": "={{ $json.content }}",
+              "operator": {
+                "operation": "empty",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            },
+            {
+              "id": "no-err",
+              "leftValue": "={{ $json.error }}",
+              "operator": {
+                "operation": "notExists",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        }
+      },
+      "position": [
+        448,
+        640
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "188e8a3d-c214-40c7-84df-dc3e2059479b",
+      "name": "Download large file",
+      "parameters": {
+        "method": "GET",
+        "options": {},
+        "url": "={{ $json.download_url }}"
+      },
+      "position": [
+        672,
+        520
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "9f408955-c62f-441c-8dc7-5c544ad8b870",
+      "name": "Classify GitHub file",
+      "parameters": {
+        "jsCode": "const orig=$('When called for one file').first().json;\nconst item=$input.first().json;\nlet rawText='';\nif(item.content){rawText=Buffer.from(item.content,'base64').toString('utf8');}\nelse if(typeof item.data==='string'){rawText=item.data;}\nelse if(item.nodes&&item.name){rawText=JSON.stringify(item);}\nconst kind=orig.kind||'skip';\nreturn[{json:{...orig,rawText,kind,fileName:orig.name,path:orig.path}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        896,
+        640
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "015ec02a-19a8-49ff-aeeb-a1fa8df973a6",
+      "name": "Route by file kind",
+      "parameters": {
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "skip"
+        },
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "kind-csv",
+                    "leftValue": "={{ $json.kind }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "csv"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "csv",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "kind-prompt",
+                    "leftValue": "={{ $json.kind }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "prompt"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "prompt",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "kind-wf",
+                    "leftValue": "={{ $json.kind }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "workflow"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "workflow",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1120,
+        640
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "56b0ebb7-793d-4f77-8100-666355b4c535",
+      "name": "List data tables",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "n8nApi",
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://app.easyn8n.work/api/v1/data-tables"
+      },
+      "position": [
+        1344,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "50684d6f-7a33-40b2-ad91-df7709e06aed",
+      "name": "Plan table action",
+      "parameters": {
+        "jsCode": "const SCHEMAS={user_config:[{name:'tg_notifs_chat_id',type:'string'},{name:'g_email_id',type:'string'},{name:'backup_gh_owner',type:'string'}],global_variables:[{name:'backup_gh_owner',type:'string'},{name:'backup_gh_repo',type:'string'},{name:'backup_gh_path',type:'string'},{name:'tg_notifs_chat_id',type:'string'},{name:'g_email_id',type:'string'},{name:'prompt_article_path',type:'string'},{name:'prompt_digest_path',type:'string'},{name:'dir_summaries',type:'string'},{name:'dir_articles',type:'string'},{name:'prefix_summary',type:'string'},{name:'prefix_article',type:'string'},{name:'prefix_digest',type:'string'},{name:'lookback_days_daily',type:'number'},{name:'ingest_week_start_offset_days',type:'number'},{name:'article_cutoff_hours',type:'number'},{name:'display_tz_offset_hours',type:'number'},{name:'launch_message_daily',type:'string'},{name:'launch_message_roundup',type:'string'},{name:'launch_message_article',type:'string'},{name:'error_report_model',type:'string'},{name:'supabase_articles_table',type:'string'}],rss_sources:[{name:'publication_name',type:'string'},{name:'rss_url',type:'string'},{name:'enabled',type:'boolean'},{name:'category',type:'string'},{name:'content_url_field',type:'string'},{name:'content_id_field',type:'string'},{name:'title_field',type:'string'},{name:'description_field',type:'string'},{name:'snippet_field',type:'string'},{name:'pub_date_field',type:'string'},{name:'image_url_field',type:'string'},{name:'wait_for_subworkflow',type:'boolean'},{name:'sort_order',type:'number'}],scrape_sources:[{name:'publication',type:'string'},{name:'url',type:'string'},{name:'enabled',type:'boolean'},{name:'date_format',type:'string'},{name:'date_pattern',type:'string'},{name:'structure',type:'string'},{name:'categories',type:'string'},{name:'separators',type:'string'},{name:'extraction_hints',type:'string'},{name:'examples',type:'string'},{name:'wait_for_subworkflow',type:'boolean'},{name:'sort_order',type:'number'}],llm_config:[{name:'purpose',type:'string'},{name:'provider',type:'string'},{name:'model',type:'string'},{name:'temperature',type:'number'},{name:'response_format',type:'string'},{name:'notes',type:'string'}],text_classifier:[{name:'pipeline',type:'string'},{name:'categories_json',type:'string'},{name:'batch_size',type:'number'},{name:'delay_ms',type:'number'},{name:'ai_flag_yes',type:'number'},{name:'ai_flag_no',type:'number'},{name:'ai_flag_unsure',type:'number'},{name:'notes',type:'string'}]};\nconst FILE_TO_TABLE={'rss_sources.csv':'rss_sources','scrape_sources.csv':'scrape_sources','llm_config.csv':'llm_config','text_classifier.csv':'text_classifier','user_config.example.csv':'user_config','global_variables.example.csv':'global_variables'};\nfunction parseCsv(text){\n  const NL=String.fromCharCode(10);\n  const CR=String.fromCharCode(13);\n  const rows=[]; let row=[]; let cur=''; let q=false;\n  const s=String(text||'').replace(/^\\uFEFF/,'');\n  for(let i=0;i<s.length;i++){\n    const ch=s[i];\n    if(q){\n      if(ch==='\"'){ if(s[i+1]==='\"'){ cur+='\"'; i++; } else q=false; }\n      else cur+=ch;\n    } else if(ch==='\"'){ q=true; }\n    else if(ch===','){ row.push(cur); cur=''; }\n    else if(ch===NL||ch===CR){\n      if(ch===CR&&s[i+1]===NL)i++;\n      row.push(cur);\n      if(row.some(c=>c!==''))rows.push(row);\n      row=[]; cur='';\n    } else cur+=ch;\n  }\n  if(cur!==''||row.length){ row.push(cur); if(row.some(c=>c!==''))rows.push(row); }\n  if(!rows.length)return[];\n  const headers=rows[0].map(h=>h.trim());\n  return rows.slice(1).map(r=>{ const o={}; headers.forEach((h,idx)=>o[h]=r[idx]==null?'':r[idx]); return o; });\n}\nfunction coerce(table,row){\n  const cols=SCHEMAS[table]||[]; const out={};\n  for(const c of cols){\n    let v=row[c.name]; if(v===undefined)v='';\n    if(c.type==='boolean'){ const t=String(v).trim().toLowerCase(); out[c.name]=t==='true'||t==='1'||t==='yes'; }\n    else if(c.type==='number'){ const n=Number(String(v).trim()); out[c.name]=String(v).trim()===''||Number.isNaN(n)?null:n; }\n    else out[c.name]=v==null?'':String(v);\n  }\n  return out;\n}\nconst file=$('Classify GitHub file').first().json;\nconst tableName=FILE_TO_TABLE[file.name];\nif(!tableName||!SCHEMAS[tableName])return[{json:{action:'skip',skipReason:'unknown_csv',name:file.name,kind:'csv'}}];\nconst listed=$input.first().json;\nconst tables=listed.data||listed||[];\nconst exists=(Array.isArray(tables)?tables:[]).some(t=>t&&t.name===tableName);\nif(exists)return[{json:{action:'skip',skipReason:'table_exists',name:tableName,kind:'csv'}}];\nconst rows=parseCsv(file.rawText).map(r=>coerce(tableName,r));\nreturn[{json:{action:'create',name:tableName,kind:'csv',columns:SCHEMAS[tableName],rows,projectId:'KgPGbMAWBC3Dm64D'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1568,
+        400
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8d76db0b-a016-4210-b9fd-e9dcfd0282a7",
+      "name": "Should create table?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "create-tbl",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "create"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        1792,
+        400
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "08d51ba5-377e-49a5-abd7-78dd82bdf7f4",
+      "name": "Create data table",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "jsonBody": "={{ JSON.stringify({ name: $json.name, columns: $json.columns, projectId: $json.projectId }) }}",
+        "method": "POST",
+        "nodeCredentialType": "n8nApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://app.easyn8n.work/api/v1/data-tables"
+      },
+      "position": [
+        2016,
+        320
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "488bd27a-124c-45bf-bce0-b81e4e43e452",
+      "name": "Insert table rows",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "jsonBody": "={{ JSON.stringify({ data: $('Plan table action').first().json.rows, returnType: 'count' }) }}",
+        "method": "POST",
+        "nodeCredentialType": "n8nApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + $json.id + '/rows' }}"
+      },
+      "position": [
+        2240,
+        320
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "03973cd0-ae81-470f-a160-e97b71f33f3e",
+      "name": "Table created status",
+      "parameters": {
+        "jsCode": "const plan=$('Plan table action').first().json;\nconst created=$('Create data table').first();\nconst err=created.error||(created.json&&created.json.error);\nif(err)return[{json:{action:'fail',name:plan.name,kind:'csv',skipReason:String(err.message||err)}}];\nreturn[{json:{action:'create',name:plan.name,kind:'csv'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2464,
+        320
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "a99e91ce-67c5-464c-b12c-0d030eb44e2e",
+      "name": "Table skipped status",
+      "parameters": {
+        "jsCode": "const plan=$('Plan table action').first().json;\nreturn[{json:{action:plan.action||'skip',name:plan.name,kind:'csv',skipReason:plan.skipReason||''}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2016,
+        520
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "a5dea12c-34f3-4e0e-9467-fd2d94bb54d3",
+      "name": "Unknown file skip",
+      "parameters": {
+        "jsCode": "const f=$('Classify GitHub file').first().json;\nreturn[{json:{action:'skip',name:f.name,kind:f.kind||'skip',skipReason:'unhandled_kind'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1344,
+        880
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "a4657b5d-bfc2-4c88-874f-e5bd49088bdc",
+      "name": "List tables for prompt path",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "n8nApi",
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://app.easyn8n.work/api/v1/data-tables"
+      },
+      "position": [
+        1344,
+        640
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "062c29d0-bb13-47d9-abff-3d9f81f8093b",
+      "name": "Get global_variables rows",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "n8nApi",
+        "url": "={{ 'https://app.easyn8n.work/api/v1/data-tables/' + ((($json.data || []).filter(function(t){ return t && t.name === 'global_variables'; })[0] || {}).id || 'MISSING') + '/rows' }}"
+      },
+      "position": [
+        1568,
+        640
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "31e5cd5c-9f0a-4f47-86d5-6e599bb8b230",
+      "name": "Plan prompt write",
+      "parameters": {
+        "jsCode": "const file=$('Classify GitHub file').first().json;\nconst MAP={'article_gen.md':'prompt_article_path','digest_gen.md':'prompt_digest_path'};\nconst key=MAP[file.name];\nif(!key)return[{json:{action:'skip',name:file.name,kind:'prompt',skipReason:'unknown_prompt'}}];\nlet dest='';\ntry{const rows=$input.first().json;const data=rows.data||rows||[];const row=Array.isArray(data)?data[0]:data;dest=row&&row[key]?String(row[key]):'';}catch(e){dest='';}\nif(!dest)return[{json:{action:'skip',name:file.name,kind:'prompt',skipReason:'no_dest_path'}}];\nconst fileBase64=Buffer.from(String(file.rawText||''),'utf8').toString('base64');\nreturn[{json:{action:'write',name:file.name,kind:'prompt',destPath:dest,fileBase64}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1792,
+        640
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "dc026b85-dd70-46e5-9d76-176f9266ec8c",
+      "name": "Should write prompt?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "write-p",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "write"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        2016,
+        640
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "33ec529a-496e-459c-af89-37b311cb78fc",
+      "name": "Read existing prompt file",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "fileSelector": "={{ $json.destPath }}",
+        "operation": "read"
+      },
+      "position": [
+        2240,
+        560
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "c9e9d555-effa-494a-bae5-056fcb8436df",
+      "name": "Prompt file exists?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "has-bin",
+              "leftValue": "={{ $binary.data }}",
+              "operator": {
+                "operation": "exists",
+                "singleValue": true,
+                "type": "object"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        2464,
+        560
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "04baccf9-c18d-485e-b5f1-64d1ad908a38",
+      "name": "Prompt exists status",
+      "parameters": {
+        "jsCode": "const plan=$('Plan prompt write').first().json;\nreturn[{json:{action:'skip',name:plan.name,kind:'prompt',skipReason:'file_exists'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2688,
+        480
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "442971b8-ca6b-440b-a12c-c2f8e8013a22",
+      "name": "Restore prompt payload",
+      "parameters": {
+        "jsCode": "return [{ json: $('Plan prompt write').first().json }];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2688,
+        640
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "9759fbdc-631f-45ad-b5ab-88a2852bebf0",
+      "name": "Convert prompt to file",
+      "parameters": {
+        "operation": "toBinary",
+        "options": {
+          "dataIsBase64": true,
+          "fileName": "={{ $json.name }}",
+          "mimeType": "text/markdown"
+        },
+        "sourceProperty": "fileBase64"
+      },
+      "position": [
+        2912,
+        640
+      ],
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "213439b6-eae8-4ef9-9d6f-f89182e36b90",
+      "name": "Write prompt file",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "dataPropertyName": "data",
+        "fileName": "={{ $('Plan prompt write').first().json.destPath }}",
+        "operation": "write"
+      },
+      "position": [
+        3136,
+        640
+      ],
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "bc39f380-2f71-4f28-b9fe-b2bb1161882e",
+      "name": "Prompt written status",
+      "parameters": {
+        "jsCode": "const plan=$('Plan prompt write').first().json;\nconst wr=$input.first();\nconst err=wr.error||(wr.json&&wr.json.error);\nif(err)return[{json:{action:'fail',name:plan.name,kind:'prompt',skipReason:String(err.message||err)}}];\nreturn[{json:{action:'create',name:plan.name,kind:'prompt'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3360,
+        640
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e6ba13fc-d99e-442a-9caf-bf0db7f9db78",
+      "name": "Prompt plan skip status",
+      "parameters": {
+        "jsCode": "const plan=$('Plan prompt write').first().json;\nreturn[{json:{action:'skip',name:plan.name,kind:'prompt',skipReason:plan.skipReason||''}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2240,
+        760
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "2ccf0909-cfba-455f-931d-1c31cc2b0fa7",
+      "name": "Parse and decide create",
+      "parameters": {
+        "jsCode": "const orig=$('When called for one file').first().json;\nconst file=$('Classify GitHub file').first().json;\nlet raw;\ntry{raw=JSON.parse(file.rawText);}catch(e){return[{json:{action:'fail',name:orig.name,kind:'workflow',skipReason:'invalid_json'}}];}\nconst names=new Set(orig.existingNames||[]);\nconst ids=new Set((orig.existingIds||[]).map(String));\nconst archivedByName=orig.archivedByName||{};\nconst archivedById=orig.archivedById||{};\nconst exportId=raw.id!=null?String(raw.id):'';\nconst name=String(raw.name||'');\nlet action='create';\nlet skipReason='';\nlet archivedId='';\nif(name==='master : first_setup'||name==='import : github'){action='skip';skipReason='self';}\nelse if((exportId&&ids.has(exportId))||names.has(name)){action='skip';skipReason='already_on_instance';}\nelse {\n  archivedId=archivedById[exportId]||archivedByName[name]||'';\n  if(archivedId){action='unarchive';skipReason='was_archived';}\n}\nconst KEEP=new Set(['id','name','type','typeVersion','position','parameters','disabled']);\nconst nodes=(raw.nodes||[]).map(n=>{\n  const copy={};\n  for(const k of KEEP){ if(n[k]!==undefined) copy[k]=n[k]; }\n  return copy;\n});\nconst settings={executionOrder:'v1'};\nconst workflowObject={name,nodes,connections:raw.connections||{},settings};\nreturn[{json:{action,skipReason,name,exportId,archivedId,fileName:orig.name,kind:'workflow',workflowObject:JSON.stringify(workflowObject)}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1344,
+        1040
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "afe08245-0439-436a-8220-be62e890e76e",
+      "name": "Should create workflow?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "create-wf",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "create"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        1568,
+        1040
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "d16fa0dd-7747-4636-97a0-44ff24a7bcba",
+      "name": "Workflow created status",
+      "parameters": {
+        "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst j=item.json||{};\nconst err=item.error||j.error;\nconst status=Number(j.statusCode||j.status||0);\nconst httpMsg=j.message||(j.body&&j.body.message)||'';\nif(err)return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String(err.message||err)}}];\nif(status>=400)return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String(status)+' '+String(httpMsg||JSON.stringify(j).slice(0,400))}}];\nif(j.id)return[{json:{action:'create',name:parsed.name,kind:'workflow',id:j.id}}];\nif(j.body&&j.body.id)return[{json:{action:'create',name:parsed.name,kind:'workflow',id:j.body.id}}];\nreturn[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:JSON.stringify(j).slice(0,500)}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        2016,
+        960
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "0e3b2323-704e-4837-a60a-1eebaaae596b",
+      "name": "Workflow skipped status",
+      "parameters": {
+        "jsCode": "const parsed=$('Parse and decide create').first().json;\nreturn[{json:{action:parsed.action||'skip',name:parsed.name,kind:'workflow',skipReason:parsed.skipReason||''}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1792,
+        1160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "d19dd08b-ce87-4566-88ce-563bd3f8a336",
+      "name": "Note: first setup",
+      "parameters": {
+        "color": 4,
+        "content": "## master : first_setup\n\nInstalls Sorted Signals on a blank n8n. Assumes GitHub and Telegram credentials already work.\n\n1. List config, prompts, and workflows folders from hellovamsi/sorted_signals on main.\n2. Same-canvas sub-run per file. Switch: csv / prompt / workflow json.\n3. Existing tables are not created or changed. Existing prompt files are not overwritten. Existing workflows are skipped.\n4. After the loop, retarget Lookups and call-workflow nodes by name.\n\nDoes not copy user_config (that is master : setup). Does not probe Gmail, Supabase, Jina, GitHub, or Telegram. n8n API credential is required on create nodes.",
+        "height": 420,
+        "width": 520
+      },
+      "position": [
+        -520,
+        -40
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "c31b170b-919f-4bbf-986d-59a313c074d4",
+      "name": "Note: file loop",
+      "parameters": {
+        "color": 7,
+        "content": "## File loop\nCSVs first, then prompts, then workflow JSON.\nExecute Workflow v1.3 uses this workflow ID, mode each, wait, continue on error.",
+        "height": 200,
+        "width": 420
+      },
+      "position": [
+        2464,
+        -280
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "6f506c43-8ad1-495a-bfa5-06644bdd8c6a",
+      "name": "Note: one file",
+      "parameters": {
+        "color": 6,
+        "content": "## One GitHub file\nGet file, then Switch csv / prompt / json.\nCSV: list tables; skip if the named table exists; else create and seed.\nPrompt: Read/Write Files from Disk at prompt paths; skip if the file exists.\nJSON: create missing workflows only.",
+        "height": 280,
+        "width": 480
+      },
+      "position": [
+        -520,
+        560
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "07afec3f-9a5f-43bc-8142-c4a16e675cc4",
+      "name": "Should unarchive workflow?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "unarch-wf",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "unarchive"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          }
+        }
+      },
+      "position": [
+        1456,
+        920
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "64bf6e08-a8b5-46e2-a05e-2a41e96f8bbb",
+      "name": "Unarchive workflow",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "POST",
+        "nodeCredentialType": "n8nApi",
+        "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + $json.archivedId + '/unarchive' }}"
+      },
+      "position": [
+        1680,
+        840
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "7da32d54-a47c-470a-a649-50316ddbd2d6",
+      "name": "Workflow unarchived status",
+      "parameters": {
+        "jsCode": "const parsed=$('Parse and decide create').first().json;\nconst item=$input.first();\nconst err=item.error||(item.json&&item.json.error);\nconst status=item.json&&item.json.statusCode;\nif(err||(status&&Number(status)>=400))return[{json:{action:'fail',name:parsed.name,kind:'workflow',skipReason:String((err&&(err.message||err))||('HTTP '+status))}}];\nreturn[{json:{action:'create',name:parsed.name,kind:'workflow',skipReason:'unarchived'}}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        1904,
+        840
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "39030f06-2716-4d88-8dcb-dcf3dbe58f5a",
+      "name": "Delete archived workflow",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "operation": "delete",
+        "resource": "workflow",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Parse and decide create').first().json.archivedId }}"
+        }
+      },
+      "position": [
+        1680,
+        1040
+      ],
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "c6d7ba54-f03e-45f8-a0f1-52dadc8ee1c5",
+      "name": "Create workflow on this instance",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "jsonBody": "={{ $('Parse and decide create').first().json.workflowObject }}",
+        "method": "POST",
+        "nodeCredentialType": "n8nApi",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "sendQuery": false,
+        "specifyBody": "json",
+        "url": "https://app.easyn8n.work/api/v1/workflows"
+      },
+      "position": [
+        1792,
+        960
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "574f1295-8507-47de-ae86-e187cff4811e",
+      "name": "Probe tiny workflow create",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "jsonBody": "={{ JSON.stringify({ name: 'ss_api_create_probe', nodes: [{ id: 'probe-start', name: 'Start', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0], parameters: {} }], connections: {}, settings: { executionOrder: 'v1' } }) }}",
+        "method": "POST",
+        "nodeCredentialType": "n8nApi",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://app.easyn8n.work/api/v1/workflows"
+      },
+      "position": [
+        280,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "0031e35e-099e-4d05-929a-0641476b5607",
+      "name": "Probe created?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "probe-ok",
+              "leftValue": "={{ Number($json.statusCode) }}",
+              "operator": {
+                "operation": "lt",
+                "type": "number"
+              },
+              "rightValue": 400
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        560,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "5ee2b840-8cd2-454a-a75b-f98154b1fea5",
+      "name": "Delete probe workflow",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "DELETE",
+        "nodeCredentialType": "n8nApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + (($json.body && $json.body.id) ? $json.body.id : $json.id) }}"
+      },
+      "position": [
+        840,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "3e9128c1-6e9f-47bf-997c-9c0b89aaab64",
+      "name": "Remember API create flag",
+      "parameters": {
+        "jsCode": "const s=$getWorkflowStaticData('global');\nconst code=Number($json.statusCode||0);\ns.apiCanCreateWorkflows=code>0&&code<400;\nreturn[{json:$input.first().json}];",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        420,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "n8nApi": {
+          "id": "UXsx5QXzrQeGp0zF",
+          "name": "n8n account"
+        }
+      },
+      "id": "efea64f4-9aef-434c-826c-fe8ed3fc68b6",
+      "name": "Tag Sorted_Signals",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "jsonBody": "={{ JSON.stringify([{ id: '7L2K9YKtUQZh9Lf6' }]) }}",
+        "method": "PUT",
+        "nodeCredentialType": "n8nApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "={{ 'https://app.easyn8n.work/api/v1/workflows/' + $json.id + '/tags' }}"
+      },
+      "position": [
+        3024,
+        -400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4
+    },
+    {
+      "id": "dbd3b389-437c-4436-8166-4b7e5c1732fe",
+      "name": "Restore workflow list",
+      "parameters": {
+        "jsCode": "return $('List n8n workflows after import').all().map(i=>({json:i.json}));",
+        "language": "javaScript",
+        "mode": "runOnceForAllItems"
+      },
+      "position": [
+        3024,
+        -240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
