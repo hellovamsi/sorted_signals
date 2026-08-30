@@ -1,0 +1,523 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "connections": {
+    "Call 'component : fetch mainstream rss'": {
+      "main": [
+        [
+          {
+            "index": 2,
+            "node": "Wait for ingest to finish",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Call 'component : fetch non-mainstream rss'": {
+      "main": [
+        [
+          {
+            "index": 1,
+            "node": "Wait for ingest to finish",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Call 'component : generate'": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send roundup complete notification",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Call 'component : scrape page'": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Wait for ingest to finish",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup global variables": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Send roundup started notification",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup scrape_sources",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup non-mainstream RSS sources",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Lookup mainstream RSS sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup mainstream RSS sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : fetch mainstream rss'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup non-mainstream RSS sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : fetch non-mainstream rss'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lookup scrape_sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : scrape page'",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Sundays at 01:00 UTC": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lookup global variables",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Wait for ingest to finish": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call 'component : generate'",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "TjoB5EbSxgiL7Klv",
+  "isArchived": false,
+  "name": "master : generate article on disk",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "id": "ad628b12-7edb-4255-a59f-44b724a1586e",
+      "name": "Sundays at 01:00 UTC",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 1 * * SUN",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        -112,
+        48
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "2f41b893-439a-4fbb-8c67-06f8ee75cfbc",
+      "name": "Send roundup started notification",
+      "parameters": {
+        "additionalFields": {
+          "parse_mode": "MarkdownV2"
+        },
+        "chatId": "={{ $json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\n{{ $json.launch_message_roundup }}\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($json.display_tz_offset_hours,'hours').format('dd\\\\.MM\\\\.yyyy HH\\\\:mm') }}"
+      },
+      "position": [
+        224,
+        -272
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "d0a7407c-6385-4e91-944d-b7b9d387a856"
+    },
+    {
+      "id": "c7cf7d53-25e2-4ebe-b8d0-6a3acb343307",
+      "name": "Call 'component : generate'",
+      "parameters": {
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : generate",
+          "cachedResultUrl": "/workflow/S6jCKcFVnVwE0bNX",
+          "mode": "list",
+          "value": "S4ap9r37QHoR730E"
+        },
+        "workflowInputs": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cutOffDate",
+            "kind"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cutOffDate",
+              "id": "cutOffDate",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "kind",
+              "id": "kind",
+              "removed": false,
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cutOffDate": "={{ $now.minus($('Lookup global variables').first().json.article_cutoff_hours,'hours') }}",
+            "kind": "monday_roundup"
+          }
+        }
+      },
+      "position": [
+        896,
+        112
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "1908016a-8d80-4c13-84b9-75c015b69397",
+      "name": "Wait for ingest to finish",
+      "parameters": {
+        "mode": "chooseBranch",
+        "numberInputs": 3,
+        "output": "empty"
+      },
+      "position": [
+        672,
+        96
+      ],
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2
+    },
+    {
+      "id": "cfb706a7-4428-45c1-a10f-c919f0c5d7c9",
+      "name": "Send roundup complete notification",
+      "parameters": {
+        "additionalFields": {},
+        "chatId": "={{ $('Lookup global variables').first().json.tg_notifs_chat_id }}",
+        "text": "=__*Info Notification*__\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nMonday Roundup Complete!\n＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿\nat {{ $now.plus($('Lookup global variables').first().json.display_tz_offset_hours,'hours').format('dd.MM.yyyy HH:mm:ss') }}"
+      },
+      "position": [
+        1120,
+        112
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "d99f6cd1-5a5e-43e3-bfd4-d592d68607b4"
+    },
+    {
+      "id": "1cfc66f4-d760-4e5c-9fb8-a1997b050bd3",
+      "name": "Lookup global variables",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "global_variables",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/WyizWkG5igYx0GVV",
+          "mode": "list",
+          "value": "WyizWkG5igYx0GVV"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        48,
+        48
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "89242047-c887-4e92-852e-719eb877434a",
+      "name": "Lookup scrape_sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "scrape_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/9VHlPKcRcFryOiiF",
+          "mode": "list",
+          "value": "9VHlPKcRcFryOiiF"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        224,
+        -80
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "23bb8588-1534-4240-9273-9a1a22e30353",
+      "name": "Lookup non-mainstream RSS sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "rss_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+          "mode": "list",
+          "value": "PNzdSBPjg673eGI5"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            },
+            {
+              "keyName": "category",
+              "keyValue": "non_mainstream"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        224,
+        112
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "bccfe5b8-002f-43c8-8a09-2d9eabe9a3e1",
+      "name": "Lookup mainstream RSS sources",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "cachedResultName": "rss_sources",
+          "cachedResultUrl": "/projects/KgPGbMAWBC3Dm64D/datatables/PNzdSBPjg673eGI5",
+          "mode": "list",
+          "value": "PNzdSBPjg673eGI5"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "condition": "isTrue",
+              "keyName": "enabled"
+            },
+            {
+              "keyName": "category",
+              "keyValue": "mainstream"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "get",
+        "orderBy": true,
+        "orderByColumn": "sort_order",
+        "orderByDirection": "ASC",
+        "returnAll": true
+      },
+      "position": [
+        224,
+        304
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "2bada95a-f114-45f3-a4e4-438054a09693",
+      "name": "Call 'component : scrape page'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : scrape page",
+          "cachedResultUrl": "/workflow/go4FNonP2GmrCEHc",
+          "mode": "list",
+          "value": "Qy8xlKqvJk27GyCe"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "categories": "={{ JSON.parse($json.categories) }}",
+            "cutOffDate": "={{ $today.startOf('week').minus($('Lookup global variables').first().json.ingest_week_start_offset_days,'days') }}",
+            "dateFormat": "={{ $json.date_format }}",
+            "datePattern": "={{ $json.date_pattern }}",
+            "examples": "={{ JSON.parse($json.examples) }}",
+            "extractionHints": "={{ $json.extraction_hints }}",
+            "publication": "={{ $json.publication }}",
+            "separators": "={{ $json.separators }}",
+            "structure": "={{ $json.structure }}",
+            "url": "={{ $json.url }}"
+          }
+        }
+      },
+      "position": [
+        448,
+        -80
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "674789ec-9d92-403b-a213-e72d81fb519c",
+      "name": "Call 'component : fetch non-mainstream rss'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "1k5LcDuD476rkM0s"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "contentIdFieldName": "={{ $json.content_id_field }}",
+            "contentURLFieldName": "={{ $json.content_url_field }}",
+            "cutOffDate": "={{ $today.startOf('week').minus($('Lookup global variables').first().json.ingest_week_start_offset_days,'days') }}",
+            "descriptionFieldName": "={{ $json.description_field }}",
+            "imageURLFieldName": "={{ $json.image_url_field }}",
+            "pubDateFieldName": "={{ $json.pub_date_field }}",
+            "publicationName": "={{ $json.publication_name }}",
+            "rssURL": "={{ $json.rss_url }}",
+            "snippetFieldName": "={{ $json.snippet_field }}",
+            "titleFieldName": "={{ $json.title_field }}"
+          }
+        }
+      },
+      "position": [
+        448,
+        112
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    },
+    {
+      "id": "e4f68ea0-7eb7-417e-a595-900be65512f3",
+      "name": "Call 'component : fetch mainstream rss'",
+      "parameters": {
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        },
+        "workflowId": {
+          "__rl": true,
+          "cachedResultName": "component : fetch standard rss",
+          "cachedResultUrl": "/workflow/X5drlaLIiyY5VOYf",
+          "mode": "list",
+          "value": "1k5LcDuD476rkM0s"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "value": {
+            "contentIdFieldName": "={{ $json.content_id_field }}",
+            "contentURLFieldName": "={{ $json.content_url_field }}",
+            "cutOffDate": "={{ $today.startOf('week').minus($('Lookup global variables').first().json.ingest_week_start_offset_days,'days') }}",
+            "descriptionFieldName": "={{ $json.description_field }}",
+            "imageURLFieldName": "={{ $json.image_url_field }}",
+            "pubDateFieldName": "={{ $json.pub_date_field }}",
+            "publicationName": "={{ $json.publication_name }}",
+            "rssURL": "={{ $json.rss_url }}",
+            "snippetFieldName": "={{ $json.snippet_field }}",
+            "titleFieldName": "={{ $json.title_field }}"
+          }
+        }
+      },
+      "position": [
+        448,
+        304
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3
+    }
+  ],
+  "repo_branch": "main",
+  "repo_name": "sorted_signals",
+  "repo_owner": "hellovamsi",
+  "repo_path": "workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2026-07-19T15:54:57.140Z",
+      "id": "7L2K9YKtUQZh9Lf6",
+      "name": "Sorted_Signals",
+      "updatedAt": "2026-07-19T15:54:57.140Z"
+    }
+  ]
+}
